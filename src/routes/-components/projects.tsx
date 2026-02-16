@@ -97,7 +97,12 @@ export default function Projects() {
                   />
                 </div>
                 <div className="max-w-2xl flex flex-col justify-center gap-4 group/link">
-                  <a href={project.href} className="w-min text-nowrap text-2xl font-black mt-6 group-hover/link:text-sky-300 duration-300 uppercase cursor-pointer">
+                  <a
+                    href={project.href}
+                    className="w-min text-nowrap text-2xl font-black mt-6 group-hover/link:text-sky-300 duration-300 uppercase cursor-pointer"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     {project.title}
                     <LinkIcon className="inline-block size-4 ml-2" />
                     <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover/link:w-full" />
