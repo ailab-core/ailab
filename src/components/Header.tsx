@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { BanknoteArrowDownIcon, Building2Icon, ChartCandlestickIcon, ChevronRightIcon, GlobeIcon, LandmarkIcon, PresentationIcon } from "lucide-react"
 import { Button } from "./ui/button";
 import type { LucideIcon } from "lucide-react";
@@ -52,11 +51,6 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink render={
-                  <a> {"Abous us"} </a>
-                } />
-              </NavigationMenuItem>
-              <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent">
                   {"Solutions"}
                 </NavigationMenuTrigger>
@@ -98,14 +92,6 @@ export default function Header() {
                       {"For operating in the securities market"}
                     </ListItem>
                   </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent">
-                  {"Insights"}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <NavigationMenuLink>Link</NavigationMenuLink>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>

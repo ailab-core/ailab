@@ -10,13 +10,13 @@ export const Route = createFileRoute('/')({ component: App })
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col gap-64 mb-32">
       <Landing />
       <WhatWeDo />
       <Values />
       <Projects />
       <TrustedBy />
       <ContactUs />
-    </>
+    </div>
   )
 }

@@ -5,7 +5,7 @@ import { InteractiveGridBackground } from "@/components/GridBackground"
 export default function Landing() {
   return (
     <InteractiveGridBackground>
-      <div className="container max-w-4xl mx-auto px-4 flex flex-col justify-center items-center h-screen gap-8">
+      <div className="container max-w-4xl mx-auto px-8 md:px-0 flex flex-col justify-center items-center h-screen gap-8">
         <div className="flex flex-col justify-center items-center gap-4">
           <AnimatedContent
             direction="vertical"
@@ -13,11 +13,11 @@ export default function Landing() {
             duration={2}
             delay={.5}
           >
-            <p className="text-6xl uppercase font-black text-center">
+            <p className="text-4xl md:text-6xl uppercase font-black text-center">
               {"Advance Your Business Through "}
               <TextType
                 text={["Innovation", "Technology", "Efficiency", "Growth"]}
-                className="text-6xl font-black uppercase text-sky-300 bg-secondary rounded px-4"
+                className="text-4xl md:text-6xl font-black uppercase text-sky-300 bg-secondary rounded px-4"
               />
             </p>
           </AnimatedContent>

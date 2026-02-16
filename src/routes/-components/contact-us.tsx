@@ -6,11 +6,11 @@ import AnimatedContent from "@/components/AnimatedContent"
 
 export default function ContactUs() {
   return (
-    <div className="container mx-auto py-32 grid grid-cols-2 gap-16">
-      <div className="flex flex-col gap-6">
+    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 px-8 md:px-0">
+      <div className="flex flex-col gap-8">
         <SplitText
           text={"Get In Touch*"}
-          className="text-8xl font-black uppercase"
+          className="text-6xl md:text-8xl font-black uppercase"
           delay={20}
           duration={1.25}
           ease="power3.out"
@@ -23,7 +23,7 @@ export default function ContactUs() {
         />
         <SplitText
           text={"If you have any questions about our products or services, please fill out the form and we will get back to you shortly."}
-          className="text-lg uppercase"
+          className="text-lg text-muted-foreground"
           delay={10}
           duration={1.25}
           ease="power3.out"

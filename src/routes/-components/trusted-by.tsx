@@ -55,11 +55,11 @@ const COMPANIES = [
 
 export default function TrustedBy() {
   return (
-    <div className="container mx-auto py-32 space-y-32">
+    <div className="container mx-auto px-8 md:px-0 flex flex-col gap-16">
       <div className="flex justify-center gap-2">
         <SplitText
           text={"Trusted by "}
-          className="text-nowrap text-5xl font-black uppercase"
+          className="text-nowrap text-xl md:text-5xl font-black uppercase"
           delay={20}
           duration={1.25}
           ease="power3.out"
@@ -71,7 +71,7 @@ export default function TrustedBy() {
         />
         <SplitText
           text={"innovative companies"}
-          className="text-nowrap text-5xl text-sky-300 font-black uppercase"
+          className="text-nowrap text-xl md:text-5xl text-sky-300 font-black uppercase"
           delay={20}
           duration={1.25}
           ease="power3.out"

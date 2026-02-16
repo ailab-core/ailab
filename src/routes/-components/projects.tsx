@@ -1,3 +1,4 @@
+import { LinkIcon } from "lucide-react"
 import AnimatedContent from "@/components/AnimatedContent"
 import SplitText from "@/components/SplitText"
 
@@ -41,11 +42,11 @@ export const PROJECTS = [
 
 export default function Projects() {
   return (
-    <div className="container mx-auto px-4 flex flex-col pb-32">
+    <div className="container mx-auto px-8 md:px-0 flex flex-col gap-16">
       <div className="flex flex-col justify-center items-start gap-2">
         <SplitText
           text={"Our projects"}
-          className="text-8xl font-black uppercase"
+          className="w-full text-6xl md:text-8xl font-black uppercase"
           delay={50}
           duration={1.25}
           ease="power3.out"
@@ -54,10 +55,11 @@ export default function Projects() {
           to={{ opacity: 1, y: 0 }}
           threshold={0.1}
           rootMargin="-100px"
+          textAlign="left"
         />
         <SplitText
           text={"Custom software solutions powering the future of financial services—enhancing security, efficiency, and innovation"}
-          className="text-lg text-muted-foreground"
+          className="w-full text-lg text-muted-foreground"
           delay={10}
           duration={1.25}
           ease="power3.out"
@@ -66,9 +68,10 @@ export default function Projects() {
           to={{ opacity: 1, y: 0 }}
           threshold={0.1}
           rootMargin="-100px"
+          textAlign="left"
         />
       </div>
-      <div className="flex flex-col gap-8 mt-32">
+      <div className="flex flex-col gap-16">
         {PROJECTS.map((project, index) => (
           <AnimatedContent
             key={index}
@@ -76,14 +79,16 @@ export default function Projects() {
             distance={150}
             duration={2}
           >
-            <div className="w-full max-h-96 relative p-12 overflow-hidden rounded-xl group">
-              <img
-                src={project.banner}
-                alt={`${project.title} banner`}
-                className="w-full h-auto rounded-lg object-contain absolute top-0 left-0 -z-10 opacity-10 group-hover:opacity-20 duration-300 transition-all"
-              />
-              <div className="w-full flex justify-between items-center">
-                <div className="flex items-center">
+            <div className="w-full md:max-h-96 relative p-12 overflow-hidden rounded-xl group">
+              <div className="absolute w-full h-full top-0 left-0">
+                <img
+                  src={project.banner}
+                  alt={`${project.title} banner`}
+                  className="w-full h-full rounded-lg object-cover md:object-top opacity-20 group-hover:opacity-10 duration-300 transition-all"
+                />
+              </div>
+              <div className="w-full flex flex-col md:flex-row justify-between items-center relative z-10">
+                <div className="w-full md:w-auto flex flex-col md:flex-row items-center">
                   <p className="self-start text-4xl text-muted-foreground font-black">{`/0${index + 1}`}</p>
                   <img
                     src={project.image}
@@ -94,6 +99,7 @@ export default function Projects() {
                 <div className="max-w-2xl flex flex-col justify-center gap-4 group/link">
                   <a href={project.href} className="w-min text-nowrap text-2xl font-black mt-6 group-hover/link:text-sky-300 duration-300 uppercase cursor-pointer">
                     {project.title}
+                    <LinkIcon className="inline-block size-4 ml-2" />
                     <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover/link:w-full" />
                   </a>
                   <p className="text-muted-foreground leading-relaxed">

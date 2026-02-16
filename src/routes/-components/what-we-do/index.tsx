@@ -6,10 +6,10 @@ import SplitText from "@/components/SplitText"
 
 export default function WhatWeDo() {
   return (
-    <div className="container mx-auto py-32 space-y-16">
+    <div className="container mx-auto px-8 md:px-0 flex flex-col gap-16">
       <SplitText
         text={"What we do"}
-        className="text-8xl font-black uppercase"
+        className="text-6xl md:text-8xl font-black uppercase w-full"
         delay={50}
         duration={1.25}
         ease="power3.out"
@@ -18,8 +18,9 @@ export default function WhatWeDo() {
         to={{ opacity: 1, y: 0 }}
         threshold={0.1}
         rootMargin="-100px"
+        textAlign="left"
       />
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-4 h-auto">
+      <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
         <DevelopmentCard />
         <div className="flex flex-col gap-4 overflow-hidden">
           <CloudAndDevOpsCard />

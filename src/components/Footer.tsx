@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <div className="container mx-auto px-4">
       <div className="border-t">
-        <div className="grid grid-cols-3 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 py-12 gap-12 md:gap-0">
           <div className="flex flex-col gap-4">
             <img src="/assets/logos/ailab.svg" alt="AI Lab Logo" className="w-64 h-auto" />
             <div className="flex gap-2">

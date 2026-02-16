@@ -26,7 +26,7 @@ const FOLDER_STRUCTURE = `finance-api/
 
 export default function FlexibleSystemArchitectureCard() {
   return (
-    <div className="bg-card rounded-md pt-8 overflow-hidden group">
+    <div className="bg-card rounded-md pt-8 overflow-hidden relative group">
       <div className="px-6 flex flex-col gap-4 h-full">
         <p className="flex items-center gap-2 text-xl font-black">
           <BlocksIcon className="inline-block stroke-2" />
@@ -35,8 +35,8 @@ export default function FlexibleSystemArchitectureCard() {
         <p className="text-muted-foreground pb-4">
           {"Our flexible system architecture adapts to your growing business needs. With modular design and scalable infrastructure, it enables seamless integration, faster updates, and reliable performance—ensuring your technology evolves without disruption."}
         </p>
-        <div className="relative h-full">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-0 bg-card h-120 border border-border rounded-md overflow-hidden transition-colors duration-300">
+        <div className="relative">
+          <div className="mx-8 z-0 bg-card h-120 border border-border rounded-md overflow-hidden transition-colors duration-300">
             <p
               className="text-xs text-muted-foreground font-mono p-4 flex flex-col"
               dangerouslySetInnerHTML={{ __html: FOLDER_STRUCTURE.replace(/\n/g, "<br>").replace(/ /g, "&nbsp;") }}

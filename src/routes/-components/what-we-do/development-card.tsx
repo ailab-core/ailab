@@ -40,7 +40,7 @@ export default function DevelopmentCard() {
         <div className="bg-card h-120 border border-border rounded-md overflow-hidden transition-colors duration-300 mt-8">
           <p className="text-xs text-muted-foreground bg-secondary px-2 py-1.5 flex items-center gap-1">
             <BracesIcon className="inline-block size-4" />
-            Neovim
+            {"neovim"}
           </p>
           <hr />
           <p
@@ -51,7 +51,7 @@ export default function DevelopmentCard() {
         <div className="absolute h-120 top-40 left-20 w-xl bg-card border border-border rounded-md group-hover:border-sky-300 overflow-hidden transition-colors duration-300">
           <p className="text-xs text-muted-foreground bg-secondary px-2 py-1.5 flex items-center gap-1">
             <TerminalIcon className="inline-block size-4" />
-            Terminal
+            {"terminal"}
           </p>
           <hr />
           <p
