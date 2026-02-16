@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText as GSAPSplitText } from 'gsap/SplitText';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import GSAPSplitText from 'gsap/SplitText';
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
@@ -70,7 +70,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       if (el._rbsplitInstance) {
         try {
           el._rbsplitInstance.revert();
-        } catch (_) {}
+        } catch (_) { }
         el._rbsplitInstance = undefined;
       }
 
@@ -85,7 +85,7 @@ const SplitText: React.FC<SplitTextProps> = ({
             ? `-=${Math.abs(marginValue)}${marginUnit}`
             : `+=${marginValue}${marginUnit}`;
       const start = `top ${startPct}%${sign}`;
-      let targets: Element[] = [];
+      let targets: Array<Element> = [];
       const assignTargets = (self: GSAPSplitText) => {
         if (splitType.includes('chars') && self.chars.length) targets = self.chars;
         if (!targets.length && splitType.includes('words') && self.words.length) targets = self.words;
@@ -134,7 +134,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         });
         try {
           splitInstance.revert();
-        } catch (_) {}
+        } catch (_) { }
         el._rbsplitInstance = undefined;
       };
     },
