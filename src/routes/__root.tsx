@@ -1,10 +1,11 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-
-import Header from '../components/Header'
-
+import { ScrollSmoother, ScrollTrigger, gsap } from 'gsap/all'
+import { useEffect } from 'react'
 import appCss from '../styles.css?url'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -17,7 +18,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'AILab',
       },
     ],
     links: [
@@ -31,27 +32,47 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
 })
 
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+
 function RootDocument({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    const smoother = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.5,
+      effects: true,
+    })
+
+    return () => {
+      smoother.kill()
+    }
+  }, [])
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="relative">
         <Header />
-        {children}
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
-        <Scripts />
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            {children}
+            <Footer />
+            <TanStackDevtools
+              config={{
+                position: 'bottom-right',
+              }}
+              plugins={[
+                {
+                  name: 'Tanstack Router',
+                  render: <TanStackRouterDevtoolsPanel />,
+                },
+              ]}
+            />
+            <Scripts />
+          </div>
+        </div>
       </body>
     </html>
   )

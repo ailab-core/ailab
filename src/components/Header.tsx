@@ -1,176 +1,120 @@
-import { Link } from '@tanstack/react-router'
-
-import { useState } from 'react'
+import { useEffect } from "react"
+import { BanknoteArrowDownIcon, Building2Icon, ChartCandlestickIcon, ChevronRightIcon, GlobeIcon, LandmarkIcon, PresentationIcon } from "lucide-react"
+import { Button } from "./ui/button";
+import type { LucideIcon } from "lucide-react";
 import {
-  ChevronDown,
-  ChevronRight,
-  Home,
-  Menu,
-  Network,
-  SquareFunction,
-  StickyNote,
-  X,
-} from 'lucide-react'
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger
+} from "@/components/ui/navigation-menu"
+
+function ListItem({
+  title,
+  children,
+  href,
+  ...props
+}: React.ComponentPropsWithoutRef<"li"> & { href: string, icon: LucideIcon }) {
+  return (
+    <li {...props}>
+      <NavigationMenuLink render={
+        <a href={href} className="space-x-2 hover:bg-transparent group">
+          <div className="bg-secondary rounded-lg p-2">
+            <props.icon className="size-5 text-muted-foreground group-hover:text-foreground duration-300 transition-colors" />
+          </div>
+          <div className="flex flex-col gap-1 text-sm max-w-2xs">
+            <div className="leading-none font-medium flex items-center">
+              {title}
+              <span className="relative -left-4 opacity-0 group-hover:left-0 group-hover:opacity-100 transition-all duration-300">
+                <ChevronRightIcon className="size-4" />
+              </span>
+            </div>
+            <div className="text-xs group-hover:text-foreground text-muted-foreground line-clamp-2 transition-colors duration-300">
+              {children}
+            </div>
+          </div>
+        </a>
+      } />
+    </li>
+  )
+}
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [groupedExpanded, setGroupedExpanded] = useState<
-    Record<string, boolean>
-  >({})
-
   return (
-    <>
-      <header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
-        <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/">
-            <img
-              src="/tanstack-word-logo-white.svg"
-              alt="TanStack Logo"
-              className="h-10"
-            />
-          </Link>
-        </h1>
-      </header>
-
-      <aside
-        className={`fixed top-0 left-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
-      >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h2 className="text-xl font-bold">Navigation</h2>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-            aria-label="Close menu"
-          >
-            <X size={24} />
-          </button>
+    <div className="border-b fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-background">
+      <div className=" container mx-auto py-4 px-6 gap-24 flex justify-between items-center">
+        <div className="flex justify-center gap-8">
+          <a className="" href="/">
+            <img src="/assets/logos/ailab.svg" alt="AI Lab Logo" className="w-32 h-auto" />
+          </a>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink render={
+                  <a> {"Abous us"} </a>
+                } />
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent">
+                  {"Solutions"}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid grid-cols-2">
+                    <ListItem
+                      title="Finace"
+                      href="/#finace"
+                      icon={LandmarkIcon}
+                    >
+                      {"System that contains processes of loan products"}
+                    </ListItem>
+                    <ListItem
+                      title="Prop"
+                      href="/#prop"
+                      icon={Building2Icon}
+                    >
+                      {"Centralized property management system"}
+                    </ListItem>
+                    <ListItem
+                      title="ShMS"
+                      href="/#shms"
+                      icon={PresentationIcon}
+                    >
+                      {"The Shareholders' Meeting System"}
+                    </ListItem>
+                    <ListItem
+                      title="EFund"
+                      href="/#efund"
+                      icon={BanknoteArrowDownIcon}
+                    >
+                      {"Manage and track your funds"}
+                    </ListItem>
+                    <ListItem
+                      title="StockLab"
+                      href="/#stocklab"
+                      icon={ChartCandlestickIcon}
+                    >
+                      {"For operating in the securities market"}
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent">
+                  {"Insights"}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>Link</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
-
-        <nav className="flex-1 p-4 overflow-y-auto">
-          <Link
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Home size={20} />
-            <span className="font-medium">Home</span>
-          </Link>
-
-          {/* Demo Links Start */}
-
-          <Link
-            to="/demo/start/server-funcs"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <SquareFunction size={20} />
-            <span className="font-medium">Start - Server Functions</span>
-          </Link>
-
-          <Link
-            to="/demo/start/api-request"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Network size={20} />
-            <span className="font-medium">Start - API Request</span>
-          </Link>
-
-          <div className="flex flex-row justify-between">
-            <Link
-              to="/demo/start/ssr"
-              onClick={() => setIsOpen(false)}
-              className="flex-1 flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-              activeProps={{
-                className:
-                  'flex-1 flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-              }}
-            >
-              <StickyNote size={20} />
-              <span className="font-medium">Start - SSR Demos</span>
-            </Link>
-            <button
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-              onClick={() =>
-                setGroupedExpanded((prev) => ({
-                  ...prev,
-                  StartSSRDemo: !prev.StartSSRDemo,
-                }))
-              }
-            >
-              {groupedExpanded.StartSSRDemo ? (
-                <ChevronDown size={20} />
-              ) : (
-                <ChevronRight size={20} />
-              )}
-            </button>
-          </div>
-          {groupedExpanded.StartSSRDemo && (
-            <div className="flex flex-col ml-4">
-              <Link
-                to="/demo/start/ssr/spa-mode"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-                activeProps={{
-                  className:
-                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-                }}
-              >
-                <StickyNote size={20} />
-                <span className="font-medium">SPA Mode</span>
-              </Link>
-
-              <Link
-                to="/demo/start/ssr/full-ssr"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-                activeProps={{
-                  className:
-                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-                }}
-              >
-                <StickyNote size={20} />
-                <span className="font-medium">Full SSR</span>
-              </Link>
-
-              <Link
-                to="/demo/start/ssr/data-only"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-                activeProps={{
-                  className:
-                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-                }}
-              >
-                <StickyNote size={20} />
-                <span className="font-medium">Data Only</span>
-              </Link>
-            </div>
-          )}
-
-          {/* Demo Links End */}
-        </nav>
-      </aside>
-    </>
+        <Button size="icon-lg" variant="ghost">
+          <GlobeIcon />
+        </Button>
+      </div>
+    </div>
   )
 }
