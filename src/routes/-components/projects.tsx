@@ -1,6 +1,7 @@
-import { LinkIcon } from "lucide-react"
 import AnimatedContent from "@/components/AnimatedContent"
 import SplitText from "@/components/SplitText"
+import { AnimateIcon } from "@/components/animate-ui/icons/icon"
+import { LinkIcon } from "@/components/animate-ui/icons/link"
 
 export const PROJECTS = [
   {
@@ -46,7 +47,7 @@ export default function Projects() {
       <div className="flex flex-col justify-center items-start gap-2">
         <SplitText
           text={"Our projects"}
-          className="w-full text-6xl md:text-8xl font-black uppercase"
+          className="w-full text-4xl md:text-6xl font-black uppercase"
           delay={50}
           duration={1.25}
           ease="power3.out"
@@ -79,40 +80,42 @@ export default function Projects() {
             distance={150}
             duration={2}
           >
-            <div className="w-full md:max-h-96 relative p-12 overflow-hidden rounded-xl group">
-              <div className="absolute w-full h-full top-0 left-0">
-                <img
-                  src={project.banner}
-                  alt={`${project.title} banner`}
-                  className="w-full h-full rounded-lg object-cover md:object-top opacity-20 group-hover:opacity-10 duration-300 transition-all"
-                />
-              </div>
-              <div className="w-full flex flex-col md:flex-row justify-between items-center relative z-10">
-                <div className="w-full md:w-auto flex flex-col md:flex-row items-center">
-                  <p className="self-start text-4xl text-muted-foreground font-black">{`/0${index + 1}`}</p>
+            <AnimateIcon animateOnHover>
+              <div className="w-full md:max-h-96 relative p-12 overflow-hidden rounded-xl group">
+                <div className="absolute w-full h-full top-0 left-0">
                   <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-50 p-12 object-contain"
+                    src={project.banner}
+                    alt={`${project.title} banner`}
+                    className="w-full h-full rounded-lg object-cover md:object-top opacity-20 group-hover:opacity-10 duration-300 transition-all"
                   />
                 </div>
-                <div className="max-w-2xl flex flex-col justify-center gap-4 group/link">
-                  <a
-                    href={project.href}
-                    className="w-min text-nowrap text-2xl font-black mt-6 group-hover/link:text-sky-300 duration-300 uppercase cursor-pointer"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {project.title}
-                    <LinkIcon className="inline-block size-4 ml-2" />
-                    <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover/link:w-full" />
-                  </a>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
+                <div className="w-full flex flex-col md:flex-row justify-between items-center relative z-10">
+                  <div className="w-full md:w-auto flex flex-col md:flex-row items-center">
+                    <p className="self-start text-4xl text-muted-foreground font-black">{`/0${index + 1}`}</p>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-50 p-12 object-contain"
+                    />
+                  </div>
+                  <div className="max-w-2xl flex flex-col justify-center gap-4">
+                    <a
+                      href={project.href}
+                      className="w-min text-nowrap text-2xl font-black mt-6 group-hover:text-sky-300 duration-300 uppercase cursor-pointer"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      {project.title}
+                      <LinkIcon className="inline-block size-4 ml-2" />
+                      <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover:w-full" />
+                    </a>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimateIcon>
           </AnimatedContent>
         ))}
       </div>

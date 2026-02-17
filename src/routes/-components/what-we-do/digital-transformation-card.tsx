@@ -1,17 +1,22 @@
 import {
-  BrainCircuitIcon,
   FileTextIcon,
   ImageIcon,
   VideoIcon,
 } from "lucide-react"
 import LogoLoop from "@/components/LogoLoop"
+import { AnimateIcon } from "@/components/animate-ui/icons/icon"
+import { BotIcon } from "@/components/animate-ui/icons/bot"
 
 export default function DigitalTransformationCard() {
   return (
-    <div className="bg-card rounded-md flex flex-col gap-4 overflow-hidden py-8">
+    <AnimateIcon
+      className="bg-card rounded-md flex flex-col gap-4 overflow-hidden py-8"
+      animateOnHover
+      loop
+    >
       <div className="flex flex-col gap-4 px-6">
         <p className="flex items-center gap-2 text-xl font-black">
-          <BrainCircuitIcon className="inline-block" />
+          <BotIcon className="inline-block" />
           {"Digital transformation"}
         </p>
         <ul className="list-disc list-inside text-muted-foreground">
@@ -25,7 +30,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-secondary border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-secondary text-muted-foreground border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
                   <FileTextIcon />
                 </div>
               )
@@ -42,7 +47,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-secondary border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-secondary text-muted-foreground border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
                   <ImageIcon />
                 </div>
               )
@@ -59,7 +64,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-secondary border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-secondary text-muted-foreground border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
                   <VideoIcon />
                 </div>
               )
@@ -73,6 +78,6 @@ export default function DigitalTransformationCard() {
           hoverSpeed={0}
         />
       </div>
-    </div>
+    </AnimateIcon>
   )
 }

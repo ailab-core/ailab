@@ -46,14 +46,11 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <a className="text-2xl font-black hover:text-sky-300" href="/about-us">
-              About us
-            </a>
             <a className="text-2xl font-black hover:text-sky-300" href="/solutions">
               Solutions
             </a>
-            <a className="text-2xl font-black hover:text-sky-300" href="/insights">
-              Insights
+            <a className="text-2xl font-black hover:text-sky-300" href="/blogs">
+              Blog
             </a>
           </div>
           <div className="flex flex-col gap-4">
