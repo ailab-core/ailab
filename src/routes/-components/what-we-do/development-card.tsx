@@ -1,4 +1,6 @@
-import { BracesIcon, CodeIcon, TerminalIcon } from "lucide-react"
+import { BracesIcon, TerminalIcon } from "lucide-react"
+import { ChevronLeftRightIcon } from "@/components/animate-ui/icons/chevron-left-right"
+import { AnimateIcon } from "@/components/animate-ui/icons/icon"
 
 const CODE_SNIPPET = `package com.example.springboot;
 
@@ -28,9 +30,12 @@ Welcome to the Finance API!
 
 export default function DevelopmentCard() {
   return (
-    <div className="bg-card rounded-md px-6 py-8 flex flex-col gap-4 overflow-hidden relative group">
+    <AnimateIcon
+      className="bg-card rounded-md px-6 py-8 flex flex-col gap-4 overflow-hidden relative group"
+      animateOnHover
+    >
       <p className="flex items-center gap-2 text-xl font-black">
-        <CodeIcon className="inline-block" />
+        <ChevronLeftRightIcon className="inline-block" />
         {"Development"}
       </p>
       <p className="text-muted-foreground">
@@ -64,6 +69,6 @@ export default function DevelopmentCard() {
           </p>
         </div>
       </div>
-    </div>
+    </AnimateIcon>
   )
 }

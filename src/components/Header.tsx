@@ -94,6 +94,9 @@ export default function Header() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
+              <NavigationMenuLink>
+                {"Blog"}
+              </NavigationMenuLink>
             </NavigationMenuList>
           </NavigationMenu>
         </div>

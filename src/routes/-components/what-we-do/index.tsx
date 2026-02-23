@@ -9,7 +9,7 @@ export default function WhatWeDo() {
     <div className="container mx-auto px-8 md:px-0 flex flex-col gap-16">
       <SplitText
         text={"What we do"}
-        className="text-6xl md:text-8xl font-black uppercase w-full"
+        className="text-4xl md:text-6xl font-black uppercase w-full"
         delay={50}
         duration={1.25}
         ease="power3.out"
