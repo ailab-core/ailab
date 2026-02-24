@@ -12,6 +12,7 @@ const config = defineConfig({
   },
   plugins: [
     devtools(),
+    vercel(),
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
       projects: ['./tsconfig.json'],
@@ -19,7 +20,6 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart(),
     viteReact(),
-    vercel()
   ],
 })
 
