@@ -29,7 +29,7 @@ export default function Providers({
 
   return (
     <div id="smooth-wrapper">
-      <div id="smooth-content" className="flex flex-col gap-32 mb-32">
+      <div id="smooth-content" className="flex flex-col">
         <Header />
         {children}
         <Footer />

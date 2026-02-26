@@ -19,7 +19,7 @@ export default function DigitalTransformationCard() {
           <BotIcon className="inline-block" />
           {"Digital transformation"}
         </p>
-        <ul className="list-disc list-inside text-muted-foreground">
+        <ul className="text-sm md:text-base list-disc list-inside text-muted-foreground">
           <li>AI based data processing</li>
           <li>Business process automation</li>
           <li>Fintech solutions, Risk assessment, and credit scoring</li>

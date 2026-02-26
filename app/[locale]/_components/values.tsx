@@ -41,12 +41,12 @@ export default function Values() {
           className="w-full h-auto object-cover rounded-lg aspect-video"
         />
         <div className="flex flex-col gap-8">
-          <p className="text-muted-foreground text-2xl md:text-xl leading-relaxed font-light">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-light">
             <span className="text-sky-300">{"AILab "}</span>
             <span className="text-foreground">{"is a specialized technology company established in 2018. "}</span>
             {"We focus on fintech, artificial intelligence, big data system development, and the design of core infrastructure. Driven by our mission to accelerate the future of business through innovation and smart solutions, we aspire to become a global leader in financial technology."}
           </p>
-          <p className="text-muted-foreground text-2xl md:text-xl leading-relaxed font-light!">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-light!">
             <span className="text-foreground">{"With more than 80% of our team comprised of engineers, "}</span>
             {"we embody strong technological expertise and an unwavering commitment to innovation."}
           </p>
@@ -59,7 +59,7 @@ export default function Values() {
             <p className="text-lg font-bold pb-2 flex items-center">
               {value.title}
             </p>
-            <p className="text-muted-foreground text-sm">{value.description}</p>
+            <p className="text-muted-foreground">{value.description}</p>
           </div>
         ))}
       </div>

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { AnimateIcon } from "@/components/animate-ui/icons/icon"
 import { LinkIcon } from "@/components/animate-ui/icons/link"
 import { spiderWeb } from "@lucide/lab"
@@ -49,7 +50,7 @@ export default function Projects() {
           <Icon className="size-12 inline-block" iconNode={spiderWeb} />
           {"Our projects"}
         </h2>
-        <p className="w-full text-lg text-muted-foreground">
+        <p className="w-full text-base md:text-lg text-muted-foreground">
           {"Custom software solutions powering the future of financial services—enhancing security, efficiency, and innovation"}
         </p>
       </div>
@@ -58,9 +59,10 @@ export default function Projects() {
           <AnimateIcon key={index} animateOnHover>
             <div className="w-full md:max-h-96 relative p-12 overflow-hidden rounded-xl group">
               <div className="absolute w-full h-full top-0 left-0">
-                <img
+                <Image
                   src={project.banner}
                   alt={`${project.title} banner`}
+                  fill={true}
                   className="w-full h-full rounded-lg object-cover md:object-top opacity-20 group-hover:opacity-10 duration-300 transition-all"
                 />
               </div>
@@ -84,7 +86,7 @@ export default function Projects() {
                     <LinkIcon className="inline-block size-4 ml-2" />
                     <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover:w-full" />
                   </a>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
                 </div>

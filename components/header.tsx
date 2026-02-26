@@ -10,7 +10,7 @@ import {
   LandmarkIcon,
   PresentationIcon
 } from "lucide-react"
-import { Link } from "@/i18n/navigation";
+import { usePathname } from "next/navigation";
 import {
   Button,
   NavigationMenu,
@@ -27,6 +27,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui"
 import { routing } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
 
 const PRODUCTS = [
   {
@@ -63,10 +64,11 @@ const PRODUCTS = [
 
 export default function Header() {
   const t = useTranslations("header")
+  const pathname = usePathname()
 
   return (
-    <header className="border-b fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-background">
-      <div className="container md:max-w-7xl mx-auto py-4 px-6 gap-24 flex justify-between items-center">
+    <header className="border-b w-full bg-background">
+      <div className="container md:max-w-7xl mx-auto py-4 px-8 md:px-0 gap-24 flex justify-between items-center">
         <div className="flex justify-center gap-8">
           <a className="" href="/">
             <img src="/assets/logos/ailab.svg" alt="AI Lab Logo" className="w-32 h-auto" />
@@ -83,7 +85,7 @@ export default function Header() {
                       <li key={product.href}>
                         <NavigationMenuLink
                           render={
-                            <a href={product.href} className="space-x-2 hover:bg-transparent group">
+                            <Link href={product.href} className="space-x-2 hover:bg-transparent group">
                               <div className="bg-secondary rounded-lg p-2">
                                 <product.icon className="size-5 text-muted-foreground group-hover:text-foreground duration-300 transition-colors" />
                               </div>
@@ -98,7 +100,7 @@ export default function Header() {
                                   {product.description}
                                 </div>
                               </div>
-                            </a>
+                            </Link>
                           }
                         />
                       </li>
@@ -106,9 +108,11 @@ export default function Header() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuLink>
-                {"Blog"}
-              </NavigationMenuLink>
+              <NavigationMenuLink render={
+                <Link href="/blogs">
+                  {t("blogs")}
+                </Link>
+              } />
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -118,18 +122,26 @@ export default function Header() {
               <GlobeIcon />
             </Button>
           } />
-          <DropdownMenuContent>
+          <DropdownMenuContent align="end">
             <DropdownMenuGroup>
               <DropdownMenuLabel>{t("languages.title")}</DropdownMenuLabel>
               {routing.locales.map((locale) => (
                 <DropdownMenuItem
-                  render={<Link href={locale}>{t(`languages.${locale}`)}</Link>}
+                  key={locale}
+                  render={
+                    <Link
+                      href={pathname.slice(3, pathname.length) || '/'}
+                      locale={locale}
+                    >
+                      {t(`languages.${locale}`)}
+                    </Link>
+                  }
                 />
               ))}
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-    </header>
+    </header >
   )
 }

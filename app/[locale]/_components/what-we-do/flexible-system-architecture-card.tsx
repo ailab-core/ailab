@@ -28,7 +28,7 @@ const FOLDER_STRUCTURE = `finance-api/
 export default function FlexibleSystemArchitectureCard() {
   return (
     <AnimateIcon
-      className="border-l border-dashed pt-8 overflow-hidden relative group"
+      className="border-t md:border-l border-dashed pt-8 overflow-hidden relative group"
       animateOnHover
     >
       <div className="px-6 flex flex-col gap-4 h-full">
@@ -36,7 +36,7 @@ export default function FlexibleSystemArchitectureCard() {
           <BlocksIcon className="inline-block stroke-2" />
           {"Flexible system architecture"}
         </p>
-        <p className="text-muted-foreground pb-4">
+        <p className="text-sm md:text-base text-muted-foreground pb-4">
           {"Our flexible system architecture adapts to your growing business needs. With modular design and scalable infrastructure, it enables seamless integration, faster updates, and reliable performance—ensuring your technology evolves without disruption."}
         </p>
         <div className="relative">
@@ -51,16 +51,16 @@ export default function FlexibleSystemArchitectureCard() {
               {"PRODUCT SOLUTION"}
             </p>
             <div className="col-span-2 bg-secondary border border-dashed p-2 rounded-lg w-full flex flex-col justify-center items-center gap-2 group-hover:border-sky-300 duration-300 transition-colors">
-              <ClipboardListIcon className="text-muted-foreground size-8 group-hover:text-sky-300 duration-300 transition-colors" />
+              <ClipboardListIcon className="text-muted-foreground size-6 group-hover:text-sky-300 duration-300 transition-colors" />
               <p className="text-center text-xs font-mono text-muted-foreground">
-                {"Enterprise Resource Planning"}
+                {"ERP"}
               </p>
             </div>
             <hr className="my-auto border-dashed group-hover:border-sky-300 duration-300 transition-colors delay-100" />
             <div className="col-span-2 bg-secondary border border-dashed p-2 rounded-lg w-full flex flex-col justify-center items-center gap-2 group-hover:border-sky-300 duration-300 transition-colors delay-200">
-              <UsersIcon className="text-muted-foreground size-8 group-hover:text-sky-300 duration-300 transition-colors delay-200" />
+              <UsersIcon className="text-muted-foreground size-6 group-hover:text-sky-300 duration-300 transition-colors delay-200" />
               <p className="text-center text-xs font-mono text-muted-foreground">
-                {"Customer Relationship Management"}
+                {"CRM"}
               </p>
             </div>
             <hr className="col-span-2 mx-auto h-16 w-1 border-dashed border-t-0 border-l group-hover:border-sky-300 duration-300 transition-colors delay-700" />
@@ -69,14 +69,14 @@ export default function FlexibleSystemArchitectureCard() {
             </div>
             <hr className="col-span-2 mx-auto h-16 w-1 border-dashed border-t-0 border-l group-hover:border-sky-300 duration-300 transition-colors delay-300" />
             <div className="col-span-2 bg-secondary border border-dashed p-2 rounded-lg w-full flex flex-col justify-center items-center gap-2 group-hover:border-sky-300 duration-300 transition-colors delay-600">
-              <LockKeyholeIcon className="text-muted-foreground size-8 group-hover:text-sky-300 duration-300 transition-colors delay-600" />
+              <LockKeyholeIcon className="text-muted-foreground size-6 group-hover:text-sky-300 duration-300 transition-colors delay-600" />
               <p className="text-center text-xs font-mono text-muted-foreground">
                 {"Payment system"}
               </p>
             </div>
             <hr className="my-auto border-dashed group-hover:border-sky-300 duration-300 transition-colors delay-500" />
             <div className="col-span-2 bg-secondary border border-dashed p-2 rounded-lg w-full flex flex-col justify-center items-center gap-2 group-hover:border-sky-300 duration-300 transition-colors delay-400">
-              <HouseWifiIcon className="text-muted-foreground size-8 group-hover:text-sky-300 duration-300 transition-colors delay-400" />
+              <HouseWifiIcon className="text-muted-foreground size-6 group-hover:text-sky-300 duration-300 transition-colors delay-400" />
               <p className="text-center text-xs font-mono text-muted-foreground">{"Banking API"}</p>
             </div>
           </div>

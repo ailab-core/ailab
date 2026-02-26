@@ -31,14 +31,14 @@ Welcome to the Finance API!
 export default function DevelopmentCard() {
   return (
     <AnimateIcon
-      className="border-r border-dashed px-6 py-8 flex flex-col gap-4 overflow-hidden relative group"
+      className="border-b md:border-r border-dashed px-6 py-8 flex flex-col gap-4 overflow-hidden relative group"
       animateOnHover
     >
       <p className="flex items-center gap-2 text-xl font-bold">
         <ChevronLeftRightIcon className="inline-block" />
         {"Development"}
       </p>
-      <p className="text-muted-foreground">
+      <p className="text-sm md:text-base text-muted-foreground">
         {"Building adaptive financial software solutions that merge technology and design to create unique, user-first experiences"}
       </p>
       <div className="relative">

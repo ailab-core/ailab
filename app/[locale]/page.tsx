@@ -1,4 +1,4 @@
-"use client"
+"use server"
 
 import Landing from "./_components/landing"
 import WhatWeDo from "./_components/what-we-do"
@@ -8,7 +8,7 @@ import Blogs from "./_components/blogs"
 import TrustedBy from "./_components/trusted-by"
 import ContactUs from "./_components/contact-us"
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="flex flex-col gap-32">
       <Landing />
