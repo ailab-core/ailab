@@ -1,9 +1,36 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { format, formatDuration } from "date-fns";
 import { getBlogBySlug } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import { DATE_LOCALES } from "@/i18n/datefns";
+
+export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string, locale: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
+
+  return {
+    title: blog.header.title,
+    description: blog.header.description,
+    openGraph: {
+      title: blog.header.title,
+      description: blog.header.description,
+      images: [
+        {
+          url: blog.header.thumbnail,
+          alt: blog.header.title,
+        },
+      ],
+    }
+  }
+}
 
 export default async function BlogPage({
   params,

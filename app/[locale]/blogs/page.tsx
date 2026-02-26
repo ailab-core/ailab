@@ -5,6 +5,8 @@ import { Link } from "@/i18n/navigation";
 import { getBlogList } from "@/lib/blogs";
 import { DATE_LOCALES } from "@/i18n/datefns";
 
+export const dynamic = 'force-dynamic'
+
 export default async function Blogs({
   params
 }: {

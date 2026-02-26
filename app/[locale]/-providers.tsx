@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 import gsap from "gsap"
 import { ScrollSmoother } from "gsap/ScrollSmoother"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -14,6 +15,9 @@ export default function Providers({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
   useEffect(() => {
     const smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -26,6 +30,13 @@ export default function Providers({
       smoother.kill()
     }
   }, [])
+
+  useEffect(() => {
+    if (pathname !== prevPathname) {
+      window.scrollTo(0, 0);
+      setPrevPathname(pathname);
+    }
+  }, [pathname]);
 
   return (
     <div id="smooth-wrapper">

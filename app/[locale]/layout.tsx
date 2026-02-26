@@ -19,6 +19,14 @@ const firaMono = Fira_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ailab.mn"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/en",
+      mn: "/mn",
+    },
+  },
   title: "AILab LLC",
   description: "",
 };
