@@ -1,0 +1,12 @@
+{
+  "header": {
+    "products": {
+      "title": "Products"
+    },
+    "languages": {
+      "title": "Languages",
+      "en": "English",
+      "mn": "Монгол"
+    }
+  }
+}

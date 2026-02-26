@@ -1,0 +1,12 @@
+{
+  "header": {
+    "products": {
+      "title": "Бүтээгдэхүүнүүд"
+    },
+    "languages": {
+      "title": "Хэлний сонголт",
+      "en": "English",
+      "mn": "Монгол"
+    }
+  }
+}
