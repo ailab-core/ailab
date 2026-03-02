@@ -17,7 +17,7 @@ export default async function Blogs() {
       className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col items-center gap-8 pt-32"
     >
       <AnimatedContent
-        className="md:w-2xl flex flex-col items-center gap-4"
+        className="md:w-2xl flex flex-col md:items-center gap-4"
         distance={50}
         direction="vertical"
       >
@@ -28,7 +28,7 @@ export default async function Blogs() {
         <p className="text-4xl">
           {"Discover updates"}
         </p>
-        <p className="text-muted-foreground text-center">
+        <p className="text-muted-foreground md:text-center">
           {"We regularly share new insights and experience on lending, regulatory compliance, automation, and digital transformation in the financial sector."}
         </p>
         <Button
@@ -43,7 +43,7 @@ export default async function Blogs() {
           }
         />
       </AnimatedContent>
-      <div className="w-full grid grid-cols-2 gap-8">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
         {(blogs || []).map((blog) => (
           <AnimatedContent
             key={blog.slug}
@@ -53,9 +53,9 @@ export default async function Blogs() {
           >
             <Link
               href={`/blogs/${blog.slug}`}
-              className="flex gap-4 group cursor-pointer border p-4 w-full hover:bg-card transition-colors duration-300"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 group cursor-pointer border p-4 w-full hover:bg-card transition-colors duration-300 overflow-hidden"
             >
-              <div className="w-full md:w-md relative aspect-video overflow-hidden">
+              <div className="relative w-full aspect-video overflow-hidden">
                 <Image
                   src={blog.header.thumbnail}
                   alt={blog.header.title}

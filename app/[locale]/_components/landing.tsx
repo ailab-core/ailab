@@ -12,12 +12,12 @@ export default function Landing() {
             distance={50}
             delay={.5}
           >
-            <div className="text-5xl  font-bold text-center">
+            <div className="text-3xl md:text-5xl font-bold text-center">
               {"Advance Your Business Through "}
               <br />
               <TextType
                 text={["Innovation", "Technology", "Efficiency", "Growth"]}
-                className="text-5xl font-bold text-sky-300 bg-secondary px-4"
+                className="text-3xl md:text-5xl font-bold text-sky-300 bg-secondary px-4"
               />
             </div>
           </AnimatedContent>
@@ -34,7 +34,7 @@ export default function Landing() {
           distance={-50}
           delay={.5}
         >
-          <p className="text-lg leading-relaxed text-center">
+          <p className="text-base md:text-lg leading-relaxed text-center">
             {"We are committed to sustainably developing innovative solutions that streamline daily organizational operations, empower data-driven decision-making, and accelerate digital transformation."}
           </p>
         </AnimatedContent>

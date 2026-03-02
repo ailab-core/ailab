@@ -18,7 +18,7 @@ export default function ContactUs() {
     >
       <AnimatedContent
         className="md:w-2xl flex flex-col items-center gap-4"
-        direction="horizontal"
+        direction="vertical"
         distance={50}
       >
         <div className="flex gap-2">
@@ -32,8 +32,12 @@ export default function ContactUs() {
           {"If you have any questions about our products or services, please fill out the form and we will get back to you shortly."}
         </p>
       </AnimatedContent>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-16">
-        <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-16" >
+        <AnimatedContent
+          className="flex flex-col gap-4"
+          direction="horizontal"
+          distance={50}
+        >
           <div className="flex flex-col gap-2 border p-4">
             <p className="text-lg flex items-center gap-2">
               <MailIcon className="size-4 inline-block" />
@@ -75,7 +79,7 @@ export default function ContactUs() {
               </a>
             </p>
           </div>
-        </div>
+        </AnimatedContent>
         <AnimatedContent
           className="flex flex-col gap-4"
           direction="horizontal"
@@ -111,6 +115,6 @@ export default function ContactUs() {
           </Button>
         </AnimatedContent>
       </div>
-    </div>
+    </div >
   )
 }
