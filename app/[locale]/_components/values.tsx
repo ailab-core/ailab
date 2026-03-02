@@ -49,7 +49,6 @@ export default function Values() {
         <AnimatedContent
           distance={-50}
           direction="horizontal"
-          delay={.5}
         >
           <Image
             src="/assets/undraw-business-decisions.svg"
@@ -62,7 +61,6 @@ export default function Values() {
         <AnimatedContent
           distance={50}
           direction="horizontal"
-          delay={.5}
           className="flex flex-col gap-8"
         >
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -81,7 +79,6 @@ export default function Values() {
           <AnimatedContent
             key={index}
             className="border p-8"
-            delay={.5}
           >
             <value.icon className="size-8 inline-block text-sky-500 mb-4" />
             <p className="text-lg font-semibold pb-2 flex items-center">

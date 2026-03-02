@@ -49,7 +49,6 @@ export default async function Blogs() {
             key={blog.slug}
             distance={50}
             direction="vertical"
-            delay={.5}
           >
             <Link
               href={`/blogs/${blog.slug}`}

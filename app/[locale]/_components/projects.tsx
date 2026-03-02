@@ -71,7 +71,6 @@ export default function Projects() {
           <AnimateIcon key={index} animateOnHover>
             <AnimatedContent
               className="w-full md:max-h-96 relative p-12 overflow-hidden group"
-              delay={0.5}
               direction={"horizontal"}
               distance={index % 2 === 0 ? -50 : 50}
             >

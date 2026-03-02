@@ -56,7 +56,7 @@ const PRODUCTS = [
   },
   {
     title: "StockLab",
-    href: "/#stocklab",
+    href: "/stocklab",
     icon: ChartCandlestickIcon,
     description: "For operating in the securities market"
   }

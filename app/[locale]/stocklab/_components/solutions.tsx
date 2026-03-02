@@ -1,7 +1,6 @@
-import { AnimatedContent } from "@/components/animated-content";
-import { cn } from "@/lib/utils";
-import { CircleCheckIcon } from "lucide-react";
 import Image from "next/image";
+import { CircleCheckIcon } from "lucide-react";
+import { AnimatedContent } from "@/components/animated-content";
 
 export const SOLUTIONS = [
   {

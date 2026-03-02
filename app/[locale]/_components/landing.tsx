@@ -10,7 +10,6 @@ export default function Landing() {
           <AnimatedContent
             direction="vertical"
             distance={50}
-            delay={.5}
           >
             <div className="text-3xl md:text-5xl font-bold text-center">
               {"Advance Your Business Through "}
@@ -32,7 +31,6 @@ export default function Landing() {
         <AnimatedContent
           direction="vertical"
           distance={-50}
-          delay={.5}
         >
           <p className="text-base md:text-lg leading-relaxed text-center">
             {"We are committed to sustainably developing innovative solutions that streamline daily organizational operations, empower data-driven decision-making, and accelerate digital transformation."}

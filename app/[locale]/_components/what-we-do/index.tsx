@@ -16,7 +16,6 @@ export default function WhatWeDo() {
         className="flex flex-col gap-4"
         direction="vertical"
         distance={50}
-        delay={.5}
       >
         <div className="flex gap-2">
           <Icon className="size-5 stroke-sky-300" iconNode={planet} />
@@ -33,7 +32,6 @@ export default function WhatWeDo() {
         className="grid md:grid-cols-3 grid-cols-1 border"
         direction="vertical"
         distance={-50}
-        delay={.5}
       >
         <DevelopmentCard />
         <div className="flex flex-col gap-4 overflow-hidden">

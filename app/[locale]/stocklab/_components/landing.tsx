@@ -1,3 +1,5 @@
+"use client"
+
 import Grainient from "@/components/grainient";
 import { Button } from "@/components/ui";
 import { CircleQuestionMarkIcon, SparklesIcon } from "lucide-react";
