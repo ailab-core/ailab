@@ -10,14 +10,14 @@ export default function Landing() {
           <AnimatedContent
             direction="vertical"
             distance={50}
-            duration={2}
             delay={.5}
           >
-            <div className="text-3xl md:text-5xl uppercase font-bold text-center">
+            <div className="text-5xl  font-bold text-center">
               {"Advance Your Business Through "}
+              <br />
               <TextType
                 text={["Innovation", "Technology", "Efficiency", "Growth"]}
-                className="text-3xl md:text-5xl font-bold uppercase text-sky-300 bg-secondary rounded px-4"
+                className="text-5xl font-bold text-sky-300 bg-secondary px-4"
               />
             </div>
           </AnimatedContent>
@@ -27,15 +27,14 @@ export default function Landing() {
           distance={0}
           duration={1}
         >
-          <hr className="w-20 h-1 bg-sky-300 rounded-xl mx-auto" />
+          <hr className="w-20 h-1 bg-sky-300 mx-auto" />
         </AnimatedContent>
         <AnimatedContent
           direction="vertical"
           distance={-50}
-          duration={2}
           delay={.5}
         >
-          <p className="text-sm md:text-lg leading-relaxed text-center text-muted-foreground">
+          <p className="text-lg leading-relaxed text-center">
             {"We are committed to sustainably developing innovative solutions that streamline daily organizational operations, empower data-driven decision-making, and accelerate digital transformation."}
           </p>
         </AnimatedContent>

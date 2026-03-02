@@ -42,7 +42,7 @@ export default async function BlogPage({
 
   return (
     <div className="container md:max-w-3xl mx-auto flex flex-col gap-8 px-8 md:px-0 mt-8">
-      <div className="relative aspect-video rounded-lg overflow-hidden">
+      <div className="relative aspect-video overflow-hidden">
         <Image
           src={blog.header.thumbnail}
           alt={blog.header.title}

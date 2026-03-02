@@ -34,16 +34,16 @@ export default function DevelopmentCard() {
       className="border-b md:border-r border-dashed px-6 py-8 flex flex-col gap-4 overflow-hidden relative group"
       animateOnHover
     >
-      <p className="flex items-center gap-2 text-xl font-bold">
+      <p className="flex items-center gap-2 text-lg font-bold">
         <ChevronLeftRightIcon className="inline-block" />
         {"Development"}
       </p>
-      <p className="text-sm md:text-base text-muted-foreground">
+      <p className="text-sm text-muted-foreground">
         {"Building adaptive financial software solutions that merge technology and design to create unique, user-first experiences"}
       </p>
       <div className="relative">
-        <div className="bg-card h-120 border border-border rounded-md overflow-hidden transition-colors duration-300 mt-8">
-          <p className="text-xs text-muted-foreground bg-secondary px-2 py-1.5 flex items-center gap-1">
+        <div className="bg-card h-120 border border-border overflow-hidden transition-colors duration-300 mt-8">
+          <p className="text-xs text-muted-foreground bg-card px-2 py-1.5 flex items-center gap-1">
             <BracesIcon className="inline-block size-4" />
             {"neovim"}
           </p>
@@ -53,8 +53,8 @@ export default function DevelopmentCard() {
             dangerouslySetInnerHTML={{ __html: CODE_SNIPPET.replace(/\n/g, "<br>").replace(/ /g, "&nbsp;") }}
           />
         </div>
-        <div className="absolute h-120 top-40 left-20 w-xl bg-card border border-border rounded-md group-hover:border-sky-300 overflow-hidden transition-colors duration-300">
-          <p className="text-xs text-muted-foreground bg-secondary px-2 py-1.5 flex items-center gap-1">
+        <div className="absolute h-120 top-40 left-20 w-xl bg-card border border-border group-hover:border-sky-300 overflow-hidden transition-colors duration-300">
+          <p className="text-xs text-muted-foreground bg-card px-2 py-1.5 flex items-center gap-1">
             <TerminalIcon className="inline-block size-4" />
             {"terminal"}
           </p>

@@ -17,14 +17,14 @@ export default async function Blogs({
   const featured = blogs.shift()
 
   return (
-    <div className="container mx-auto md:max-w-7xl px-8 md:px-0 grid grid-cols-2 gap-16 mt-8">
+    <div className="container mx-auto md:max-w-7xl px-8 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-16 mt-24">
       {featured && (
         <Link
           key={featured.slug}
           href={`/blogs/${featured.slug}`}
-          className="col-span-2 flex flex-col gap-4 group cursor-pointer"
+          className="md:col-span-2 flex flex-col gap-4 group cursor-pointer"
         >
-          <div className="relative aspect-video overflow-hidden rounded-lg">
+          <div className="relative aspect-video overflow-hidden">
             <Image
               src={featured.header.thumbnail}
               alt={featured.header.title}
@@ -35,7 +35,7 @@ export default async function Blogs({
           <p className="text-muted-foreground">
             {format(new Date().toLocaleString(), "PP", { locale: DATE_LOCALES[locale] })}
           </p>
-          <h2 className="inline-block w-auto text-5xl font-semibold group-hover:text-sky-300 transform-all duration-300">
+          <h2 className="inline-block w-auto text-lg md:text-5xl font-semibold group-hover:text-sky-300 transform-all duration-300">
             {featured.header.title}
           </h2>
           {featured.header.description && (
@@ -49,7 +49,7 @@ export default async function Blogs({
           href={`/blogs/${blog.slug}`}
           className="flex flex-col gap-4 group cursor-pointer"
         >
-          <div className="relative aspect-video overflow-hidden rounded-lg">
+          <div className="relative aspect-video overflow-hidden">
             <Image
               src={blog.header.thumbnail}
               alt={blog.header.title}
@@ -60,7 +60,7 @@ export default async function Blogs({
           <p className="text-muted-foreground">
             {format(new Date().toLocaleString(), "PP", { locale: DATE_LOCALES[locale] })}
           </p>
-          <h2 className="inline-block w-auto text-3xl font-semibold group-hover:text-sky-300 transform-colors duration-300">
+          <h2 className="inline-block w-auto text-lg md:text-xl font-semibold group-hover:text-sky-300 transform-colors duration-300">
             {blog.header.title}
           </h2>
           {blog.header.description && (

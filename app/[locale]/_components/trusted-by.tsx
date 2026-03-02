@@ -64,7 +64,7 @@ const CompanyItem = (logo: any) => {
       href={logo.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-6 inline-block! bg-card rounded-lg group"
+      className="p-6 inline-block! bg-card group"
     >
       <div className="relative w-24 md:w-48 h-12 group-hover:grayscale-0 grayscale opacity-60 group-hover:opacity-100 transition-all duration-300">
         <Image
@@ -80,9 +80,9 @@ const CompanyItem = (logo: any) => {
 
 export default function TrustedBy() {
   return (
-    <div className="w-full mx-auto px-8 md:px-0 flex flex-col gap-16">
+    <div className="w-full mx-auto px-8 md:px-0 flex flex-col gap-16 pt-32">
       <div className="flex justify-center gap-2">
-        <h2 className="md:text-nowrap text-3xl md:text-5xl font-bold">
+        <h2 className="text-4xl">
           <span>{"Trusted by "}</span>
           <span className="text-sky-300">{"innovative companies"}</span>
         </h2>

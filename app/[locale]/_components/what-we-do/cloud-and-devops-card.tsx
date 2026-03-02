@@ -15,7 +15,7 @@ export default function CloudAndDevOpsCard() {
         <CloudLightningIcon className="inline-block stroke-2" />
         {"Cloud & DevOps"}
       </p>
-      <ul className="text-sm md:text-base list-disc list-inside text-muted-foreground">
+      <ul className="text-sm list-disc list-inside text-muted-foreground">
         <li>Cloud implementation</li>
         <li>CI/CD automation</li>
         <li>Data scalability</li>
@@ -23,14 +23,14 @@ export default function CloudAndDevOpsCard() {
         <li>High available infrastructure</li>
       </ul>
       <div className="flex flex-col items-center mt-4">
-        <div className="bg-secondary border rounded-lg flex justify-center items-center w-full group p-4">
-          <BinaryIcon className="bg-secondary p-2 text-muted-foreground size-14 rounded-lg border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+        <div className="bg-card border flex justify-center items-center w-full group p-4">
+          <BinaryIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
           <div className="w-full border-t border-b-0 border-dashed border-border group-hover:border-sky-300 duration-300 delay-100" />
-          <BetweenHorizontalEndIcon className="bg-secondary p-2 text-muted-foreground size-14 rounded-lg border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+          <BetweenHorizontalEndIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
           <div className="w-full border-t border-b-0 border-dashed border-border group-hover:border-sky-300 duration-300 delay-200" />
-          <CloudUploadIcon className="bg-secondary p-2 text-muted-foreground size-14 rounded-lg border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+          <CloudUploadIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
           <div className="w-full border-t border-b-0 border-dashed border-border group-hover:border-sky-300 duration-300 delay-400" />
-          <LayersIcon className="bg-secondary p-2 text-muted-foreground size-14 rounded-lg border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+          <LayersIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
         </div>
       </div>
     </AnimateIcon>

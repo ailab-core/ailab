@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   return (
-    <div className="flex flex-col gap-32">
+    <div className="flex flex-col gap-24">
       <Landing />
       <WhatWeDo />
       <Values />

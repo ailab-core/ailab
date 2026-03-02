@@ -1,11 +1,11 @@
 import path from "node:path";
-import fs from "node:fs/promises";
+import fs from "node:fs";
 import { remark } from "remark";
 import html from "remark-html";
 import frontMatter from "remark-frontmatter";
 import yaml from "js-yaml";
 
-const MAX_LANDING_BLOGS = 5;
+const MAX_LANDING_BLOGS = 6;
 
 export type MarkdownHeader = {
   title: string;
@@ -24,7 +24,7 @@ export async function getBlogBySlug(
   slug: string
 ): Promise<BlogBySlugResponse> {
   const fullPath = path.join(process.cwd() + '/data/blogs', `${slug}.md`)
-  const fileContents = await fs.readFile(fullPath, 'utf8')
+  const fileContents = await fs.promises.readFile(fullPath, 'utf8')
 
   let header: MarkdownHeader = {
     title: '',
@@ -58,10 +58,10 @@ export type BlogListResponse = Array<{
 export async function getBlogList(): Promise<BlogListResponse> {
   const blogs: BlogListResponse = []
   const fullPathDirectory = path.join(process.cwd() + '/data/blogs')
-  const fileNames = await fs.readdir(fullPathDirectory)
+  const fileNames = await fs.promises.readdir(fullPathDirectory)
 
   for (let file of fileNames) {
-    const content = await fs.readFile(`${fullPathDirectory}/${file}`, 'utf8')
+    const content = await fs.promises.readFile(`${fullPathDirectory}/${file}`, 'utf8')
     let header: MarkdownHeader = {
       title: '',
       thumbnail: '',
@@ -76,7 +76,7 @@ export async function getBlogList(): Promise<BlogListResponse> {
       })
       .process(content)
 
-    const stats = await fs.stat(`${fullPathDirectory}/${file}`)
+    const stats = await fs.promises.stat(`${fullPathDirectory}/${file}`)
     header.ctime = stats.ctime
 
     blogs.push({
@@ -91,17 +91,25 @@ export async function getBlogList(): Promise<BlogListResponse> {
 export async function getBlogListLanding(): Promise<BlogListResponse> {
   const blogs: BlogListResponse = []
   const fullPathDirectory = path.join(process.cwd() + '/data/blogs')
-  const fileNames = await fs.readdir(fullPathDirectory)
+  const files = await fs.promises.readdir(fullPathDirectory);
+
+  files
+    .map(fileName => ({
+      name: fileName,
+      time: fs.statSync(`${fullPathDirectory}/${fileName}`).ctime.getTime(),
+    }))
+    .sort((a, b) => a.time - b.time)
+    .map(file => file.name);
 
   let index = 0
-  for (let file of fileNames) {
+  for (let file of files) {
     if (index >= MAX_LANDING_BLOGS) {
       break
     }
 
     index++;
 
-    const content = await fs.readFile(`${fullPathDirectory}/${file}`, 'utf8')
+    const content = await fs.promises.readFile(`${fullPathDirectory}/${file}`, 'utf8')
     let header: MarkdownHeader = {
       title: '',
       thumbnail: '',
@@ -115,6 +123,9 @@ export async function getBlogListLanding(): Promise<BlogListResponse> {
         }
       })
       .process(content)
+
+    const stats = await fs.promises.stat(`${fullPathDirectory}/${file}`)
+    header.ctime = stats.ctime
 
     blogs.push({
       slug: file.replace('.md', ''),

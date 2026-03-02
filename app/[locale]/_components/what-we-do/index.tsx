@@ -4,22 +4,44 @@ import DevelopmentCard from "./development-card"
 import CloudAndDevOpsCard from "./cloud-and-devops-card"
 import DigitalTransformationCard from "./digital-transformation-card"
 import FlexibleSystemArchitectureCard from "./flexible-system-architecture-card"
+import { AnimatedContent } from "@/components/animated-content"
 
 export default function WhatWeDo() {
   return (
-    <div className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col gap-16">
-      <h2 className="text-3xl md:text-5xl font-bold w-full flex items-center gap-8">
-        <Icon className="size-12 inline-block" iconNode={planet} />
-        {"What we do"}
-      </h2>
-      <div className="grid md:grid-cols-3 grid-cols-1 border">
+    <div
+      id="what-we-do"
+      className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col gap-16 pt-32"
+    >
+      <AnimatedContent
+        className="flex flex-col gap-4"
+        direction="vertical"
+        distance={50}
+        delay={.5}
+      >
+        <div className="flex gap-2">
+          <Icon className="size-5 stroke-sky-300" iconNode={planet} />
+          <p className="text-sky-300 font-bold">{"Introduction"}</p>
+        </div>
+        <p className="text-4xl">
+          {"What we do"}
+        </p>
+        <p className="text-muted-foreground">
+          {"Professionalism, Leadership, Ownership, Ethics, Collaboration, Speed"}
+        </p>
+      </AnimatedContent>
+      <AnimatedContent
+        className="grid md:grid-cols-3 grid-cols-1 border"
+        direction="vertical"
+        distance={-50}
+        delay={.5}
+      >
         <DevelopmentCard />
         <div className="flex flex-col gap-4 overflow-hidden">
           <CloudAndDevOpsCard />
           <DigitalTransformationCard />
         </div>
         <FlexibleSystemArchitectureCard />
-      </div>
+      </AnimatedContent>
     </div>
   )
 }

@@ -24,6 +24,7 @@ export default function Providers({
       content: "#smooth-content",
       smooth: 1.5,
       effects: true,
+      normalizeScroll: true
     })
 
     return () => {
@@ -39,12 +40,14 @@ export default function Providers({
   }, [pathname]);
 
   return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content" className="flex flex-col">
-        <Header />
-        {children}
-        <Footer />
+    <>
+      <Header />
+      <div id="smooth-wrapper">
+        <div id="smooth-content" className="flex flex-col">
+          {children}
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   )
 }

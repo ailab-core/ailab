@@ -15,11 +15,11 @@ export default function DigitalTransformationCard() {
       loop
     >
       <div className="flex flex-col gap-4 px-6">
-        <p className="flex items-center gap-2 text-xl font-bold">
+        <p className="flex items-center gap-2 text-lg font-bold">
           <BotIcon className="inline-block" />
           {"Digital transformation"}
         </p>
-        <ul className="text-sm md:text-base list-disc list-inside text-muted-foreground">
+        <ul className="text-sm list-disc list-inside text-muted-foreground">
           <li>AI based data processing</li>
           <li>Business process automation</li>
           <li>Fintech solutions, Risk assessment, and credit scoring</li>
@@ -30,7 +30,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-secondary text-muted-foreground border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors">
                   <FileTextIcon />
                 </div>
               )
@@ -47,7 +47,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-secondary text-muted-foreground border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors">
                   <ImageIcon />
                 </div>
               )
@@ -64,7 +64,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-secondary text-muted-foreground border p-2 rounded-lg hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors">
                   <VideoIcon />
                 </div>
               )

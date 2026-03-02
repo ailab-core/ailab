@@ -1,8 +1,8 @@
 import Image from "next/image"
+import { BoxesIcon } from "lucide-react"
 import { AnimateIcon } from "@/components/animate-ui/icons/icon"
 import { LinkIcon } from "@/components/animate-ui/icons/link"
-import { spiderWeb } from "@lucide/lab"
-import { Icon } from "lucide-react"
+import { AnimatedContent } from "@/components/animated-content"
 
 export const PROJECTS = [
   {
@@ -44,26 +44,43 @@ export const PROJECTS = [
 
 export default function Projects() {
   return (
-    <div className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col gap-16">
-      <div className="flex flex-col justify-center items-start gap-4">
-        <h2 className="w-full text-3xl md:text-5xl font-bold flex items-center gap-8">
-          <Icon className="size-12 inline-block" iconNode={spiderWeb} />
-          {"Our projects"}
-        </h2>
-        <p className="w-full text-base md:text-lg text-muted-foreground">
-          {"Custom software solutions powering the future of financial services—enhancing security, efficiency, and innovation"}
+    <div
+      id="projects"
+      className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col gap-16 pt-32"
+    >
+      <AnimatedContent
+        className="flex flex-col gap-4"
+        distance={50}
+        direction="vertical"
+      >
+        <div className="flex gap-2">
+          <BoxesIcon className="size-5 stroke-sky-300" />
+          <p className="text-sky-300 font-bold">{"Projects"}</p>
+        </div>
+        <p className="text-4xl">
+          {"Our Impactful Creations"}
         </p>
-      </div>
+        <p className="text-muted-foreground">
+          {"Custom software solutions powering the future of financial services"}
+          <br />
+          {"Enhancing security, efficiency, and innovation"}
+        </p>
+      </AnimatedContent>
       <div className="flex flex-col gap-16">
         {PROJECTS.map((project, index) => (
           <AnimateIcon key={index} animateOnHover>
-            <div className="w-full md:max-h-96 relative p-12 overflow-hidden rounded-xl group">
+            <AnimatedContent
+              className="w-full md:max-h-96 relative p-12 overflow-hidden group"
+              delay={0.5}
+              direction={"horizontal"}
+              distance={index % 2 === 0 ? -50 : 50}
+            >
               <div className="absolute w-full h-full top-0 left-0">
                 <Image
                   src={project.banner}
                   alt={`${project.title} banner`}
                   fill={true}
-                  className="w-full h-full rounded-lg object-cover md:object-top opacity-20 group-hover:opacity-10 duration-300 transition-all"
+                  className="w-full h-full object-cover md:object-top opacity-20 group-hover:opacity-10 duration-300 transition-all"
                 />
               </div>
               <div className="w-full flex flex-col md:flex-row justify-between items-center relative z-10">
@@ -86,15 +103,15 @@ export default function Projects() {
                     <LinkIcon className="inline-block size-4 ml-2" />
                     <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover:w-full" />
                   </a>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
                 </div>
               </div>
-            </div>
+            </AnimatedContent>
           </AnimateIcon>
         ))}
       </div>
-    </div>
+    </div >
   )
 }

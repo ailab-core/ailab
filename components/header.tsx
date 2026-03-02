@@ -67,10 +67,10 @@ export default function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="border-b w-full bg-background">
+    <header className="border-b w-full bg-background fixed top-0 left-0 z-50">
       <div className="container md:max-w-7xl mx-auto py-4 px-8 md:px-0 gap-24 flex justify-between items-center">
         <div className="flex justify-center gap-8">
-          <a className="" href="/">
+          <a href="/">
             <img src="/assets/logos/ailab.svg" alt="AI Lab Logo" className="w-32 h-auto" />
           </a>
           <NavigationMenu>
@@ -86,7 +86,7 @@ export default function Header() {
                         <NavigationMenuLink
                           render={
                             <Link href={product.href} className="space-x-2 hover:bg-transparent group">
-                              <div className="bg-secondary rounded-lg p-2">
+                              <div className="bg-secondary p-2">
                                 <product.icon className="size-5 text-muted-foreground group-hover:text-foreground duration-300 transition-colors" />
                               </div>
                               <div className="flex flex-col gap-1 text-sm max-w-2xs">
