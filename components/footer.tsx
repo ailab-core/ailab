@@ -67,7 +67,7 @@ export default function Footer() {
               {"eFund"}
             </Link>
             <Link className="text-sm hover" href="/stocklab">
-              {"stocklab"}
+              {"StockLab"}
             </Link>
           </div>
           <div className="flex flex-col gap-4">
