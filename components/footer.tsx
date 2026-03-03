@@ -26,7 +26,13 @@ export default function Footer() {
             <p className="text-muted-foreground text-sm mb-2">
               Certified by
             </p>
-            <img src="/assets/brands/iso.svg" alt="ISO Certified" className="w-24 h-auto invert -mx-4" />
+            <Image
+              src="/assets/brands/iso.svg"
+              alt="ISO Certified"
+              className="invert -mx-4"
+              width={96}
+              height={32}
+            />
           </div>
         </div>
         <div className="flex gap-36">
@@ -76,7 +82,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-2">
               <Button
-                size="icon-lg"
+                size="icon"
                 variant="ghost"
                 nativeButton={false}
                 render={
@@ -86,7 +92,7 @@ export default function Footer() {
                 }
               />
               <Button
-                size="icon-lg"
+                size="icon"
                 variant="ghost"
                 nativeButton={false}
                 render={
@@ -96,7 +102,7 @@ export default function Footer() {
                 }
               />
               <Button
-                size="icon-lg"
+                size="icon"
                 variant="ghost"
                 nativeButton={false}
                 render={
@@ -106,7 +112,7 @@ export default function Footer() {
                 }
               />
               <Button
-                size="icon-lg"
+                size="icon"
                 variant="ghost"
                 nativeButton={false}
                 render={

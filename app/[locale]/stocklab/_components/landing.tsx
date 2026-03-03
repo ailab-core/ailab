@@ -1,5 +1,6 @@
 "use client"
 
+import { AnimatedContent } from "@/components/animated-content";
 import Grainient from "@/components/grainient";
 import { Button } from "@/components/ui";
 import { CircleQuestionMarkIcon, SparklesIcon } from "lucide-react";
@@ -34,36 +35,47 @@ export default function Landing() {
       />
       <div className="container h-full md:max-w-7xl mx-auto px-8 md:px-0 flex items-center justify-between gap-16">
         <div className="max-w-2xl">
-          <h1 className="max-w-2xl text-4xl font-bold">
-            {"A comprehensive solution to make your trading secure and faster"}
-          </h1>
-          <Button variant="outline" className="mt-8">
-            {"View demo"}
-          </Button>
+          <AnimatedContent>
+            <h1 className="max-w-2xl text-4xl font-semibold">
+              {"Таны үнэт цаасны арилжааг илүү хурдан, илүү найдвартай болгох цогц шийдэл"}
+            </h1>
+          </AnimatedContent>
+          <AnimatedContent delay={1}>
+            <Button variant="outline" className="mt-8">
+              {"Демо турших"}
+            </Button>
+          </AnimatedContent>
         </div>
         <div className="flex flex-col gap-24">
-          <div className="relative max-w-md flex flex-col gap-4 bg-card py-12 px-6 border">
+          <AnimatedContent
+            className="relative max-w-md flex flex-col gap-4 bg-card pt-16 pb-8 px-6 border rounded-2xl"
+            direction="horizontal"
+          >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-linear-to-r from-sky-500 to-yellow-500 rounded-full p-4 shadow-xl">
               <CircleQuestionMarkIcon className="stroke-white" />
             </div>
-            <p className="text-2xl font-bold text-center">
-              {"Problem"}
+            <p className="text-2xl font-semibold text-center">
+              {"Асуудал"}
             </p>
             <p className="text-muted-foreground text-center">
-              {"Are you still facing problems such as high transaction fees, keeping account records manually, transaction delays, and complicated contract registration?"}
+              {"Арилжааны шимтгэл их, дансны мэдээлэл гар дээр хөтлөх, гүйлгээ саатах, гэрээ бүртгэл төвөгтэй байх зэрэг саад бэрхшээл танд тулгарсаар байна уу?"}
             </p>
-          </div>
-          <div className="relative max-w-md flex flex-col gap-4 bg-card py-12 px-6 border">
+          </AnimatedContent>
+          <AnimatedContent
+            className="relative max-w-md flex flex-col gap-4 bg-card pt-16 pb-8 px-6 border rounded-2xl"
+            direction="horizontal"
+            delay={1}
+          >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-linear-to-r from-sky-500 to-yellow-500 rounded-full p-4 shadow-xl">
               <SparklesIcon className="stroke-white" />
             </div>
-            <p className="text-2xl font-bold text-center">
-              {"Solution"}
+            <p className="text-2xl font-semibold text-center">
+              {"Шийдэл"}
             </p>
             <p className="text-muted-foreground text-center">
-              {"If so our online trading platform, an integrated system combining IPOs and the secondary market, with bank-level security will solve all of these in one place."}
+              {"Тэгвэл бидний онлайн арилжааны платформ — IPO болон хоёрдогч зах зээлийг нэгтгэсэн, банкны түвшний хамгаалалттай цогц систем — эдгээр бүхнийг нэг дор шийднэ."}
             </p>
-          </div>
+          </AnimatedContent>
         </div>
       </div>
     </div>

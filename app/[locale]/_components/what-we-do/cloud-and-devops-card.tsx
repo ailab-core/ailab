@@ -23,14 +23,14 @@ export default function CloudAndDevOpsCard() {
         <li>High available infrastructure</li>
       </ul>
       <div className="flex flex-col items-center mt-4">
-        <div className="bg-card border flex justify-center items-center w-full group p-4">
-          <BinaryIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+        <div className="bg-card border flex justify-center items-center w-full group p-4 rounded-xl">
+          <BinaryIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all rounded-xl" />
           <div className="w-full border-t border-b-0 border-dashed border-border group-hover:border-sky-300 duration-300 delay-100" />
-          <BetweenHorizontalEndIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+          <BetweenHorizontalEndIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all rounded-xl" />
           <div className="w-full border-t border-b-0 border-dashed border-border group-hover:border-sky-300 duration-300 delay-200" />
-          <CloudUploadIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+          <CloudUploadIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all rounded-xl" />
           <div className="w-full border-t border-b-0 border-dashed border-border group-hover:border-sky-300 duration-300 delay-400" />
-          <LayersIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
+          <LayersIcon className="bg-card p-2 text-muted-foreground size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all rounded-xl" />
         </div>
       </div>
     </AnimateIcon>

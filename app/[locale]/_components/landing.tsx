@@ -33,7 +33,7 @@ export default function Landing() {
           distance={-50}
         >
           <p className="text-base md:text-lg leading-relaxed text-center">
-            {"We are committed to sustainably developing innovative solutions that streamline daily organizational operations, empower data-driven decision-making, and accelerate digital transformation."}
+            {"Бид өдөр тутмын байгууллагын үйл ажиллагааг хялбарчлах, өгөгдөлд суурилсан шийдвэр гаргах чадварыг нэмэгдүүлэх, дижитал шилжилтийг түргэсгэх инновацлаг шийдлүүдийг тогтвортой хөгжүүлэхэд тууштай ажилладаг."}
           </p>
         </AnimatedContent>
       </div>

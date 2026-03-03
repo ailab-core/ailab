@@ -29,7 +29,7 @@ interface AnimatedContentProps extends React.HTMLAttributes<HTMLDivElement> {
 export const AnimatedContent: React.FC<AnimatedContentProps> = ({
   children,
   container,
-  distance = 100,
+  distance = 50,
   direction = "vertical",
   reverse = false,
   duration = 1,

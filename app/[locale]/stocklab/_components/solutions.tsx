@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CircleCheckIcon } from "lucide-react";
+import { BoxesIcon, CircleCheckIcon } from "lucide-react";
 import { AnimatedContent } from "@/components/animated-content";
 
 export const SOLUTIONS = [
@@ -61,15 +61,19 @@ export default function Solutions() {
   return (
     <div className="container h-full md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col items-center justify-between gap-32">
       <AnimatedContent
-        className="w-full flex flex-col items-center gap-16"
-        distance={50}
+        className="flex flex-col items-center gap-4"
         direction="vertical"
+        distance={50}
       >
+        <div className="flex gap-2">
+          <BoxesIcon className="size-5 stroke-sky-300" />
+          <p className="text-sky-300 font-bold">{"Танилцуулга"}</p>
+        </div>
         <p className="text-4xl">
-          {"Solutions"}
+          {"Манай бүтээгдэхүүний онцлог"}
         </p>
       </AnimatedContent>
-      <div className="w-full flex flex-col gap-48">
+      <div className="w-full flex flex-col gap-32">
         {SOLUTIONS.map((solution, index) => (
           <div key={index} className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-24">
             <AnimatedContent
@@ -90,7 +94,7 @@ export default function Solutions() {
               distance={index % 2 === 0 ? -50 : 50}
               direction="horizontal"
             >
-              <p className="text-3xl font-semibold">
+              <p className="text-3xl">
                 {solution.title}
               </p>
               <p className="text-muted-foreground leading-relaxed">

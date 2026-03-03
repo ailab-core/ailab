@@ -6,8 +6,11 @@ import {
 import { LogoLoop } from "@/components/logo-loop"
 import { AnimateIcon } from "@/components/animate-ui/icons/icon"
 import { BotIcon } from "@/components/animate-ui/icons/bot"
+import { getTranslations } from "next-intl/server"
 
-export default function DigitalTransformationCard() {
+export default async function DigitalTransformationCard() {
+  const t = await getTranslations("home.whatWeDo.digitalTransformation")
+
   return (
     <AnimateIcon
       className="border-t border-dashed flex flex-col gap-4 overflow-hidden py-8"
@@ -17,12 +20,12 @@ export default function DigitalTransformationCard() {
       <div className="flex flex-col gap-4 px-6">
         <p className="flex items-center gap-2 text-lg font-bold">
           <BotIcon className="inline-block" />
-          {"Digital transformation"}
+          {t("title")}
         </p>
         <ul className="text-sm list-disc list-inside text-muted-foreground">
-          <li>AI based data processing</li>
-          <li>Business process automation</li>
-          <li>Fintech solutions, Risk assessment, and credit scoring</li>
+          <li>{t("item1")}</li>
+          <li>{t("item2")}</li>
+          <li>{t("item3")}</li>
         </ul>
       </div>
       <div className="relative h-min">
@@ -30,7 +33,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors rounded-xl">
                   <FileTextIcon />
                 </div>
               )
@@ -47,7 +50,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors rounded-xl">
                   <ImageIcon />
                 </div>
               )
@@ -64,7 +67,7 @@ export default function DigitalTransformationCard() {
           logos={[
             {
               node: (
-                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors">
+                <div className="bg-card text-muted-foreground border p-2 hover:border-sky-300 duration-300 transition-colors rounded-xl">
                   <VideoIcon />
                 </div>
               )

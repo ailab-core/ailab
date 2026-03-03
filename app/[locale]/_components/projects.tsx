@@ -3,74 +3,75 @@ import { BoxesIcon } from "lucide-react"
 import { AnimateIcon } from "@/components/animate-ui/icons/icon"
 import { LinkIcon } from "@/components/animate-ui/icons/link"
 import { AnimatedContent } from "@/components/animated-content"
+import { getTranslations } from "next-intl/server"
 
 export const PROJECTS = [
   {
-    title: "Pocket",
-    description: "A comprehensive fintech platform that integrates microloans, BNPL, leasing, savings, and payments. Leveraging AI and IT innovation, it ensures a secure, efficient, and user‑friendly financial ecosystem",
+    title: "pocket.title",
+    description: "pocket.description",
     image: "/assets/logos/pocket.svg",
     banner: "/assets/banners/pocket.jpg",
     href: "https://pocket.mn/"
   },
   {
-    title: "Pocket KG",
-    description: "Pocket brings advanced fintech and AI solutions to Central Asia, powering microloans, payments, and enterprise systems",
+    title: "pocketKg.title",
+    description: "pocketKg.description",
     image: "/assets/logos/pocket.svg",
     banner: "/assets/banners/pocket.jpg",
     href: "https://pocket.kg/"
   },
   {
-    title: "Worki",
-    description: "Designed with job seekers in mind, the platform uses advanced AI to match talent with opportunity, providing listings, resume building, and career guidance in one seamless experience",
+    title: "worki.title",
+    description: "worki.description",
     image: "/assets/logos/worki.svg",
     banner: "/assets/banners/worki.jpg",
     href: "https://worki.mn/"
   },
   {
-    title: "ICapital",
-    description: "Designed for simplicity and efficiency, the application connects investors to stocks, bonds, and investment opportunities across Mongolia’s major stock exchanges",
+    title: "icapital.title",
+    description: "icapital.description",
     image: "/assets/logos/icapital.svg",
     banner: "/assets/banners/icapital.jpg",
     href: "https://icapital.mn/"
   },
   {
-    title: "Finberry",
-    description: "Designed to help creators and innovators, the platform provides flexible crowdfunding options—donations, rewards, and loans—to connect projects with supporters",
+    title: "finberry.title",
+    description: "finberry.description",
     image: "/assets/logos/finberry.svg",
     banner: "/assets/banners/finberry.jpg",
     href: "https://finberry.mn/"
   }
 ]
 
-export default function Projects() {
+export default async function Projects() {
+  const t = await getTranslations("home.projects")
+
   return (
     <div
       id="projects"
       className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col gap-16 pt-32"
     >
       <AnimatedContent
-        className="flex flex-col gap-4"
+        className="w-xl max-w-full flex flex-col gap-4"
         distance={50}
         direction="vertical"
       >
         <div className="flex gap-2">
           <BoxesIcon className="size-5 stroke-sky-300" />
-          <p className="text-sky-300 font-bold">{"Projects"}</p>
+          <p className="text-sky-300 font-bold">{t("header.tag")}</p>
         </div>
         <p className="text-4xl">
-          {"Our Impactful Creations"}
+          {t("header.title")}
         </p>
         <p className="text-muted-foreground">
-          {"Custom software solutions powering the future of financial services"}
-          <br />
-          {"Enhancing security, efficiency, and innovation"}
+          {t("header.description")}
         </p>
       </AnimatedContent>
       <div className="flex flex-col gap-16">
         {PROJECTS.map((project, index) => (
           <AnimateIcon key={index} animateOnHover>
             <AnimatedContent
-              className="w-full md:max-h-96 relative p-12 overflow-hidden group"
+              className="w-full md:max-h-96 relative p-12 overflow-hidden group rounded-xl"
               direction={"horizontal"}
               distance={index % 2 === 0 ? -50 : 50}
             >
@@ -91,19 +92,19 @@ export default function Projects() {
                     className="w-full h-50 p-12 object-contain"
                   />
                 </div>
-                <div className="max-w-2xl flex flex-col justify-center gap-4">
+                <div className="max-w-2xl flex flex-col justify-center gap-2">
                   <a
                     href={project.href}
                     className="w-min text-nowrap text-2xl font-bold mt-6 group-hover:text-sky-300 duration-300 uppercase cursor-pointer"
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    {project.title}
+                    {t(project.title)}
                     <LinkIcon className="inline-block size-4 ml-2" />
                     <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover:w-full" />
                   </a>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    {project.description}
+                    {t(project.description)}
                   </p>
                 </div>
               </div>

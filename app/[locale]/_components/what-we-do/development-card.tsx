@@ -1,6 +1,7 @@
 import { BracesIcon, TerminalIcon } from "lucide-react"
 import { ChevronLeftRightIcon } from "@/components/animate-ui/icons/chevron-left-right"
 import { AnimateIcon } from "@/components/animate-ui/icons/icon"
+import { getTranslations } from "next-intl/server"
 
 const CODE_SNIPPET = `package com.example.springboot;
 
@@ -28,21 +29,23 @@ Welcome to the Finance API!
 `
 
 
-export default function DevelopmentCard() {
+export default async function DevelopmentCard() {
+  const t = await getTranslations("home.whatWeDo.development")
+
   return (
     <AnimateIcon
-      className="border-b md:border-r border-dashed px-6 py-8 flex flex-col gap-4 overflow-hidden relative group"
+      className="md:border-r md:border-b-0 border-b border-dashed px-6 py-8 flex flex-col gap-4 overflow-hidden relative group"
       animateOnHover
     >
       <p className="flex items-center gap-2 text-lg font-bold">
         <ChevronLeftRightIcon className="inline-block" />
-        {"Development"}
+        {t("title")}
       </p>
       <p className="text-sm text-muted-foreground">
-        {"Building adaptive financial software solutions that merge technology and design to create unique, user-first experiences"}
+        {t("description")}
       </p>
       <div className="relative">
-        <div className="bg-card h-120 border border-border overflow-hidden transition-colors duration-300 mt-8">
+        <div className="bg-card h-120 border border-border overflow-hidden transition-colors duration-300 mt-8 rounded-xl">
           <p className="text-xs text-muted-foreground bg-card px-2 py-1.5 flex items-center gap-1">
             <BracesIcon className="inline-block size-4" />
             {"neovim"}
@@ -53,7 +56,7 @@ export default function DevelopmentCard() {
             dangerouslySetInnerHTML={{ __html: CODE_SNIPPET.replace(/\n/g, "<br>").replace(/ /g, "&nbsp;") }}
           />
         </div>
-        <div className="absolute h-120 top-40 left-20 w-xl bg-card border border-border group-hover:border-sky-300 overflow-hidden transition-colors duration-300">
+        <div className="absolute h-120 top-40 left-20 w-xl bg-card border border-border group-hover:border-sky-300 overflow-hidden transition-colors duration-300 rounded-xl">
           <p className="text-xs text-muted-foreground bg-card px-2 py-1.5 flex items-center gap-1">
             <TerminalIcon className="inline-block size-4" />
             {"terminal"}

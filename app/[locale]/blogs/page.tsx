@@ -1,9 +1,9 @@
-import { format } from "date-fns";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { Link } from "@/i18n/navigation";
-import { getBlogList } from "@/lib/blogs";
-import { DATE_LOCALES } from "@/i18n/datefns";
+import { format } from "date-fns"
+import Image from "next/image"
+import { notFound } from "next/navigation"
+import { Link } from "@/i18n/navigation"
+import { getBlogList } from "@/lib/blogs"
+import { DATE_LOCALES } from "@/i18n/datefns"
 
 export const dynamic = 'force-dynamic'
 

@@ -1,1 +1,90 @@
-{}
+{
+  "home": {
+    "landing": {
+      "title": "Welcome to Our Website",
+      "subtitle": "Discover our services and offerings",
+      "buttonText": "Learn More"
+    },
+    "whatWeDo": {
+      "header": {
+        "tag": "Introduction",
+        "title": "What We Do",
+        "description": "Professionalism, Leadership, Ownership, Ethics, Collaboration, Speed"
+      },
+      "development": {
+        "title": "Development",
+        "description": "Building adaptive financial software solutions that merge technology and design to create unique, user-first experiences"
+      },
+      "digitalTransformation": {
+        "title": "Digital transformation",
+        "item1": "AI based data processing",
+        "item2": "Business process automation",
+        "item3": "Fintech solutions, Risk assessment, and Credit scoring"
+      },
+      "flexibleSystemArchitecture": {
+        "title": "Flexible System Architecture",
+        "description": "Our flexible system architecture adapts to your growing business needs. With modular design and scalable infrastructure, it enables seamless integration, faster updates, and reliable performance—ensuring your technology evolves without disruption."
+      }
+    },
+    "values": {
+      "header": {
+        "tag": "About Us",
+        "title": "Our Values & Mission",
+        "description1": "<white>is a specialized technology company established in 2018.</white> We focus on fintech, artificial intelligence, big data system development, and the design of core infrastructure. Driven by our mission to accelerate the future of business through innovation and smart solutions, we aspire to become a global leader in financial technology.",
+        "description2": "<white>With more than 80% of our team comprised of engineers, </white>we embody strong technological expertise and an unwavering commitment to innovation."
+      },
+      "team": {
+        "title": "Team",
+        "description": "Professional team with comprehensive system development experience"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "Long-term projects, and partnerships"
+      },
+      "technology": {
+        "title": "Technology",
+        "description": "Professional, reliable, stable, comprehensive system development, and infrastructure services."
+      },
+      "researchAndDevelopment": {
+        "title": "Research & Development",
+        "description": "Domestic, and foreign universities cooperation, HR training"
+      }
+    },
+    "projects": {
+      "header": {
+        "tag": "Projects",
+        "title": "Our Impactful Creations",
+        "description": "Explore our diverse range of projects that showcase our expertise and commitment to innovation in the technology sector."
+      },
+      "pocket": {
+        "title": "Pocket",
+        "description": "A comprehensive fintech platform that integrates microloans, BNPL, leasing, savings, and payments. Leveraging AI and IT innovation, it ensures a secure, efficient, and user‑friendly financial ecosystem"
+      },
+      "pocketKg": {
+        "title": "Pocket KG",
+        "description": "Pocket brings advanced fintech and AI solutions to Central Asia, powering microloans, payments, and enterprise systems"
+      },
+      "worki": {
+        "title": "Worki",
+        "description": "Designed with job seekers in mind, the platform uses advanced AI to match talent with opportunity, providing listings, resume building, and career guidance in one seamless experience"
+      },
+      "icapital": {
+        "title": "iCapital",
+        "description": "Designed for simplicity and efficiency, the application connects investors to stocks, bonds, and investment opportunities across Mongolia’s major stock exchanges"
+      },
+      "finberry": {
+        "title": "Finberry",
+        "description": "Designed to help creators and innovators, the platform provides flexible crowdfunding options—donations, rewards, and loans—to connect projects with supporters"
+      }
+    },
+    "trustedBy": {
+      "title": "Trusted by innovative companies"
+    },
+    "blogs": {
+      "tag": "Blogs",
+      "title": "Discover updates",
+      "description": "We regularly share new insights and experience on lending, regulatory compliance, automation, and digital transformation in the financial sector.",
+      "viewAll": "View All Blogs"
+    }
+  }
+}

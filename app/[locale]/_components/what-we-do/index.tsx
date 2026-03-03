@@ -5,8 +5,11 @@ import CloudAndDevOpsCard from "./cloud-and-devops-card"
 import DigitalTransformationCard from "./digital-transformation-card"
 import FlexibleSystemArchitectureCard from "./flexible-system-architecture-card"
 import { AnimatedContent } from "@/components/animated-content"
+import { getTranslations } from "next-intl/server"
 
-export default function WhatWeDo() {
+export default async function WhatWeDo() {
+  const t = await getTranslations("home.whatWeDo.header")
+
   return (
     <div
       id="what-we-do"
@@ -19,17 +22,17 @@ export default function WhatWeDo() {
       >
         <div className="flex gap-2">
           <Icon className="size-5 stroke-sky-300" iconNode={planet} />
-          <p className="text-sky-300 font-bold">{"Introduction"}</p>
+          <p className="text-sky-300 font-bold">{t("tag")}</p>
         </div>
         <p className="text-4xl">
-          {"What we do"}
+          {t("title")}
         </p>
         <p className="text-muted-foreground">
-          {"Professionalism, Leadership, Ownership, Ethics, Collaboration, Speed"}
+          {t("description")}
         </p>
       </AnimatedContent>
       <AnimatedContent
-        className="grid md:grid-cols-3 grid-cols-1 border"
+        className="grid md:grid-cols-3 grid-cols-1 border rounded-xl"
         direction="vertical"
         distance={-50}
       >

@@ -118,7 +118,7 @@ export default function Header() {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger render={
-            <Button size="icon-lg" variant="ghost">
+            <Button size="icon" variant="ghost">
               <GlobeIcon />
             </Button>
           } />

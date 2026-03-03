@@ -1,32 +1,40 @@
 import Image from "next/image"
-import { BookOpenTextIcon, CpuIcon, HandshakeIcon, Icon, MicroscopeIcon, ShieldHalfIcon } from "lucide-react"
-import { targetArrow } from "@lucide/lab"
+import {
+  BookOpenTextIcon,
+  CpuIcon,
+  HandshakeIcon,
+  MicroscopeIcon,
+  ShieldHalfIcon
+} from "lucide-react"
 import { AnimatedContent } from "@/components/animated-content"
+import { getTranslations } from "next-intl/server"
 
 const VALUES = [
   {
     icon: ShieldHalfIcon,
-    title: "Team",
-    description: "Professional team with comprehensive system development experience",
+    title: "team.title",
+    description: "team.description",
   },
   {
     icon: HandshakeIcon,
-    title: "Collaboration",
-    description: "Long-term projects, and partnerships",
+    title: "collaboration.title",
+    description: "collaboration.description",
   },
   {
     icon: CpuIcon,
-    title: "Technology",
-    description: "Professional, reliable, stable, comprehensive system development, and infrastructure services.",
+    title: "technology.title",
+    description: "technology.description",
   },
   {
     icon: MicroscopeIcon,
-    title: "Research & Development",
-    description: "Domestic, and foreign universities cooperation, HR training",
+    title: "researchAndDevelopment.title",
+    description: "researchAndDevelopment.description",
   }
 ]
 
-export default function Values() {
+export default async function Values() {
+  const t = await getTranslations("home.values")
+
   return (
     <div
       id="about-us"
@@ -39,10 +47,10 @@ export default function Values() {
       >
         <div className="flex gap-2">
           <BookOpenTextIcon className="size-5 stroke-sky-300" />
-          <p className="text-sky-300 font-bold">{"About us"}</p>
+          <p className="text-sky-300 font-bold">{t("header.tag")}</p>
         </div>
         <p className="text-4xl">
-          {"Our Values & Mission"}
+          {t("header.title")}
         </p>
       </AnimatedContent>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
@@ -65,26 +73,33 @@ export default function Values() {
         >
           <p className="text-lg text-muted-foreground leading-relaxed">
             <span className="text-sky-300">{"AILab "}</span>
-            <span className="text-foreground">{"is a specialized technology company established in 2018. "}</span>
-            {"We focus on fintech, artificial intelligence, big data system development, and the design of core infrastructure. Driven by our mission to accelerate the future of business through innovation and smart solutions, we aspire to become a global leader in financial technology."}
+            <span dangerouslySetInnerHTML={{
+              __html: t.markup("header.description1", {
+                white: (chunks) => `<span class="text-foreground">${chunks}</span>`
+              })
+            }} />
           </p>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            <span className="text-foreground">{"With more than 80% of our team comprised of engineers, "}</span>
-            {"we embody strong technological expertise and an unwavering commitment to innovation."}
-          </p>
+          <p
+            className="text-lg text-muted-foreground leading-relaxed"
+            dangerouslySetInnerHTML={{
+              __html: t.markup("header.description2", {
+                white: (chunks) => `<span class="text-foreground">${chunks}</span>`
+              })
+            }}
+          />
         </AnimatedContent>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {VALUES.map((value, index) => (
           <AnimatedContent
             key={index}
-            className="border p-8"
+            className="border rounded-xl p-8"
           >
             <value.icon className="size-8 inline-block text-sky-500 mb-4" />
             <p className="text-lg font-semibold pb-2 flex items-center">
-              {value.title}
+              {t(value.title)}
             </p>
-            <p className="text-muted-foreground">{value.description}</p>
+            <p className="text-muted-foreground">{t(value.description)}</p>
           </AnimatedContent>
         ))}
       </div>

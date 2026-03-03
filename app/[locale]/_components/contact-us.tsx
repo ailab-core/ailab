@@ -38,7 +38,7 @@ export default function ContactUs() {
           direction="horizontal"
           distance={50}
         >
-          <div className="flex flex-col gap-2 border p-4">
+          <div className="flex flex-col gap-2 border p-4 rounded-xl">
             <p className="text-lg flex items-center gap-2">
               <MailIcon className="size-4 inline-block" />
               {"Email"}
@@ -50,7 +50,7 @@ export default function ContactUs() {
               {"info@ailab.mn"}
             </p>
           </div>
-          <div className="flex flex-col gap-2 border p-4">
+          <div className="flex flex-col gap-2 border p-4 rounded-xl">
             <p className="text-lg flex items-center gap-2">
               <PhoneIcon className="size-4 inline-block" />
               {"Phone"}
@@ -62,7 +62,7 @@ export default function ContactUs() {
               {"+976 7777-2210"}
             </p>
           </div>
-          <div className="flex flex-col gap-2 border p-4">
+          <div className="flex flex-col gap-2 border p-4 rounded-xl">
             <p className="text-lg flex items-center gap-2">
               <BuildingIcon className="size-4 inline-block" />
               {"Office"}
@@ -110,7 +110,7 @@ export default function ContactUs() {
               rows={6}
             />
           </Field>
-          <Button size="lg">
+          <Button>
             {"Let's talk"}
           </Button>
         </AnimatedContent>
