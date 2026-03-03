@@ -67,10 +67,10 @@ export default function Solutions() {
       >
         <div className="flex gap-2">
           <BoxesIcon className="size-5 stroke-sky-300" />
-          <p className="text-sky-300 font-bold">{"Танилцуулга"}</p>
+          <p className="text-sky-300 font-bold">{"Solutions"}</p>
         </div>
         <p className="text-4xl">
-          {"Манай бүтээгдэхүүний онцлог"}
+          {"Бүтээгдэхүүний онцлог"}
         </p>
       </AnimatedContent>
       <div className="w-full flex flex-col gap-32">

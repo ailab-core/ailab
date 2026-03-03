@@ -53,17 +53,18 @@ export default async function Values() {
           {t("header.title")}
         </p>
       </AnimatedContent>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-16">
         <AnimatedContent
           distance={-50}
           direction="horizontal"
+          className="relative"
         >
           <Image
             src="/assets/undraw-business-decisions.svg"
             alt="Values Image"
-            width={1600}
-            height={900}
-            className="w-full h-auto object-contain aspect-video"
+            width={500}
+            height={500}
+            className="w-full h-auto object-contain aspect-square p-12"
           />
         </AnimatedContent>
         <AnimatedContent
@@ -71,7 +72,7 @@ export default async function Values() {
           direction="horizontal"
           className="flex flex-col gap-8"
         >
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-xl text-muted-foreground leading-relaxed">
             <span className="text-sky-300">{"AILab "}</span>
             <span dangerouslySetInnerHTML={{
               __html: t.markup("header.description1", {
@@ -80,7 +81,7 @@ export default async function Values() {
             }} />
           </p>
           <p
-            className="text-lg text-muted-foreground leading-relaxed"
+            className="text-xl text-muted-foreground leading-relaxed"
             dangerouslySetInnerHTML={{
               __html: t.markup("header.description2", {
                 white: (chunks) => `<span class="text-foreground">${chunks}</span>`

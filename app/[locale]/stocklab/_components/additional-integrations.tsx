@@ -68,7 +68,7 @@ export default function AdditionalIntegrations() {
         distance={50}
         direction="vertical"
       >
-        <p className="text-4xl text-primary-foreground">
+        <p className="text-2xl text-primary-foreground">
           {"Нэмэлт холболтын боломжууд"}
         </p>
       </AnimatedContent>

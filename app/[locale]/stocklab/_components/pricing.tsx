@@ -52,10 +52,10 @@ export default function Pricing() {
         >
           <div className="flex gap-2">
             <CircleDollarSignIcon className="size-5 stroke-sky-300" />
-            <p className="text-sky-300 font-bold">{"Үнийн санал"}</p>
+            <p className="text-sky-300 font-bold">{"Pricing"}</p>
           </div>
           <p className="text-4xl">
-            {"Манай бүтээгдэхүүний санал болгох зүйлс"}
+            {"Үнийн санал"}
           </p>
         </AnimatedContent>
         <Button variant="outline">
@@ -76,11 +76,14 @@ export default function Pricing() {
               {plan.price}
               <span className="ml-1 text-xs font-normal text-muted-foreground">{"(НӨАТ орсон)"}</span>
             </p>
-            <Button render={(
-              <a href="/#contact-us">
-                {"Холбоо барих"}
-              </a>
-            )} />
+            <Button
+              nativeButton={false}
+              render={(
+                <a href="/#contact-us">
+                  {"Холбоо барих"}
+                </a>
+              )}
+            />
             <Separator />
             <p className="text-sm text-muted-foreground">
               {"Багцад дараах боломжууд багтсан:"}

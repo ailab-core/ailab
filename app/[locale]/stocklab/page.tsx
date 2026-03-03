@@ -12,7 +12,7 @@ export default async function StockLab() {
     <div className="flex flex-col gap-32">
       <Landing />
       <Solutions />
-      <div className="flex flex-col bg-slate-100 gap-32 py-48">
+      <div className="flex flex-col bg-slate-100 gap-32 py-32">
         <WhyUs />
         <MainIntegrations />
         <AdditionalIntegrations />

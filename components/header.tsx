@@ -86,7 +86,7 @@ export default function Header() {
                         <NavigationMenuLink
                           render={
                             <Link href={product.href} className="space-x-2 hover:bg-transparent group">
-                              <div className="bg-secondary p-2">
+                              <div className="bg-secondary p-2 rounded-lg">
                                 <product.icon className="size-5 text-muted-foreground group-hover:text-foreground duration-300 transition-colors" />
                               </div>
                               <div className="flex flex-col gap-1 text-sm max-w-2xs">
