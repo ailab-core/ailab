@@ -32,13 +32,13 @@ import { Link } from "@/i18n/navigation";
 const PRODUCTS = [
   {
     title: "Finace",
-    href: "/#finace",
+    href: "/finace",
     icon: LandmarkIcon,
     description: "System contains processes of loan products"
   },
   {
     title: "Prop",
-    href: "/#prop",
+    href: "http://prop.mn/",
     icon: Building2Icon,
     description: "Centralized property management system"
   },
@@ -50,7 +50,7 @@ const PRODUCTS = [
   },
   {
     title: "EFund",
-    href: "/#efund",
+    href: "/efund",
     icon: BanknoteArrowDownIcon,
     description: "Manage and track your funds"
   },

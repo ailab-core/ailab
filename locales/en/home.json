@@ -85,6 +85,31 @@
       "title": "Discover updates",
       "description": "We regularly share new insights and experience on lending, regulatory compliance, automation, and digital transformation in the financial sector.",
       "viewAll": "View All Blogs"
+    },
+    "contactUs": {
+      "tag": "Contact us",
+      "title": "Get In Touch 👋",
+      "description": "If you have any questions about our products or services, please fill out the form and we will get back to you shortly.",
+      "emailCard": {
+        "title": "Email",
+        "description": "Have a question or need help?"
+      },
+      "phoneCard": {
+        "title": "Phone",
+        "description": "Prefer to chat? Give us a call Monday–Friday, 9 AM–5 PM"
+      },
+      "officeCard": {
+        "title": "Office",
+        "description": "Stop by our office @"
+      },
+      "form": {
+        "name": "Нэр",
+        "organizationName": "Байгууллагын нэр",
+        "email": "Имэйл",
+        "phoneNumber": "Утасны дугаар",
+        "message": "Зурвас",
+        "submit": "Илгээх"
+      }
     }
   }
 }

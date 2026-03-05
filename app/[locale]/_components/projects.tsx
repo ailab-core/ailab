@@ -73,7 +73,7 @@ export default async function Projects() {
             <AnimatedContent
               className="w-full md:max-h-96 relative p-12 overflow-hidden group rounded-xl"
               direction={"horizontal"}
-              distance={index % 2 === 0 ? -50 : 50}
+              distance={50}
             >
               <div className="absolute w-full h-full top-0 left-0">
                 <Image

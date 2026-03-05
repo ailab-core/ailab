@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { BuildingIcon, MailIcon, PhoneIcon, SendIcon } from "lucide-react"
 import {
   Button,
@@ -11,6 +12,8 @@ import {
 import { AnimatedContent } from "@/components/animated-content"
 
 export default function ContactUs() {
+  const t = useTranslations("home.contactUs")
+
   return (
     <div
       id="contact-us"
@@ -23,13 +26,13 @@ export default function ContactUs() {
       >
         <div className="flex gap-2">
           <SendIcon className="size-5 stroke-sky-300" />
-          <p className="text-sky-300 font-bold">{"Contact us"}</p>
+          <p className="text-sky-300 font-bold">{t("tag")}</p>
         </div>
         <p className="text-4xl">
-          {"Get In Touch 👋"}
+          {t("title")}
         </p>
         <p className="text-muted-foreground text-center">
-          {"If you have any questions about our products or services, please fill out the form and we will get back to you shortly."}
+          {t("description")}
         </p>
       </AnimatedContent>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-16" >
@@ -41,10 +44,10 @@ export default function ContactUs() {
           <div className="flex flex-col gap-2 border p-4 rounded-xl">
             <p className="text-lg flex items-center gap-2">
               <MailIcon className="size-4 inline-block" />
-              {"Email"}
+              {t("emailCard.title")}
             </p>
             <p className="text-sm text-muted-foreground">
-              {"Have a question or need help?"}
+              {t("emailCard.description")}
             </p>
             <p className="text-sm text-muted-foreground">
               {"info@ailab.mn"}
@@ -53,10 +56,10 @@ export default function ContactUs() {
           <div className="flex flex-col gap-2 border p-4 rounded-xl">
             <p className="text-lg flex items-center gap-2">
               <PhoneIcon className="size-4 inline-block" />
-              {"Phone"}
+              {t("phoneCard.title")}
             </p>
             <p className="text-sm text-muted-foreground">
-              {"Prefer to chat? Give us a call Monday–Friday, 9 AM–5 PM"}
+              {t("phoneCard.description")}
             </p>
             <p className="text-sm text-muted-foreground">
               {"+976 7777-2210"}
@@ -65,10 +68,10 @@ export default function ContactUs() {
           <div className="flex flex-col gap-2 border p-4 rounded-xl">
             <p className="text-lg flex items-center gap-2">
               <BuildingIcon className="size-4 inline-block" />
-              {"Office"}
+              {t("officeCard.title")}
             </p>
             <p className="text-sm text-muted-foreground">
-              {"Stop by our office @ "}
+              {t("officeCard.description")}
               <a
                 href="https://maps.app.goo.gl/LtHiF2PdNzAZhDFi8"
                 className="text-sky-300 hover:underline"
@@ -86,32 +89,32 @@ export default function ContactUs() {
           distance={-50}
         >
           <Field>
-            <FieldLabel htmlFor="name">Name</FieldLabel>
-            <Input id="name" placeholder="Your name" />
+            <FieldLabel htmlFor="name">{t("form.name")}</FieldLabel>
+            <Input id="name" placeholder={t("form.name")} />
           </Field>
           <Field>
-            <FieldLabel htmlFor="organizationName">Organization</FieldLabel>
-            <Input id="organizationName" placeholder="Organization name" />
+            <FieldLabel htmlFor="organizationName">{t("form.organizationName")}</FieldLabel>
+            <Input id="organizationName" placeholder={t("form.organizationName")} />
           </Field>
           <Field>
-            <FieldLabel htmlFor="email">E-Mail</FieldLabel>
-            <Input id="email" placeholder="Email address" type="email" />
+            <FieldLabel htmlFor="email">{t("form.email")}</FieldLabel>
+            <Input id="email" placeholder={t("form.email")} type="email" />
           </Field>
           <Field>
-            <FieldLabel htmlFor="phoneNumber">Phone Number</FieldLabel>
-            <Input id="phoneNumber" placeholder="Phone number" type="phoneNumber" />
+            <FieldLabel htmlFor="phoneNumber">{t("form.phoneNumber")}</FieldLabel>
+            <Input id="phoneNumber" placeholder={t("form.phoneNumber")} type="phoneNumber" />
           </Field>
           <Field>
-            <FieldLabel htmlFor="message">Message</FieldLabel>
+            <FieldLabel htmlFor="message">{t("form.message")}</FieldLabel>
             <Textarea
               id="message"
               name="message"
-              placeholder="Your message"
+              placeholder={t("form.message")}
               rows={6}
             />
           </Field>
           <Button>
-            {"Let's talk"}
+            {t("form.submit")}
           </Button>
         </AnimatedContent>
       </div>

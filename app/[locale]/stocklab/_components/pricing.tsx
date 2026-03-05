@@ -44,24 +44,19 @@ const PRICING_PLANS = [
 export default function Pricing() {
   return (
     <div className="container h-full md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col items-center justify-between gap-16">
-      <div className="w-full flex justify-between items-end">
-        <AnimatedContent
-          className="flex flex-col gap-4"
-          direction="vertical"
-          distance={50}
-        >
-          <div className="flex gap-2">
-            <CircleDollarSignIcon className="size-5 stroke-sky-300" />
-            <p className="text-sky-300 font-bold">{"Pricing"}</p>
-          </div>
-          <p className="text-4xl">
-            {"Үнийн санал"}
-          </p>
-        </AnimatedContent>
-        <Button variant="outline">
-          {"Дэлгэрэнгүй"}
-        </Button>
-      </div>
+      <AnimatedContent
+        className="w-full flex flex-col gap-4"
+        direction="vertical"
+        distance={50}
+      >
+        <div className="flex items-center gap-2">
+          <CircleDollarSignIcon className="size-5 text-sky-300" />
+          <p className="text-sky-300 font-bold">{"Үнийн санал"}</p>
+        </div>
+        <p className="text-4xl">
+          {"Ил тод, уян хатан, таны хэрэгцээнд нийцсэн шийдэл."}
+        </p>
+      </AnimatedContent>
       <div className="w-full grid md:grid-cols-3 grid-cols-1 gap-8">
         {PRICING_PLANS.map((plan) => (
           <AnimatedContent

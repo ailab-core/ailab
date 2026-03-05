@@ -41,13 +41,13 @@ export default async function BlogPage({
   const blog = await getBlogBySlug(slug);
 
   return (
-    <div className="container md:max-w-3xl mx-auto flex flex-col gap-8 px-8 md:px-0 mt-8">
+    <div className="container md:max-w-3xl mx-auto flex flex-col gap-8 px-8 md:px-0 mt-24">
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={blog.header.thumbnail}
           alt={blog.header.title}
           fill
-          className="object-center object-cover"
+          className="object-center object-cover rounded-xl"
         />
       </div>
       <h1 className="text-3xl md:text-5xl font-semibold text-center">

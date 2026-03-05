@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BoxesIcon, CircleCheckIcon } from "lucide-react";
 import { AnimatedContent } from "@/components/animated-content";
+import { cn } from "@/lib/utils";
 
 export const SOLUTIONS = [
   {
@@ -65,9 +66,9 @@ export default function Solutions() {
         direction="vertical"
         distance={50}
       >
-        <div className="flex gap-2">
-          <BoxesIcon className="size-5 stroke-sky-300" />
-          <p className="text-sky-300 font-bold">{"Solutions"}</p>
+        <div className="flex items-center gap-2">
+          <BoxesIcon className="size-5 text-sky-300" />
+          <p className="text-sm text-sky-300 font-bold">{"Solutions"}</p>
         </div>
         <p className="text-4xl">
           {"Бүтээгдэхүүний онцлог"}
@@ -77,7 +78,7 @@ export default function Solutions() {
         {SOLUTIONS.map((solution, index) => (
           <div key={index} className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-24">
             <AnimatedContent
-              className={index % 2 === 0 ? "order-first" : "order-last"}
+              className={cn("bg-card rounded-xl", index % 2 === 0 ? "order-first" : "order-last")}
               distance={index % 2 === 0 ? 50 : -50}
               direction="horizontal"
             >

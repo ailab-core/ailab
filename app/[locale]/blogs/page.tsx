@@ -24,7 +24,7 @@ export default async function Blogs({
           href={`/blogs/${featured.slug}`}
           className="md:col-span-2 flex flex-col gap-4 group cursor-pointer"
         >
-          <div className="relative aspect-video overflow-hidden">
+          <div className="relative aspect-video overflow-hidden rounded-xl">
             <Image
               src={featured.header.thumbnail}
               alt={featured.header.title}
@@ -49,7 +49,7 @@ export default async function Blogs({
           href={`/blogs/${blog.slug}`}
           className="flex flex-col gap-4 group cursor-pointer"
         >
-          <div className="relative aspect-video overflow-hidden">
+          <div className="relative aspect-video overflow-hidden rounded-xl">
             <Image
               src={blog.header.thumbnail}
               alt={blog.header.title}

@@ -83,7 +83,7 @@ export default function AdditionalIntegrations() {
           gap={0}
           hoverSpeed={0}
           fadeOut
-          fadeOutColor="#f1f4f9"
+          fadeOutColor="#f1f5f9"
         />
       </AnimatedContent>
     </div>
