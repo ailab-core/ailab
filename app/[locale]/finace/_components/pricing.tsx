@@ -18,7 +18,7 @@ import {
 type Plan = {
   name: string;
   description: string;
-  price: string;
+  price?: string;
   prices?: string[];
   features: string[];
 }
