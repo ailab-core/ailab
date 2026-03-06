@@ -76,9 +76,9 @@ export default function Solutions() {
       </AnimatedContent>
       <div className="w-full flex flex-col gap-32">
         {SOLUTIONS.map((solution, index) => (
-          <div key={index} className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-24">
+          <div key={index} className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-12 md:gap-24">
             <AnimatedContent
-              className={cn("bg-card rounded-xl", index % 2 === 0 ? "order-first" : "order-last")}
+              className={cn("bg-card rounded-xl", index % 2 === 0 ? "md:order-first" : "md:order-last")}
               distance={index % 2 === 0 ? 50 : -50}
               direction="horizontal"
             >
@@ -104,7 +104,7 @@ export default function Solutions() {
               <ul className="text-muted-foreground font-semibold space-y-4">
                 {solution.features.map((feature, idx) => (
                   <li className="flex items-center gap-2" key={idx}>
-                    <CircleCheckIcon className="text-sky-300 size-5" />
+                    <CircleCheckIcon className="text-sky-300 size-5 shrink-0" />
                     {feature}
                   </li>
                 ))}

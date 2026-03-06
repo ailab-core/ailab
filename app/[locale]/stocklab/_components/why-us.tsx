@@ -26,15 +26,15 @@ export default function WhyUs() {
         <div className="bg-sky-200 rounded-full w-min p-4">
           <LeafIcon className="size-8 stroke-neutral-800" />
         </div>
-        <p className="text-5xl text-primary-foreground font-semibold">
+        <p className="text-3xl md:text-5xl text-primary-foreground font-semibold">
           {"Манай бүтээгдэхүүнийг сонгох шалтгаан"}
         </p>
-        <p className="font-medium text-primary-foreground/60 text-left max-w-4xl">
+        <p className="text-primary-foreground/60 text-left max-w-4xl">
           {"Бид санхүүгийн технологийн салбарт мэргэшсэн, туршлагатай мэргэжилтнүүдийн багтай бөгөөд манай бүтээгдэхүүн нь Монголын хөрөнгийн биржийн стандартад нийцсэн, найдвартай, хурдан, аюулгүй арилжааны шийдлийг санал болгодог."}
         </p>
       </AnimatedContent>
       <div className="w-full grid grid-cols-12 gap-8">
-        <AnimatedContent className="col-span-6">
+        <AnimatedContent className="col-span-12 md:col-span-6">
           <div className="flex flex-col items-center justify-between gap-4 group bg-slate-100 rounded-2xl p-8">
             <div className="w-full h-72 flex items-center justify-center p-4 relative group-hover:p-2 transition-padding duration-300">
               <div className="w-full h-full relative">
@@ -53,7 +53,7 @@ export default function WhyUs() {
             </p>
           </div>
         </AnimatedContent>
-        <AnimatedContent className="col-span-6">
+        <AnimatedContent className="col-span-12 md:col-span-6">
           <AnimateIcon
             className="flex flex-col items-center justify-between gap-4 group bg-slate-100 rounded-2xl p-8"
             animateOnHover
@@ -78,7 +78,7 @@ export default function WhyUs() {
             </p>
           </AnimateIcon>
         </AnimatedContent>
-        <AnimatedContent className="col-span-4">
+        <AnimatedContent className="col-span-12 md:col-span-4">
           <AnimateIcon
             className="h-full flex flex-col justify-between items-center gap-4 group bg-slate-100 rounded-2xl p-8"
             animateOnHover
@@ -99,7 +99,7 @@ export default function WhyUs() {
             </p>
           </AnimateIcon>
         </AnimatedContent>
-        <AnimatedContent className="col-span-4">
+        <AnimatedContent className="col-span-12 md:col-span-4">
           <div className="h-full flex flex-col justify-between items-center gap-4 group bg-slate-100 rounded-2xl p-8">
             <div className="w-full h-72 flex items-center justify-center p-8 relative">
               <div className="bg-slate-200 w-10/12 h-48 p-6 space-y-2 border border-slate-300 relative">
@@ -118,7 +118,7 @@ export default function WhyUs() {
             </p>
           </div>
         </AnimatedContent>
-        <AnimatedContent className="col-span-4">
+        <AnimatedContent className="col-span-12 md:col-span-4">
           <div className="h-full flex flex-col justify-between items-center gap-4 group bg-slate-100 rounded-2xl p-8">
             <div className="w-full h-72">
               <div className="w-full h-72 relative flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">

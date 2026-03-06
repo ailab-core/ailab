@@ -35,7 +35,7 @@ export default function Landing() {
             </div>
           </AnimatedContent>
           <AnimatedContent delay={1}>
-            <h1 className="max-w-2xl text-4xl font-semibold">
+            <h1 className="max-w-2xl text-2xl md:text-4xl font-semibold">
               {"Таны үнэт цаасны арилжааг илүү хурдан, илүү найдвартай болгох цогц шийдэл"}
             </h1>
           </AnimatedContent>
@@ -45,7 +45,7 @@ export default function Landing() {
             </Button>
           </AnimatedContent>
         </div>
-        <div className="flex flex-col gap-24">
+        <div className="hidden md:flex flex-col gap-24">
           <AnimatedContent
             className="relative max-w-md flex flex-col gap-4 bg-card pt-12 pb-8 px-6 rounded-2xl"
             direction="horizontal"

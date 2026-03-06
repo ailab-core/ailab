@@ -53,7 +53,7 @@ export default function Pricing() {
           <CircleDollarSignIcon className="size-5 text-sky-300" />
           <p className="text-sky-300 font-bold">{"Үнийн санал"}</p>
         </div>
-        <p className="text-4xl">
+        <p className="text-2xl md:text-4xl">
           {"Ил тод, уян хатан, таны хэрэгцээнд нийцсэн шийдэл."}
         </p>
       </AnimatedContent>

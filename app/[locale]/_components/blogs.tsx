@@ -19,7 +19,7 @@ export default async function Blogs() {
       className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col items-center gap-8 pt-32"
     >
       <AnimatedContent
-        className="md:w-2xl flex flex-col md:items-center gap-4"
+        className="md:w-3xl flex flex-col md:items-center gap-4"
         distance={50}
         direction="vertical"
       >
@@ -30,7 +30,7 @@ export default async function Blogs() {
         <p className="text-4xl">
           {t("title")}
         </p>
-        <p className="text-muted-foreground md:text-center">
+        <p className="text-lg text-muted-foreground md:text-center">
           {t("description")}
         </p>
         <Button

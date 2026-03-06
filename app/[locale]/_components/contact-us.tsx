@@ -20,7 +20,7 @@ export default function ContactUs() {
       className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col items-center gap-16 pt-32"
     >
       <AnimatedContent
-        className="md:w-2xl flex flex-col items-center gap-4"
+        className="md:w-3xl flex flex-col items-center gap-4"
         direction="vertical"
         distance={50}
       >
@@ -31,7 +31,7 @@ export default function ContactUs() {
         <p className="text-4xl">
           {t("title")}
         </p>
-        <p className="text-muted-foreground text-center">
+        <p className="text-lg text-muted-foreground text-center">
           {t("description")}
         </p>
       </AnimatedContent>
@@ -46,10 +46,10 @@ export default function ContactUs() {
               <MailIcon className="size-4 inline-block" />
               {t("emailCard.title")}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground">
               {t("emailCard.description")}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground">
               {"info@ailab.mn"}
             </p>
           </div>
@@ -58,10 +58,10 @@ export default function ContactUs() {
               <PhoneIcon className="size-4 inline-block" />
               {t("phoneCard.title")}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground">
               {t("phoneCard.description")}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground">
               {"+976 7777-2210"}
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function ContactUs() {
               <BuildingIcon className="size-4 inline-block" />
               {t("officeCard.title")}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground">
               {t("officeCard.description")}
               <a
                 href="https://maps.app.goo.gl/LtHiF2PdNzAZhDFi8"

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Montserrat, Fira_Mono } from "next/font/google";
+import { Fira_Mono, Nunito_Sans } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import Providers from "./-providers";
 import "./globals.css";
 
-const montserratSans = Montserrat({
-  variable: "--font-montserrat-sans",
+const nunitoSans = Nunito_Sans({
+  variable: "--font-nunito-sans",
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
   weight: ["400", "500", "600", "700", "800", "900"],
 });
@@ -50,7 +50,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${montserratSans.variable} ${firaMono.variable} antialiased`}>
+      <body className={`${nunitoSans.variable} ${firaMono.variable} antialiased`}>
         <NextIntlClientProvider>
           <Providers>
             <main>{children}</main>

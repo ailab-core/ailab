@@ -41,7 +41,7 @@ export default async function DevelopmentCard() {
         <ChevronLeftRightIcon className="inline-block" />
         {t("title")}
       </p>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground">
         {t("description")}
       </p>
       <div className="relative">

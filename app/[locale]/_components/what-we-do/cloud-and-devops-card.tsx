@@ -15,11 +15,11 @@ export default function CloudAndDevOpsCard() {
         <CloudLightningIcon className="inline-block stroke-2" />
         {"Cloud & DevOps"}
       </p>
-      <ul className="text-sm list-disc list-inside text-muted-foreground">
+      <ul className="list-disc list-inside text-muted-foreground">
         <li>Cloud implementation</li>
         <li>CI/CD automation</li>
         <li>Data scalability</li>
-        <li>Data management, and quality assurance (checklist)</li>
+        <li>Data management, and quality assurance</li>
         <li>High available infrastructure</li>
       </ul>
       <div className="flex flex-col items-center mt-4">

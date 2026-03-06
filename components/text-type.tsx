@@ -3,6 +3,7 @@
 import { createElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import type { ElementType } from "react";
+import { cn } from "@/lib/utils";
 
 interface TextTypeProps {
   className?: string;
@@ -175,10 +176,10 @@ export const TextType = ({
     Component,
     {
       ref: containerRef,
-      className: `inline-block whitespace-pre-wrap ${className}`,
+      className: cn(className, "inline-block whitespace-pre-wrap"),
       ...props
     },
-    <span className="text-type__content" style={{ color: getCurrentTextColor() || "inherit" }}>
+    <span className="text-type__content font-bold" style={{ color: getCurrentTextColor() || "inherit" }}>
       {displayedText}
     </span>,
     showCursor && (

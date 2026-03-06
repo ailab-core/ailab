@@ -6,12 +6,8 @@ import { LogoLoop } from "@/components/logo-loop";
 
 export const COMPANIES = [
   {
-    alt: "gsign",
-    src: "/assets/logos/gsign.svg",
-  },
-  {
-    alt: "dan",
-    src: "/assets/logos/dan.svg",
+    alt: "esign",
+    src: "/assets/logos/esign.svg",
   },
   {
     alt: "monpep",
@@ -22,20 +18,8 @@ export const COMPANIES = [
     src: "/assets/logos/ebarimt.svg",
   },
   {
-    alt: "qpay",
-    src: "/assets/logos/qpay.svg",
-  },
-  {
-    alt: "socialpay",
-    src: "/assets/logos/socialpay.svg",
-  },
-  {
     alt: "callpro",
     src: "/assets/logos/callpro.svg",
-  },
-  {
-    alt: "ubx",
-    src: "/assets/logos/ubx.svg",
   },
 ]
 
@@ -72,7 +56,7 @@ export default function AdditionalIntegrations() {
           {"Нэмэлт холболтын боломжууд"}
         </p>
       </AnimatedContent>
-      <AnimatedContent className="w-full">
+      <AnimatedContent delay={1} className="w-full">
         <LogoLoop
           logos={COMPANIES}
           renderItem={CompanyItem}
@@ -89,3 +73,4 @@ export default function AdditionalIntegrations() {
     </div>
   )
 }
+

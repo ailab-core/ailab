@@ -22,7 +22,7 @@ export default async function DigitalTransformationCard() {
           <BotIcon className="inline-block" />
           {t("title")}
         </p>
-        <ul className="text-sm list-disc list-inside text-muted-foreground">
+        <ul className="list-disc list-inside text-muted-foreground">
           <li>{t("item1")}</li>
           <li>{t("item2")}</li>
           <li>{t("item3")}</li>

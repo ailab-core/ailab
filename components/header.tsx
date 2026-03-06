@@ -90,7 +90,7 @@ export default function Header() {
                                 <product.icon className="size-5 text-muted-foreground group-hover:text-foreground duration-300 transition-colors" />
                               </div>
                               <div className="flex flex-col gap-1 text-sm max-w-2xs">
-                                <div className="leading-none font-medium flex items-center">
+                                <div className="leading-none flex items-center">
                                   {product.title}
                                   <span className="relative -left-4 opacity-0 group-hover:left-0 group-hover:opacity-100 transition-all duration-300">
                                     <ChevronRightIcon className="size-4" />

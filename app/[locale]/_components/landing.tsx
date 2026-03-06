@@ -16,7 +16,7 @@ export default function Landing() {
               <br />
               <TextType
                 text={["Innovation", "Technology", "Efficiency", "Growth"]}
-                className="text-3xl md:text-5xl font-bold text-sky-300 bg-secondary px-4"
+                className="text-3xl md:text-5xl text-sky-300 bg-secondary px-4"
               />
             </div>
           </AnimatedContent>

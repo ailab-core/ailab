@@ -27,7 +27,7 @@ export default async function WhatWeDo() {
         <p className="text-4xl">
           {t("title")}
         </p>
-        <p className="text-muted-foreground">
+        <p className="text-lg text-muted-foreground">
           {t("description")}
         </p>
       </AnimatedContent>

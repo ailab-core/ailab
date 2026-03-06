@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { LogoLoop } from "@/components/logo-loop"
+import { cn } from "@/lib/utils"
 
 const COMPANIES = [
   {
@@ -66,7 +67,8 @@ const COMPANIES_2 = [
   {
     alt: "Burenscore",
     src: "/assets/logos/burenscore.svg",
-    href: "https://burenscore.mn/"
+    href: "https://burenscore.mn/",
+    className: "invert"
   },
 ]
 
@@ -76,14 +78,14 @@ const CompanyItem = (logo: any) => {
       href={logo.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-6 inline-block! bg-card group rounded-xl"
+      className="p-6 inline-block! group rounded-xl"
     >
       <div className="relative w-24 md:w-48 h-12 group-hover:grayscale-0 grayscale opacity-60 group-hover:opacity-100 transition-all duration-300">
         <Image
           src={logo.src}
           alt={logo.alt}
           fill
-          className="h-full w-auto object-contain"
+          className={cn("h-full w-auto object-contain", logo?.className)}
         />
       </div>
     </a>

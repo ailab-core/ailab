@@ -37,7 +37,7 @@ export default async function FlexibleSystemArchitectureCard() {
           <BlocksIcon className="inline-block stroke-2" />
           {t("title")}
         </p>
-        <p className="text-sm text-muted-foreground pb-4">
+        <p className="text-muted-foreground pb-4">
           {t("description")}
         </p>
         <div className="relative">

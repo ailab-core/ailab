@@ -52,7 +52,7 @@ export default async function Projects() {
       className="container md:max-w-7xl mx-auto px-8 md:px-0 flex flex-col gap-16 pt-32"
     >
       <AnimatedContent
-        className="w-xl max-w-full flex flex-col gap-4"
+        className="md:w-3xl max-w-full flex flex-col gap-4"
         distance={50}
         direction="vertical"
       >
@@ -63,7 +63,7 @@ export default async function Projects() {
         <p className="text-4xl">
           {t("header.title")}
         </p>
-        <p className="text-muted-foreground">
+        <p className="text-lg text-muted-foreground">
           {t("header.description")}
         </p>
       </AnimatedContent>
@@ -103,7 +103,7 @@ export default async function Projects() {
                     <LinkIcon className="inline-block size-4 ml-2" />
                     <hr className="h-1 border-none bg-sky-300 w-0 duration-300 transition-all group-hover:w-full" />
                   </a>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {t(project.description)}
                   </p>
                 </div>
