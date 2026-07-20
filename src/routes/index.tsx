@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Hero from './-components/hero'
+import Values from './-components/values'
 import WhatWeDo from './-components/what-we-do'
 import Work from './-components/work'
 import Partners from './-components/partners'
 import Missions from './-components/missions'
-import Blogs from './-components/blogs'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -12,11 +12,11 @@ function Home() {
   return (
     <div className="space-y-48">
       <Hero />
-      <WhatWeDo />
+      <Values />
       <Partners />
-      <Work />
+      <WhatWeDo />
       <Missions />
-      <Blogs />
+      <Work />
     </div>
   )
 }

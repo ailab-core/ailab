@@ -10,35 +10,39 @@ type ListItem = {
 
 const ITEMS: Array<ListItem> = [
   {
-    backgroundIcon: "/assets/icons/hash.png",
-    title: "Development",
-    body: "Building adaptive financial software solutions that merge technology and design to create unique, user-first experiences"
+    backgroundIcon: "/assets/icons/target.png",
+    title: "Team",
+    body: "Professional team with comprehensive system development experience, delivering scalable, secure, and innovative software solutions across diverse industries",
   },
   {
-    backgroundIcon: "/assets/icons/bulb.png",
-    title: "Cloud & Devops",
-    body: "Cloud implementation, CI/CD automation, data scalability and management, quality assurance and high available infrastructure"
+    backgroundIcon: "/assets/icons/chat-bubble.png",
+    title: "Collaboration",
+    body: "Building long-term projects and strategic partnerships through reliability, collaboration, and exceptional technology solutions."
+  },
+  {
+    backgroundIcon: "/assets/icons/hash.png",
+    title: "Technology",
+    body: "Offering professional, reliable, and stable system development and infrastructure services that ensure security, scalability, performance, and operational excellence."
   },
   {
     backgroundIcon: "/assets/icons/tools.png",
-    title: "Flexible system architecture",
-    body: "Our flexible system architecture adapts to your growing business needs. With modular design and scalable infrastructure, it enables seamless integration, faster updates, and reliable performance—ensuring your technology evolves without disruption."
-  },
-  {
-    backgroundIcon: "/assets/icons/mobile.png",
-    title: "Digital transformation",
-    body: "AI based data processing, Business process automation, Fintech solutions, Risk assessment, and Credit scoring "
+    title: "Research & Development",
+    body: "Promoting research excellence through academic partnerships, international collaboration, and continuous human resource training and development."
   }
 ]
 
-export default function WhatWeDo() {
+export default function Values() {
   const [active, setActive] = useState<ListItem | null>(null)
   const [hover, setHover] = useState<ListItem | null>(null)
 
   return (
-    <div className="container mx-auto relative grid grid-cols-1 md:grid-cols-5 justify-center px-8 md:px-0">
-      <p className="text-2xl md:text-3xl leading-relaxed col-span-2 text-center md:text-left">
-        {"We are committed to sustainably developing innovative solutions that streamline daily organizational operations, empower data-driven decision-making, and accelerate digital transformation."}
+    <AnimatedContent
+      className="container mx-auto relative grid grid-cols-1 md:grid-cols-5 justify-center px-8 md:px-0"
+      delay={1.2}
+      distance={-50}
+    >
+      <p className="text-3xl font-semibold leading-snug col-span-2 text-center md:text-left">
+        {"With more than 80% of our team comprised of engineers, we embody strong technological expertise and an unwavering commitment to innovation."}
       </p>
       <div className="w-full h-20" />
       <div className="flex flex-col items-end gap-6 text-2xl md:text-3xl col-span-2">
@@ -71,13 +75,13 @@ export default function WhatWeDo() {
                 </AnimatedContent>
               </div>
             )}
-            <div className="flex items-center justify-center md:justify-end gap-2">
-              <p className="font-bold text-center md:text-right"> {item.title} </p>
+            <div className="flex items-center justify-end gap-2">
+              <p className="font-bold text-right"> {item.title} </p>
               <ChevronDownIcon className="md:inline-block hidden text-muted-foreground group-hover:text-foreground mt-0 group-hover:-mt-2 transition-all duration-100" />
             </div>
             {active && active.title === item.title && (
               <AnimatedContent distance={-10}>
-                <p className="text-xl md:text-2xl text-right leading-relaxed text-muted-foreground">
+                <p className="text-xl md:text-xl text-right leading-snug text-muted-foreground">
                   {item.body}
                 </p>
               </AnimatedContent>
@@ -85,6 +89,6 @@ export default function WhatWeDo() {
           </div>
         ))}
       </div>
-    </div>
+    </AnimatedContent>
   )
 }

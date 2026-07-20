@@ -25,9 +25,9 @@ export default function Topbar() {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
+    <div className="w-full">
       <div className={cn(
-        "bg-background absolute top-0 left-0 -z-10 transition-all duration-300 w-full h-full",
+        "bg-transparent absolute top-0 left-0 -z-10 transition-all duration-300 w-full h-full",
         top ? "backdrop-blur-none" : "backdrop-blur-sm"
       )} />
       <div className="container mx-auto flex justify-between items-center py-6">

@@ -8,7 +8,7 @@ export default function Blogs() {
 
   return (
     <div className="container mx-auto my-48">
-      <p className="text-6xl font-semibold mb-16">
+      <p className="text-8xl font-semibold mb-16">
         {"Featured News"}
       </p>
       <div className="flex flex-col justify-center divide-y">
@@ -19,8 +19,9 @@ export default function Blogs() {
           to='/blogs'
           className="inline-block mt-24 group cursor-pointer"
         >
-          <p className="text-2xl text-nowrap flex items-center gap-2">
-            {"Visit Blog"} <ChevronRightIcon className="relative left-0 group-hover:left-2 transition-all duration-300" />
+          <p className="text-xl text-nowrap flex items-center">
+            {"Visit Blog"}
+            <ChevronRightIcon className="relative left-0 group-hover:left-2 transition-all duration-300" />
           </p>
           <hr className="h-0.5 border-none bg-foreground w-0 duration-300 transition-all group-hover:w-full" />
         </Link>

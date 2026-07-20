@@ -20,7 +20,7 @@ export default function BlogItem({ post }: { post: Post }) {
           <p className="text-xl text-muted-foreground">
             {post.topic}
           </p>
-          <p className="text-4xl font-semibold leading-snug">
+          <p className="text-4xl font-bold">
             {post.title}
           </p>
         </div>

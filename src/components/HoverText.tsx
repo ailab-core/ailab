@@ -73,7 +73,7 @@ export default function HoverText() {
   return (
     <p
       ref={hoverRef}
-      className="absolute top-0 left-0 pointer-events-none dark bg-background text-foreground py-4 px-6 text-2xl z-50 scale-0 rounded-3xl"
+      className="absolute top-0 left-0 pointer-events-none dark bg-background text-foreground py-4 px-6 text-2xl z-50 scale-0"
     >
       {"View Post"}
     </p>
