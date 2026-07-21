@@ -1,5 +1,5 @@
 import { format } from "date-fns"
-import type { Post } from 'content-collections'
+import type { Post } from "content-collections"
 
 export default function BlogItem({ post }: { post: Post }) {
   return (
@@ -17,12 +17,8 @@ export default function BlogItem({ post }: { post: Post }) {
       </div>
       <div className="col-span-7 flex flex-col justify-between h-full">
         <div className="space-y-4">
-          <p className="text-xl text-muted-foreground">
-            {post.topic}
-          </p>
-          <p className="text-4xl font-bold">
-            {post.title}
-          </p>
+          <p className="text-xl text-muted-foreground">{post.topic}</p>
+          <p className="text-4xl font-bold">{post.title}</p>
         </div>
         <p className="text-xl text-muted-foreground">
           {format(new Date(post.published), "MMMM dd, yyyy")}

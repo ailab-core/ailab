@@ -3,7 +3,7 @@ import {
   ImageIcon,
   VideoIcon,
 } from "lucide-react"
-import { LogoLoop } from "#/components/LogoLoop"
+import { LogoLoop } from "#/components"
 import { AnimateIcon } from "#/components/animate-ui/icons/icon"
 import { BotIcon } from "#/components/animate-ui/icons/bot"
 

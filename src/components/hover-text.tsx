@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
-import gsap from 'gsap'
+import gsap from "gsap"
 
-export default function HoverText() {
+export function HoverText() {
   const hoverRef = useRef<HTMLParagraphElement>(null)
 
   const pointerMove = (e: PointerEvent) => {
@@ -11,7 +11,7 @@ export default function HoverText() {
       gsap.to(hoverRef.current, {
         x: e.pageX,
         y: e.pageY,
-        duration: 0.1,
+        duration: 0.1
       })
     }
   }
@@ -37,9 +37,13 @@ export default function HoverText() {
     const works = document.querySelectorAll<HTMLElement>("#work")
     const body = document.getElementById("body")
 
-
     if (body) {
-      gsap.to(hoverRef.current, { scale: 0, xPercent: -50, yPercent: -50, duration: 0.1 })
+      gsap.to(hoverRef.current, {
+        scale: 0,
+        xPercent: -50,
+        yPercent: -50,
+        duration: 0.1
+      })
       body.addEventListener("pointermove", pointerMove)
     }
 
@@ -59,12 +63,16 @@ export default function HoverText() {
       }
 
       blogs.forEach((blog) => {
-        blog.addEventListener("pointerenter", (e) => pointerEnter(e, "Read blog"))
+        blog.addEventListener("pointerenter", (e) =>
+          pointerEnter(e, "Read blog")
+        )
         blog.addEventListener("pointerleave", pointerLeave)
       })
 
       works.forEach((work) => {
-        work.addEventListener("pointerenter", (e) => pointerEnter(e, "View work"))
+        work.addEventListener("pointerenter", (e) =>
+          pointerEnter(e, "View work")
+        )
         work.addEventListener("pointerleave", pointerLeave)
       })
     }
@@ -78,5 +86,4 @@ export default function HoverText() {
       {"View Post"}
     </p>
   )
-
 }

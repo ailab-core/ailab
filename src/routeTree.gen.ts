@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FinaceIndexRouteImport } from './routes/finace/index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinaceIndexRoute = FinaceIndexRouteImport.update({
+  id: '/finace/',
+  path: '/finace/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
@@ -26,27 +32,31 @@ const BlogsIndexRoute = BlogsIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blogs/': typeof BlogsIndexRoute
+  '/finace/': typeof FinaceIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blogs': typeof BlogsIndexRoute
+  '/finace': typeof FinaceIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blogs/': typeof BlogsIndexRoute
+  '/finace/': typeof FinaceIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blogs/'
+  fullPaths: '/' | '/blogs/' | '/finace/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blogs'
-  id: '__root__' | '/' | '/blogs/'
+  to: '/' | '/blogs' | '/finace'
+  id: '__root__' | '/' | '/blogs/' | '/finace/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
+  FinaceIndexRoute: typeof FinaceIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finace/': {
+      id: '/finace/'
+      path: '/finace'
+      fullPath: '/finace/'
+      preLoaderRoute: typeof FinaceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blogs/': {
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogsIndexRoute: BlogsIndexRoute,
+  FinaceIndexRoute: FinaceIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

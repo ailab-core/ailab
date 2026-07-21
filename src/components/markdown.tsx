@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import parse, { domToReact, Element } from 'html-react-parser'
-import type { HTMLReactParserOptions } from 'html-react-parser';
-import { renderMarkdown } from '#/lib/markdown'
-import type { MarkdownResult } from '#/lib/markdown';
-import { Link } from '@tanstack/react-router';
+import { useEffect, useState } from "react"
+import parse, { Element, domToReact } from "html-react-parser"
+import type { HTMLReactParserOptions } from "html-react-parser"
+import { renderMarkdown } from "#/lib/markdown"
+import type { MarkdownResult } from "#/lib/markdown"
+import { Link } from "@tanstack/react-router"
 
 type MarkdownProps = {
   content: string
@@ -25,18 +25,20 @@ export function Markdown({ content, className }: MarkdownProps) {
     replace: (domNode) => {
       if (domNode instanceof Element) {
         // Customize rendering of specific elements
-        if (domNode.name === 'a') {
+        if (domNode.name === "a") {
           // Handle links
           const href = domNode.attribs.href
-          if (href.startsWith('/')) {
+          if (href.startsWith("/")) {
             // Internal link - use your router's Link component
             return (
-              <Link to={href}>{domToReact(domNode.children as any, options)}</Link>
+              <Link to={href}>
+                {domToReact(domNode.children as any, options)}
+              </Link>
             )
           }
         }
 
-        if (domNode.name === 'img') {
+        if (domNode.name === "img") {
           // Add lazy loading to images
           return (
             <img
@@ -47,7 +49,7 @@ export function Markdown({ content, className }: MarkdownProps) {
           )
         }
       }
-    },
+    }
   }
 
   return <div className={className}>{parse(result.markup, options)}</div>

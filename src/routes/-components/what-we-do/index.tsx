@@ -2,15 +2,17 @@ import DevelopmentCard from "./development-card"
 import CloudAndDevOpsCard from "./cloud-and-devops-card"
 import DigitalTransformationCard from "./digital-transformation-card"
 import FlexibleSystemArchitectureCard from "./flexible-system-architecture-card"
-import AnimatedContent from "#/components/AnimatedContent";
+import { AnimatedContent } from "#/components"
 
-export default async function WhatWeDo() {
+export default function WhatWeDo() {
   return (
     <div
       id="what-we-do"
-      className="container mx-auto px-8 md:px-0 flex flex-col gap-16"
+      className="container mx-auto px-4 md:px-0 flex flex-col gap-16"
     >
-      <p className="text-6xl text-center font-bold">{"We provide"}</p>
+      <p className="text-4xl md:text-6xl text-center font-bold">
+        {"What we provide"}
+      </p>
       <AnimatedContent
         className="grid md:grid-cols-3 grid-cols-1 gap-4"
         direction="vertical"

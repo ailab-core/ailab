@@ -5,9 +5,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import { getLocale } from '#/paraglide/runtime'
 
 import appCss from '../styles.css?url'
-import Topbar from '#/components/Topbar'
-import Footer from '#/components/Footer'
-import HoverText from '#/components/HoverText'
+import { Topbar, Footer, HoverText } from '#/components'
 
 export const Route = createRootRoute({
   beforeLoad: async () => {

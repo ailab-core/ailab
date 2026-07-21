@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ChevronDownIcon } from "lucide-react"
-import AnimatedContent from "#/components/AnimatedContent"
+import { AnimatedContent } from "#/components"
 
 type ListItem = {
   backgroundIcon: string
@@ -37,11 +37,10 @@ export default function Values() {
 
   return (
     <AnimatedContent
-      className="container mx-auto relative grid grid-cols-1 md:grid-cols-5 justify-center px-8 md:px-0"
-      delay={1.2}
+      className="container mx-auto relative grid grid-cols-1 md:grid-cols-5 justify-center px-4 my-72 md:px-0"
       distance={-50}
     >
-      <p className="text-3xl font-semibold leading-snug col-span-2 text-center md:text-left">
+      <p className="text-2xl md:text-3xl font-semibold leading-snug col-span-2 text-center md:text-left">
         {"With more than 80% of our team comprised of engineers, we embody strong technological expertise and an unwavering commitment to innovation."}
       </p>
       <div className="w-full h-20" />

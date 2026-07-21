@@ -1,4 +1,4 @@
-import { LogoLoop } from "#/components/LogoLoop"
+import { LogoLoop } from "#/components"
 import { cn } from "#/lib/utils"
 
 const COMPANIES = [

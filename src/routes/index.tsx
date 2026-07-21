@@ -12,8 +12,8 @@ function Home() {
   return (
     <div className="space-y-48">
       <Hero />
-      <Values />
       <Partners />
+      <Values />
       <WhatWeDo />
       <Missions />
       <Work />
