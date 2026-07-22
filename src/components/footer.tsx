@@ -32,21 +32,21 @@ export function Footer() {
   const now = new Date()
 
   return (
-    <div className="dark text-foreground bg-background pt-36 pb-6 space-y-12 md:space-y-36 px-4 md:px-0">
+    <div className="dark text-foreground bg-background pt-24 pb-6 space-y-12 md:space-y-36 px-8 md:px-0">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-6">
         <div className="col-span-1 md:col-span-6 flex flex-col gap-4">
           <p className="text-4xl md:text-6xl font-bold mb-2">{"Get In Touch"}</p>
-          <FooterLink>
+          <FooterLink href="mailto:info@ailab.mn">
             <MailIcon />
             {"info@ailab.mn"}
           </FooterLink>
-          <FooterLink>
+          <FooterLink href="tel:+97677772210">
             <PhoneIcon />
             {"+976 7777-2210"}
           </FooterLink>
-          <FooterLink>
+          <FooterLink href="https://maps.app.goo.gl/782ssXajfX7ytFKcA">
             <MapPinIcon className="shrink-0" />
-            {"#1102, IC Tower, Paris street, 1st khoroo, SB District, UB, Mongolia"}
+            {"#1102, IC Tower, Paris St 42, 1st khoroo, SBD, Ulaanbaatar 14230"}
           </FooterLink>
         </div>
         <div className="col-span-1 md:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4">
@@ -54,6 +54,9 @@ export function Footer() {
             <p className="text-lg font-semibold text-muted-foreground">
               {"Links"}
             </p>
+            <FooterLink href="/">
+              {"Home"}
+            </FooterLink>
             <FooterLink>
               {"Blogs"}
             </FooterLink>
@@ -65,7 +68,7 @@ export function Footer() {
             <FooterLink href="/finace">
               {"Finace"}
             </FooterLink>
-            <FooterLink>
+            <FooterLink href="https://prop.mn/">
               {"Prop"}
             </FooterLink>
             <FooterLink>
@@ -74,7 +77,7 @@ export function Footer() {
             <FooterLink>
               {"Efund"}
             </FooterLink>
-            <FooterLink>
+            <FooterLink href="/stocklab">
               {"StockLab"}
             </FooterLink>
           </div>

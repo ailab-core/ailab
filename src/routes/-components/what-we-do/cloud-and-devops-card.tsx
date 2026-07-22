@@ -8,10 +8,10 @@ import { BetweenHorizontalEndIcon } from "#/components/animate-ui/icons/between-
 export default function CloudAndDevOpsCard() {
   return (
     <AnimateIcon
-      className="dark bg-background text-foreground px-4 py-4 flex flex-col gap-8 overflow-hidden group"
+      className="dark bg-background text-foreground p-4 flex flex-col gap-8 overflow-hidden group"
       animateOnHover
     >
-      <p className="flex items-center gap-2 text-2xl font-black uppercase">
+      <p className="flex items-center gap-2 text-lg md:text-2xl font-black uppercase">
         <CloudLightningIcon className="inline-block stroke-3" />
         {"Cloud & DevOps"}
       </p>
@@ -26,7 +26,7 @@ export default function CloudAndDevOpsCard() {
           <LayersIcon className="bg-card p-2 size-14 border group-hover:border-sky-300 shrink-0 group-hover:text-sky-300 duration-300 transition-all" />
         </div>
       </div>
-      <ul className="list-none list-inside text-lg font-semibold leading-tight">
+      <ul className="list-none list-inside text-sm md:text-lg font-semibold leading-tight">
         <li>{"Cloud implementation"}</li>
         <li>{"CI/CD automation"}</li>
         <li>{"Data scalability"}</li>

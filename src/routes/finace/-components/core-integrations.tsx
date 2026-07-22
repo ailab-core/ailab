@@ -14,12 +14,12 @@ export default function CoreIntegrations() {
   return (
     <div className="container mx-auto px-8 md:px-0 flex flex-col items-center justify-between gap-16 py-32">
       <AnimatedContent direction="vertical">
-        <p className="text-3xl md:text-4xl font-bold">
+        <p className="text-2xl md:text-4xl font-bold">
           {"Core integrations"}
         </p>
       </AnimatedContent>
       <AnimatedContent
-        className="w-full grid grid-cols-1 md:grid-cols-6 items-center md:items-start justify-center gap-8"
+        className="w-full grid grid-cols-2 md:grid-cols-6 items-center md:items-start justify-center gap-8"
         delay={.5}
       >
         <LogoItem

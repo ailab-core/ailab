@@ -14,7 +14,7 @@ export default function DigitalTransformationCard() {
       animateOnHover
       loop
     >
-      <p className="flex items-center gap-2 text-2xl font-black uppercase px-4">
+      <p className="flex items-center gap-2 text-lg md:text-2xl font-black uppercase px-4">
         <BotIcon className="inline-block stroke-3" />
         {"Digital transformation"}
       </p>
@@ -71,7 +71,7 @@ export default function DigitalTransformationCard() {
           hoverSpeed={0}
         />
       </div>
-      <ul className="list-none list-inside text-lg font-semibold leading-tight px-4">
+      <ul className="list-none list-inside text-sm md:text-lg font-semibold leading-tight px-4">
         <li>{"AI based data processing"}</li>
         <li>{"Business process automation"}</li>
         <li>{"Fintech solutions, Risk assessment, and Credit scoring"}</li>

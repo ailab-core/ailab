@@ -97,7 +97,7 @@ export default function Partners() {
         direction="right"
         className="pointer-events-auto"
         logoHeight={60}
-        gap={20}
+        gap={30}
         hoverSpeed={0}
         fadeOut
         fadeOutColor="#ffffff"
@@ -109,7 +109,7 @@ export default function Partners() {
         direction="right"
         className="pointer-events-auto"
         logoHeight={60}
-        gap={20}
+        gap={30}
         hoverSpeed={0}
         fadeOut
         fadeOutColor="#ffffff"

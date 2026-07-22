@@ -1,7 +1,7 @@
 import { format } from "date-fns"
 import type { Post } from "content-collections"
 
-export default function BlogItem({ post }: { post: Post }) {
+export function BlogItem({ post }: { post: Post }) {
   return (
     <div
       className="grid grid-cols-12 gap-16 py-12 first:pt-0 last:pb-0 group cursor-pointer relative hover:cursor-none"

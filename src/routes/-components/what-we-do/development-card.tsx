@@ -34,7 +34,7 @@ export default function DevelopmentCard() {
       className="dark bg-background text-foreground p-4 flex flex-col gap-12 overflow-hidden relative group"
       animateOnHover
     >
-      <p className="flex items-center gap-2 text-2xl font-black uppercase">
+      <p className="flex items-center gap-2 text-lg md:text-2xl font-black uppercase">
         <ChevronLeftRightIcon className="inline-block stroke-3" />
         {"Development"}
       </p>
@@ -66,7 +66,7 @@ export default function DevelopmentCard() {
           </p>
         </div>
       </div>
-      <p className="text-lg font-semibold leading-tight">
+      <p className="text-sm md:text-lg font-semibold leading-tight">
         {"Building adaptive financial software solutions that merge technology and design to create unique, user-first experiences"}
       </p>
     </AnimateIcon>

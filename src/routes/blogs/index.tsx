@@ -1,4 +1,4 @@
-import BlogItem from '#/components/BlogItem'
+import { BlogItem } from '#/components'
 import { createFileRoute } from '@tanstack/react-router'
 import { allPosts } from 'content-collections'
 

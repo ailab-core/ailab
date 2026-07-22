@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { ChevronDownIcon } from "lucide-react"
 import { AnimatedContent } from "#/components"
+import { cn } from "#/lib/utils"
 
 type ListItem = {
   backgroundIcon: string
@@ -37,14 +38,14 @@ export default function Values() {
 
   return (
     <AnimatedContent
-      className="container mx-auto relative grid grid-cols-1 md:grid-cols-5 justify-center px-4 my-72 md:px-0"
+      className="container mx-auto relative grid grid-cols-1 md:grid-cols-5 justify-center px-8 md:px-0"
       distance={-50}
     >
-      <p className="text-2xl md:text-3xl font-semibold leading-snug col-span-2 text-center md:text-left">
+      <p className="text-lg md:text-3xl font-medium col-span-2">
         {"With more than 80% of our team comprised of engineers, we embody strong technological expertise and an unwavering commitment to innovation."}
       </p>
       <div className="w-full h-20" />
-      <div className="flex flex-col items-end gap-6 text-2xl md:text-3xl col-span-2">
+      <div className="flex flex-col items-start md:items-end gap-6 text-2xl md:text-3xl col-span-2">
         {ITEMS.map((item: any) => (
           <div
             key={item.title}
@@ -74,13 +75,18 @@ export default function Values() {
                 </AnimatedContent>
               </div>
             )}
-            <div className="flex items-center justify-end gap-2">
+            <div className="flex items-center justify-start md:justify-end gap-2">
               <p className="font-bold text-right"> {item.title} </p>
-              <ChevronDownIcon className="md:inline-block hidden text-muted-foreground group-hover:text-foreground mt-0 group-hover:-mt-2 transition-all duration-100" />
+              <ChevronDownIcon
+                className={cn(
+                  "inline-block mt-0 group-hover:-mb-2 transition-all duration-300",
+                  active && active.backgroundIcon === item.backgroundIcon && "rotate-180"
+                )}
+              />
             </div>
             {active && active.title === item.title && (
               <AnimatedContent distance={-10}>
-                <p className="text-xl md:text-xl text-right leading-snug text-muted-foreground">
+                <p className="text-base md:text-xl md:text-right leading-snug text-muted-foreground">
                   {item.body}
                 </p>
               </AnimatedContent>

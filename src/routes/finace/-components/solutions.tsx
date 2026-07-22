@@ -1,5 +1,5 @@
-import { AnimatedContent } from "#/components";
-import { cn } from "#/lib/utils";
+import { AnimatedContent } from "#/components"
+import { cn } from "#/lib/utils"
 
 const SOLUTIONS = [
   {
@@ -55,20 +55,24 @@ export default function Solutions() {
           <AnimatedContent
             className={cn("flex flex-col gap-8 md:gap-16 order-last", index % 2 === 0 ? "md:order-first" : "md:order-last")}
             direction="vertical"
+            delay={.5}
           >
-            <p className="text-4xl md:text-6xl font-bold">
+            <p className="text-3xl md:text-6xl font-bold">
               {solution.title}
             </p>
-            <p className="text-xl leading-relaxed">
+            <p className="text-lg md:text-2xl leading-relaxed">
               {solution.description}
             </p>
-            <ul className="text-lg font-bold space-y-2">
+            <ul className="text-base md:text-xl font-bold space-y-2">
               {solution.features.map((feature, idx) => (
                 <li key={idx}> {feature} </li>
               ))}
             </ul>
           </AnimatedContent>
-          <AnimatedContent className="w-full h-full" direction="vertical">
+          <AnimatedContent
+            direction="vertical"
+            delay={.5}
+          >
             <img
               src={solution.image}
               alt="stock"

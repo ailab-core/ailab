@@ -1,39 +1,11 @@
-import { cn } from "#/lib/utils"
-import { useEffect, useState } from "react"
 import { AnimatedContent } from "./"
 import { Link } from "@tanstack/react-router"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./ui/navigation-menu"
 
 export function Topbar() {
-  const [top, setTop] = useState<boolean>(true)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= 300) {
-        setTop(false)
-      }
-
-      if (window.scrollY < 300) {
-        setTop(true)
-      }
-    }
-
-    window.document.addEventListener("scroll", handleScroll)
-
-    return () => {
-      window.document.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
   return (
-    <div className="w-full">
-      <div
-        className={cn(
-          "bg-transparent absolute top-0 left-0 -z-10 transition-all duration-300 w-full h-full",
-          top ? "backdrop-blur-none" : "backdrop-blur-sm"
-        )}
-      />
-      <div className="container mx-auto flex justify-between items-center py-6">
+    <div className="absolute top-0 w-full z-50">
+      <div className="container mx-auto flex justify-between items-center py-6 px-8 md:px-0">
         <Link to="/">
           <img
             className="invert"
@@ -58,7 +30,10 @@ export function Topbar() {
                   >
                     {"Finace"}
                   </NavigationMenuLink>
-                  <NavigationMenuLink className="w-full items-start">
+                  <NavigationMenuLink
+                    href="https://prop.mn/"
+                    className="w-full items-start"
+                  >
                     {"Prop"}
                   </NavigationMenuLink>
                   <NavigationMenuLink className="w-full items-start">
@@ -67,7 +42,10 @@ export function Topbar() {
                   <NavigationMenuLink className="w-full items-start">
                     {"Efund"}
                   </NavigationMenuLink>
-                  <NavigationMenuLink className="w-full items-start">
+                  <NavigationMenuLink
+                    href="/stocklab"
+                    className="w-full items-start"
+                  >
                     {"StockLab"}
                   </NavigationMenuLink>
                 </NavigationMenuContent>

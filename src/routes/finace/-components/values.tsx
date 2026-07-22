@@ -1,6 +1,5 @@
 import {
   BadgeCheckIcon,
-  MessageCircleHeartIcon,
   ClipboardPenLineIcon,
   FolderLockIcon,
   LockKeyholeIcon,
@@ -50,23 +49,27 @@ const VALUES = [
 export default function Values() {
   return (
     <div className="dark bg-background text-foreground">
-      <div className="w-full md:max-w-7xl container flex flex-col justify-center items-center gap-12 py-36 relative mx-auto px-8 md:px-0">
-        <p className="text-2xl md:text-4xl font-bold flex items-center gap-4">
-          <MessageCircleHeartIcon className="size-8" />
-          {"Values"}
-        </p>
-        <p className="text-2xl md:text-4xl max-w-5xl text-center font-bold">
-          {"We exceed customer expectations with quality solutions, reliable services, and continuous improvement while fostering trust and long-term partnerships."}
-        </p>
-        <div className="max-w-7xl container grid grid-cols-1 md:grid-cols-3 gap-y-8 mt-12">
+      <div className="container mx-auto flex flex-col justify-center items-start gap-12 py-36 relative px-8 md:px-0">
+        <AnimatedContent>
+          <p className="text-3xl md:text-6xl font-bold">
+            {"Values"}
+          </p>
+        </AnimatedContent>
+        <AnimatedContent delay={.2}>
+          <p className="text-xl md:text-3xl max-w-full md:max-w-3xl">
+            {"We exceed customer expectations with quality solutions, reliable services, and continuous improvement while fostering trust and long-term partnerships."}
+          </p>
+        </AnimatedContent>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-24 mt-12">
           {VALUES.map(value => (
             <AnimatedContent
               key={value.title}
-              className="dark w-2xl max-w-full flex flex-col gap-4 p-8 rounded-xl"
+              className="dark w-2xl max-w-full flex flex-col gap-4 rounded-xl"
+              delay={.4}
             >
               {/* <value.icon className="size-12 text-sky-500" /> */}
-              <p className="text-3xl text-foreground font-bold"> {value.title} </p>
-              <p className="text-xl text-muted-foreground"> {value.description} </p>
+              <p className="text-2xl md:text-4xl text-foreground font-bold"> {value.title} </p>
+              <p className="text-md md:text-xl text-muted-foreground"> {value.description} </p>
             </AnimatedContent>
           ))}
         </div>

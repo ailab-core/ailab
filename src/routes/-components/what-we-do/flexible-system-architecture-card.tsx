@@ -30,7 +30,7 @@ export default function FlexibleSystemArchitectureCard() {
       animateOnHover
     >
       <div className="px-4 flex flex-col gap-12 h-full">
-        <p className="flex items-center gap-2 text-2xl font-black uppercase">
+        <p className="flex items-center gap-2 text-lg md:text-2xl font-black uppercase">
           <BlocksIcon className="inline-block stroke-3" />
           {"Flexible System Architecture"}
         </p>
@@ -76,7 +76,7 @@ export default function FlexibleSystemArchitectureCard() {
             </div>
           </div>
         </div>
-        <p className="text-lg font-semibold leading-tight">
+        <p className="text-sm md:text-lg font-semibold leading-tight">
           {"Our flexible system architecture adapts to your growing business needs. With modular design and scalable infrastructure, it enables seamless integration, faster updates, and reliable performance—ensuring your technology evolves without disruption."}
         </p>
       </div>

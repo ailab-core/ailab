@@ -8,9 +8,9 @@ export default function WhatWeDo() {
   return (
     <div
       id="what-we-do"
-      className="container mx-auto px-4 md:px-0 flex flex-col gap-16"
+      className="container mx-auto px-8 md:px-0 flex flex-col gap-16"
     >
-      <p className="text-4xl md:text-6xl text-center font-bold">
+      <p className="text-3xl md:text-6xl text-center font-bold">
         {"What we provide"}
       </p>
       <AnimatedContent

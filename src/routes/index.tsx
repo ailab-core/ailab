@@ -10,10 +10,10 @@ export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
   return (
-    <div className="space-y-48">
+    <div className="space-y-24 md:space-y-48">
       <Hero />
-      <Partners />
       <Values />
+      <Partners />
       <WhatWeDo />
       <Missions />
       <Work />

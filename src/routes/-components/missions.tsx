@@ -2,9 +2,9 @@ import { AnimatedContent } from "#/components"
 
 export default function Missions() {
   return (
-    <div className="dark relative mx-auto bg-background pt-32 md:pt-64 pb-32 md:pb-56 px-4 md:py-0">
-      <div className="absolute top-4 left-4 mx-auto">
-        <p className="text-4xl md:text-6xl font-bold text-foreground">
+    <div className="dark relative mx-auto bg-background pt-32 md:pt-64 pb-32 md:pb-56 px-8 md:px-0">
+      <div className="absolute top-8 md:top-4 left-8 md:left-4 mx-auto">
+        <p className="text-3xl md:text-6xl font-bold text-foreground">
           {"Missions"}
         </p>
       </div>
