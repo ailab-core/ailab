@@ -1,99 +1,105 @@
-import { useState } from "react"
-import { ChevronDownIcon } from "lucide-react"
-import { AnimatedContent } from "#/components"
-import { cn } from "#/lib/utils"
+import type { CSSProperties } from 'react'
+import { useReveal } from '#/lib/use-reveal'
 
-type ListItem = {
-  backgroundIcon: string
-  title: string
-  body: string
-}
-
-const ITEMS: Array<ListItem> = [
+const VALUES = [
   {
-    backgroundIcon: "/assets/icons/target.png",
-    title: "Team",
-    body: "Professional team with comprehensive system development experience, delivering scalable, secure, and innovative software solutions across diverse industries",
+    title: 'Team',
+    icon: '/assets/icons/target.png',
+    body: 'Engineers with deep system development experience, delivering scalable, secure software across industries.',
   },
   {
-    backgroundIcon: "/assets/icons/chat-bubble.png",
-    title: "Collaboration",
-    body: "Building long-term projects and strategic partnerships through reliability, collaboration, and exceptional technology solutions."
+    title: 'Collaboration',
+    icon: '/assets/icons/chat-bubble.png',
+    body: 'Long-term projects and strategic partnerships built on reliability and shared ownership.',
   },
   {
-    backgroundIcon: "/assets/icons/hash.png",
-    title: "Technology",
-    body: "Offering professional, reliable, and stable system development and infrastructure services that ensure security, scalability, performance, and operational excellence."
+    title: 'Technology',
+    icon: '/assets/icons/hash.png',
+    body: 'Stable development and infrastructure services with security, scalability, and performance built in.',
   },
   {
-    backgroundIcon: "/assets/icons/tools.png",
-    title: "Research & Development",
-    body: "Promoting research excellence through academic partnerships, international collaboration, and continuous human resource training and development."
-  }
+    title: 'Research & Development',
+    icon: '/assets/icons/tools.png',
+    body: 'Academic partnerships, international collaboration, and continuous training for our people.',
+  },
 ]
 
 export default function Values() {
-  const [active, setActive] = useState<ListItem | null>(null)
-  const [hover, setHover] = useState<ListItem | null>(null)
+  const listRef = useReveal<HTMLUListElement>()
 
   return (
-    <AnimatedContent
-      className="container mx-auto relative grid grid-cols-1 md:grid-cols-5 justify-center px-8 md:px-0"
-      distance={-50}
-    >
-      <p className="text-lg md:text-3xl font-medium col-span-2">
-        {"With more than 80% of our team comprised of engineers, we embody strong technological expertise and an unwavering commitment to innovation."}
-      </p>
-      <div className="w-full h-20" />
-      <div className="flex flex-col items-start md:items-end gap-6 text-2xl md:text-3xl col-span-2">
-        {ITEMS.map((item: any) => (
-          <div
-            key={item.title}
-            className="flex flex-col gap-2 group cursor-pointer"
-            onClick={() => setActive(active?.title === item.title ? null : item)}
-            onMouseEnter={() => !active && setHover(hover?.title === item.title ? null : item)}
-            onMouseLeave={() => setHover(null)}
-          >
-            {((active && active.backgroundIcon === item.backgroundIcon) || (hover && hover.backgroundIcon === item.backgroundIcon)) && (
-              <div className="hidden md:inline-block absolute -top-12 left-1/2 -translate-x-1/2 opacity-80 duration-500 -z-10">
-                <AnimatedContent>
-                  <img
-                    width={386}
-                    height={386}
-                    src={(active && active.backgroundIcon === item.backgroundIcon)
-                      ? active.backgroundIcon
-                      : (hover && hover.backgroundIcon === item.backgroundIcon)
-                        ? hover.backgroundIcon
-                        : ""
-                    }
-                    alt={(active && active.backgroundIcon === item.backgroundIcon)
-                      ? active.title
-                      : (hover && hover.backgroundIcon === item.backgroundIcon)
-                        ? hover.backgroundIcon
-                        : ""}
-                  />
-                </AnimatedContent>
-              </div>
-            )}
-            <div className="flex items-center justify-start md:justify-end gap-2">
-              <p className="font-bold text-right"> {item.title} </p>
-              <ChevronDownIcon
-                className={cn(
-                  "inline-block mt-0 group-hover:-mb-2 transition-all duration-300",
-                  active && active.backgroundIcon === item.backgroundIcon && "rotate-180"
-                )}
-              />
-            </div>
-            {active && active.title === item.title && (
-              <AnimatedContent distance={-10}>
-                <p className="text-base md:text-xl md:text-right leading-snug text-muted-foreground">
-                  {item.body}
-                </p>
-              </AnimatedContent>
-            )}
-          </div>
-        ))}
+    <section className="shell">
+      <div className="grid gap-6 md:grid-cols-12 md:items-end">
+        <div className="md:col-span-7">
+          <p className="eyebrow mb-5">{'Our team'}</p>
+          <h2 className="display text-4xl md:text-6xl">
+            {'More than 80% of our team are engineers'}
+          </h2>
+        </div>
+        <p className="text-graphite md:col-span-4 md:col-start-9 md:text-lg">
+          {
+            'We design, build, and run the systems ourselves, from core banking integrations to the apps customers use every day.'
+          }
+        </p>
       </div>
-    </AnimatedContent>
+      <ul
+        ref={listRef}
+        className="mt-14 grid gap-x-3 gap-y-12 sm:grid-cols-2 md:mt-20 lg:grid-cols-4"
+        onPointerMove={(event) => {
+          const tile = (event.target as HTMLElement).closest<HTMLElement>(
+            '[data-tile]',
+          )
+          if (!tile) return
+          const rect = tile.getBoundingClientRect()
+          const x = (event.clientX - rect.left) / rect.width - 0.5
+          const y = (event.clientY - rect.top) / rect.height - 0.5
+          tile.style.setProperty('--tilt-x', `${y * -18}deg`)
+          tile.style.setProperty('--tilt-y', `${x * 22}deg`)
+        }}
+      >
+        {VALUES.map((value, index) => (
+          <li
+            key={value.title}
+            className="group"
+            style={{ '--i': index } as CSSProperties}
+          >
+            <div
+              data-tile
+              onPointerLeave={(event) => {
+                event.currentTarget.style.removeProperty('--tilt-x')
+                event.currentTarget.style.removeProperty('--tilt-y')
+              }}
+              className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-mist transition-colors duration-500 group-hover:bg-hairline"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute bottom-[12%] h-5 w-2/5 rounded-full bg-ink/15 blur-lg"
+                style={{
+                  animation: `levitate 7s ${index * -1.7}s ease-in-out infinite`,
+                }}
+              />
+              <div
+                className="size-3/4 perspective-[800px]"
+                style={{
+                  animation: `float 7s ${index * -1.7}s ease-in-out infinite`,
+                }}
+              >
+                <img
+                  src={value.icon}
+                  alt=""
+                  width={500}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
+                  className="size-full object-contain transition-transform duration-500 ease-out [transform:rotateX(var(--tilt-x,0deg))_rotateY(var(--tilt-y,0deg))] group-hover:scale-105"
+                />
+              </div>
+            </div>
+            <h3 className="heading mt-6 text-2xl">{value.title}</h3>
+            <p className="mt-3 max-w-[22rem] text-graphite">{value.body}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }

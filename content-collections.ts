@@ -1,5 +1,18 @@
 import { defineCollection, defineConfig } from '@content-collections/core'
+import rehypeSlug from 'rehype-slug'
+import rehypeStringify from 'rehype-stringify'
+import remarkGfm from 'remark-gfm'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import { unified } from 'unified'
 import * as z from 'zod'
+
+const markdown = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeSlug)
+  .use(rehypeStringify)
 
 const posts = defineCollection({
   name: 'posts',
@@ -12,6 +25,11 @@ const posts = defineCollection({
     description: z.string().optional(),
     thumbnail: z.string(),
     content: z.string(),
+  }),
+  transform: async (post) => ({
+    ...post,
+    slug: post._meta.path,
+    html: String(await markdown.process(post.content)),
   }),
 })
 

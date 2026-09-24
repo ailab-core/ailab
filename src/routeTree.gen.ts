@@ -10,23 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as StocklabIndexRouteImport } from './routes/stocklab/index'
-import { Route as FinaceIndexRouteImport } from './routes/finace/index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
+import { Route as BlogsSlugRouteImport } from './routes/blogs/$slug'
+import { Route as FinaceIndexRouteImport } from './routes/finace/index'
+import { Route as StocklabIndexRouteImport } from './routes/stocklab/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StocklabIndexRoute = StocklabIndexRouteImport.update({
-  id: '/stocklab/',
-  path: '/stocklab/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FinaceIndexRoute = FinaceIndexRouteImport.update({
-  id: '/finace/',
-  path: '/finace/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
@@ -34,15 +25,32 @@ const BlogsIndexRoute = BlogsIndexRouteImport.update({
   path: '/blogs/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogsSlugRoute = BlogsSlugRouteImport.update({
+  id: '/blogs/$slug',
+  path: '/blogs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinaceIndexRoute = FinaceIndexRouteImport.update({
+  id: '/finace/',
+  path: '/finace/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StocklabIndexRoute = StocklabIndexRouteImport.update({
+  id: '/stocklab/',
+  path: '/stocklab/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
   '/blogs/': typeof BlogsIndexRoute
   '/finace/': typeof FinaceIndexRoute
   '/stocklab/': typeof StocklabIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
   '/blogs': typeof BlogsIndexRoute
   '/finace': typeof FinaceIndexRoute
   '/stocklab': typeof StocklabIndexRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
   '/blogs/': typeof BlogsIndexRoute
   '/finace/': typeof FinaceIndexRoute
   '/stocklab/': typeof StocklabIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blogs/' | '/finace/' | '/stocklab/'
+  fullPaths: '/' | '/blogs/$slug' | '/blogs/' | '/finace/' | '/stocklab/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blogs' | '/finace' | '/stocklab'
-  id: '__root__' | '/' | '/blogs/' | '/finace/' | '/stocklab/'
+  to: '/' | '/blogs/$slug' | '/blogs' | '/finace' | '/stocklab'
+  id: '__root__' | '/' | '/blogs/$slug' | '/blogs/' | '/finace/' | '/stocklab/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogsSlugRoute: typeof BlogsSlugRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
   FinaceIndexRoute: typeof FinaceIndexRoute
   StocklabIndexRoute: typeof StocklabIndexRoute
@@ -78,11 +88,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/stocklab/': {
-      id: '/stocklab/'
-      path: '/stocklab'
-      fullPath: '/stocklab/'
-      preLoaderRoute: typeof StocklabIndexRouteImport
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/blogs'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs/$slug': {
+      id: '/blogs/$slug'
+      path: '/blogs/$slug'
+      fullPath: '/blogs/$slug'
+      preLoaderRoute: typeof BlogsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finace/': {
@@ -92,11 +109,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinaceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blogs/': {
-      id: '/blogs/'
-      path: '/blogs'
-      fullPath: '/blogs/'
-      preLoaderRoute: typeof BlogsIndexRouteImport
+    '/stocklab/': {
+      id: '/stocklab/'
+      path: '/stocklab'
+      fullPath: '/stocklab/'
+      preLoaderRoute: typeof StocklabIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogsSlugRoute: BlogsSlugRoute,
   BlogsIndexRoute: BlogsIndexRoute,
   FinaceIndexRoute: FinaceIndexRoute,
   StocklabIndexRoute: StocklabIndexRoute,

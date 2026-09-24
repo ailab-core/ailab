@@ -1,30 +1,47 @@
-import DevelopmentCard from "./development-card"
-import CloudAndDevOpsCard from "./cloud-and-devops-card"
-import DigitalTransformationCard from "./digital-transformation-card"
-import FlexibleSystemArchitectureCard from "./flexible-system-architecture-card"
-import { AnimatedContent } from "#/components"
+import { SectionHeading } from '#/components'
+import { useReveal } from '#/lib/use-reveal'
+import { Architecture } from './architecture'
+import { Automation } from './automation'
+import { CloudDevOps } from './cloud-devops'
+import { CreditScoring } from './credit-scoring'
+import { DataProcessing } from './data-processing'
+import { Development } from './development'
 
 export default function WhatWeDo() {
+  const gridRef = useReveal<HTMLDivElement>()
+
   return (
-    <div
+    <section
       id="what-we-do"
-      className="container mx-auto px-8 md:px-0 flex flex-col gap-16"
+      className="dark bg-background py-24 text-foreground md:py-36"
     >
-      <p className="text-3xl md:text-6xl text-center font-bold">
-        {"What we provide"}
-      </p>
-      <AnimatedContent
-        className="grid md:grid-cols-3 grid-cols-1 gap-4"
-        direction="vertical"
-        distance={-50}
-      >
-        <DevelopmentCard />
-        <div className="flex flex-col gap-4 overflow-hidden">
-          <CloudAndDevOpsCard />
-          <DigitalTransformationCard />
+      <div className="shell flex flex-col gap-12 md:gap-16">
+        <SectionHeading
+          eyebrow="Services"
+          title="What we provide"
+          intro="End-to-end engineering for financial institutions: product development, infrastructure, automation, and the architecture that ties them together."
+        />
+        <div
+          ref={gridRef}
+          className="grid gap-3 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[27rem] *:nth-2:[--i:1] *:nth-3:[--i:2] *:nth-4:[--i:3] *:nth-5:[--i:4] *:nth-6:[--i:5]"
+          onPointerMove={(event) => {
+            const card = (event.target as HTMLElement).closest<HTMLElement>(
+              '[data-card]',
+            )
+            if (!card) return
+            const rect = card.getBoundingClientRect()
+            card.style.setProperty('--x', `${event.clientX - rect.left}px`)
+            card.style.setProperty('--y', `${event.clientY - rect.top}px`)
+          }}
+        >
+          <Development />
+          <CloudDevOps />
+          <CreditScoring />
+          <DataProcessing />
+          <Automation />
+          <Architecture />
         </div>
-        <FlexibleSystemArchitectureCard />
-      </AnimatedContent>
-    </div>
+      </div>
+    </section>
   )
 }

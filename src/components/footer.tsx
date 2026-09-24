@@ -1,104 +1,138 @@
-import { cn } from "#/lib/utils";
-import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
-import type { AnchorHTMLAttributes } from "react"
+import { Link } from '@tanstack/react-router'
+import type { ReactNode } from 'react'
+import { PRODUCTS } from '#/lib/navigation'
 
-function SocialIcon({ name, href }: { name: string; href: string }) {
+const SOCIALS = [
+  {
+    name: 'facebook',
+    label: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61569157168011',
+  },
+  {
+    name: 'linkedin',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/ailabllc',
+  },
+  { name: 'github', label: 'GitHub', href: 'https://github.com/ailab-core' },
+]
+
+function Column({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="p-3 size-12 hover:bg-sky-200 transition-colors duration-300 group"
-    >
-      <img src={`/assets/brands/${name}.svg`} alt={name} className="invert group-hover:invert-0 transition-all duration-300" />
-    </a>
+    <div className="flex flex-col gap-3">
+      <p className="eyebrow">{title}</p>
+      {children}
+    </div>
   )
 }
 
-function FooterLink({
-  className,
-  ...props
-}: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  return (
-    <a
-      className={cn("text-xl font-semibold border-b-2 border-b-transparent hover:border-b-white flex items-center gap-4 w-fit transition-all duration-300 cursor-pointer", className)}
-      href=""
-      {...props}
-    />
-  )
-}
+const linkClass = 'w-fit text-base transition-colors hover:text-brand'
 
 export function Footer() {
   const now = new Date()
 
   return (
-    <div className="dark text-foreground bg-background pt-24 pb-6 space-y-12 md:space-y-36 px-8 md:px-0">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-6">
-        <div className="col-span-1 md:col-span-6 flex flex-col gap-4">
-          <p className="text-4xl md:text-6xl font-bold mb-2">{"Get In Touch"}</p>
-          <FooterLink href="mailto:info@ailab.mn">
-            <MailIcon />
-            {"info@ailab.mn"}
-          </FooterLink>
-          <FooterLink href="tel:+97677772210">
-            <PhoneIcon />
-            {"+976 7777-2210"}
-          </FooterLink>
-          <FooterLink href="https://maps.app.goo.gl/782ssXajfX7ytFKcA">
-            <MapPinIcon className="shrink-0" />
-            {"#1102, IC Tower, Paris St 42, 1st khoroo, SBD, Ulaanbaatar 14230"}
-          </FooterLink>
-        </div>
-        <div className="col-span-1 md:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4">
-          <div className="flex flex-col gap-4">
-            <p className="text-lg font-semibold text-muted-foreground">
-              {"Links"}
-            </p>
-            <FooterLink href="/">
-              {"Home"}
-            </FooterLink>
-            <FooterLink>
-              {"Blogs"}
-            </FooterLink>
-          </div>
-          <div className="flex flex-col gap-4">
-            <p className="text-lg font-semibold text-muted-foreground">
-              {"Products"}
-            </p>
-            <FooterLink href="/finace">
-              {"Finace"}
-            </FooterLink>
-            <FooterLink href="https://prop.mn/">
-              {"Prop"}
-            </FooterLink>
-            <FooterLink>
-              {"ShMS"}
-            </FooterLink>
-            <FooterLink>
-              {"Efund"}
-            </FooterLink>
-            <FooterLink href="/stocklab">
-              {"StockLab"}
-            </FooterLink>
+    <footer id="contact" className="bg-mist pt-20 pb-8 md:pt-28">
+      <div className="shell grid gap-16 md:grid-cols-12">
+        <div className="flex flex-col gap-8 md:col-span-6">
+          <p className="eyebrow">{'Contact'}</p>
+          <h2 className="display text-5xl md:text-7xl">
+            {'Let’s build together'}
+          </h2>
+          <div className="flex flex-col gap-2 text-lg">
+            <a
+              href="mailto:info@ailab.mn"
+              className="w-fit border-b border-brand transition-colors hover:text-brand"
+            >
+              {'info@ailab.mn'}
+            </a>
+            <a
+              href="tel:+97677772210"
+              className="w-fit border-b border-transparent transition-colors hover:text-brand"
+            >
+              {'+976 7777-2210'}
+            </a>
           </div>
         </div>
-      </div>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 items-center gap-6">
-        <div className="col-span-1 md:col-span-6 flex gap-2">
-          <SocialIcon
-            name="facebook"
-            href="https://www.facebook.com/profile.php?id=61569157168011"
-          />
-          <SocialIcon
-            name="linkedin"
-            href="https://www.linkedin.com/company/ailabllc"
-          />
-          <SocialIcon name="github" href="https://github.com/ailab-core" />
+        <div className="grid grid-cols-2 gap-8 md:col-span-6 md:col-start-7 md:grid-cols-[1fr_1fr_1.5fr]">
+          <Column title="Company">
+            <Link to="/" className={linkClass}>
+              {'Home'}
+            </Link>
+            <Link to="/blogs" className={linkClass}>
+              {'Blog'}
+            </Link>
+          </Column>
+          <Column title="Products">
+            {PRODUCTS.map((product) => {
+              if (product.link) {
+                return (
+                  <Link
+                    key={product.label}
+                    {...product.link}
+                    className={linkClass}
+                  >
+                    {product.label}
+                  </Link>
+                )
+              }
+              if (product.href) {
+                return (
+                  <a
+                    key={product.label}
+                    href={product.href}
+                    className={linkClass}
+                  >
+                    {product.label}
+                  </a>
+                )
+              }
+              return (
+                <span key={product.label} className="text-base text-graphite">
+                  {product.label}
+                </span>
+              )
+            })}
+          </Column>
+          <Column title="Office">
+            <a
+              href="https://maps.app.goo.gl/782ssXajfX7ytFKcA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              {'#1102, IC Tower'}
+              <br />
+              {'Paris St 42, 1st khoroo'}
+              <br />
+              {'Sükhbaatar, Ulaanbaatar 14230'}
+            </a>
+          </Column>
         </div>
-        <div className="col-span-1 md:col-span-6">
-          <p className="text-sm">{`Copyright © ${now.getFullYear()} AILab. All rights reserved.`}</p>
+      </div>
+      <div className="shell mt-20 md:mt-28">
+        <div className="flex flex-col-reverse gap-6 border-t border-ink/10 pt-6 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm text-graphite">{`© ${now.getFullYear()} AILab LLC. All rights reserved.`}</p>
+          <ul className="flex gap-1">
+            {SOCIALS.map((social) => (
+              <li key={social.name}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="flex size-10 items-center justify-center rounded-full transition-colors hover:bg-white"
+                >
+                  <img
+                    src={`/assets/brands/${social.name}.svg`}
+                    alt=""
+                    className="size-5"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }

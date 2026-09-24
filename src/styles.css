@@ -1,39 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV@100..900,0&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import "tailwindcss";
+@import '@fontsource-variable/inter/opsz.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(90.1% 0.058 230.902);
-  --accent-foreground: oklch(0.21 0.006 285.885);
+  --paper: #ffffff;
+  --mist: #eef2f9;
+  --ink: #0c1222;
+  --graphite: #525c74;
+  --hairline: #dce2ee;
+  --brand: #1d2b53;
+  --brand-hover: #2b3d72;
+  --brand-soft: #90a3df;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--mist);
+  --secondary-foreground: var(--ink);
+  --muted: var(--mist);
+  --muted-foreground: var(--graphite);
+  --accent: var(--mist);
+  --accent-foreground: var(--ink);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.871 0.006 286.286);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--brand);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
+  --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.21 0.006 285.885);
@@ -45,9 +53,9 @@
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.141 0.005 285.823);
+  --background: var(--ink);
+  --foreground: #f3f5fa;
+  --card: #121a2e;
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.141 0.005 285.823);
   --popover-foreground: oklch(0.985 0 0);
@@ -56,14 +64,14 @@
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
+  --muted-foreground: #a0aac0;
   --accent: oklch(0.274 0.006 286.033);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.274 0.006 286.033);
-  --input: oklch(0.274 0.006 286.033);
-  --ring: oklch(0.442 0.017 285.786);
+  --border: #253049;
+  --input: #253049;
+  --ring: var(--brand-soft);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -80,7 +88,15 @@
 }
 
 @theme inline {
-  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --color-mist: var(--mist);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -130,8 +146,280 @@ body,
     @apply border-border outline-ring/50;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-size: 1rem;
+    line-height: 1.55;
+    letter-spacing: -0.011em;
+    font-feature-settings: 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 500;
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 96rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility brand-mark {
+  aspect-ratio: 476 / 417;
+  background-color: var(--brand);
+  mask: url('/assets/logos/ailab-icon.svg') center / contain no-repeat;
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+@utility heading {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--muted-foreground);
+}
+
+/* One orchestrated load: hero lines rise, the mark settles in after. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translate(4%, 6%) rotate(-4deg);
+  }
+}
+
+.hero-line {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+
+.hero-mark {
+  animation: settle 1.4s cubic-bezier(0.2, 0.7, 0.1, 1) 0.25s both;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-4%) rotate(-2deg);
+  }
+}
+
+@keyframes levitate {
+  50% {
+    scale: 0.75;
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] > * {
+    opacity: 0;
+    translate: 0 4rem;
+    scale: 0.96;
+    transition:
+      opacity 0.8s ease-out,
+      translate 1s cubic-bezier(0.2, 0.7, 0.1, 1),
+      scale 1s cubic-bezier(0.2, 0.7, 0.1, 1);
+    transition-delay: calc(var(--i, 0) * 110ms);
+  }
+
+  [data-reveal][data-visible] > * {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes stage {
+  0%,
+  100% {
+    background-color: var(--background);
+    color: var(--graphite);
+  }
+  12%,
+  70% {
+    background-color: var(--brand);
+    color: #fff;
+  }
+}
+
+@keyframes grow {
+  0%,
+  8% {
+    transform: scaleY(0);
+  }
+  35%,
+  88% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes draw {
+  0%,
+  8% {
+    stroke-dashoffset: 1;
+  }
+  45%,
+  90% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes appear {
+  0%,
+  8% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  14%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fill {
+  0%,
+  10% {
+    transform: scaleX(0);
+  }
+  45%,
+  90% {
+    transform: scaleX(var(--to, 1));
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    color: var(--muted-foreground);
+    border-color: var(--border);
+  }
+  15%,
+  30% {
+    color: var(--brand-soft);
+    border-color: var(--brand-soft);
+  }
+}
+
+@keyframes wander {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(42px, -18px);
+  }
+  66% {
+    transform: translate(-16px, 22px);
+  }
+}
+
+/* Offscreen bento animations are paused so they cost nothing. */
+[data-paused] * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

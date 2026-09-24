@@ -1,91 +1,53 @@
-import { AnimatedContent } from "#/components/animated-content"
+import { CheckIcon } from 'lucide-react'
+import { SectionIntro } from '#/components'
+import { useReveal } from '#/lib/use-reveal'
+import { PLANS } from '../-content'
 
-const PRICING_PLANS = [
-  {
-    name: "Standard",
-    description:
-      "A foundational solution designed for small and medium-sized organizations.",
-    price: "15,840,000 ₮",
-    features: [
-      "Financial nominee system",
-      "Back-office management system",
-      "Primary market trading web platform",
-      "Secondary market trading web platform (basic features)"
-    ],
-  },
-  {
-    name: "Premium",
-    description:
-      "Designed for organizations requiring advanced automation and system integrations.",
-    price: "22,770,000 ₮",
-    features: [
-      "All Standard package features",
-      "Advanced secondary market trading capabilities",
-      "Notification and communication system",
-      "Core mobile application services",
-      "Integration with DAN and E-Barimt"
-    ],
-  },
-  {
-    name: "Enterprise",
-    description:
-      "A comprehensive solution built for large-scale organizations and high-performance trading environments.",
-    price: "32,340,000 ₮",
-    features: [
-      "All Premium package features",
-      "Additional third-party system integrations",
-      "Additional exchange connectivity",
-      "Government bond trading support",
-      "Audit logging",
-      "Bond calculation and management"
-    ],
-  },
-]
 export default function Pricing() {
+  const gridRef = useReveal<HTMLUListElement>()
+
   return (
-    <div className="container mx-auto px-8 md:px-0 flex flex-col items-center justify-between gap-16 py-48">
-      <AnimatedContent
-        className="w-full flex flex-col gap-4"
-        direction="vertical"
-        distance={50}
+    <section className="shell">
+      <SectionIntro
+        eyebrow="Pricing"
+        title="Packages for every brokerage"
+        intro="One-time package prices, tax included. Every package can be tailored to your firm."
+      />
+      <ul
+        ref={gridRef}
+        className="mt-14 grid gap-3 md:mt-20 md:grid-cols-3 *:nth-2:[--i:1] *:nth-3:[--i:2]"
       >
-        <p className="text-3xl md:text-6xl font-bold">
-          {"Pricing"}
-        </p>
-        <p className="text-lg md:text-2xl leading-relaxed">
-          {"Transparent, flexible, and tailored to your needs"}
-        </p>
-      </AnimatedContent>
-      <div className="w-full grid md:grid-cols-3 grid-cols-1 gap-8 bp">
-        {PRICING_PLANS.map((plan) => (
-          <AnimatedContent
+        {PLANS.map((plan) => (
+          <li
             key={plan.name}
-            className="flex flex-col gap-8 group p-4 dark bg-background text-foreground"
-            delay={.5}
+            className="flex flex-col rounded-3xl border border-border p-8 transition-colors hover:border-brand/30"
           >
-            <div className="flex flex-col gap-4">
-              <p className="text-2xl md:text-4xl font-bold">{plan.name}</p>
-              <p className="text-sm md:text-xl text-muted-foreground h-12 md:h-24">{plan.description}</p>
-            </div>
-            <p className="text-2xl md:text-4xl font-semibold">
+            <p className="eyebrow">{plan.name}</p>
+            <p className="display mt-6 text-4xl tabular-nums md:text-5xl">
               {plan.price}
-              <span className="ml-1 text-sm font-normal text-muted-foreground">
-                {"(Tax included)"}
-              </span>
             </p>
-            <ul className="text-sm md:text-lg space-y-2 font-semibold leading-tight">
-              <p className="text-xs md:text-base text-muted-foreground mb-4">
-                {"The package includes the following features:"}
-              </p>
-              {plan.features.map((feature, index) => (
-                <li className="flex items-center gap-2" key={index}>
+            <p className="mt-2 text-sm text-graphite">{'Tax included'}</p>
+            <p className="mt-6 text-graphite">{plan.description}</p>
+            <ul className="mt-8 flex flex-1 flex-col gap-3 border-t border-border pt-8 text-sm">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex gap-3">
+                  <CheckIcon
+                    className="mt-0.5 size-4 shrink-0 text-brand"
+                    aria-hidden="true"
+                  />
                   {feature}
                 </li>
               ))}
             </ul>
-          </AnimatedContent>
+            <a
+              href={`mailto:info@ailab.mn?subject=${encodeURIComponent(`StockLab ${plan.name} package`)}`}
+              className="mt-10 inline-flex h-11 items-center justify-center rounded-full bg-mist text-sm font-medium transition-colors hover:bg-brand hover:text-white"
+            >
+              {`Talk to us about ${plan.name}`}
+            </a>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   )
 }
