@@ -1,5 +1,7 @@
 @import '@fontsource-variable/inter/opsz.css';
 @import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource-variable/source-serif-4/opsz.css';
+@import '@fontsource-variable/source-serif-4/opsz-italic.css';
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
@@ -91,6 +93,7 @@
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-serif: 'Source Serif 4 Variable', Georgia, serif;
   --color-mist: var(--mist);
   --color-ink: var(--ink);
   --color-graphite: var(--graphite);

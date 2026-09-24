@@ -1,4 +1,4 @@
-export * from './blog-card'
+export * from './post-author'
 export * from './post-meta'
 export * from './footer'
 export * from './section-heading'

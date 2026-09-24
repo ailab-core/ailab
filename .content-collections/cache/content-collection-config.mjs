@@ -20,11 +20,18 @@ var posts = defineCollection({
     thumbnail: z.string(),
     content: z.string()
   }),
-  transform: async (post) => ({
-    ...post,
-    slug: post._meta.path,
-    html: String(await markdown.process(post.content))
-  })
+  transform: async (post) => {
+    const plain = post.content.replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/[*_`>#|]/g, "");
+    const firstParagraph = plain.split(/\n\s*\n/).map((paragraph) => paragraph.replace(/\s+/g, " ").trim()).find((paragraph) => paragraph.length > 40) ?? "";
+    const excerpt = post.description ?? (firstParagraph.length > 180 ? `${firstParagraph.slice(0, 180).replace(/\s+\S*$/, "")}\u2026` : firstParagraph);
+    return {
+      ...post,
+      slug: post._meta.path,
+      excerpt,
+      readingTime: Math.max(1, Math.round(plain.split(/\s+/).length / 200)),
+      html: String(await markdown.process(post.content))
+    };
+  }
 });
 var content_collections_default = defineConfig({
   content: [posts]
