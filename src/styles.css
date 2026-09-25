@@ -227,7 +227,7 @@ body,
   color: var(--muted-foreground);
 }
 
-/* One orchestrated load: hero lines rise, the mark settles in after. */
+/* One orchestrated load: hero lines rise in sequence. */
 @keyframes rise {
   from {
     opacity: 0;
@@ -235,19 +235,8 @@ body,
   }
 }
 
-@keyframes settle {
-  from {
-    opacity: 0;
-    transform: translate(4%, 6%) rotate(-4deg);
-  }
-}
-
 .hero-line {
   animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
-}
-
-.hero-mark {
-  animation: settle 1.4s cubic-bezier(0.2, 0.7, 0.1, 1) 0.25s both;
 }
 
 @keyframes float {
@@ -332,6 +321,12 @@ body,
 @keyframes blink {
   50% {
     opacity: 0;
+  }
+}
+
+@keyframes orbit {
+  to {
+    rotate: 360deg;
   }
 }
 

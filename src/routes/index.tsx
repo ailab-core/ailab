@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import Cta from './-components/cta'
 import Hero from './-components/hero'
 import LatestPosts from './-components/latest-posts'
 import Partners from './-components/partners'
@@ -17,6 +18,7 @@ function Home() {
       <WhatWeDo />
       <Work />
       <LatestPosts />
+      <Cta />
     </main>
   )
 }

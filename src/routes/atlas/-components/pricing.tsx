@@ -40,7 +40,7 @@ export default function Pricing() {
               ))}
             </ul>
             <a
-              href={`mailto:info@ailab.mn?subject=${encodeURIComponent(`StockLab ${plan.name} package`)}`}
+              href={`mailto:info@ailab.mn?subject=${encodeURIComponent(`Atlas ${plan.name} package`)}`}
               className="mt-10 inline-flex h-11 items-center justify-center rounded-full bg-mist text-sm font-medium transition-colors hover:bg-brand hover:text-white"
             >
               {`Talk to us about ${plan.name}`}

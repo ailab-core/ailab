@@ -31,11 +31,6 @@ const COMPANIES: Array<Company> = [
     src: '/assets/logos/happy.svg',
   },
   {
-    alt: 'Ulzii&Co',
-    src: '/assets/logos/ulzii-co.svg',
-    href: 'https://ucc.mn/',
-  },
-  {
     alt: 'Golomt',
     src: '/assets/logos/golomt.svg',
     href: 'http://golomt.mn/',

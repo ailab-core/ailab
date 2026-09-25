@@ -78,7 +78,7 @@ export function Topbar() {
               <NavigationMenu.Trigger
                 className={`${navItem} group cursor-pointer`}
               >
-                {'Products'}
+                {'Solutions'}
                 <ChevronDownIcon
                   className="size-4 transition-transform duration-300 group-data-[state=open]:rotate-180"
                   aria-hidden="true"
@@ -108,18 +108,6 @@ export function Topbar() {
         </NavigationMenu.Root>
 
         <div className="ml-auto flex items-center gap-2">
-          <a
-            href="#contact"
-            className="hidden h-10 items-center px-3 text-sm font-medium transition-colors hover:text-brand sm:flex"
-          >
-            {'Contact'}
-          </a>
-          <a
-            href={DEMO_HREF}
-            className="hidden h-10 items-center rounded-full bg-brand px-5 text-sm font-medium text-white transition-colors hover:bg-brand-hover sm:flex"
-          >
-            {'Request a demo'}
-          </a>
           <button
             type="button"
             aria-expanded={mobileOpen}

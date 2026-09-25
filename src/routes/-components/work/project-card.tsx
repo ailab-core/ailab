@@ -9,31 +9,19 @@ export type Project = {
   tags: Array<string>
   tile: string
   logoClassName: string
-  layout: string
 }
 
-type ProjectCardProps = {
-  project: Project
-  onHover: (project: Project | null) => void
-}
-
-export function ProjectCard({ project, onHover }: ProjectCardProps) {
-  const domain = new URL(project.href).hostname
-
+export function ProjectCard({ project }: { project: Project }) {
   return (
     <a
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block pointer-fine:cursor-none"
-      onPointerEnter={(event) =>
-        event.pointerType === 'mouse' && onHover(project)
-      }
-      onPointerLeave={() => onHover(null)}
+      className="group flex h-full flex-col"
     >
       <div
         className={cn(
-          'relative flex items-center justify-center overflow-hidden rounded-2xl',
+          'flex aspect-[3/2] items-center justify-center overflow-hidden rounded-2xl md:max-lg:in-[li:last-child]:aspect-[3/1]',
           project.tile,
         )}
       >
@@ -43,36 +31,22 @@ export function ProjectCard({ project, onHover }: ProjectCardProps) {
           loading="lazy"
           decoding="async"
           className={cn(
-            'transition-transform duration-700 ease-out group-hover:scale-[1.06]',
+            'transition-transform duration-700 ease-out group-hover:scale-[1.04]',
             project.logoClassName,
           )}
         />
-        <span className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/5" />
       </div>
-      <div className="mt-6 flex items-baseline justify-between gap-6">
-        <h3 className="heading text-2xl md:text-3xl">
-          <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1.5px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-300 group-hover:bg-[length:100%_1.5px]">
-            {project.name}
-          </span>
-        </h3>
-        <span className="flex shrink-0 items-center gap-1 text-sm text-graphite">
-          {domain}
-          <ArrowUpRightIcon className="size-4" aria-hidden="true" />
-        </span>
+      <div className="mt-5 flex items-center justify-between gap-4">
+        <h3 className="heading text-2xl">{project.name}</h3>
+        <ArrowUpRightIcon
+          className="size-5 shrink-0 text-graphite transition-[translate,color] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand"
+          aria-hidden="true"
+        />
       </div>
-      <p className="mt-2 max-w-[36rem] text-base text-graphite">
-        {project.body}
+      <p className="mt-2 text-base text-graphite">{project.body}</p>
+      <p className="mt-auto pt-4 text-sm text-graphite/70">
+        {project.tags.join(' · ')}
       </p>
-      <ul className="mt-5 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <li
-            key={tag}
-            className="rounded-full border border-border px-3 py-1 text-xs text-graphite"
-          >
-            {tag}
-          </li>
-        ))}
-      </ul>
     </a>
   )
 }

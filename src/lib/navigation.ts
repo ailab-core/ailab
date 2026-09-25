@@ -2,6 +2,7 @@ import { linkOptions } from '@tanstack/react-router'
 import {
   Building2Icon,
   CandlestickChartIcon,
+  HexagonIcon,
   LandmarkIcon,
   PiggyBankIcon,
   UsersRoundIcon,
@@ -15,10 +16,10 @@ export const PRODUCTS = [
     link: linkOptions({ to: '/finace' }),
   },
   {
-    label: 'StockLab',
+    label: 'Atlas',
     body: 'Brokerage and securities trading platform',
     icon: CandlestickChartIcon,
-    link: linkOptions({ to: '/stocklab' }),
+    link: linkOptions({ to: '/atlas' }),
   },
   {
     label: 'Prop',
@@ -27,7 +28,8 @@ export const PRODUCTS = [
     href: 'https://prop.mn/',
   },
   { label: 'ShMS', body: 'Shareholder management', icon: UsersRoundIcon },
-  { label: 'Efund', body: 'Fund administration', icon: PiggyBankIcon },
+  { label: 'Fund', body: 'Fund administration', icon: PiggyBankIcon },
+  { label: 'Primebee', body: 'Coming soon from AILab', icon: HexagonIcon },
 ]
 
 export const NAV_LINKS = linkOptions([

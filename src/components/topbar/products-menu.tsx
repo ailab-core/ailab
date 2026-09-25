@@ -5,7 +5,7 @@ export function ProductsMenu() {
   return (
     <div className="shell grid grid-cols-12 gap-6 py-8">
       <div className="col-span-8">
-        <p className="eyebrow mb-3 px-3">{'Products'}</p>
+        <p className="eyebrow mb-3 px-3">{'Solutions'}</p>
         <ul className="grid grid-cols-2 gap-1">
           {PRODUCTS.map((product) => (
             <li key={product.label}>

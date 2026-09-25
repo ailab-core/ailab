@@ -10,14 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AtlasIndexRouteImport } from './routes/atlas/index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 import { Route as BlogsSlugRouteImport } from './routes/blogs/$slug'
 import { Route as FinaceIndexRouteImport } from './routes/finace/index'
-import { Route as StocklabIndexRouteImport } from './routes/stocklab/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasIndexRoute = AtlasIndexRouteImport.update({
+  id: '/atlas/',
+  path: '/atlas/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
@@ -35,48 +40,43 @@ const FinaceIndexRoute = FinaceIndexRouteImport.update({
   path: '/finace/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StocklabIndexRoute = StocklabIndexRouteImport.update({
-  id: '/stocklab/',
-  path: '/stocklab/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blogs/$slug': typeof BlogsSlugRoute
+  '/atlas/': typeof AtlasIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/finace/': typeof FinaceIndexRoute
-  '/stocklab/': typeof StocklabIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blogs/$slug': typeof BlogsSlugRoute
+  '/atlas': typeof AtlasIndexRoute
   '/blogs': typeof BlogsIndexRoute
   '/finace': typeof FinaceIndexRoute
-  '/stocklab': typeof StocklabIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blogs/$slug': typeof BlogsSlugRoute
+  '/atlas/': typeof AtlasIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/finace/': typeof FinaceIndexRoute
-  '/stocklab/': typeof StocklabIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blogs/$slug' | '/blogs/' | '/finace/' | '/stocklab/'
+  fullPaths: '/' | '/blogs/$slug' | '/atlas/' | '/blogs/' | '/finace/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blogs/$slug' | '/blogs' | '/finace' | '/stocklab'
-  id: '__root__' | '/' | '/blogs/$slug' | '/blogs/' | '/finace/' | '/stocklab/'
+  to: '/' | '/blogs/$slug' | '/atlas' | '/blogs' | '/finace'
+  id: '__root__' | '/' | '/blogs/$slug' | '/atlas/' | '/blogs/' | '/finace/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogsSlugRoute: typeof BlogsSlugRoute
+  AtlasIndexRoute: typeof AtlasIndexRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
   FinaceIndexRoute: typeof FinaceIndexRoute
-  StocklabIndexRoute: typeof StocklabIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -86,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas/': {
+      id: '/atlas/'
+      path: '/atlas'
+      fullPath: '/atlas/'
+      preLoaderRoute: typeof AtlasIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blogs/': {
@@ -109,22 +116,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinaceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/stocklab/': {
-      id: '/stocklab/'
-      path: '/stocklab'
-      fullPath: '/stocklab/'
-      preLoaderRoute: typeof StocklabIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogsSlugRoute: BlogsSlugRoute,
+  AtlasIndexRoute: AtlasIndexRoute,
   BlogsIndexRoute: BlogsIndexRoute,
   FinaceIndexRoute: FinaceIndexRoute,
-  StocklabIndexRoute: StocklabIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

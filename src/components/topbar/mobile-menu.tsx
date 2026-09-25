@@ -13,7 +13,7 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
     >
       <nav className="shell flex flex-col gap-10 py-8" aria-label="Mobile">
         <div>
-          <p className="eyebrow mb-2">{'Products'}</p>
+          <p className="eyebrow mb-2">{'Solutions'}</p>
           <ul className="-mx-3 flex flex-col">
             {PRODUCTS.map((product) => (
               <li key={product.label}>

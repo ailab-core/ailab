@@ -23,7 +23,7 @@ export default function WhatWeDo() {
         />
         <div
           ref={gridRef}
-          className="grid gap-3 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[27rem] *:nth-2:[--i:1] *:nth-3:[--i:2] *:nth-4:[--i:3] *:nth-5:[--i:4] *:nth-6:[--i:5]"
+          className="grid gap-3 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-100 *:nth-2:[--i:1] *:nth-3:[--i:2] *:nth-4:[--i:3] *:nth-5:[--i:4] *:nth-6:[--i:5]"
           onPointerMove={(event) => {
             const card = (event.target as HTMLElement).closest<HTMLElement>(
               '[data-card]',
