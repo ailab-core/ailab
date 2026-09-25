@@ -120,7 +120,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex size-10 items-center justify-center rounded-full transition-colors hover:bg-white"
+                  className="flex size-10 items-center justify-center rounded-full transition-colors hover:bg-card"
                 >
                   <img
                     src={`/assets/brands/${social.name}.svg`}

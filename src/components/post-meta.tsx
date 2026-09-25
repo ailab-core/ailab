@@ -10,8 +10,10 @@ export function PostMeta({
   className?: string
 }) {
   return (
-    <p className={cn('flex gap-4 text-sm text-graphite', className)}>
-      <span className="text-brand">{post.topic}</span>
+    <p className={cn('flex items-center gap-4 text-sm text-graphite', className)}>
+      <span className="font-mono text-xs font-medium text-brand uppercase">
+        {post.topic}
+      </span>
       <time dateTime={post.published.toISOString()}>
         {format(post.published, 'MMMM d, yyyy')}
       </time>

@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { TOPICS } from '#/lib/posts'
 
 const pillClass =
-  'inline-flex h-10 items-center rounded-full bg-mist px-5 text-sm font-medium transition-colors hover:bg-hairline data-[status=active]:bg-brand data-[status=active]:text-white'
+  'inline-flex h-10 items-center rounded-full bg-mist px-5 font-mono text-xs font-medium uppercase transition-colors hover:bg-hairline data-[status=active]:bg-brand data-[status=active]:text-white'
 
 export function TopicFilter() {
   return (

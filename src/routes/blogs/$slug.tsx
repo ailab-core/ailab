@@ -40,7 +40,7 @@ function PostPage() {
         <Link
           to="/blogs"
           search={{ topic: post.topic }}
-          className="inline-flex rounded-full bg-mist px-3 py-1 text-sm transition-colors hover:bg-hairline"
+          className="inline-flex rounded-full bg-mist px-3 py-1 font-mono text-xs font-medium uppercase transition-colors hover:bg-hairline"
         >
           {post.topic}
         </Link>
@@ -76,7 +76,7 @@ function PostPage() {
           <Link
             to="/blogs"
             search={{ topic: post.topic }}
-            className="inline-flex rounded-full bg-mist px-4 py-2 text-sm transition-colors hover:bg-hairline"
+            className="inline-flex rounded-full bg-mist px-4 py-2 font-mono text-xs font-medium uppercase transition-colors hover:bg-hairline"
           >
             {post.topic}
           </Link>

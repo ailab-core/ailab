@@ -75,12 +75,13 @@ export default function Partners() {
 
   return (
     <section ref={sectionRef} className="flex flex-col gap-12 md:gap-16">
-      <SectionHeading
-        eyebrow="Partners"
-        title="Trusted across Mongolia"
-        intro="Banks, lenders, and brokerages run their lending, payments, and investing products on our platforms."
-        className="shell"
-      />
+      <div className="shell">
+        <SectionHeading
+          eyebrow="Partners"
+          title="Trusted across Mongolia"
+          intro="Banks, lenders, and brokerages run their lending, payments, and investing products on our platforms."
+        />
+      </div>
       <div
         className="flex flex-col gap-6 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]"
         style={{ '--i': 1 } as CSSProperties}

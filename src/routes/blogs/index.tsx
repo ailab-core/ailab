@@ -22,14 +22,12 @@ function BlogsPage() {
 
   return (
     <main className="shell pt-14 pb-32 md:pt-24 md:pb-44">
-      <div className="grid gap-6 md:grid-cols-12 md:items-end">
-        <div className="md:col-span-7">
-          <p className="eyebrow">{'Blog'}</p>
-          <h1 className="display mt-5 text-5xl md:text-7xl">
-            {'News and updates'}
-          </h1>
-        </div>
-        <p className="text-graphite md:col-span-4 md:col-start-9">
+      <div className="max-w-3xl">
+        <p className="eyebrow">{'Blog'}</p>
+        <h1 className="display mt-5 text-5xl md:text-7xl">
+          {'News and updates'}
+        </h1>
+        <p className="mt-6 max-w-xl text-graphite md:text-lg">
           {
             'Company news, interviews with our team, and notes on the technology we build.'
           }

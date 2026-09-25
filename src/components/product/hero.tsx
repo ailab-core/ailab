@@ -22,21 +22,16 @@ export function ProductHero({
 
   return (
     <section className="shell pt-14 md:pt-24">
-      <div className="grid gap-10 md:grid-cols-12 md:items-end">
-        <div className="md:col-span-7">
-          <p className="eyebrow hero-line">{eyebrow}</p>
-          <h1
-            className="hero-line display mt-5 text-[3.25rem] sm:text-7xl lg:text-[5.5rem]"
-            style={{ animationDelay: '0.08s' }}
-          >
-            {title}
-          </h1>
-        </div>
-        <div
-          className="hero-line md:col-span-4 md:col-start-9"
-          style={{ animationDelay: '0.2s' }}
+      <div className="max-w-4xl">
+        <p className="eyebrow hero-line">{eyebrow}</p>
+        <h1
+          className="hero-line display mt-5 text-[3.25rem] sm:text-7xl lg:text-[5.5rem]"
+          style={{ animationDelay: '0.08s' }}
         >
-          <p className="text-graphite">{intro}</p>
+          {title}
+        </h1>
+        <div className="hero-line mt-8" style={{ animationDelay: '0.2s' }}>
+          <p className="max-w-xl text-graphite md:text-lg">{intro}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href={demoHref}

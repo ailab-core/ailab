@@ -29,14 +29,12 @@ export default function Values() {
 
   return (
     <section className="shell">
-      <div className="grid gap-6 md:grid-cols-12 md:items-end">
-        <div className="md:col-span-7">
-          <p className="eyebrow mb-5">{'Our team'}</p>
-          <h2 className="display text-4xl md:text-6xl">
-            {'More than 80% of our team are engineers'}
-          </h2>
-        </div>
-        <p className="text-graphite md:col-span-4 md:col-start-9 md:text-lg">
+      <div className="max-w-3xl">
+        <p className="eyebrow mb-5">{'Our team'}</p>
+        <h2 className="display text-4xl md:text-6xl">
+          {'More than 80% of our team are engineers'}
+        </h2>
+        <p className="mt-6 max-w-xl text-graphite md:text-lg">
           {
             'We design, build, and run the systems ourselves, from core banking integrations to the apps customers use every day.'
           }
