@@ -40,15 +40,6 @@ const PROJECTS: Array<Project> = [
     tile: 'bg-[#1b2a5c]',
     logoClassName: 'w-2/5',
   },
-  {
-    name: 'FinBerry',
-    tags: ['Crowdfunding', 'Lending'],
-    href: 'https://finberry.mn/',
-    logo: '/assets/logos/finberry.svg',
-    body: 'A crowdfunding platform for donations, rewards, and loans that connects projects with backers.',
-    tile: 'bg-[#8a0f35]',
-    logoClassName: 'w-16 md:w-20',
-  },
 ]
 
 export default function Work() {
