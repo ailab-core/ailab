@@ -1,7 +1,6 @@
-@import '@fontsource-variable/inter/opsz.css';
+@import '@fontsource-variable/onest/wght.css';
 @import '@fontsource/ibm-plex-mono/500.css';
 @import '@fontsource-variable/source-serif-4/opsz.css';
-@import '@fontsource-variable/source-serif-4/opsz-italic.css';
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
@@ -91,8 +90,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Onest Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Onest Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --font-serif: 'Source Serif 4 Variable', Georgia, serif;
   --color-mist: var(--mist);
@@ -160,7 +159,6 @@ body,
     font-size: 1rem;
     line-height: 1.55;
     letter-spacing: -0.011em;
-    font-feature-settings: 'cv11';
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -203,15 +201,13 @@ body,
 
 @utility display {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
   font-weight: 400;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.03em;
   line-height: 1.02;
 }
 
 @utility heading {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.2;

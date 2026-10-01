@@ -3,15 +3,15 @@ import { DEMO_HREF } from '#/lib/navigation'
 export default function Cta() {
   return (
     <section className="shell">
-      <div className="relative flex min-h-[26rem] flex-col justify-between gap-12 overflow-hidden dark rounded-3xl bg-background px-7 py-12 text-foreground md:min-h-[32rem] md:px-14 md:py-16">
+      <div className="relative flex min-h-92 flex-col justify-between gap-12 overflow-hidden dark rounded-3xl bg-background px-7 py-12 text-foreground md:min-h-108 md:px-14 md:py-16">
         <div
           aria-hidden="true"
-          className="brand-mark pointer-events-none absolute -right-[10%] -bottom-[40%] w-[70%] bg-white opacity-[0.06] md:w-[40%]"
+          className="brand-mark pointer-events-none absolute right-[-10%] bottom-[-40%] w-[70%] bg-white opacity-[0.06] md:w-[40%]"
         />
         <div className="relative max-w-3xl">
           <p className="eyebrow">{'Work with us'}</p>
           <h2 className="display mt-5 text-4xl md:text-6xl">
-            {'Have a financial product to build?'}
+            {'Have a product to build?'}
           </h2>
           <p className="mt-5 max-w-lg text-muted-foreground md:text-lg">
             {

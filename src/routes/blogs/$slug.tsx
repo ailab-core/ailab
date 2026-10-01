@@ -69,7 +69,7 @@ function PostPage() {
           className="mt-10 aspect-[16/9] w-full rounded-lg bg-mist object-cover"
         />
         <div
-          className="prose prose-xl mt-10 max-w-none font-serif text-ink prose-headings:font-sans prose-headings:font-bold prose-headings:tracking-tight prose-p:leading-[1.7] prose-a:text-brand prose-blockquote:border-l-ink prose-blockquote:font-normal prose-strong:font-semibold prose-strong:text-ink prose-img:rounded-lg prose-li:my-1"
+          className="prose prose-xl mt-10 max-w-none font-serif text-ink prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight prose-p:leading-[1.7] prose-a:text-brand prose-blockquote:border-l-ink prose-blockquote:font-normal prose-strong:font-semibold prose-strong:text-ink prose-img:rounded-lg prose-li:my-1"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
         <div className="mt-16 flex items-center justify-between border-t border-border pt-8">
