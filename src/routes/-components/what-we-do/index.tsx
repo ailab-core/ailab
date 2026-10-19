@@ -1,47 +1,83 @@
 import { SectionHeading } from '#/components'
 import { useReveal } from '#/lib/use-reveal'
+import { useScrollIndex } from '#/lib/use-scroll-index'
 import { Architecture } from './architecture'
 import { Automation } from './automation'
 import { CloudDevOps } from './cloud-devops'
 import { CreditScoring } from './credit-scoring'
 import { DataProcessing } from './data-processing'
 import { Development } from './development'
+import { m } from '#/paraglide/messages'
+
+const SERVICES = [
+  { label: m.home_wwd_development, Visual: Development },
+  { label: m.home_wwd_cloud, Visual: CloudDevOps },
+  { label: m.home_wwd_credit, Visual: CreditScoring },
+  { label: m.home_wwd_data, Visual: DataProcessing },
+  { label: m.home_wwd_automation, Visual: Automation },
+  { label: m.home_wwd_architecture, Visual: Architecture },
+]
 
 export default function WhatWeDo() {
-  const gridRef = useReveal<HTMLDivElement>()
+  const sectionRef = useScrollIndex<HTMLElement>()
+  const stackRef = useReveal<HTMLUListElement>()
 
   return (
     <section
+      ref={sectionRef}
       id="what-we-do"
-      className="dark bg-background py-24 text-foreground md:py-36"
+      className="shell grid scroll-mt-24 gap-14 lg:grid-cols-12 lg:gap-10"
     >
-      <div className="shell flex flex-col gap-12 md:gap-16">
+      <div className="flex flex-col gap-14 self-start lg:sticky lg:top-32 lg:col-span-4">
         <SectionHeading
-          eyebrow="Services"
-          title="What we provide"
-          intro="End-to-end engineering for financial institutions: product development, infrastructure, automation, and the architecture that ties them together."
+          eyebrow={m.home_wwd_eyebrow()}
+          title={
+            <>
+              {m.home_wwd_title_a()}
+              <span className="text-muted-foreground">
+                {m.home_wwd_title_b()}
+              </span>
+            </>
+          }
+          intro={m.home_wwd_intro()}
         />
-        <div
-          ref={gridRef}
-          className="grid gap-3 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-100 *:nth-2:[--i:1] *:nth-3:[--i:2] *:nth-4:[--i:3] *:nth-5:[--i:4] *:nth-6:[--i:5]"
-          onPointerMove={(event) => {
-            const card = (event.target as HTMLElement).closest<HTMLElement>(
-              '[data-card]',
-            )
-            if (!card) return
-            const rect = card.getBoundingClientRect()
-            card.style.setProperty('--x', `${event.clientX - rect.left}px`)
-            card.style.setProperty('--y', `${event.clientY - rect.top}px`)
-          }}
-        >
-          <Development />
-          <CloudDevOps />
-          <CreditScoring />
-          <DataProcessing />
-          <Automation />
-          <Architecture />
-        </div>
+        <ol className="hidden max-w-xs flex-col lg:flex">
+          {SERVICES.map((service, index) => (
+            <li key={index}>
+              <a
+                href={`#service-${index}`}
+                data-index
+                data-active={index === 0 || undefined}
+                className="group eyebrow flex items-center gap-3 border-t border-border py-3 transition-colors hover:text-foreground data-active:text-foreground"
+              >
+                <span
+                  aria-hidden="true"
+                  className="size-1.5 bg-border transition-colors group-data-active:bg-primary"
+                />
+                {service.label()}
+              </a>
+            </li>
+          ))}
+        </ol>
       </div>
+
+      <ul
+        ref={stackRef}
+        data-stack
+        className="flex flex-col gap-6 lg:col-span-7 lg:col-start-6"
+      >
+        {SERVICES.map(({ Visual }, index) => (
+          <li
+            key={index}
+            id={`service-${index}`}
+            data-reveal
+            className="scroll-mt-28 md:sticky"
+            style={{ top: `calc(7rem + ${index * 1.25}rem)` }}
+          >
+            <Visual />
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

@@ -1,16 +1,22 @@
+import { TOPIC_LABELS } from '#/lib/posts'
 import { format } from 'date-fns'
 import type { Post } from 'content-collections'
+import { DATE_LOCALES } from '#/lib/utils/locale'
+import { m } from '#/paraglide/messages'
+import { getLocale } from '#/paraglide/runtime'
 
 export function PostCardMeta({ post }: { post: Post }) {
   return (
-    <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-graphite">
-      <span className="rounded-full border border-border bg-background px-2.5 py-0.5 font-mono text-xs font-medium text-ink uppercase">
-        {post.topic}
+    <p className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-1">
+      <span className="text-highlight">
+        {TOPIC_LABELS[post.topic]?.() ?? post.topic}
       </span>
+      <span aria-hidden="true" className="size-1 bg-secondary" />
       <time dateTime={post.published.toISOString()}>
-        {format(post.published, 'MMM d, yyyy')}
+        {format(post.published, 'PP', { locale: DATE_LOCALES[getLocale()] })}
       </time>
-      <span>{`${post.readingTime} min read`}</span>
+      <span aria-hidden="true" className="size-1 bg-border" />
+      <span>{m.blog_reading_time({ minutes: post.readingTime })}</span>
     </p>
   )
 }

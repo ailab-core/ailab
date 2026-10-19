@@ -1,6 +1,7 @@
 import {
   HeadContent,
   Link,
+  ScriptOnce,
   Scripts,
   createRootRoute,
   useRouter,
@@ -8,6 +9,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
+import { m } from '#/paraglide/messages'
 import { getLocale } from '#/paraglide/runtime'
 
 import appCss from '../styles.css?url'
@@ -26,11 +28,10 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'AILab | Fintech and AI engineering, Ulaanbaatar' },
+      { title: m.root_meta_title() },
       {
         name: 'description',
-        content:
-          'AILab builds lending, payments, and trading platforms for banks, lenders, and brokerages in Mongolia.',
+        content: m.root_meta_description(),
       },
     ],
     links: [
@@ -45,8 +46,11 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={getLocale()}>
+    <html lang={getLocale()} suppressHydrationWarning>
       <head>
+        <ScriptOnce>
+          {`try{var t=localStorage.getItem('theme');if(t!=='light')document.documentElement.classList.add('dark')}catch(e){}`}
+        </ScriptOnce>
         <HeadContent />
       </head>
       <body>
@@ -70,16 +74,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
 function NotFound() {
   return (
-    <main className="shell flex min-h-[60svh] flex-col items-start justify-center gap-6 py-24">
-      <h1 className="display text-5xl md:text-7xl">{'Page not found'}</h1>
-      <p className="text-graphite">
-        {'The page you’re looking for doesn’t exist or has moved.'}
-      </p>
+    <main className="shell flex min-h-[70svh] flex-col items-start justify-center gap-6 pt-36 pb-24">
+      <h1 className="heading text-section">{m.root_not_found_title()}</h1>
+      <p className="text-muted-foreground">{m.root_not_found_body()}</p>
       <Link
         to="/"
-        className="inline-flex h-12 items-center rounded-full bg-brand px-6 font-medium text-white transition-colors hover:bg-brand-hover"
+        className="rounded-md inline-flex h-11 items-center bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
       >
-        {'Back to home'}
+        {m.root_back_home()}
       </Link>
     </main>
   )
@@ -89,17 +91,15 @@ function ErrorPage() {
   const router = useRouter()
 
   return (
-    <main className="shell flex min-h-[60svh] flex-col items-start justify-center gap-6 py-24">
-      <h1 className="display text-5xl md:text-7xl">{'Something went wrong'}</h1>
-      <p className="text-graphite">
-        {'This page failed to load. Try again, or come back in a moment.'}
-      </p>
+    <main className="shell flex min-h-[70svh] flex-col items-start justify-center gap-6 pt-36 pb-24">
+      <h1 className="heading text-section">{m.root_error_title()}</h1>
+      <p className="text-muted-foreground">{m.root_error_body()}</p>
       <button
         type="button"
         onClick={() => router.invalidate()}
-        className="inline-flex h-12 cursor-pointer items-center rounded-full bg-brand px-6 font-medium text-white transition-colors hover:bg-brand-hover"
+        className="rounded-md inline-flex h-11 cursor-pointer items-center bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
       >
-        {'Try again'}
+        {m.root_try_again()}
       </button>
     </main>
   )

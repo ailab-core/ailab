@@ -1,7 +1,8 @@
-import { GaugeIcon } from 'lucide-react'
+import { GaugeIcon } from '@hugeicons/core-free-icons'
 import type { CSSProperties } from 'react'
-import { cn } from '#/lib/utils'
+import { cn } from 'cn'
 import { Card } from './card'
+import { m } from '#/paraglide/messages'
 
 const APPLICANTS = [
   { id: '#4821', score: 742, approved: true },
@@ -13,15 +14,15 @@ export function CreditScoring() {
   return (
     <Card
       icon={GaugeIcon}
-      title="Risk & credit scoring"
-      lead="Consistent lending decisions"
-      rest="from risk assessment and behavioral credit scoring."
+      title={m.home_wwd_credit()}
+      lead={m.home_wwd_credit_lead()}
+      rest={m.home_wwd_credit_rest()}
     >
-      <ul className="flex flex-col gap-3 p-6 pt-8">
+      <ul className="mx-auto flex max-w-md flex-col gap-3 px-5 pt-2">
         {APPLICANTS.map((applicant, index) => (
           <li
             key={applicant.id}
-            className="rounded-lg border border-border bg-background px-4 py-3"
+            className="rounded-md border border-border bg-background px-4 py-3"
           >
             <div className="flex items-center justify-between text-xs">
               <span className="font-mono text-muted-foreground">
@@ -29,19 +30,21 @@ export function CreditScoring() {
               </span>
               <span
                 className={cn(
-                  'rounded-full px-2 py-0.5',
+                  'rounded-sm px-2 py-0.5',
                   applicant.approved
-                    ? 'bg-emerald-400/10 text-emerald-300'
-                    : 'bg-amber-400/10 text-amber-200',
+                    ? 'bg-primary/10 text-highlight'
+                    : 'bg-secondary/15 text-highlight-secondary',
                 )}
               >
-                {applicant.approved ? 'Approved' : 'Review'}
+                {applicant.approved
+                  ? m.home_wwd_credit_approved()
+                  : m.home_wwd_credit_review()}
               </span>
             </div>
             <div className="mt-3 flex items-center gap-3">
-              <div className="h-1 flex-1 overflow-hidden rounded-full bg-border">
+              <div className="rounded-full h-1 flex-1 overflow-hidden bg-border">
                 <div
-                  className="h-full origin-left rounded-full bg-brand-soft"
+                  className="h-full origin-left bg-primary"
                   style={
                     {
                       '--to': (applicant.score - 300) / 550,

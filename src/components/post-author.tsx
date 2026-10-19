@@ -1,24 +1,17 @@
 import type { ReactNode } from 'react'
-import { cn } from '#/lib/utils'
+import { m } from '#/paraglide/messages'
 
-type PostAuthorProps = {
-  size?: 'sm' | 'lg'
-  children?: ReactNode
-}
-
-export function PostAuthor({ size = 'sm', children }: PostAuthorProps) {
+export function PostAuthor({ children }: { children?: ReactNode }) {
   return (
     <div className="flex items-center gap-3">
-      <span
-        className={cn(
-          'flex shrink-0 items-center justify-center rounded-full bg-brand',
-          size === 'sm' ? 'size-6 p-1' : 'size-11 p-2.5',
-        )}
-      >
-        <img src="/assets/logos/ailab-icon.svg" alt="" className="size-full" />
+      <span className="rounded-md flex size-11 shrink-0 items-center justify-center bg-primary p-2.5">
+        <span
+          aria-hidden="true"
+          className="brand-mark w-full bg-primary-foreground"
+        />
       </span>
-      <div className={cn(size === 'sm' ? 'text-sm' : 'text-base')}>
-        <p className="font-medium">{'AILab team'}</p>
+      <div>
+        <p className="font-medium">{m.common_ailab_team()}</p>
         {children}
       </div>
     </div>

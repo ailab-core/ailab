@@ -3,122 +3,173 @@ import {
   BanknoteIcon,
   FileCheckIcon,
   ShieldCheckIcon,
-} from 'lucide-react'
-import { cn } from '#/lib/utils'
+} from '@hugeicons/core-free-icons'
+import { cn } from 'cn'
+import { Console } from '#/components/product'
+import { m } from '#/paraglide/messages'
 
-const NOTIFICATIONS = [
-  { icon: BadgeCheckIcon, text: 'Loan #4821 approved' },
-  { icon: ShieldCheckIcon, text: 'Credit bureau check passed' },
-  { icon: BanknoteIcon, text: 'Repayment received – ₮1,250,000' },
-  { icon: FileCheckIcon, text: 'Collateral documents verified' },
+const KPIS = [
+  { label: m.finace_dashboard_portfolio, value: '₮4.2B', trend: () => '+3.1%' },
+  {
+    label: m.finace_dashboard_applications,
+    value: '128',
+    trend: m.finace_dashboard_today,
+  },
+  {
+    label: m.finace_dashboard_approval_rate,
+    value: '71%',
+    trend: () => m.finace_dashboard_points({ value: '+4' }),
+  },
 ]
 
 const APPLICATIONS = [
   {
     id: '#4821',
-    product: 'Microloan',
+    product: m.finace_dashboard_product_microloan,
     amount: '₮2,500,000',
-    score: 742,
-    status: 'Approved',
+    status: 'approved',
   },
   {
     id: '#4822',
-    product: 'Car leasing',
+    product: m.finace_dashboard_product_car_leasing,
     amount: '₮38,000,000',
-    score: 688,
-    status: 'In review',
+    status: 'review',
   },
   {
     id: '#4823',
-    product: 'SME loan',
+    product: m.finace_dashboard_product_sme_loan,
     amount: '₮120,000,000',
-    score: 801,
-    status: 'Approved',
+    status: 'approved',
   },
   {
     id: '#4824',
-    product: 'Microloan',
+    product: m.finace_dashboard_product_microloan,
     amount: '₮1,800,000',
-    score: 612,
-    status: 'Scoring',
+    status: 'scoring',
   },
   {
     id: '#4825',
-    product: 'Payroll loan',
+    product: m.finace_dashboard_product_payroll_loan,
     amount: '₮6,400,000',
-    score: 755,
-    status: 'Disbursed',
+    status: 'paid_out',
   },
 ]
 
 const STATUS = {
-  Approved: 'bg-emerald-400/10 text-emerald-300',
-  'In review': 'bg-amber-400/10 text-amber-200',
-  Scoring: 'bg-brand-soft/10 text-brand-soft',
-  Disbursed: 'bg-white/10 text-foreground',
+  approved: {
+    label: m.finace_dashboard_status_approved,
+    tone: 'bg-primary/15 text-highlight',
+  },
+  review: {
+    label: m.finace_dashboard_status_review,
+    tone: 'bg-secondary/15 text-highlight-secondary',
+  },
+  scoring: {
+    label: m.finace_dashboard_status_scoring,
+    tone: 'bg-foreground/10 text-foreground',
+  },
+  paid_out: {
+    label: m.finace_dashboard_status_paid_out,
+    tone: 'bg-primary text-primary-foreground',
+  },
 }
+
+const SCORES = [0.18, 0.32, 0.54, 0.86, 1, 0.72, 0.44, 0.22]
 
 export function LoanDashboard() {
   return (
-    <div className="dark relative grid gap-6 bg-background p-5 text-foreground md:grid-cols-12 md:p-8">
-      <ul className="flex flex-col gap-2.5 md:col-span-4" aria-hidden="true">
-        {NOTIFICATIONS.map((notification, index) => (
-          <li
-            key={notification.text}
-            className="flex w-fit items-center gap-2.5 rounded-xl border border-border bg-card px-3.5 py-2.5 text-sm"
-            style={{
-              animation: `appear 8s ${index * 0.9}s ease-out infinite both`,
-            }}
+    <Console
+      title={`Finace · ${m.finace_capability_origination()}`}
+      notifications={[
+        {
+          icon: BadgeCheckIcon,
+          text: m.finace_dashboard_notice_approved({ id: '#4821' }),
+        },
+        { icon: ShieldCheckIcon, text: m.finace_dashboard_notice_bureau() },
+        {
+          icon: BanknoteIcon,
+          text: m.finace_dashboard_notice_repayment({ amount: '₮1,250,000' }),
+        },
+        { icon: FileCheckIcon, text: m.finace_dashboard_notice_collateral() },
+      ]}
+    >
+      <div className="grid grid-cols-3 gap-3">
+        {KPIS.map((kpi) => (
+          <div
+            key={kpi.value}
+            className="rounded-md border border-border bg-background p-3 md:p-4"
           >
-            <notification.icon className="size-4 text-brand-soft" />
-            {notification.text}
-          </li>
+            <p className="eyebrow">{kpi.label()}</p>
+            <p className="heading mt-3 text-2xl tabular-nums md:text-figure">
+              {kpi.value}
+            </p>
+            <p className="mt-1 text-2xs font-medium tracking-wide text-highlight uppercase">
+              {kpi.trend()}
+            </p>
+          </div>
         ))}
-      </ul>
-      <div
-        className="hidden overflow-hidden rounded-2xl border border-border bg-card md:col-span-8 md:block"
-        aria-hidden="true"
-      >
-        <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
-          <p className="text-sm font-medium">{'Loan applications'}</p>
-          <p className="text-xs text-muted-foreground">{'Today'}</p>
-        </div>
-        <table className="w-full text-left text-sm">
-          <thead className="text-xs text-muted-foreground">
-            <tr>
-              {['Application', 'Product', 'Amount', 'Score', 'Status'].map(
-                (column) => (
-                  <th key={column} className="px-5 py-3 font-normal">
-                    {column}
-                  </th>
-                ),
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            {APPLICATIONS.map((application) => (
-              <tr key={application.id} className="border-t border-border">
-                <td className="px-5 py-3 font-mono text-xs text-muted-foreground">
-                  {application.id}
-                </td>
-                <td className="px-5 py-3">{application.product}</td>
-                <td className="px-5 py-3 tabular-nums">{application.amount}</td>
-                <td className="px-5 py-3 tabular-nums">{application.score}</td>
-                <td className="px-5 py-3">
-                  <span
-                    className={cn(
-                      'rounded-full px-2.5 py-1 text-xs',
-                      STATUS[application.status as keyof typeof STATUS],
-                    )}
-                  >
-                    {application.status}
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
-    </div>
+      <div className="mt-3 grid gap-3 md:grid-cols-5">
+        <div className="rounded-md overflow-hidden border border-border bg-background md:col-span-3">
+          <p className="eyebrow border-b border-border px-4 py-3 text-foreground">
+            {m.finace_dashboard_applications()}
+          </p>
+          <table className="w-full text-left text-sm">
+            <tbody>
+              {APPLICATIONS.map((application) => (
+                <tr
+                  key={application.id}
+                  className="border-t border-border first:border-t-0"
+                >
+                  <td className="px-4 py-2.5 font-mono text-xs text-muted-foreground">
+                    {application.id}
+                  </td>
+                  <td className="px-2 py-2.5">{application.product()}</td>
+                  <td className="hidden px-2 py-2.5 tabular-nums lg:table-cell">
+                    {application.amount}
+                  </td>
+                  <td className="px-4 py-2.5 text-right">
+                    <span
+                      className={cn(
+                        'rounded-sm px-2 py-1 text-2xs font-medium tracking-wide uppercase',
+                        STATUS[application.status as keyof typeof STATUS].tone,
+                      )}
+                    >
+                      {STATUS[
+                        application.status as keyof typeof STATUS
+                      ].label()}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="rounded-md hidden flex-col border border-border bg-background p-4 md:col-span-2 md:flex">
+          <p className="eyebrow text-foreground">
+            {m.finace_dashboard_credit_scores()}
+          </p>
+          <div className="mt-4 flex flex-1 items-end gap-1.5">
+            {SCORES.map((score, index) => (
+              <span
+                key={index}
+                className={cn(
+                  'flex-1 origin-bottom',
+                  index === 4 ? 'bg-secondary' : 'bg-foreground/15',
+                )}
+                style={{
+                  height: `${score * 100}%`,
+                  animation: `grow 8s ${index * 0.08}s ease-in-out infinite both`,
+                }}
+              />
+            ))}
+          </div>
+          <div className="mt-2 flex justify-between font-mono text-2xs text-muted-foreground">
+            <span>{'300'}</span>
+            <span>{'850'}</span>
+          </div>
+        </div>
+      </div>
+    </Console>
   )
 }

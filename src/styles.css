@@ -1,4 +1,4 @@
-@import '@fontsource-variable/onest/wght.css';
+@import '@fontsource-variable/onest';
 @import '@fontsource/ibm-plex-mono/500.css';
 @import '@fontsource-variable/source-serif-4/opsz.css';
 @import 'tailwindcss';
@@ -8,98 +8,106 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Brand: blue-800 is the primary fill and orange-400 the secondary pop, identical in both themes so forced-dark sections match.
+   --highlight is blue for accent text, icons and hover states (blue-800 on light), lifted to blue-400 on dark so it stays legible.
+   --highlight-secondary is the legible orange text for the secondary data tone in mock-ups. */
 :root {
-  --paper: #f3f6fd;
-  --surface: #fafbff;
-  --mist: #e6ecfa;
-  --ink: #0f1629;
-  --graphite: #505b75;
-  --hairline: #d8e0f2;
-  --brand: #3b68d6;
-  --brand-hover: #2f58bd;
-  --brand-soft: #a9c0f5;
-
-  --background: var(--paper);
-  --foreground: var(--ink);
-  --card: var(--surface);
-  --card-foreground: var(--ink);
-  --popover: var(--surface);
-  --popover-foreground: var(--ink);
-  --primary: var(--ink);
-  --primary-foreground: var(--paper);
-  --secondary: var(--mist);
-  --secondary-foreground: var(--ink);
-  --muted: var(--mist);
-  --muted-foreground: var(--graphite);
-  --accent: var(--mist);
-  --accent-foreground: var(--ink);
+  --background: #f4f7fc;
+  --foreground: #0a1430;
+  --card: #ffffff;
+  --card-foreground: #0a1430;
+  --popover: #ffffff;
+  --popover-foreground: #0a1430;
+  --primary: var(--color-blue-800);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-orange-400);
+  --secondary-foreground: #0a1430;
+  --muted: #e6ecf7;
+  --muted-foreground: #4b5874;
+  --accent: #dbe3f3;
+  --accent-foreground: #0a1430;
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: var(--hairline);
-  --input: var(--hairline);
-  --ring: var(--brand);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.871 0.006 286.286);
+  --border: #d5ddee;
+  --input: #d5ddee;
+  --ring: var(--color-blue-800);
+  --highlight: var(--color-blue-800);
+  --highlight-secondary: var(--color-orange-600);
+  --grain: 0.2;
 }
 
 .dark {
-  --background: var(--ink);
-  --foreground: #f3f6fd;
-  --card: #141c31;
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.141 0.005 285.823);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.21 0.006 285.885);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: #a0aac2;
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: #26304a;
-  --input: #26304a;
-  --ring: var(--brand-soft);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.274 0.006 286.033);
-  --sidebar-ring: oklch(0.442 0.017 285.786);
+  color-scheme: dark;
+  --background: #070a12;
+  --foreground: #f1f0eb;
+  --card: #0d121e;
+  --card-foreground: #f1f0eb;
+  --popover: #0d121e;
+  --popover-foreground: #f1f0eb;
+  --primary: var(--color-blue-800);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-orange-400);
+  --secondary-foreground: #070a12;
+  --muted: #131a2a;
+  --muted-foreground: #8d95a8;
+  --accent: #19213a;
+  --accent-foreground: #f1f0eb;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: #1c2438;
+  --input: #1c2438;
+  --ring: var(--color-blue-400);
+  --highlight: var(--color-blue-400);
+  --highlight-secondary: var(--secondary);
+  --grain: 0.07;
 }
 
 @theme inline {
-  --font-sans: 'Onest Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Onest Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-sans:
+    'Onest Variable', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC',
+    'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    'Onest Variable', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC',
+    'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Source Serif 4 Variable', Georgia, serif;
-  --color-mist: var(--mist);
-  --color-ink: var(--ink);
-  --color-graphite: var(--graphite);
-  --color-brand: var(--brand);
-  --color-brand-hover: var(--brand-hover);
-  --color-brand-soft: var(--brand-soft);
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* One scale for the whole site. Fixed steps for UI text, fluid clamps for display text so headings scale without breakpoint stacks. */
+  --text-3xs: 0.625rem;
+  --text-3xs--line-height: 1.35;
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1.35;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.5;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.4;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.25;
+  --text-2xl--letter-spacing: -0.015em;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+  --text-lead--line-height: 1.45;
+  --text-title: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --text-title--line-height: 1.2;
+  --text-title--letter-spacing: -0.018em;
+  --text-figure: 2.25rem;
+  --text-figure--line-height: 1;
+  --text-figure--letter-spacing: -0.03em;
+  --text-figure-lg: 3.25rem;
+  --text-figure-lg--line-height: 1;
+  --text-figure-lg--letter-spacing: -0.035em;
+  --text-headline: clamp(2rem, 1.45rem + 2.2vw, 3.25rem);
+  --text-headline--line-height: 1.1;
+  --text-headline--letter-spacing: -0.028em;
+  --text-section: clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+  --text-section--line-height: 1.02;
+  --text-section--letter-spacing: -0.035em;
+  --text-hero: clamp(3.25rem, 1.6rem + 6.6vw, 8rem);
+  --text-hero--line-height: 0.96;
+  --text-hero--letter-spacing: -0.045em;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -115,33 +123,21 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
-html,
-body,
-#app {
-  min-height: 100%;
+  --color-highlight: var(--highlight);
+  --color-highlight-secondary: var(--highlight-secondary);
+  /* Small, restrained corners: every radius utility stays within this scale. */
+  --radius-*: initial;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 12px;
+  --radius-3xl: 12px;
+  --radius-4xl: 12px;
 }
 
 @layer base {
@@ -153,11 +149,16 @@ body,
     scroll-behavior: smooth;
   }
 
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.35s;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-size: 1rem;
-    line-height: 1.55;
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
     letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -166,14 +167,14 @@ body,
   h1,
   h2,
   h3 {
-    font-weight: 500;
+    font-weight: 400;
     font-family: var(--font-display);
     text-wrap: balance;
   }
 
   ::selection {
-    background-color: var(--brand);
-    color: #fff;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
   }
 
   :focus-visible {
@@ -195,32 +196,44 @@ body,
 
 @utility brand-mark {
   aspect-ratio: 476 / 417;
-  background-color: var(--brand);
+  background-color: var(--primary);
   mask: url('/assets/logos/ailab-icon.svg') center / contain no-repeat;
-}
-
-@utility display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.02;
 }
 
 @utility heading {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  font-weight: 400;
 }
 
 @utility eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
+  font-size: var(--text-xs);
+  font-weight: 600;
   line-height: 1.3;
   text-transform: uppercase;
-  letter-spacing: 0;
+  letter-spacing: 0.1em;
   color: var(--muted-foreground);
+}
+
+/* Static noise tile sits behind content but above the section's own -z decorations. No blend mode, so animated layers underneath never force a re-blend. */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--grain-opacity, var(--grain));
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.6 -0.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* SplitText word masks clip to the line box, which cuts descenders on tight display headings. */
+.split-word-mask {
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
 }
 
 /* One orchestrated load: hero lines rise in sequence. */
@@ -235,48 +248,16 @@ body,
   animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
 }
 
-@keyframes float {
-  50% {
-    transform: translateY(-4%) rotate(-2deg);
-  }
-}
-
-@keyframes levitate {
-  50% {
-    scale: 0.75;
-    opacity: 0.55;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  [data-reveal] > * {
-    opacity: 0;
-    translate: 0 4rem;
-    scale: 0.96;
-    transition:
-      opacity 0.8s ease-out,
-      translate 1s cubic-bezier(0.2, 0.7, 0.1, 1),
-      scale 1s cubic-bezier(0.2, 0.7, 0.1, 1);
-    transition-delay: calc(var(--i, 0) * 110ms);
-  }
-
-  [data-reveal][data-visible] > * {
-    opacity: 1;
-    translate: 0 0;
-    scale: 1;
-  }
-}
-
 @keyframes stage {
   0%,
   100% {
     background-color: var(--background);
-    color: var(--graphite);
+    color: var(--muted-foreground);
   }
   12%,
   70% {
-    background-color: var(--brand);
-    color: #fff;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
   }
 }
 
@@ -291,12 +272,6 @@ body,
   }
   100% {
     transform: scaleY(0);
-  }
-}
-
-@keyframes progress {
-  from {
-    transform: scaleX(0);
   }
 }
 
@@ -320,27 +295,27 @@ body,
   }
 }
 
-@keyframes orbit {
-  to {
-    rotate: 360deg;
-  }
-}
-
 @keyframes marquee {
   to {
     transform: translateX(-50%);
   }
 }
 
-@keyframes slide {
-  to {
-    transform: translateX(100%);
+/* Three copies with delays of 0, 1/3 and 2/3 of the cycle read as one card moving between columns. */
+@keyframes hop {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
   }
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: -24;
+  4%,
+  28% {
+    opacity: 1;
+    transform: none;
+  }
+  33%,
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
   }
 }
 
@@ -374,29 +349,60 @@ body,
   }
 }
 
-@keyframes glow {
+/* Rolling update: pods flip to the new version after the pipeline finishes, then reset for the next loop. */
+@keyframes swap {
   0%,
-  100% {
-    color: var(--muted-foreground);
-    border-color: var(--border);
+  64% {
+    opacity: 0;
   }
-  15%,
-  30% {
-    color: var(--brand-soft);
-    border-color: var(--brand-soft);
+  68%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
-@keyframes wander {
-  0%,
+/* Paired with a duplicated "done" layer: reveals one equal-height row per step, holds, then resets. */
+@keyframes reveal {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    animation-timing-function: steps(4, end);
+  }
+  60% {
+    clip-path: inset(0);
+  }
+  92% {
+    clip-path: inset(0);
+    animation-timing-function: steps(1, end);
+  }
   100% {
-    transform: translate(0, 0);
+    clip-path: inset(0 0 100% 0);
   }
-  33% {
-    transform: translate(42px, -18px);
+}
+
+@keyframes flow {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
   }
-  66% {
-    transform: translate(-16px, 22px);
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: translateY(-24px);
+  }
+  to {
+    transform: translateY(24px);
   }
 }
 
@@ -417,4 +423,28 @@ body,
     animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Article typography follows the theme tokens instead of typography's grays. */
+.prose :where(img, pre, code, video, figure, kbd) {
+  border-radius: var(--radius-md);
+}
+
+.prose {
+  --tw-prose-body: color-mix(in oklab, var(--foreground) 88%, transparent);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--highlight);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--secondary);
+  --tw-prose-bullets: var(--secondary);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--muted-foreground);
+  --tw-prose-quote-borders: var(--secondary);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--highlight);
+  --tw-prose-pre-code: var(--foreground);
+  --tw-prose-pre-bg: var(--card);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
 }

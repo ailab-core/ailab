@@ -1,42 +1,21 @@
+import type { Logo } from '#/components/product'
 import {
   BadgeCheckIcon,
-  BookOpenIcon,
+  BookOpen01Icon,
   ClipboardPenLineIcon,
   FileChartColumnIcon,
-  FileSignatureIcon,
   FolderLockIcon,
   GaugeIcon,
   LandmarkIcon,
   LockKeyholeIcon,
   ScanTextIcon,
   ShieldCheckIcon,
+  SignatureIcon,
   SproutIcon,
   TriangleAlertIcon,
   WorkflowIcon,
-} from 'lucide-react'
-
-export const CAPABILITIES = [
-  { label: 'Loan origination', icon: FileSignatureIcon, target: 'origination' },
-  { label: 'Core banking', icon: LandmarkIcon, target: 'core-banking' },
-  {
-    label: 'Statement analysis',
-    icon: ScanTextIcon,
-    target: 'statement-analysis',
-  },
-  { label: 'Credit scoring', icon: GaugeIcon, target: 'origination' },
-  {
-    label: 'Collateral management',
-    icon: ShieldCheckIcon,
-    target: 'origination',
-  },
-  { label: 'Approval workflows', icon: WorkflowIcon, target: 'origination' },
-  { label: 'General ledger', icon: BookOpenIcon, target: 'core-banking' },
-  {
-    label: 'Regulatory reporting',
-    icon: FileChartColumnIcon,
-    target: 'core-banking',
-  },
-]
+} from '@hugeicons/core-free-icons'
+import { m } from '#/paraglide/messages'
 
 export const CLIENTS = [
   { name: 'GSB Capital', src: '/assets/logos/gsb-capital.svg' },
@@ -44,108 +23,165 @@ export const CLIENTS = [
   { name: 'Nomin', src: '/assets/logos/nomin.svg' },
   { name: 'Unipay', src: '/assets/logos/unipay.svg' },
   { name: 'Erxes Erdene', src: '/assets/logos/erxes-erdene.svg' },
-]
+] satisfies Array<Logo>
 
-export const SOLUTIONS = [
-  {
-    title: 'Loan origination system',
-    description:
-      'Automates loan research, issuance, monitoring, closing, and repayment for NBFIs and MFIs. It standardizes the work of loan officers, supports management decisions, and reduces risk.',
-    id: 'origination',
-    features: [
-      'Loan product management',
-      'Customer onboarding',
-      'Automated credit assessment',
-      'Collateral management',
-      'Approval workflow automation',
-      'Document management',
-      'Credit bureau integration',
-      'Dynamic configuration',
+const ADDITIONAL_INTEGRATIONS = [
+  { name: 'E-Sign', src: '/assets/logos/esign.svg', ink: 'dark' },
+  { name: 'MonPEP', src: '/assets/logos/monpep.svg', ink: 'dark' },
+  { name: 'E-Barimt', src: '/assets/logos/ebarimt.svg', ink: 'dark' },
+  { name: 'CallPro', src: '/assets/logos/callpro.svg', ink: 'dark' },
+] satisfies Array<Logo>
+
+export function getContent() {
+  return {
+    capabilities: [
+      {
+        label: m.finace_capability_origination(),
+        icon: SignatureIcon,
+        target: 'origination',
+      },
+      {
+        label: m.finace_capability_core_banking(),
+        icon: LandmarkIcon,
+        target: 'core-banking',
+      },
+      {
+        label: m.finace_capability_statement_analysis(),
+        icon: ScanTextIcon,
+        target: 'statement-analysis',
+      },
+      {
+        label: m.finace_capability_credit_scoring(),
+        icon: GaugeIcon,
+        target: 'origination',
+      },
+      {
+        label: m.finace_capability_collateral(),
+        icon: ShieldCheckIcon,
+        target: 'origination',
+      },
+      {
+        label: m.finace_capability_approval_workflows(),
+        icon: WorkflowIcon,
+        target: 'origination',
+      },
+      {
+        label: m.finace_capability_general_ledger(),
+        icon: BookOpen01Icon,
+        target: 'core-banking',
+      },
+      {
+        label: m.finace_capability_regulatory_reporting(),
+        icon: FileChartColumnIcon,
+        target: 'core-banking',
+      },
     ],
-  },
-  {
-    title: 'Core banking system',
-    description:
-      'A cloud solution that automates loan operations, transactions, repayments, and the general ledger.',
-    id: 'core-banking',
-    features: [
-      'General ledger',
-      'Financial transactions',
-      'Loan management',
-      'Collateral management',
-      'Risk management',
-      'Regulatory reporting',
+    solutions: [
+      {
+        title: m.finace_solution_origination_title(),
+        description: m.finace_solution_origination_description(),
+        id: 'origination',
+        features: [
+          m.finace_solution_origination_feature_1(),
+          m.finace_solution_origination_feature_2(),
+          m.finace_solution_origination_feature_3(),
+          m.finace_solution_origination_feature_4(),
+          m.finace_solution_origination_feature_5(),
+          m.finace_solution_origination_feature_6(),
+          m.finace_solution_origination_feature_7(),
+          m.finace_solution_origination_feature_8(),
+        ],
+      },
+      {
+        title: m.finace_solution_core_banking_title(),
+        description: m.finace_solution_core_banking_description(),
+        id: 'core-banking',
+        features: [
+          m.finace_solution_core_banking_feature_1(),
+          m.finace_solution_core_banking_feature_2(),
+          m.finace_solution_core_banking_feature_3(),
+          m.finace_solution_core_banking_feature_4(),
+          m.finace_solution_core_banking_feature_5(),
+          m.finace_solution_core_banking_feature_6(),
+        ],
+      },
+      {
+        title: m.finace_solution_statement_title(),
+        description: m.finace_solution_statement_description(),
+        id: 'statement-analysis',
+        features: [
+          m.finace_solution_statement_feature_1(),
+          m.finace_solution_statement_feature_2(),
+          m.finace_solution_statement_feature_3(),
+          m.finace_solution_statement_feature_4(),
+          m.finace_solution_statement_feature_5(),
+        ],
+      },
     ],
-  },
-  {
-    title: 'Bank statement analysis',
-    description:
-      'Processes customer bank statements and analyzes income and expenses.',
-    id: 'statement-analysis',
-    features: [
-      'Bank statement processing',
-      'Statement analytics',
-      'Income and expense insights',
-      'Fraud and suspicious transaction detection',
-      'Support for 7 major banks',
+    values: [
+      {
+        icon: BadgeCheckIcon,
+        title: m.finace_value_1_title(),
+        description: m.finace_value_1_description(),
+      },
+      {
+        icon: ClipboardPenLineIcon,
+        title: m.finace_value_2_title(),
+        description: m.finace_value_2_description(),
+      },
+      {
+        icon: TriangleAlertIcon,
+        title: m.finace_value_3_title(),
+        description: m.finace_value_3_description(),
+      },
+      {
+        icon: FolderLockIcon,
+        title: m.finace_value_4_title(),
+        description: m.finace_value_4_description(),
+      },
+      {
+        icon: SproutIcon,
+        title: m.finace_value_5_title(),
+        description: m.finace_value_5_description(),
+      },
+      {
+        icon: LockKeyholeIcon,
+        title: m.finace_value_6_title(),
+        description: m.finace_value_6_description(),
+      },
     ],
-  },
-]
-
-export const VALUES = [
-  {
-    icon: BadgeCheckIcon,
-    title: 'Standardization',
-    description:
-      'Fully automates the lending lifecycle, including credit assessment, decision-making, disbursement, and loan closure.',
-  },
-  {
-    icon: ClipboardPenLineIcon,
-    title: 'Scoring',
-    description:
-      'Behavior-based customer credit scoring for more accurate and consistent lending decisions.',
-  },
-  {
-    icon: TriangleAlertIcon,
-    title: 'Risk reduction',
-    description:
-      'Reduces operational risk through process automation, audit controls, repayment monitoring, special asset management, and risk scoring.',
-  },
-  {
-    icon: FolderLockIcon,
-    title: 'Security',
-    description:
-      'Information security in compliance with ISO/IEC 27001:2022, backed by continuous system and technology improvements.',
-  },
-  {
-    icon: SproutIcon,
-    title: 'Sustainable development',
-    description:
-      'Long-term growth through ongoing maintenance, upgrades, skilled professionals, and research and development.',
-  },
-  {
-    icon: LockKeyholeIcon,
-    title: 'Fraud prevention',
-    description:
-      'Minimizes fraud risk by digitizing cross-department workflows and reducing manual intervention.',
-  },
-]
-
-export const CORE_INTEGRATIONS = [
-  { name: 'Government data exchange (XYP)', src: '/assets/logos/xyp.svg' },
-  { name: 'BurenScore credit bureau', src: '/assets/logos/burenscore.svg' },
-  { name: 'SainScore credit bureau', src: '/assets/logos/sainscore.svg' },
-  {
-    name: 'Bank corporate gateway',
-    src: '/assets/logos/corporate-gateway.svg',
-  },
-  { name: 'Khan Insurance', src: '/assets/logos/khan-daatgal.svg' },
-  { name: 'Mandal Insurance', src: '/assets/logos/mandal-daatgal.svg' },
-]
-
-export const ADDITIONAL_INTEGRATIONS = [
-  { name: 'E-Sign', src: '/assets/logos/esign.svg' },
-  { name: 'MonPEP', src: '/assets/logos/monpep.svg' },
-  { name: 'E-Barimt', src: '/assets/logos/ebarimt.svg' },
-  { name: 'CallPro', src: '/assets/logos/callpro.svg' },
-]
+    integrations: [
+      {
+        name: m.finace_integration_xyp(),
+        src: '/assets/logos/xyp.svg',
+        ink: 'dark',
+      },
+      {
+        name: m.finace_integration_burenscore(),
+        src: '/assets/logos/burenscore.svg',
+        ink: 'dark',
+      },
+      {
+        name: m.finace_integration_sainscore(),
+        src: '/assets/logos/sainscore.svg',
+        ink: 'dark',
+      },
+      {
+        name: m.finace_integration_corporate_gateway(),
+        src: '/assets/logos/corporate-gateway.svg',
+        ink: 'dark',
+      },
+      {
+        name: m.finace_integration_khan_insurance(),
+        src: '/assets/logos/khan-daatgal.svg',
+        ink: 'dark',
+      },
+      {
+        name: m.finace_integration_mandal_insurance(),
+        src: '/assets/logos/mandal-daatgal.svg',
+        ink: 'dark',
+      },
+      ...ADDITIONAL_INTEGRATIONS,
+    ] satisfies Array<Logo>,
+  }
+}

@@ -1,29 +1,40 @@
 import { Link } from '@tanstack/react-router'
-import { TOPICS } from '#/lib/posts'
+import { POSTS, TOPICS, TOPIC_LABELS } from '#/lib/posts'
+import { m } from '#/paraglide/messages'
+import { getLocale } from '#/paraglide/runtime'
 
-const pillClass =
-  'inline-flex h-10 items-center rounded-full bg-mist px-5 font-mono text-xs font-medium uppercase transition-colors hover:bg-hairline data-[status=active]:bg-brand data-[status=active]:text-white'
+const tabClass =
+  'relative flex h-12 shrink-0 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground data-[status=active]:text-foreground after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:origin-left after:scale-x-0 after:bg-highlight after:transition-transform after:duration-300 data-[status=active]:after:scale-x-100'
 
 export function TopicFilter() {
+  const posts = POSTS[getLocale()]
+
   return (
-    <nav aria-label="Topics" className="flex flex-wrap gap-2">
+    <nav
+      aria-label={m.blog_topics_label()}
+      className="flex gap-8 overflow-x-auto border-b border-border [scrollbar-width:none]"
+    >
       <Link
         to="/blogs"
         search={{}}
         activeOptions={{ includeSearch: true, exact: true }}
-        className={pillClass}
+        className={tabClass}
       >
-        {'All'}
+        {m.blog_topic_all()}
+        <span className="font-mono text-2xs tabular-nums">{posts.length}</span>
       </Link>
-      {TOPICS.map((topic) => (
+      {TOPICS.map((value) => (
         <Link
-          key={topic}
+          key={value}
           to="/blogs"
-          search={{ topic }}
+          search={{ topic: value }}
           activeOptions={{ includeSearch: true }}
-          className={pillClass}
+          className={tabClass}
         >
-          {topic}
+          {TOPIC_LABELS[value]?.() ?? value}
+          <span className="font-mono text-2xs tabular-nums">
+            {posts.filter((post) => post.topic === value).length}
+          </span>
         </Link>
       ))}
     </nav>

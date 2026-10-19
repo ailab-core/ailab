@@ -1,11 +1,15 @@
+import { useRef } from 'react'
 import type { ReactNode } from 'react'
-import { useReveal } from '#/lib/use-reveal'
+import { gsap, ScrollTrigger, useGSAP } from '#/lib/gsap'
+import { ArrowButton } from '../arrow-button'
+import { m } from '#/paraglide/messages'
 
 type ProductHeroProps = {
   eyebrow: string
   title: string
   intro: string
   demoHref: string
+  facts: Array<[label: string, value: string]>
   clients?: Array<{ name: string; src: string }>
   children: ReactNode
 }
@@ -15,60 +19,142 @@ export function ProductHero({
   title,
   intro,
   demoHref,
+  facts,
   clients,
   children,
 }: ProductHeroProps) {
-  const panelRef = useReveal<HTMLDivElement>()
+  const rootRef = useRef<HTMLElement>(null)
+  const consoleRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      const panel = consoleRef.current!
+      // Pauses the dashboard's CSS loops while it is offscreen.
+      ScrollTrigger.create({
+        trigger: panel,
+        onToggle: (self) =>
+          panel.toggleAttribute('data-paused', !self.isActive),
+      })
+
+      // On wide screens the dashboard starts turned away, like product photography, and squares up on scroll.
+      gsap
+        .matchMedia()
+        .add(
+          '(min-width: 64rem) and (prefers-reduced-motion: no-preference)',
+          () => {
+            gsap.fromTo(
+              panel,
+              { rotationY: -24, rotationX: 10, rotationZ: 2, scale: 0.92 },
+              {
+                rotationY: -6,
+                rotationX: 2,
+                rotationZ: 0,
+                scale: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: rootRef.current,
+                  start: 'top top',
+                  end: 'bottom top',
+                  scrub: 0.6,
+                },
+              },
+            )
+          },
+        )
+    },
+    { scope: rootRef },
+  )
 
   return (
-    <section className="shell pt-14 md:pt-24">
-      <div className="max-w-4xl">
-        <p className="eyebrow hero-line">{eyebrow}</p>
-        <h1
-          className="hero-line display mt-5 text-[3.25rem] sm:text-7xl lg:text-[5.5rem]"
-          style={{ animationDelay: '0.08s' }}
+    <section
+      ref={rootRef}
+      className="dark relative isolate flex min-h-svh flex-col overflow-hidden bg-background text-foreground"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/4 -right-1/4 -z-10 size-[70rem] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--primary)_20%,transparent),transparent)]"
+      />
+
+      <div className="shell flex flex-1 flex-col pt-32 pb-8 md:pb-10">
+        <div className="relative z-10 my-auto py-10 lg:max-w-[52%]">
+          <p className="hero-line eyebrow flex items-center gap-2">
+            <span className="relative flex size-1.5" aria-hidden="true">
+              <span className="absolute inset-0 animate-ping bg-secondary opacity-60" />
+              <span className="size-1.5 bg-secondary" />
+            </span>
+            {eyebrow}
+          </p>
+          <h1
+            className="hero-line heading mt-8 text-hero"
+            style={{ animationDelay: '0.08s' }}
+          >
+            {title}
+          </h1>
+        </div>
+
+        <div
+          className="hero-line relative my-10 lg:absolute lg:top-[40%] lg:-right-[14%] lg:my-0 lg:w-[60rem] lg:-translate-y-1/2 lg:perspective-[2200px]"
+          style={{ animationDelay: '0.3s' }}
         >
-          {title}
-        </h1>
-        <div className="hero-line mt-8" style={{ animationDelay: '0.2s' }}>
-          <p className="max-w-xl text-graphite md:text-lg">{intro}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={demoHref}
-              className="inline-flex h-11 items-center rounded-full bg-brand px-5 text-sm font-medium text-white transition-colors hover:bg-brand-hover"
-            >
-              {'Request a demo'}
-            </a>
-            <a
-              href="#solutions"
-              className="inline-flex h-11 items-center rounded-full bg-mist px-5 text-sm font-medium transition-colors hover:bg-hairline"
-            >
-              {'See what’s included'}
-            </a>
+          <div ref={consoleRef} className="origin-left will-change-transform">
+            {children}
           </div>
         </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,var(--background)_32%,transparent_62%),linear-gradient(0deg,var(--background)_4%,transparent_30%)] lg:block"
+        />
+
+        <div className="relative z-10 grid items-end gap-8 lg:grid-cols-12">
+          <div
+            className="hero-line flex flex-col gap-6 lg:col-span-5"
+            style={{ animationDelay: '0.2s' }}
+          >
+            <p className="max-w-md text-lead text-muted-foreground">{intro}</p>
+            <div className="flex flex-wrap items-center gap-6">
+              <ArrowButton href={demoHref}>
+                {m.common_request_demo()}
+              </ArrowButton>
+              <a
+                href="#solutions"
+                className="eyebrow text-foreground transition-colors hover:text-highlight"
+              >
+                {m.product_hero_see_included()}
+              </a>
+            </div>
+          </div>
+          <dl
+            className="rounded-lg hero-line border border-border bg-card/80 px-5 py-2 backdrop-blur-md lg:col-span-4 lg:col-start-9"
+            style={{ animationDelay: '0.4s' }}
+          >
+            {facts.map(([label, value]) => (
+              <div
+                key={label}
+                className="flex items-baseline justify-between border-b border-border py-3 last:border-b-0"
+              >
+                <dt className="eyebrow">{label}</dt>
+                <dd className="heading text-xl tabular-nums">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {clients && (
+          <ul className="relative z-10 mt-10 flex flex-wrap items-center gap-x-12 gap-y-6 border-t border-border pt-8">
+            <li className="eyebrow">{m.product_hero_trusted_by()}</li>
+            {clients.map((client) => (
+              <li key={client.name}>
+                <img
+                  src={client.src}
+                  alt={client.name}
+                  loading="lazy"
+                  className="h-7 w-auto opacity-50 grayscale transition-opacity hover:opacity-100"
+                />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <div
-        ref={panelRef}
-        className="hero-line mt-12 overflow-hidden rounded-3xl md:mt-16"
-        style={{ animationDelay: '0.3s' }}
-      >
-        {children}
-      </div>
-      {clients && (
-        <ul className="mt-12 flex flex-wrap items-center justify-between gap-x-10 gap-y-6 md:mt-16">
-          {clients.map((client) => (
-            <li key={client.name}>
-              <img
-                src={client.src}
-                alt={client.name}
-                loading="lazy"
-                className="h-9 w-auto opacity-50 grayscale invert"
-              />
-            </li>
-          ))}
-        </ul>
-      )}
     </section>
   )
 }

@@ -1,17 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Cta } from '#/components'
 import {
   ProductCapabilities,
-  ProductCta,
   ProductHero,
   ProductIntegrations,
-  ValueTabs,
-} from '#/components'
-import {
-  ADDITIONAL_INTEGRATIONS,
-  CAPABILITIES,
-  CORE_INTEGRATIONS,
-  REASONS,
-} from './-content'
+  ProductValues,
+} from '#/components/product'
+import { m } from '#/paraglide/messages'
+import { getContent } from './-content'
 import Pricing from './-components/pricing'
 import Solutions from './-components/solutions'
 import { TradingTerminal } from './-components/trading-terminal'
@@ -19,50 +15,65 @@ import { TradingTerminal } from './-components/trading-terminal'
 const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request%3A%20Atlas'
 
 export const Route = createFileRoute('/atlas/')({
+  staticData: { darkHero: true },
   head: () => ({
     meta: [
-      { title: 'Atlas | Brokerage platform by AILab' },
-      {
-        name: 'description',
-        content:
-          'Trading, back office, mobile, and nominee systems for brokerages on the Mongolian Stock Exchange.',
-      },
+      { title: m.atlas_meta_title() },
+      { name: 'description', content: m.atlas_meta_description() },
     ],
   }),
   component: AtlasPage,
 })
 
 function AtlasPage() {
+  const content = getContent()
+
   return (
-    <main className="flex flex-col gap-24 pb-32 md:gap-40 md:pb-44">
-      <div className="flex flex-col gap-16 md:gap-24">
-        <ProductHero
-          eyebrow="Atlas brokerage platform"
-          title="The platform for every trade"
-          intro="Secure trading, back-office, and mobile systems that meet Mongolian Stock Exchange standards, from investor onboarding to settlement."
-          demoHref={DEMO_HREF}
-        >
-          <TradingTerminal />
-        </ProductHero>
-        <ProductCapabilities items={CAPABILITIES} />
-      </div>
-      <Solutions />
-      <ValueTabs
-        eyebrow="Why Atlas"
-        title="Built for Mongolia’s capital market"
-        intro="Deep fintech expertise and reliable, secure, high-performance trading built for digital investing."
-        items={REASONS}
-      />
-      <ProductIntegrations
-        intro="Atlas connects to the exchange, depository, clearing house, and the identity and payment services investors use."
-        items={[...CORE_INTEGRATIONS, ...ADDITIONAL_INTEGRATIONS]}
-        className="lg:grid-cols-6"
-      />
-      <Pricing />
-      <ProductCta
-        title="Run your brokerage on one platform"
-        intro="We’ll walk you through Atlas with your clients and products in mind."
+    <main className="flex flex-col">
+      <ProductHero
+        eyebrow={m.atlas_hero_eyebrow()}
+        title={m.atlas_hero_title()}
+        intro={m.atlas_hero_intro()}
         demoHref={DEMO_HREF}
+        facts={[
+          [m.atlas_hero_fact_systems(), String(content.solutions.length)],
+          [
+            m.atlas_hero_fact_integrations(),
+            String(content.integrations.length),
+          ],
+          [m.atlas_hero_fact_packages(), String(content.plans.length)],
+        ]}
+      >
+        <TradingTerminal />
+      </ProductHero>
+      <ProductCapabilities items={content.capabilities} />
+      <div className="flex flex-col gap-32 py-32 md:gap-48 md:py-48">
+        <Solutions solutions={content.solutions} />
+        <ProductValues
+          eyebrow={m.atlas_values_eyebrow()}
+          title={
+            <>
+              {m.atlas_values_title_a()}
+              <span className="text-muted-foreground">
+                {m.atlas_values_title_b()}
+              </span>
+            </>
+          }
+          intro={m.atlas_values_intro()}
+          items={content.reasons}
+        />
+        <ProductIntegrations
+          intro={m.atlas_integrations_intro()}
+          items={content.integrations}
+        />
+        <Pricing plans={content.plans} />
+      </div>
+      <Cta
+        eyebrow={m.atlas_cta_eyebrow()}
+        title={m.atlas_cta_title()}
+        intro={m.atlas_cta_intro()}
+        href={DEMO_HREF}
+        label={m.atlas_cta_label()}
       />
     </main>
   )

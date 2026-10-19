@@ -1,45 +1,88 @@
-import { cn } from '#/lib/utils'
-import { SectionIntro } from './section-intro'
+import { cn } from 'cn'
+import { useReveal } from '#/lib/use-reveal'
+import { SectionHeading } from '../section-heading'
+import { m } from '#/paraglide/messages'
+
+export type Logo = { name: string; src: string; ink?: 'dark' | 'light' }
 
 type ProductIntegrationsProps = {
+  id?: string
   intro: string
-  items: Array<{ name: string; src: string }>
-  className?: string
+  items: Array<Logo>
 }
 
 export function ProductIntegrations({
+  id,
   intro,
   items,
-  className,
 }: ProductIntegrationsProps) {
+  const sectionRef = useReveal<HTMLElement>()
+  const rows = [items, [...items].reverse()]
+
   return (
-    <section className="shell">
-      <SectionIntro
-        eyebrow="Integrations"
-        title="Connected from day one"
-        intro={intro}
-      />
-      <ul
-        className={cn(
-          'mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3 md:mt-20',
-          className,
-        )}
-      >
-        {items.map((item) => (
-          <li
-            key={item.name}
-            className="flex flex-col items-center justify-center gap-4 bg-background px-4 py-8 text-center"
+    <section
+      ref={sectionRef}
+      id={id}
+      className="flex scroll-mt-24 flex-col gap-14 md:gap-20"
+    >
+      <div className="shell flex flex-col justify-between gap-10 md:flex-row md:items-end">
+        <SectionHeading
+          eyebrow={m.product_integrations_eyebrow()}
+          title={
+            <>
+              {m.product_integrations_title_a()}
+              <span className="text-muted-foreground">
+                {m.product_integrations_title_b()}
+              </span>
+            </>
+          }
+          intro={intro}
+        />
+        <p className="flex items-start gap-3">
+          <span className="heading text-hero tabular-nums">{items.length}</span>
+          <span className="eyebrow pt-3">
+            {m.product_integrations_count_label()}
+          </span>
+        </p>
+      </div>
+      <div className="group flex flex-col gap-3 overflow-hidden mask-x-from-85%">
+        {rows.map((row, rowIndex) => (
+          <ul
+            key={rowIndex}
+            aria-hidden={rowIndex === 1 || undefined}
+            className="flex w-max gap-3 group-hover:[animation-play-state:paused]"
+            style={{
+              animation: `marquee ${row.length * 5}s linear infinite`,
+              animationDirection: rowIndex ? 'reverse' : 'normal',
+            }}
           >
-            <img
-              src={item.src}
-              alt=""
-              loading="lazy"
-              className="h-9 w-auto max-w-[8rem] object-contain"
-            />
-            <span className="text-xs text-graphite">{item.name}</span>
-          </li>
+            {/* Four copies keep each half of the loop wider than the viewport. */}
+            {[...row, ...row, ...row, ...row].map((item, index) => (
+              <li
+                key={index}
+                aria-hidden={
+                  (rowIndex === 0 && index >= row.length) || undefined
+                }
+                className="rounded-lg group/item flex h-32 w-56 shrink-0 flex-col items-center justify-center gap-4 border border-border bg-card transition-colors duration-300 hover:border-foreground/20"
+              >
+                <img
+                  src={item.src}
+                  alt=""
+                  loading="lazy"
+                  className={cn(
+                    'h-9 w-auto max-w-[7.5rem] object-contain opacity-60 grayscale transition-[opacity,filter] duration-300 group-hover/item:opacity-100 group-hover/item:grayscale-0',
+                    // Hue rotation undoes the color shift from inverting, so hover keeps brand colors.
+                    item.ink === 'dark' && 'dark:invert dark:hue-rotate-180',
+                    item.ink === 'light' &&
+                      'invert hue-rotate-180 dark:invert-0 dark:hue-rotate-0',
+                  )}
+                />
+                <span className="eyebrow">{item.name}</span>
+              </li>
+            ))}
+          </ul>
         ))}
-      </ul>
+      </div>
     </section>
   )
 }

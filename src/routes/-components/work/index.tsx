@@ -1,80 +1,105 @@
-import { useState } from 'react'
 import { SectionHeading } from '#/components'
 import { useReveal } from '#/lib/use-reveal'
-import { ProjectPreview } from './project-preview'
-import { ProjectRow } from './project-row'
-import type { Project } from './project-row'
+import { gsap, useGSAP } from '#/lib/gsap'
+import { ProjectCard } from './project-card'
+import type { Project } from './project-card'
+import { m } from '#/paraglide/messages'
 
 const PROJECTS: Array<Project> = [
   {
     name: 'Pocket',
-    tags: ['Lending', 'BNPL', 'Payments'],
+    tags: [m.home_work_tag_lending, () => 'BNPL', m.home_work_tag_payments],
     href: 'https://pocket.mn/',
     logo: '/assets/logos/pocket-vertical.png',
-    body: 'A fintech platform bringing microloans, BNPL, leasing, savings, and payments into one app.',
-    tile: 'bg-mist',
+    body: m.home_work_pocket_body,
+    tile: 'bg-white',
     logoClassName: 'w-1/3',
   },
   {
     name: 'Pocket KZ',
-    tags: ['Lending', 'Payments', 'Central Asia'],
+    tags: [
+      m.home_work_tag_lending,
+      m.home_work_tag_payments,
+      m.home_work_tag_central_asia,
+    ],
     href: 'https://pocket.mn/',
     logo: '/assets/logos/pocket-vertical.png',
-    body: 'Pocket’s lending and payments stack, brought to Central Asia.',
+    body: m.home_work_pocket_kz_body,
     tile: 'bg-[#fde9ea]',
     logoClassName: 'w-1/3',
   },
   {
     name: 'Worki',
-    tags: ['Recruiting', 'AI matching'],
+    tags: [m.home_work_tag_recruiting, m.home_work_tag_ai_matching],
     href: 'https://worki.mn/',
     logo: '/assets/logos/worki.svg',
-    body: 'A job platform that uses AI to match people with roles, with listings, resume building, and career guidance.',
+    body: m.home_work_worki_body,
     tile: 'bg-[#2b2466]',
     logoClassName: 'w-1/2',
   },
   {
     name: 'iCapital',
-    tags: ['Investing', 'Securities'],
+    tags: [m.home_work_tag_investing, m.home_work_tag_securities],
     href: 'https://icapital.mn/',
     logo: '/assets/logos/icapital.svg',
-    body: 'An investing app for stocks and bonds across Mongolia’s major exchanges.',
+    body: m.home_work_icapital_body,
     tile: 'bg-[#1b2a5c]',
     logoClassName: 'w-2/5',
   },
 ]
 
 export default function Work() {
-  const listRef = useReveal<HTMLUListElement>()
-  const [active, setActive] = useState(0)
+  const gridRef = useReveal<HTMLUListElement>()
+
+  // Logos drift against the scroll, so each tile reads as a window.
+  useGSAP(
+    () => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
+      gsap.utils.toArray<HTMLElement>('[data-logo]').forEach((logo) =>
+        gsap.fromTo(
+          logo,
+          { yPercent: 6 },
+          {
+            yPercent: -6,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: logo.parentElement,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+            },
+          },
+        ),
+      )
+    },
+    { scope: gridRef },
+  )
 
   return (
-    <section id="selected-work" className="shell scroll-mt-24">
+    <section
+      id="selected-work"
+      className="shell flex scroll-mt-24 flex-col gap-14 md:gap-20"
+    >
       <SectionHeading
-        eyebrow="Our work"
-        title="Selected work"
-        intro="Products we’ve designed, built, and run for our partners and ourselves."
-        className="mb-12 md:mb-16"
+        eyebrow={m.home_work_eyebrow()}
+        title={
+          <>
+            {m.home_work_title_a()}
+            <span className="text-muted-foreground">
+              {m.home_work_title_b()}
+            </span>
+          </>
+        }
+        intro={m.home_work_intro()}
+        className="lg:max-w-4xl"
       />
-      <div className="grid items-start gap-12 lg:grid-cols-12">
-        <ul
-          ref={listRef}
-          className="border-b border-border lg:col-span-7 *:nth-2:[--i:1] *:nth-3:[--i:2] *:nth-4:[--i:3] *:nth-5:[--i:4]"
-        >
-          {PROJECTS.map((project, index) => (
-            <li key={project.name}>
-              <ProjectRow
-                project={project}
-                active={index === active}
-                onActivate={() => setActive(index)}
-              />
-            </li>
-          ))}
-        </ul>
-        <div className="lg:col-span-5 lg:h-full">
-          <ProjectPreview projects={PROJECTS} active={active} />
-        </div>
-      </div>
+      <ul ref={gridRef} className="grid gap-4 md:grid-cols-2">
+        {PROJECTS.map((project, index) => (
+          <li key={project.name} data-reveal>
+            <ProjectCard project={project} index={index} />
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

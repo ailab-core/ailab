@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { LAND } from './land'
+import { m } from '#/paraglide/messages'
 
 const POINTS = 14000
 const TAU = Math.PI * 2
-const TILT = 0.4
+const TILT = 0.75
 const SPIN = 0.05
 const START = -2.3
 const SEGMENTS = 48
@@ -46,9 +47,11 @@ export function Globe() {
 
     const styles = getComputedStyle(canvas)
     const ground = styles.getPropertyValue('--foreground').trim()
-    const light = styles.getPropertyValue('--brand-soft').trim()
+    const light = styles.getPropertyValue('--highlight').trim()
+    const accent = styles.getPropertyValue('--secondary').trim()
     const label = styles.getPropertyValue('--muted-foreground').trim()
     const outline = styles.getPropertyValue('--background').trim()
+    const city = m.home_hero_globe_city()
 
     const mask = atob(LAND)
     const golden = Math.PI * (3 - Math.sqrt(5))
@@ -158,9 +161,11 @@ export function Globe() {
           (px - size / 2) ** 2 + (py - size / 2) ** 2 > radius * radius
         if (pz > 0 || outside) {
           ctx.globalAlpha = 1
+          ctx.fillStyle = accent
           ctx.beginPath()
           ctx.arc(px, py, dot * 1.6, 0, TAU)
           ctx.fill()
+          ctx.fillStyle = light
         }
       })
 
@@ -168,6 +173,9 @@ export function Globe() {
         project(x, y, z)
         if (pz <= 0.05) return
         const home = index === 0
+        const tone = home ? accent : light
+        ctx.strokeStyle = tone
+        ctx.fillStyle = tone
         const pulse = (now / 2600 + index * 0.29) % 1
         ctx.globalAlpha = (1 - pulse) * 0.5 * pz
         ctx.beginPath()
@@ -185,12 +193,10 @@ export function Globe() {
           ctx.font = '500 11px "IBM Plex Mono", monospace'
           ctx.lineWidth = 4
           ctx.strokeStyle = outline
-          ctx.strokeText('ULAANBAATAR', px + dot * 6, py + 4)
+          ctx.strokeText(city, px + dot * 6, py + 4)
           ctx.fillStyle = label
-          ctx.fillText('ULAANBAATAR', px + dot * 6, py + 4)
+          ctx.fillText(city, px + dot * 6, py + 4)
           ctx.lineWidth = 1
-          ctx.strokeStyle = light
-          ctx.fillStyle = light
         }
       })
       ctx.globalAlpha = 1
@@ -232,7 +238,7 @@ export function Globe() {
 
   return (
     <div className="relative aspect-square w-full">
-      <div className="absolute inset-[10%] rounded-full bg-[radial-gradient(circle_at_35%_30%,var(--card),var(--background)_80%)] shadow-[0_0_140px_-10px_color-mix(in_oklab,var(--brand)_45%,transparent),inset_10px_12px_40px_-12px_color-mix(in_oklab,var(--brand-soft)_30%,transparent)] ring-1 ring-white/8" />
+      <div className="absolute inset-[10%] rounded-full bg-[radial-gradient(circle_at_35%_30%,var(--card),var(--background)_80%)] shadow-[0_0_160px_-10px_color-mix(in_oklab,var(--primary)_50%,transparent),inset_10px_12px_40px_-12px_color-mix(in_oklab,var(--primary)_35%,transparent)] ring-1 ring-primary/20" />
       <canvas
         ref={canvasRef}
         aria-hidden="true"

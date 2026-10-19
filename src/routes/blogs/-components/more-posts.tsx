@@ -1,50 +1,27 @@
-import { Link } from '@tanstack/react-router'
-import { format } from 'date-fns'
-import { PostAuthor } from '#/components'
+import { SectionHeading } from '#/components'
 import { POSTS } from '#/lib/posts'
+import { useReveal } from '#/lib/use-reveal'
+import { m } from '#/paraglide/messages'
+import { getLocale } from '#/paraglide/runtime'
+import { PostCard } from './post-card'
 
 export function MorePosts({ currentSlug }: { currentSlug: string }) {
-  const posts = POSTS.filter((post) => post.slug !== currentSlug).slice(0, 4)
+  const listRef = useReveal<HTMLUListElement>()
+  const posts = POSTS[getLocale()]
+    .filter((post) => post.slug !== currentSlug)
+    .slice(0, 4)
 
   return (
-    <section className="bg-mist py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-2xl font-bold tracking-tight">
-          {'More from AILab'}
-        </h2>
-        <ul className="mt-10 grid gap-x-10 gap-y-12 md:grid-cols-2">
+    <section className="border-t border-border bg-muted/50 py-20 md:py-28">
+      <div className="shell">
+        <SectionHeading title={m.blog_more_title()} />
+        <ul
+          ref={listRef}
+          className="mt-12 grid border-t border-l border-border sm:grid-cols-2 md:mt-16 lg:grid-cols-4"
+        >
           {posts.map((post) => (
-            <li key={post.slug}>
-              <Link
-                to="/blogs/$slug"
-                params={{ slug: post.slug }}
-                className="group block"
-              >
-                <div className="aspect-[16/9] overflow-hidden rounded-lg bg-background">
-                  <img
-                    src={post.thumbnail}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="mt-5">
-                  <PostAuthor />
-                </div>
-                <h3 className="mt-3 text-xl leading-snug font-bold tracking-tight">
-                  {post.title}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-graphite">
-                  {post.excerpt}
-                </p>
-                <p className="mt-3 flex gap-3 text-sm text-graphite">
-                  <time dateTime={post.published.toISOString()}>
-                    {format(post.published, 'MMM d, yyyy')}
-                  </time>
-                  <span>{`${post.readingTime} min read`}</span>
-                </p>
-              </Link>
+            <li key={post.slug} data-reveal className="border-r border-b">
+              <PostCard post={post} />
             </li>
           ))}
         </ul>

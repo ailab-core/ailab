@@ -1,8 +1,9 @@
-import { CheckIcon, CodeXmlIcon } from 'lucide-react'
+import { CodeXmlIcon } from '@hugeicons/core-free-icons'
 import { Card } from './card'
+import { m } from '#/paraglide/messages'
 
 const TONE = {
-  k: 'text-brand-soft',
+  k: 'text-highlight',
   t: 'text-foreground',
   p: 'text-muted-foreground',
 }
@@ -16,63 +17,55 @@ const CODE: Array<Array<[keyof typeof TONE, string]>> = [
   ],
   [],
   [
-    ['p', '  '],
+    ['p', ''],
     ['k', '@PostMapping'],
     ['p', '("/loans")'],
   ],
   [
-    ['p', '  '],
+    ['p', ''],
     ['t', 'Loan'],
     ['p', ' apply('],
     ['t', 'Application'],
     ['p', ' a) {'],
   ],
-  [['p', '    var score = scoring.assess(a);']],
+  [['p', ' var score = scoring.assess(a);']],
   [
-    ['p', '    '],
+    ['p', ''],
     ['k', 'return'],
     ['p', ' loans.originate(a, score);'],
   ],
-  [['p', '  }']],
+  [['p', ' }']],
   [['p', '}']],
 ]
 
 const LOG = [
-  '$ ./mvnw deploy',
-  '✓ 128 tests passed',
-  '✓ Security scan clean',
-  '✓ Live on production',
+  () => '$ ./mvnw deploy',
+  m.home_wwd_dev_log_tests,
+  m.home_wwd_dev_log_scan,
+  m.home_wwd_dev_log_live,
 ]
 
 const POINTS = [
-  'Web and mobile apps',
-  'Product design and UX',
-  'Secure financial APIs',
+  m.home_wwd_dev_point_1,
+  m.home_wwd_dev_point_2,
+  m.home_wwd_dev_point_3,
 ]
 
 export function Development() {
   return (
     <Card
       icon={CodeXmlIcon}
-      title="Development"
-      lead="Financial software built around your customers,"
-      rest="from the first design review to production."
-      className="md:col-span-2"
+      title={m.home_wwd_development()}
+      lead={m.home_wwd_dev_lead()}
+      rest={m.home_wwd_dev_rest()}
+      tags={POINTS}
     >
-      <ul className="relative z-10 flex flex-col gap-1.5 p-6 text-sm text-muted-foreground md:absolute md:bottom-0 md:left-0">
-        {POINTS.map((point) => (
-          <li key={point} className="flex items-center gap-2">
-            <CheckIcon className="size-4 text-brand-soft" />
-            {point}
-          </li>
-        ))}
-      </ul>
-      <div className="relative h-72 md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[58%]">
-        <div className="absolute top-6 right-[-2rem] left-6 overflow-hidden rounded-lg border border-border bg-background font-mono text-[0.72rem] leading-relaxed md:top-4 md:left-0">
+      <div className="absolute inset-0">
+        <div className="rounded-md absolute top-2 right-[-2rem] left-5 overflow-hidden border border-border bg-background font-mono text-xs leading-relaxed md:left-8">
           <div className="flex gap-1.5 border-b border-border px-3 py-2.5">
-            <span className="size-2 rounded-full bg-border" />
-            <span className="size-2 rounded-full bg-border" />
-            <span className="size-2 rounded-full bg-border" />
+            <span className="size-2 bg-secondary" />
+            <span className="size-2 bg-border" />
+            <span className="size-2 bg-border" />
           </div>
           <pre className="p-4">
             {CODE.map((line, row) => (
@@ -86,24 +79,22 @@ export function Development() {
                   </span>
                 ))}
                 {row === 5 && (
-                  <span className="ml-px inline-block h-4 w-[2px] animate-[blink_1.1s_steps(1)_infinite] bg-brand-soft" />
+                  <span className="ml-px inline-block h-4 w-[2px] animate-[blink_1.1s_steps(1)_infinite] bg-primary" />
                 )}
               </div>
             ))}
           </pre>
         </div>
-        <div className="absolute right-4 bottom-6 w-60 rounded-lg border border-border bg-card/95 p-4 font-mono text-[0.72rem] leading-relaxed shadow-2xl shadow-black/40 backdrop-blur">
+        <div className="rounded-md absolute right-5 bottom-10 w-60 md:right-8 border border-border bg-card/95 p-4 font-mono text-xs leading-relaxed shadow-2xl shadow-background/40 backdrop-blur">
           {LOG.map((line, index) => (
             <p
-              key={line}
-              className={
-                index === 0 ? 'text-foreground' : 'text-emerald-400/90'
-              }
+              key={index}
+              className={index === 0 ? 'text-foreground' : 'text-highlight/90'}
               style={{
                 animation: `appear 6s ${index * 0.7}s ease-out infinite both`,
               }}
             >
-              {line}
+              {line()}
             </p>
           ))}
         </div>

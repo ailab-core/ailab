@@ -1,7 +1,7 @@
-import type { CSSProperties } from 'react'
 import { SectionHeading } from '#/components'
 import { useReveal } from '#/lib/use-reveal'
-import { cn } from '#/lib/utils'
+import { cn } from 'cn'
+import { m } from '#/paraglide/messages'
 
 type Company = { alt: string; src: string; href?: string; className?: string }
 
@@ -59,66 +59,63 @@ const COMPANIES: Array<Company> = [
     alt: 'Burenscore',
     src: '/assets/logos/burenscore.svg',
     href: 'https://burenscore.mn/',
-    className: 'invert-0',
+    className: 'invert-0 dark:invert',
   },
 ]
 
-const ROWS = [COMPANIES.slice(0, 6), COMPANIES.slice(6)]
-
 export default function Partners() {
-  const sectionRef = useReveal<HTMLElement>()
+  const gridRef = useReveal<HTMLUListElement>()
 
   return (
-    <section ref={sectionRef} className="flex flex-col gap-12 md:gap-16">
-      <div className="shell">
-        <SectionHeading
-          eyebrow="Partners"
-          title="Trusted across Mongolia"
-          intro="Banks, lenders, and brokerages run their lending, payments, and investing products on our platforms."
-        />
-      </div>
-      <div
-        className="flex flex-col gap-6 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]"
-        style={{ '--i': 1 } as CSSProperties}
+    <section className="shell flex flex-col gap-14 md:gap-20">
+      <SectionHeading
+        eyebrow={m.home_partners_eyebrow()}
+        title={
+          <>
+            {m.home_partners_title_a()}
+            <span className="text-muted-foreground">
+              {m.home_partners_title_b()}
+            </span>
+          </>
+        }
+        intro={m.home_partners_intro()}
+        className="lg:max-w-4xl"
+      />
+      <ul
+        ref={gridRef}
+        className="rounded-lg grid grid-cols-2 gap-px overflow-hidden border border-border bg-border sm:grid-cols-3 lg:grid-cols-6"
       >
-        {ROWS.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className="flex w-max hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:overflow-x-auto motion-reduce:[animation-name:none]"
-            style={{
-              animation: `marquee ${96 + rowIndex * 16}s linear infinite`,
-              animationDirection: rowIndex ? 'reverse' : 'normal',
-            }}
-          >
-            {[...row, ...row, ...row, ...row].map((company, index) => {
-              const isCopy = index >= row.length
-              return (
-                <a
-                  key={index}
-                  href={company.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={company.alt}
-                  aria-hidden={isCopy || undefined}
-                  tabIndex={isCopy ? -1 : undefined}
-                  className="group flex h-20 w-48 shrink-0 items-center justify-center md:w-56"
-                >
-                  <img
-                    src={company.src}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className={cn(
-                      'max-h-14 w-auto max-w-[10rem] object-contain opacity-50 grayscale invert transition-opacity duration-300 group-hover:opacity-100',
-                      company.className,
-                    )}
-                  />
-                </a>
-              )
-            })}
-          </div>
+        {COMPANIES.map((company) => (
+          <li key={company.alt} data-reveal className="bg-background">
+            <a
+              href={company.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={company.alt}
+              className="group relative flex aspect-[3/2] items-center justify-center p-6 transition-colors duration-500 hover:bg-card"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute top-3 left-3 size-1 bg-secondary opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+              <img
+                src={company.src}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className={cn(
+                  'max-h-11 w-auto max-w-[8rem] object-contain opacity-50 grayscale invert transition-[opacity,scale] duration-500 group-hover:scale-105 group-hover:opacity-100 dark:invert-0',
+                  company.className,
+                )}
+              />
+            </a>
+          </li>
         ))}
-      </div>
+        <li
+          aria-hidden="true"
+          className="bg-background bg-[repeating-linear-gradient(135deg,var(--border)_0_1px,transparent_1px_10px)]"
+        />
+      </ul>
     </section>
   )
 }

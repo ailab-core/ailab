@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import { m } from '#/paraglide/messages'
 
 const ASKS = [
   { price: '1,262', quantity: '1,400', depth: 0.35 },
@@ -14,41 +15,48 @@ const BIDS = [
 
 export function OrderBookMock() {
   return (
-    <div className="text-xs tabular-nums">
-      <div className="flex justify-between pb-2 text-graphite">
-        <span>{'Price'}</span>
-        <span>{'Quantity'}</span>
+    <div className="grid grid-cols-[auto_1fr] items-center gap-8">
+      <div>
+        <p className="eyebrow">{m.atlas_mock_last({ symbol: 'APU' })}</p>
+        <p className="heading mt-2 text-figure-lg tabular-nums">{'1,252'}</p>
+        <p className="mt-2 font-mono text-xs text-highlight">{'+1.8%'}</p>
       </div>
-      {[
-        { rows: ASKS, tone: 'bg-rose-500/10', text: 'text-rose-600' },
-        { rows: BIDS, tone: 'bg-emerald-500/10', text: 'text-emerald-700' },
-      ].map((side, sideIndex) => (
-        <div
-          key={sideIndex}
-          className={sideIndex ? 'mt-2 border-t border-border pt-2' : ''}
-        >
-          {side.rows.map((row, index) => (
-            <div
-              key={row.price}
-              className="relative flex justify-between py-1.5"
-            >
-              <span
-                className={`absolute inset-y-0.5 right-0 w-full origin-right rounded-sm ${side.tone}`}
-                style={
-                  {
-                    '--to': row.depth,
-                    animation: `fill 6s ${(sideIndex * 3 + index) * 0.2}s ease-in-out infinite both`,
-                  } as CSSProperties
-                }
-              />
-              <span className={`relative font-medium ${side.text}`}>
-                {row.price}
-              </span>
-              <span className="relative">{row.quantity}</span>
-            </div>
-          ))}
-        </div>
-      ))}
+      <div className="font-mono text-xs tabular-nums">
+        {[
+          {
+            rows: ASKS,
+            tone: 'bg-secondary/20',
+            text: 'text-highlight-secondary',
+          },
+          { rows: BIDS, tone: 'bg-foreground/10', text: 'text-foreground' },
+        ].map((side, sideIndex) => (
+          <div
+            key={sideIndex}
+            className={sideIndex ? 'mt-1.5 border-t border-border pt-1.5' : ''}
+          >
+            {side.rows.map((row, index) => (
+              <div
+                key={row.price}
+                className="relative flex justify-between px-2 py-1.5"
+              >
+                <span
+                  className={`absolute inset-y-0.5 right-0 w-full origin-right ${side.tone}`}
+                  style={
+                    {
+                      '--to': row.depth,
+                      animation: `fill 6s ${(sideIndex * 3 + index) * 0.2}s ease-in-out infinite both`,
+                    } as CSSProperties
+                  }
+                />
+                <span className={`relative ${side.text}`}>{row.price}</span>
+                <span className="relative text-muted-foreground">
+                  {row.quantity}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

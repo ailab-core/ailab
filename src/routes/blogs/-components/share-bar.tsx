@@ -1,30 +1,32 @@
+import { HugeiconsIcon } from '@hugeicons/react'
+import { CheckIcon, LinkIcon } from '@hugeicons/core-free-icons'
 import { useState } from 'react'
-import { CheckIcon, LinkIcon } from 'lucide-react'
+import { m } from '#/paraglide/messages'
 
 const NETWORKS = [
   {
     name: 'facebook',
-    label: 'Share on Facebook',
+    label: m.blog_share_facebook,
     url: 'https://www.facebook.com/sharer/sharer.php?u=',
   },
   {
     name: 'linkedin',
-    label: 'Share on LinkedIn',
+    label: m.blog_share_linkedin,
     url: 'https://www.linkedin.com/sharing/share-offsite/?url=',
   },
 ]
 
 const buttonClass =
-  'flex size-10 cursor-pointer items-center justify-center rounded-full text-graphite transition-colors hover:bg-mist hover:text-ink'
+  'rounded-md group flex size-11 cursor-pointer items-center justify-center border border-border text-muted-foreground transition-colors hover:border-highlight hover:text-highlight'
 
 export function ShareBar() {
   const [copied, setCopied] = useState(false)
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-2">
       <button
         type="button"
-        aria-label={copied ? 'Link copied' : 'Copy link'}
+        aria-label={copied ? m.blog_link_copied() : m.blog_copy_link()}
         onClick={async () => {
           await navigator.clipboard.writeText(window.location.href)
           setCopied(true)
@@ -33,16 +35,16 @@ export function ShareBar() {
         className={buttonClass}
       >
         {copied ? (
-          <CheckIcon className="size-5 text-brand" />
+          <HugeiconsIcon icon={CheckIcon} className="size-4 text-highlight" />
         ) : (
-          <LinkIcon className="size-5" />
+          <HugeiconsIcon icon={LinkIcon} className="size-4" />
         )}
       </button>
       {NETWORKS.map((network) => (
         <button
           key={network.name}
           type="button"
-          aria-label={network.label}
+          aria-label={network.label()}
           onClick={() =>
             window.open(
               network.url + encodeURIComponent(window.location.href),
@@ -52,15 +54,17 @@ export function ShareBar() {
           }
           className={buttonClass}
         >
-          <img
-            src={`/assets/brands/${network.name}.svg`}
-            alt=""
-            className="size-[1.125rem] opacity-60"
+          <span
+            aria-hidden="true"
+            className="size-4 bg-current"
+            style={{
+              mask: `url(/assets/brands/${network.name}.svg) center / contain no-repeat`,
+            }}
           />
         </button>
       ))}
       <span role="status" className="sr-only">
-        {copied ? 'Link copied' : ''}
+        {copied ? m.blog_link_copied() : ''}
       </span>
     </div>
   )

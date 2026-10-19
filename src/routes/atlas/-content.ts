@@ -1,6 +1,8 @@
+import type { Logo } from '#/components/product'
+import { m } from '#/paraglide/messages'
 import {
   BriefcaseBusinessIcon,
-  CandlestickChartIcon,
+  ChartCandlestickIcon,
   FileCheckIcon,
   LandmarkIcon,
   MousePointerClickIcon,
@@ -9,178 +11,188 @@ import {
   RocketIcon,
   ShieldCheckIcon,
   SmartphoneIcon,
-  UserCheckIcon,
-  WalletIcon,
-} from 'lucide-react'
+  UserCheck01Icon,
+  Wallet01Icon,
+} from '@hugeicons/core-free-icons'
 
-export const CAPABILITIES = [
-  { label: 'Investor onboarding', icon: UserCheckIcon, target: 'trading' },
-  { label: 'KYC and compliance', icon: FileCheckIcon, target: 'trading' },
-  { label: 'IPO subscriptions', icon: RocketIcon, target: 'trading' },
-  { label: 'Secondary trading', icon: CandlestickChartIcon, target: 'trading' },
-  { label: 'Back office', icon: BriefcaseBusinessIcon, target: 'back-office' },
-  { label: 'Mobile app', icon: SmartphoneIcon, target: 'mobile' },
-  { label: 'Nominee accounts', icon: LandmarkIcon, target: 'nominee' },
-  {
-    label: 'Fees and reconciliation',
-    icon: ReceiptTextIcon,
-    target: 'nominee',
-  },
-]
-
-export const SOLUTIONS = [
-  {
-    title: 'Primary and secondary market trading',
-    description:
-      'From IPO participation to real-time secondary market trading, with secure investor onboarding, KYC verification, and fully automated securities trading.',
-    id: 'trading',
-    features: [
-      'Digital onboarding and online identity verification',
-      'National ID and bank account verification',
-      'KYC and compliance screening',
-      'Securities subscription, buying, and selling',
-      'Bond trading and management',
-      'Trading history, analytics, and reporting',
-      'Real-time market data via live APIs',
-    ],
-  },
-  {
-    title: 'Back office management',
-    description:
-      'One platform that connects brokers, banks, securities depositories, nominee systems, and trading operations.',
-    id: 'back-office',
-    features: [
-      'Client registration, contracts, and accounts',
-      'Primary and secondary market transactions',
-      'API management and asset administration',
-      'Trading logs and audit trails',
-      'Data exchange and workflow management',
-      'Central configuration for exchanges, brokers, and products',
-    ],
-  },
-  {
-    title: 'Mobile application',
-    description:
-      'Investors manage their investments anywhere through a secure, intuitive mobile app.',
-    id: 'mobile',
-    features: [
-      'Open trading accounts digitally',
-      'Join IPOs and trade on the secondary market',
-      'Place buy and sell orders',
-      'Request fund withdrawals online',
-      'Real-time market prices and trading data',
-      'Live balances and portfolio information',
-    ],
-  },
-  {
-    title: 'Financial nominee system',
-    description:
-      'Automates cash flow records, payment processing, fund transfers, and account balancing for all trading activity.',
-    id: 'nominee',
-    features: [
-      'Multi-account management',
-      'Automated transactions and ledger',
-      'Configurable fees and pricing rules',
-      'Integration with external systems',
-      'Automated reconciliation and reporting',
-    ],
-  },
-]
-
-export const REASONS = [
-  {
-    icon: ShieldCheckIcon,
-    title: 'Security',
-    description: 'Information security in compliance with ISO 27001.',
-  },
-  {
-    icon: WalletIcon,
-    title: 'Management',
-    description: 'Secure management of financial nominee accounts.',
-  },
-  {
-    icon: CandlestickChartIcon,
-    title: 'Trading',
-    description: 'Fast, reliable online trading.',
-  },
-  {
-    icon: MousePointerClickIcon,
-    title: 'Usability',
-    description: 'An intuitive interface for investors and back-office staff.',
-  },
-  {
-    icon: NetworkIcon,
-    title: 'Ecosystem',
-    description:
-      'One financial ecosystem for brokers, banks, and stock exchanges.',
-  },
-]
-
-export const CORE_INTEGRATIONS = [
-  {
-    name: 'Mongolian Stock Exchange',
-    src: '/assets/logos/mongolian-stock-exchange.svg',
-  },
-  {
-    name: 'Central Securities Depository',
-    src: '/assets/logos/central-securities-depository.svg',
-  },
-  {
-    name: 'Mongolian Securities Clearing House',
-    src: '/assets/logos/mongolian-securities-clearing-house.svg',
-  },
-  {
-    name: 'Bank corporate gateway',
-    src: '/assets/logos/corporate-gateway.svg',
-  },
-]
-
-export const ADDITIONAL_INTEGRATIONS = [
+const ADDITIONAL_INTEGRATIONS = [
   { name: 'GSign', src: '/assets/logos/gsign.svg' },
   { name: 'DAN', src: '/assets/logos/dan.svg' },
-  { name: 'MonPEP', src: '/assets/logos/monpep.svg' },
-  { name: 'E-Barimt', src: '/assets/logos/ebarimt.svg' },
-  { name: 'QPay', src: '/assets/logos/qpay.svg' },
+  { name: 'MonPEP', src: '/assets/logos/monpep.svg', ink: 'dark' },
+  { name: 'E-Barimt', src: '/assets/logos/ebarimt.svg', ink: 'dark' },
+  { name: 'QPay', src: '/assets/logos/qpay.svg', ink: 'dark' },
   { name: 'SocialPay', src: '/assets/logos/socialpay.svg' },
-  { name: 'CallPro', src: '/assets/logos/callpro.svg' },
-  { name: 'UBX', src: '/assets/logos/ubx.svg' },
-]
+  { name: 'CallPro', src: '/assets/logos/callpro.svg', ink: 'dark' },
+  { name: 'UBX', src: '/assets/logos/ubx.svg', ink: 'dark' },
+] satisfies Array<Logo>
 
-export const PLANS = [
-  {
-    name: 'Standard',
-    description: 'The foundation for small and medium-sized firms.',
-    price: '15,840,000 ₮',
-    features: [
-      'Financial nominee system',
-      'Back-office management system',
-      'Primary market trading web platform',
-      'Secondary market trading web platform (basic)',
+// Built per render so copy follows the request locale.
+export function getContent() {
+  return {
+    capabilities: [
+      {
+        label: m.atlas_cap_onboarding(),
+        icon: UserCheck01Icon,
+        target: 'trading',
+      },
+      { label: m.atlas_cap_kyc(), icon: FileCheckIcon, target: 'trading' },
+      { label: m.atlas_cap_ipo(), icon: RocketIcon, target: 'trading' },
+      {
+        label: m.atlas_cap_secondary(),
+        icon: ChartCandlestickIcon,
+        target: 'trading',
+      },
+      {
+        label: m.atlas_cap_back_office(),
+        icon: BriefcaseBusinessIcon,
+        target: 'back-office',
+      },
+      { label: m.atlas_cap_mobile(), icon: SmartphoneIcon, target: 'mobile' },
+      { label: m.atlas_cap_nominee(), icon: LandmarkIcon, target: 'nominee' },
+      { label: m.atlas_cap_fees(), icon: ReceiptTextIcon, target: 'nominee' },
     ],
-  },
-  {
-    name: 'Premium',
-    description: 'For firms that need advanced automation and integrations.',
-    price: '22,770,000 ₮',
-    features: [
-      'Everything in Standard',
-      'Advanced secondary market trading',
-      'Notification and communication system',
-      'Core mobile application services',
-      'DAN and E-Barimt integration',
+    solutions: [
+      {
+        title: m.atlas_solution_trading_title(),
+        description: m.atlas_solution_trading_description(),
+        id: 'trading',
+        features: [
+          m.atlas_solution_trading_feature_1(),
+          m.atlas_solution_trading_feature_2(),
+          m.atlas_solution_trading_feature_3(),
+          m.atlas_solution_trading_feature_4(),
+          m.atlas_solution_trading_feature_5(),
+          m.atlas_solution_trading_feature_6(),
+          m.atlas_solution_trading_feature_7(),
+        ],
+      },
+      {
+        title: m.atlas_solution_back_office_title(),
+        description: m.atlas_solution_back_office_description(),
+        id: 'back-office',
+        features: [
+          m.atlas_solution_back_office_feature_1(),
+          m.atlas_solution_back_office_feature_2(),
+          m.atlas_solution_back_office_feature_3(),
+          m.atlas_solution_back_office_feature_4(),
+          m.atlas_solution_back_office_feature_5(),
+          m.atlas_solution_back_office_feature_6(),
+        ],
+      },
+      {
+        title: m.atlas_solution_mobile_title(),
+        description: m.atlas_solution_mobile_description(),
+        id: 'mobile',
+        features: [
+          m.atlas_solution_mobile_feature_1(),
+          m.atlas_solution_mobile_feature_2(),
+          m.atlas_solution_mobile_feature_3(),
+          m.atlas_solution_mobile_feature_4(),
+          m.atlas_solution_mobile_feature_5(),
+          m.atlas_solution_mobile_feature_6(),
+        ],
+      },
+      {
+        title: m.atlas_solution_nominee_title(),
+        description: m.atlas_solution_nominee_description(),
+        id: 'nominee',
+        features: [
+          m.atlas_solution_nominee_feature_1(),
+          m.atlas_solution_nominee_feature_2(),
+          m.atlas_solution_nominee_feature_3(),
+          m.atlas_solution_nominee_feature_4(),
+          m.atlas_solution_nominee_feature_5(),
+        ],
+      },
     ],
-  },
-  {
-    name: 'Enterprise',
-    description: 'For large firms and high-volume trading environments.',
-    price: '32,340,000 ₮',
-    features: [
-      'Everything in Premium',
-      'Additional third-party integrations',
-      'Additional exchange connectivity',
-      'Government bond trading',
-      'Audit logging',
-      'Bond calculation and management',
+    reasons: [
+      {
+        icon: ShieldCheckIcon,
+        title: m.atlas_reason_security_title(),
+        description: m.atlas_reason_security_description(),
+      },
+      {
+        icon: Wallet01Icon,
+        title: m.atlas_reason_management_title(),
+        description: m.atlas_reason_management_description(),
+      },
+      {
+        icon: ChartCandlestickIcon,
+        title: m.atlas_reason_trading_title(),
+        description: m.atlas_reason_trading_description(),
+      },
+      {
+        icon: MousePointerClickIcon,
+        title: m.atlas_reason_usability_title(),
+        description: m.atlas_reason_usability_description(),
+      },
+      {
+        icon: NetworkIcon,
+        title: m.atlas_reason_ecosystem_title(),
+        description: m.atlas_reason_ecosystem_description(),
+      },
     ],
-  },
-]
+    integrations: [
+      {
+        name: m.atlas_integration_mse(),
+        src: '/assets/logos/mongolian-stock-exchange.svg',
+      },
+      {
+        name: m.atlas_integration_csd(),
+        src: '/assets/logos/central-securities-depository.svg',
+        ink: 'dark',
+      },
+      {
+        name: m.atlas_integration_clearing(),
+        src: '/assets/logos/mongolian-securities-clearing-house.svg',
+        ink: 'dark',
+      },
+      {
+        name: m.atlas_integration_gateway(),
+        src: '/assets/logos/corporate-gateway.svg',
+        ink: 'dark',
+      },
+      ...ADDITIONAL_INTEGRATIONS,
+    ] satisfies Array<Logo>,
+    plans: [
+      {
+        name: m.atlas_plan_standard_name(),
+        description: m.atlas_plan_standard_description(),
+        price: '15,840,000 ₮',
+        features: [
+          m.atlas_plan_standard_feature_1(),
+          m.atlas_plan_standard_feature_2(),
+          m.atlas_plan_standard_feature_3(),
+          m.atlas_plan_standard_feature_4(),
+        ],
+      },
+      {
+        name: m.atlas_plan_premium_name(),
+        description: m.atlas_plan_premium_description(),
+        price: '22,770,000 ₮',
+        features: [
+          m.atlas_plan_premium_feature_1(),
+          m.atlas_plan_premium_feature_2(),
+          m.atlas_plan_premium_feature_3(),
+          m.atlas_plan_premium_feature_4(),
+          m.atlas_plan_premium_feature_5(),
+        ],
+      },
+      {
+        name: m.atlas_plan_enterprise_name(),
+        description: m.atlas_plan_enterprise_description(),
+        price: '32,340,000 ₮',
+        features: [
+          m.atlas_plan_enterprise_feature_1(),
+          m.atlas_plan_enterprise_feature_2(),
+          m.atlas_plan_enterprise_feature_3(),
+          m.atlas_plan_enterprise_feature_4(),
+          m.atlas_plan_enterprise_feature_5(),
+          m.atlas_plan_enterprise_feature_6(),
+        ],
+      },
+    ],
+  }
+}
+
+export type AtlasContent = ReturnType<typeof getContent>

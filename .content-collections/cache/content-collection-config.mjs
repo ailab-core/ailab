@@ -24,11 +24,14 @@ var posts = defineCollection({
     const plain = post.content.replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/[*_`>#|]/g, "");
     const firstParagraph = plain.split(/\n\s*\n/).map((paragraph) => paragraph.replace(/\s+/g, " ").trim()).find((paragraph) => paragraph.length > 40) ?? "";
     const excerpt = post.description ?? (firstParagraph.length > 180 ? `${firstParagraph.slice(0, 180).replace(/\s+\S*$/, "")}\u2026` : firstParagraph);
+    const locale = post._meta.directory;
+    const length = locale === "zh" ? plain.replace(/\s+/g, "").length / 2 : plain.split(/\s+/).length;
     return {
       ...post,
-      slug: post._meta.path,
+      slug: post._meta.fileName.replace(/\.md$/, ""),
+      locale,
       excerpt,
-      readingTime: Math.max(1, Math.round(plain.split(/\s+/).length / 200)),
+      readingTime: Math.max(1, Math.round(length / 200)),
       html: String(await markdown.process(post.content))
     };
   }

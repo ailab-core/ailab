@@ -1,32 +1,39 @@
-import { CheckIcon } from 'lucide-react'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { CheckIcon } from '@hugeicons/core-free-icons'
+import { m } from '#/paraglide/messages'
 
 const ACCOUNTS = [
-  { name: 'Client cash', amount: '₮1,284,500,000' },
-  { name: 'Settlement', amount: '₮312,750,000' },
-  { name: 'Fee income', amount: '₮18,420,000' },
+  { name: m.atlas_mock_account_client_cash, amount: '₮1,284,500,000' },
+  { name: m.atlas_mock_account_settlement, amount: '₮312,750,000' },
+  { name: m.atlas_mock_account_fee_income, amount: '₮18,420,000' },
 ]
 
 export function NomineeMock() {
   return (
-    <ul className="flex flex-col text-sm">
-      {ACCOUNTS.map((account, index) => (
-        <li
-          key={account.name}
-          className="flex items-center gap-3 border-b border-border py-2.5 last:border-b-0"
-        >
-          <span className="flex-1">{account.name}</span>
-          <span className="text-graphite tabular-nums">{account.amount}</span>
-          <span
-            className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs text-emerald-700"
-            style={{
-              animation: `appear 6s ${index * 0.7}s ease-out infinite both`,
-            }}
+    <div>
+      <p className="eyebrow">{m.atlas_mock_nominee_balance()}</p>
+      <p className="heading mt-2 text-figure tabular-nums">{'₮1.62B'}</p>
+      <ul className="mt-5 flex flex-col text-sm">
+        {ACCOUNTS.map((account, index) => (
+          <li
+            key={index}
+            className="flex items-center gap-3 border-t border-border py-2.5"
           >
-            <CheckIcon className="size-3" />
-            {'Reconciled'}
-          </span>
-        </li>
-      ))}
-    </ul>
+            <span
+              className="rounded-sm flex size-5 items-center justify-center bg-primary text-primary-foreground"
+              style={{
+                animation: `appear 6s ${index * 0.7}s ease-out infinite both`,
+              }}
+            >
+              <HugeiconsIcon icon={CheckIcon} className="size-3" />
+            </span>
+            <span className="flex-1">{account.name()}</span>
+            <span className="font-mono text-xs text-muted-foreground tabular-nums">
+              {account.amount}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

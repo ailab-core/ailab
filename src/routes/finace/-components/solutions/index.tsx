@@ -1,32 +1,44 @@
-import { SectionIntro, SolutionCard } from '#/components'
-import { useReveal } from '#/lib/use-reveal'
-import { SOLUTIONS } from '../../-content'
+import { ProductSolutions } from '#/components/product'
+import { m } from '#/paraglide/messages'
+import type { getContent } from '../../-content'
 import { CoreBankingMock } from './core-banking-mock'
 import { OriginationMock } from './origination-mock'
-import { StatementCard } from './statement-card'
+import { StatementMock } from './statement-mock'
 
-export default function Solutions() {
-  const gridRef = useReveal<HTMLDivElement>()
-
+export default function Solutions({
+  solutions,
+}: {
+  solutions: ReturnType<typeof getContent>['solutions']
+}) {
   return (
-    <section id="solutions" className="shell scroll-mt-24">
-      <SectionIntro
-        eyebrow="What’s included"
-        title="Three systems, one lending platform"
-        intro="Use each system on its own, or all three together."
-      />
-      <div
-        ref={gridRef}
-        className="mt-14 grid gap-3 md:mt-20 md:grid-cols-2 *:nth-2:[--i:1] *:nth-3:[--i:2]"
-      >
-        <SolutionCard eyebrow="Origination" solution={SOLUTIONS[0]}>
-          <OriginationMock />
-        </SolutionCard>
-        <SolutionCard eyebrow="Core banking" solution={SOLUTIONS[1]}>
-          <CoreBankingMock />
-        </SolutionCard>
-        <StatementCard />
-      </div>
-    </section>
+    <ProductSolutions
+      eyebrow={m.finace_solutions_eyebrow()}
+      title={
+        <>
+          {m.finace_solutions_title_a()}
+          <span className="text-muted-foreground">
+            {m.finace_solutions_title_b()}
+          </span>
+        </>
+      }
+      intro={m.finace_solutions_intro()}
+      items={[
+        {
+          eyebrow: m.finace_solutions_tab_origination(),
+          solution: solutions[0],
+          mock: <OriginationMock />,
+        },
+        {
+          eyebrow: m.finace_capability_core_banking(),
+          solution: solutions[1],
+          mock: <CoreBankingMock />,
+        },
+        {
+          eyebrow: m.finace_capability_statement_analysis(),
+          solution: solutions[2],
+          mock: <StatementMock />,
+        },
+      ]}
+    />
   )
 }

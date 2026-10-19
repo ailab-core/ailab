@@ -1,29 +1,43 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
+import { gsap, ScrollTrigger, useGSAP } from '#/lib/gsap'
 
-// Children of the returned element rise in (staggered by their --i) the first
-// time it scrolls into view. Elements already on screen at mount skip the
-// reveal so nothing flickers. Also pauses looping animations while offscreen.
+// Elements marked [data-reveal] inside the returned ref rise in, batched, the
+// first time they scroll into view. Ones already on screen at mount are left
+// alone so nothing flickers. Also pauses CSS loops while the root is offscreen.
 export function useReveal<T extends HTMLElement>() {
   const ref = useRef<T>(null)
 
-  useEffect(() => {
-    const element = ref.current
-    if (!element) return
+  useGSAP(
+    () => {
+      const root = ref.current!
+      ScrollTrigger.create({
+        trigger: root,
+        onToggle: (self) => root.toggleAttribute('data-paused', !self.isActive),
+      })
 
-    if (element.getBoundingClientRect().top > window.innerHeight) {
-      element.setAttribute('data-reveal', '')
-    }
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        element.toggleAttribute('data-paused', !entry.isIntersecting)
-        if (entry.isIntersecting) element.setAttribute('data-visible', '')
-      },
-      { rootMargin: '0px 0px -12% 0px' },
-    )
-    observer.observe(element)
-    return () => observer.disconnect()
-  }, [])
+      const items = gsap.utils
+        .toArray<HTMLElement>('[data-reveal]', root)
+        .filter((item) => item.getBoundingClientRect().top > innerHeight)
+      if (!items.length) return
+
+      gsap.set(items, { autoAlpha: 0, y: 24 })
+      ScrollTrigger.batch(items, {
+        start: 'top 92%',
+        once: true,
+        onEnter: (batch) =>
+          gsap.to(batch, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1,
+            ease: 'expo.out',
+            stagger: 0.08,
+          }),
+      })
+    },
+    { scope: ref },
+  )
 
   return ref
 }

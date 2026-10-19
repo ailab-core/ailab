@@ -1,41 +1,48 @@
-import { linkOptions } from '@tanstack/react-router'
 import {
-  Building2Icon,
-  CandlestickChartIcon,
+  Building03Icon,
+  ChartCandlestickIcon,
   HexagonIcon,
   LandmarkIcon,
   PiggyBankIcon,
   UsersRoundIcon,
-} from 'lucide-react'
+} from '@hugeicons/core-free-icons'
+import { linkOptions } from '@tanstack/react-router'
+import { m } from '#/paraglide/messages'
 
 export const PRODUCTS = [
   {
     label: 'Finace',
-    body: 'Lending and core banking for NBFIs and MFIs',
+    body: m.nav_product_finace_body,
     icon: LandmarkIcon,
     link: linkOptions({ to: '/finace' }),
   },
   {
     label: 'Atlas',
-    body: 'Brokerage and securities trading platform',
-    icon: CandlestickChartIcon,
+    body: m.nav_product_atlas_body,
+    icon: ChartCandlestickIcon,
     link: linkOptions({ to: '/atlas' }),
   },
   {
+    label: 'PrimeBee',
+    body: m.nav_product_primebee_body,
+    icon: HexagonIcon,
+    link: linkOptions({ to: '/primebee' }),
+  },
+  {
     label: 'Prop',
-    body: 'Property management',
-    icon: Building2Icon,
+    body: m.nav_product_prop_body,
+    icon: Building03Icon,
     href: 'https://prop.mn/',
   },
-  { label: 'ShMS', body: 'Shareholder management', icon: UsersRoundIcon },
-  { label: 'Fund', body: 'Fund administration', icon: PiggyBankIcon },
-  { label: 'Primebee', body: 'Coming soon from AILab', icon: HexagonIcon },
+  {
+    label: 'ShMS',
+    body: m.nav_product_shms_body,
+    icon: UsersRoundIcon,
+    link: linkOptions({ to: '/shms' }),
+  },
+  { label: 'Fund', body: m.nav_product_fund_body, icon: PiggyBankIcon },
 ]
 
-export const NAV_LINKS = linkOptions([
-  { to: '/', hash: 'what-we-do', label: 'Services' },
-  { to: '/', hash: 'selected-work', label: 'Work' },
-  { to: '/blogs', label: 'Blog' },
-])
+export const NAV_LINKS = linkOptions([{ to: '/blogs', label: m.nav_blog }])
 
 export const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request'

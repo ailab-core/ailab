@@ -42,11 +42,17 @@ const posts = defineCollection({
         ? `${firstParagraph.slice(0, 180).replace(/\s+\S*$/, '')}…`
         : firstParagraph)
 
+    // Posts live in ./<locale>/<slug>.md; Chinese has no word spaces, so count characters.
+    const locale = post._meta.directory
+    const length =
+      locale === 'zh' ? plain.replace(/\s+/g, '').length / 2 : plain.split(/\s+/).length
+
     return {
       ...post,
-      slug: post._meta.path,
+      slug: post._meta.fileName.replace(/\.md$/, ''),
+      locale,
       excerpt,
-      readingTime: Math.max(1, Math.round(plain.split(/\s+/).length / 200)),
+      readingTime: Math.max(1, Math.round(length / 200)),
       html: String(await markdown.process(post.content)),
     }
   },
