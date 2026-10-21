@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useMatches } from '@tanstack/react-router'
 import { NavigationMenu } from 'radix-ui'
 import { cn } from 'cn'
-import { NAV_LINKS } from '#/lib/navigation'
+import { CONTACT_HREF, EMAIL, NAV_LINKS } from '#/lib/navigation'
 import { LanguageSwitcher } from './language-switcher'
 import { MobileMenu } from './mobile-menu'
 import { ProductsMenu } from './products-menu'
@@ -100,10 +100,10 @@ export function Topbar() {
               aria-hidden="true"
             />
             <a
-              href="mailto:info@ailab.mn"
+              href={`mailto:${EMAIL}`}
               className="transition-colors hover:text-foreground"
             >
-              {'info@ailab.mn'}
+              {EMAIL}
             </a>
           </p>
           <div className="flex h-full items-center gap-4">
@@ -195,7 +195,7 @@ export function Topbar() {
 
         <div className="ml-auto flex items-center gap-2">
           <a
-            href="#contact"
+            href={CONTACT_HREF}
             className="group hidden h-10 items-center gap-3 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-[background-color,scale] duration-150 ease-out-strong hover:bg-primary/90 active:scale-[0.97] sm:flex"
           >
             {m.topbar_get_in_touch()}

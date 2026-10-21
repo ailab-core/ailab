@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
-import { DEMO_HREF, PRODUCTS } from '#/lib/navigation'
-import { ArrowButton } from './arrow-button'
+import { EMAIL, NAV_LINKS, PRODUCTS } from '#/lib/navigation'
 import { m } from '#/paraglide/messages'
 
 const SOCIALS = [
@@ -28,26 +27,6 @@ export function Footer() {
   return (
     <footer id="contact" className="bg-card pb-4 md:pb-6">
       <div className="shell">
-        <div className="grid gap-10 pt-16 md:pt-20 lg:grid-cols-12">
-          <h2 className="heading text-headline lg:col-span-7">
-            {m.footer_title()}
-          </h2>
-          <div className="flex flex-col gap-6 lg:col-span-4 lg:col-start-9">
-            <p className="text-muted-foreground">{m.footer_intro()}</p>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
-              <ArrowButton href={DEMO_HREF}>
-                {m.footer_start_project()}
-              </ArrowButton>
-              <a
-                href="mailto:info@ailab.mn"
-                className="text-sm font-medium transition-colors hover:text-highlight"
-              >
-                {'info@ailab.mn'}
-              </a>
-            </div>
-          </div>
-        </div>
-
         <div className="grid grid-cols-2 gap-x-10 gap-y-12 py-16 md:grid-cols-12 md:py-20">
           <div className="col-span-2 flex flex-col gap-5 md:col-span-4">
             <Link to="/" aria-label={m.topbar_home_label()} className="w-fit">
@@ -60,6 +39,7 @@ export function Footer() {
                 loading="lazy"
               />
             </Link>
+            <h2 className="heading text-headline">{m.footer_title()}</h2>
             <a
               href="https://maps.app.goo.gl/782ssXajfX7ytFKcA"
               target="_blank"
@@ -69,6 +49,8 @@ export function Footer() {
               {m.footer_address_line_1()}
               <br />
               {m.footer_address_line_2()}
+              <br />
+              {m.footer_address_line_3()}
             </a>
           </div>
           <div className="md:col-span-2">
@@ -76,12 +58,11 @@ export function Footer() {
               <Link to="/" className={linkClass}>
                 {m.nav_home()}
               </Link>
-              <Link to="/" hash="selected-work" className={linkClass}>
-                {m.nav_work()}
-              </Link>
-              <Link to="/blogs" className={linkClass}>
-                {m.nav_blog()}
-              </Link>
+              {NAV_LINKS.map(({ label, ...link }, index) => (
+                <Link key={index} {...link} className={linkClass}>
+                  {label()}
+                </Link>
+              ))}
             </Column>
           </div>
           <div className="md:col-span-2">
@@ -121,8 +102,8 @@ export function Footer() {
           </div>
           <div className="md:col-span-2">
             <Column title={m.common_contact()}>
-              <a href="mailto:info@ailab.mn" className={linkClass}>
-                {'info@ailab.mn'}
+              <a href={`mailto:${EMAIL}`} className={linkClass}>
+                {EMAIL}
               </a>
               <a
                 href="tel:+97677772210"

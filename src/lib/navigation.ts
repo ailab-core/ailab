@@ -48,6 +48,10 @@ export const PRODUCTS = [
   },
 ]
 
+// Shared by the desktop nav, the mobile menu and the footer so every surface lists the same pages.
 export const NAV_LINKS = linkOptions([{ to: '/blogs', label: m.nav_blog }])
+
+export const EMAIL = 'info@ailab.mn'
+export const CONTACT_HREF = '#contact'
 
 export const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request'

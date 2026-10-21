@@ -101,7 +101,7 @@ export function MeetingConsole() {
                     item.state === 'done' &&
                       'bg-primary text-primary-foreground',
                     item.state === 'live' &&
-                      'bg-primary text-highlight-foreground',
+                      'bg-primary text-primary-foreground',
                     item.state === 'next' &&
                       'bg-foreground/10 text-muted-foreground',
                   )}

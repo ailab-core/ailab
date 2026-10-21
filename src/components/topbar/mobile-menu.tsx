@@ -1,7 +1,7 @@
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons'
 import { Link } from '@tanstack/react-router'
-import { DEMO_HREF, NAV_LINKS, PRODUCTS } from '#/lib/navigation'
+import { CONTACT_HREF, EMAIL, NAV_LINKS, PRODUCTS } from '#/lib/navigation'
 import { ArrowButton } from '../arrow-button'
 import { LanguageSwitcher } from './language-switcher'
 import { ProductItem } from './product-item'
@@ -45,12 +45,6 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
               </Link>
             </li>
           ))}
-          <li>
-            <a href="#contact" className={linkClass}>
-              {m.common_contact()}
-              {arrow}
-            </a>
-          </li>
         </ul>
         <div>
           <p className="eyebrow pb-4">{m.common_solutions()}</p>
@@ -63,12 +57,25 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
           </ul>
         </div>
         <div className="mt-auto flex flex-col gap-5">
+          {/* Mirrors the desktop utility strip, which is hidden below md. */}
           <div className="flex h-11 items-center justify-between rounded-full bg-muted pl-4 text-sm text-muted-foreground md:hidden">
-            <LanguageSwitcher className="h-full" />
-            <ThemeToggle className="h-full w-11" />
+            <a
+              href={`mailto:${EMAIL}`}
+              className="truncate transition-colors hover:text-foreground"
+            >
+              {EMAIL}
+            </a>
+            <div className="flex h-full shrink-0 items-center gap-3">
+              <LanguageSwitcher className="h-full" />
+              <span
+                className="size-1 rounded-full bg-muted-foreground/40"
+                aria-hidden="true"
+              />
+              <ThemeToggle className="h-full w-11" />
+            </div>
           </div>
-          <ArrowButton href={DEMO_HREF} className="w-full justify-between">
-            {m.common_request_demo()}
+          <ArrowButton href={CONTACT_HREF} className="w-full justify-between">
+            {m.topbar_get_in_touch()}
           </ArrowButton>
         </div>
       </nav>

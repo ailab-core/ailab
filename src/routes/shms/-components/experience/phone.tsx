@@ -25,7 +25,7 @@ export function Phone() {
           {m.shms_phone_signed_in()}
         </p>
         <div className="rounded-md relative aspect-video overflow-hidden bg-card bg-[radial-gradient(circle_at_30%_30%,color-mix(in_oklab,var(--primary)_35%,transparent),transparent_70%)]">
-          <span className="rounded-sm absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-primary px-1.5 py-0.5 text-2xs font-medium tracking-wide text-highlight-foreground uppercase">
+          <span className="rounded-sm absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-primary px-1.5 py-0.5 text-2xs font-medium tracking-wide text-primary-foreground uppercase">
             <span className="rounded-full size-1.5 animate-pulse bg-primary-foreground" />
             {m.shms_phone_live()}
           </span>

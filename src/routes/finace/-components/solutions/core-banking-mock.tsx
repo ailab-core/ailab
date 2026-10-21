@@ -37,7 +37,7 @@ export function CoreBankingMock() {
             {'₮2,812,000'}
           </p>
         </div>
-        <span className="rounded-sm bg-primary px-2 py-1 text-2xs font-medium tracking-wide text-highlight-foreground uppercase">
+        <span className="rounded-sm bg-primary px-2 py-1 text-2xs font-medium tracking-wide text-primary-foreground uppercase">
           {m.finace_mock_balanced()}
         </span>
       </div>

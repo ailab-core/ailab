@@ -163,8 +163,10 @@
     @apply border-border outline-ring/50;
   }
 
+  /* clip, not hidden: hidden would make html a scroll container and break position: sticky. */
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   ::view-transition-old(root),
@@ -302,6 +304,38 @@
   }
   100% {
     stroke-dashoffset: 1;
+  }
+}
+
+/* Wipes a stretched chart in left to right; a pathLength dash falls short once non-scaling-stroke is on. */
+@keyframes reveal {
+  0%,
+  8% {
+    clip-path: inset(0 100% 0 0);
+  }
+  45%,
+  90% {
+    clip-path: inset(0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+/* The latest point lands once the line has finished drawing. */
+@keyframes land {
+  0%,
+  44% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  50%,
+  90% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

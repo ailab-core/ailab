@@ -40,7 +40,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                 hrefLang={locale}
                 lang={locale}
                 aria-current={locale === current ? 'true' : undefined}
-                className="flex h-10 items-center justify-between gap-6 rounded-sm px-3 text-sm outline-none data-highlighted:bg-muted"
+                className="flex h-10 items-center justify-between gap-6 rounded-[calc(var(--radius-md)-0.25rem)] px-3 text-sm outline-none data-highlighted:bg-muted"
               >
                 {LANGUAGES[locale].label}
                 {locale === current && (

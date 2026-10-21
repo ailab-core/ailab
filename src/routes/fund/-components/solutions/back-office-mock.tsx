@@ -15,7 +15,7 @@ export function BackOfficeMock() {
           <p className="eyebrow">{m.fund_mock_nav_registry()}</p>
           <p className="heading mt-2 text-figure tabular-nums">{'₮1,284.05'}</p>
         </div>
-        <span className="rounded-sm bg-primary px-2 py-1 text-2xs font-medium tracking-wide text-highlight-foreground uppercase">
+        <span className="rounded-sm bg-primary px-2 py-1 text-2xs font-medium tracking-wide text-primary-foreground uppercase">
           {m.fund_mock_published()}
         </span>
       </div>
