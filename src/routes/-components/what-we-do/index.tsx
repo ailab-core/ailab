@@ -34,25 +34,23 @@ export default function WhatWeDo() {
           title={
             <>
               {m.home_wwd_title_a()}
-              <span className="text-muted-foreground">
-                {m.home_wwd_title_b()}
-              </span>
+              {m.home_wwd_title_b()}
             </>
           }
           intro={m.home_wwd_intro()}
         />
-        <ol className="hidden max-w-xs flex-col lg:flex">
+        <ol className="hidden max-w-xs flex-col gap-1 lg:flex">
           {SERVICES.map((service, index) => (
             <li key={index}>
               <a
                 href={`#service-${index}`}
                 data-index
                 data-active={index === 0 || undefined}
-                className="group eyebrow flex items-center gap-3 border-t border-border py-3 transition-colors hover:text-foreground data-active:text-foreground"
+                className="group eyebrow rounded-sm flex items-center gap-3 px-3 py-2.5 transition-[color,background-color] duration-200 ease-out-strong hover:bg-muted hover:text-foreground data-active:bg-card data-active:text-foreground"
               >
                 <span
                   aria-hidden="true"
-                  className="size-1.5 bg-border transition-colors group-data-active:bg-primary"
+                  className="size-1.5 rounded-full bg-secondary/35 transition-[background-color] duration-200 group-data-active:bg-secondary"
                 />
                 {service.label()}
               </a>

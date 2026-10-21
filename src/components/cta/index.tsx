@@ -113,7 +113,7 @@ export function Cta({ eyebrow, title, intro, href, label }: CtaProps) {
           <span
             key={ring}
             data-ring
-            className="absolute inset-0 rounded-full border border-primary-foreground/25 opacity-0"
+            className="absolute inset-0 rounded-full bg-primary-foreground/[0.06] opacity-0"
           />
         ))}
       </div>
@@ -126,13 +126,12 @@ export function Cta({ eyebrow, title, intro, href, label }: CtaProps) {
       <div className="shell flex flex-col items-center py-24 text-center md:py-32">
         <p
           data-fade-first
-          className="eyebrow flex items-center gap-2 rounded-sm border border-primary-foreground/20 bg-primary px-3 py-1.5 text-primary-foreground/80"
+          className="eyebrow rounded-full tracking-wider uppercase bg-primary-foreground/10 px-4 py-2 text-primary-foreground"
         >
-          <span className="size-1 bg-secondary" aria-hidden="true" />
           {eyebrow}
         </p>
 
-        <h2 className="heading mt-8 max-w-5xl text-[clamp(2.75rem,1.4rem+5.4vw,6.5rem)] leading-[0.98] tracking-[-0.04em] text-balance">
+        <h2 className="heading mt-8 max-w-5xl text-hero text-balance">
           {title}
         </h2>
 
@@ -144,7 +143,7 @@ export function Cta({ eyebrow, title, intro, href, label }: CtaProps) {
         </p>
 
         <div data-fade className="mt-10">
-          <ArrowButton variant="onPrimary" href={href} className="h-12 pl-5">
+          <ArrowButton variant="onPrimary" href={href}>
             {label}
           </ArrowButton>
         </div>
@@ -167,7 +166,7 @@ export function Cta({ eyebrow, title, intro, href, label }: CtaProps) {
           <p className="eyebrow flex items-center gap-2 text-primary-foreground/60">
             <span
               aria-hidden="true"
-              className="size-1.5 rounded-full bg-secondary"
+              className="size-2 rounded-full bg-secondary"
               style={{ animation: 'blink 2s ease-in-out infinite' }}
             />
             {m.cta_reply_time()}

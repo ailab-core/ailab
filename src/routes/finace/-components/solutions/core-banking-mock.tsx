@@ -37,7 +37,7 @@ export function CoreBankingMock() {
             {'₮2,812,000'}
           </p>
         </div>
-        <span className="rounded-sm bg-secondary px-2 py-1 text-2xs font-medium tracking-wide text-secondary-foreground uppercase">
+        <span className="rounded-sm bg-primary px-2 py-1 text-2xs font-medium tracking-wide text-highlight-foreground uppercase">
           {m.finace_mock_balanced()}
         </span>
       </div>
@@ -46,18 +46,18 @@ export function CoreBankingMock() {
           {ENTRIES.map((entry, index) => (
             <tr
               key={index}
-              className="border-t border-border"
+              className="odd:bg-card [&>td:first-child]:rounded-l-sm [&>td:last-child]:rounded-r-sm"
               style={
                 index > 1
                   ? {
-                      animation: `appear 7s ${(index - 2) * 0.6}s ease-out infinite both`,
+                      animation: `appear 7s ${(index - 2) * 0.6}s var(--ease-out-strong) infinite both`,
                     }
                   : undefined
               }
             >
-              <td className="py-2">{`${entry.code} ${entry.account()}`}</td>
+              <td className="px-2.5 py-2">{`${entry.code} ${entry.account()}`}</td>
               <td className="py-2 text-right">{entry.debit}</td>
-              <td className="py-2 text-right text-muted-foreground">
+              <td className="px-2.5 py-2 text-right text-muted-foreground">
                 {entry.credit}
               </td>
             </tr>

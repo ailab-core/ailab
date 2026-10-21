@@ -9,16 +9,16 @@ const EVENTS = [
 
 export function BackOfficeMock() {
   return (
-    <ol className="relative flex flex-col gap-4 pl-6 before:absolute before:inset-y-1 before:left-[3px] before:w-px before:bg-border">
+    <ol className="relative flex flex-col gap-4 pl-6 before:absolute before:inset-y-1 before:left-[3px] before:w-px before:bg-foreground/15">
       {EVENTS.map((event, index) => (
         <li
           key={event.time}
           className="relative flex items-baseline gap-4"
           style={{
-            animation: `appear 7s ${index * 0.6}s ease-out infinite both`,
+            animation: `appear 7s ${index * 0.6}s var(--ease-out-strong) infinite both`,
           }}
         >
-          <span className="absolute top-1.5 -left-6 size-[7px] bg-secondary" />
+          <span className="absolute top-1.5 -left-6 size-2 rounded-full bg-primary" />
           <span className="font-mono text-xs text-muted-foreground">
             {event.time}
           </span>

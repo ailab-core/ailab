@@ -37,7 +37,7 @@ export function ArrowButton({
   return (
     <a
       className={cn(
-        'rounded-md group inline-flex h-11 w-fit shrink-0 items-center gap-4 pr-1.5 pl-4 text-sm font-medium transition-colors',
+        'group inline-flex h-12 w-fit shrink-0 items-center gap-4 rounded-full pr-1.5 pl-6 text-base font-semibold transition-[background-color,scale] duration-150 ease-out-strong active:scale-[0.97]',
         button,
         className,
       )}
@@ -46,13 +46,13 @@ export function ArrowButton({
       {children}
       <span
         className={cn(
-          'rounded-sm flex size-8 items-center justify-center overflow-hidden',
+          'flex size-9 items-center justify-center overflow-hidden rounded-full',
           square,
         )}
       >
         <HugeiconsIcon
           icon={ArrowRight02Icon}
-          className="size-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5"
+          className="size-4 transition-[translate] duration-200 ease-out-strong group-hover:translate-x-0.5"
           aria-hidden="true"
         />
       </span>

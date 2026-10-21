@@ -18,9 +18,7 @@ export default function Solutions({
       title={
         <>
           {m.shms_solutions_title_a()}
-          <span className="text-muted-foreground">
-            {m.shms_solutions_title_b()}
-          </span>
+          {m.shms_solutions_title_b()}
         </>
       }
       intro={m.shms_solutions_intro()}

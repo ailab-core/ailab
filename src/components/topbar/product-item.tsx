@@ -4,7 +4,8 @@ import { Link } from '@tanstack/react-router'
 import type { PRODUCTS } from '#/lib/navigation'
 import { m } from '#/paraglide/messages'
 
-const itemClass = 'group/item flex items-center gap-4 py-4'
+const itemClass =
+  'group/item flex items-center gap-4 rounded-lg bg-card p-4 transition-[background-color,scale] duration-200 ease-out-strong hover:bg-muted active:scale-[0.99]'
 
 export function ProductItem({
   product,
@@ -14,7 +15,7 @@ export function ProductItem({
   const available = Boolean(product.link || product.href)
   const content = (
     <>
-      <span className="rounded-md flex size-10 shrink-0 items-center justify-center border border-border text-highlight transition-colors group-hover/item:border-highlight/40">
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-muted text-highlight transition-[background-color] duration-200 group-hover/item:bg-accent">
         <HugeiconsIcon
           icon={product.icon}
           className="size-[1.125rem]"
@@ -22,7 +23,7 @@ export function ProductItem({
         />
       </span>
       <span className="flex min-w-0 flex-1 flex-col">
-        <span className="font-medium transition-colors group-hover/item:text-highlight">
+        <span className="text-sm font-semibold tracking-wider uppercase transition-colors group-hover/item:text-highlight">
           {product.label}
         </span>
         <span className="truncate text-sm text-muted-foreground">
@@ -32,7 +33,7 @@ export function ProductItem({
       {available ? (
         <HugeiconsIcon
           icon={ArrowRight02Icon}
-          className="size-4 shrink-0 text-muted-foreground transition-[color,translate] duration-300 group-hover/item:translate-x-1 group-hover/item:text-highlight"
+          className="size-4 shrink-0 text-muted-foreground transition-[color,translate] duration-200 ease-out-strong group-hover/item:translate-x-0.5 group-hover/item:text-highlight"
           aria-hidden="true"
         />
       ) : (

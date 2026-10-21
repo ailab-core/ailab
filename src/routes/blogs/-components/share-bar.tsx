@@ -1,6 +1,6 @@
 import { HugeiconsIcon } from '@hugeicons/react'
 import { CheckIcon, LinkIcon } from '@hugeicons/core-free-icons'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { m } from '#/paraglide/messages'
 
 const NETWORKS = [
@@ -17,10 +17,15 @@ const NETWORKS = [
 ]
 
 const buttonClass =
-  'rounded-md group flex size-11 cursor-pointer items-center justify-center border border-border text-muted-foreground transition-colors hover:border-highlight hover:text-highlight'
+  'rounded-full group flex size-11 cursor-pointer items-center justify-center bg-muted text-muted-foreground transition-[background-color,color,scale] duration-150 ease-out-strong hover:bg-accent hover:text-foreground active:scale-[0.97]'
+
+const iconClass =
+  'col-start-1 row-start-1 size-4 transition-[opacity,scale,filter] duration-200 ease-out-strong'
+const hiddenIconClass = 'scale-[0.97] opacity-0 blur-[2px]'
 
 export function ShareBar() {
   const [copied, setCopied] = useState(false)
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   return (
     <div className="flex items-center gap-2">
@@ -30,15 +35,21 @@ export function ShareBar() {
         onClick={async () => {
           await navigator.clipboard.writeText(window.location.href)
           setCopied(true)
-          setTimeout(() => setCopied(false), 2000)
+          clearTimeout(timer.current)
+          timer.current = setTimeout(() => setCopied(false), 2000)
         }}
         className={buttonClass}
       >
-        {copied ? (
-          <HugeiconsIcon icon={CheckIcon} className="size-4 text-highlight" />
-        ) : (
-          <HugeiconsIcon icon={LinkIcon} className="size-4" />
-        )}
+        <span aria-hidden="true" className="grid">
+          <HugeiconsIcon
+            icon={LinkIcon}
+            className={`${iconClass} ${copied ? hiddenIconClass : ''}`}
+          />
+          <HugeiconsIcon
+            icon={CheckIcon}
+            className={`${iconClass} text-highlight ${copied ? '' : hiddenIconClass}`}
+          />
+        </span>
       </button>
       {NETWORKS.map((network) => (
         <button

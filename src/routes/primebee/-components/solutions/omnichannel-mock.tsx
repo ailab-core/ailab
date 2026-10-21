@@ -32,7 +32,7 @@ export function OmnichannelMock() {
               customer ? 'self-start' : 'items-end self-end',
             )}
             style={{
-              animation: `appear 7s ${index * 0.8}s ease-out infinite both`,
+              animation: `appear 7s ${index * 0.8}s var(--ease-out-strong) infinite both`,
             }}
           >
             <span className="text-2xs font-medium tracking-wide text-muted-foreground uppercase">
@@ -41,9 +41,7 @@ export function OmnichannelMock() {
             <span
               className={cn(
                 'rounded-lg px-3.5 py-2.5',
-                customer
-                  ? 'border border-border bg-card'
-                  : 'bg-primary text-primary-foreground',
+                customer ? 'bg-card' : 'bg-primary text-primary-foreground',
               )}
             >
               {message.text()}

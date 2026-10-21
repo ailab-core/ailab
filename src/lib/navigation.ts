@@ -40,7 +40,12 @@ export const PRODUCTS = [
     icon: UsersRoundIcon,
     link: linkOptions({ to: '/shms' }),
   },
-  { label: 'Fund', body: m.nav_product_fund_body, icon: PiggyBankIcon },
+  {
+    label: 'Fund',
+    body: m.nav_product_fund_body,
+    icon: PiggyBankIcon,
+    link: linkOptions({ to: '/fund' }),
+  },
 ]
 
 export const NAV_LINKS = linkOptions([{ to: '/blogs', label: m.nav_blog }])

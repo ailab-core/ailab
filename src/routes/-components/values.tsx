@@ -46,9 +46,7 @@ export default function Values() {
         title={
           <>
             {m.home_values_heading_a()}
-            <span className="text-muted-foreground">
-              {m.home_values_heading_b()}
-            </span>
+            {m.home_values_heading_b()}
           </>
         }
         intro={m.home_values_intro()}
@@ -57,16 +55,16 @@ export default function Values() {
 
       <ul
         ref={gridRef}
-        className="rounded-lg grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:col-span-7 lg:col-start-6"
+        className="grid gap-3 sm:grid-cols-2 lg:col-span-7 lg:col-start-6"
       >
         {VALUES.map((value, index) => (
           <li
             key={index}
             data-reveal
-            className="group flex min-h-72 flex-col justify-between gap-12 bg-background p-6 transition-colors duration-500 hover:bg-card md:p-8"
+            className="group rounded-lg flex min-h-72 flex-col justify-between gap-12 bg-card p-6 md:p-8"
           >
             <div className="flex items-start justify-between">
-              <span className="rounded-md flex size-11 items-center justify-center border border-border bg-card text-highlight transition-colors duration-500 group-hover:border-highlight/40">
+              <span className="rounded-md flex size-11 items-center justify-center bg-muted text-highlight transition-[background-color] duration-200 ease-out-strong group-hover:bg-accent">
                 <HugeiconsIcon
                   icon={value.icon}
                   className="size-[1.125rem]"
@@ -80,7 +78,7 @@ export default function Values() {
               <h3 className="heading max-w-[16rem] text-title">
                 {value.title()}
               </h3>
-              <p className="mt-3 max-w-xs text-sm text-muted-foreground">
+              <p className="mt-3 max-w-xs text-muted-foreground">
                 {value.body()}
               </p>
             </div>

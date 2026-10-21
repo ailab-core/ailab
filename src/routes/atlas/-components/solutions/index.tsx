@@ -17,9 +17,7 @@ export default function Solutions({
       title={
         <>
           {m.atlas_solutions_title_a()}
-          <span className="text-muted-foreground">
-            {m.atlas_solutions_title_b()}
-          </span>
+          {m.atlas_solutions_title_b()}
         </>
       }
       intro={m.atlas_solutions_intro()}

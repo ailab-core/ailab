@@ -18,18 +18,15 @@ export default function Pricing() {
         title={
           <>
             {m.primebee_pricing_title_a()}
-            <span className="text-muted-foreground">
-              {m.primebee_pricing_title_b()}
-            </span>
+            {m.primebee_pricing_title_b()}
           </>
         }
         intro={m.primebee_pricing_intro()}
       />
       <ul ref={gridRef} className="grid gap-4 md:grid-cols-3">
-        {getPlans().map((plan, index) => (
+        {getPlans().map((plan) => (
           <li key={plan.id}>
             <PricingCard
-              index={index}
               plan={plan}
               note={m.primebee_pricing_note()}
               href={`mailto:info@ailab.mn?subject=${encodeURIComponent(`PrimeBee ${plan.id}`)}`}

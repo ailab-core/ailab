@@ -34,27 +34,22 @@ export function ProductValues({
       />
       <ul
         ref={gridRef}
-        className="rounded-lg grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:col-span-7 lg:col-start-6"
+        className="grid gap-3 sm:grid-cols-2 lg:col-span-7 lg:col-start-6"
       >
-        {items.map((item, index) => (
+        {items.map((item) => (
           <li
             key={item.title}
             data-reveal
-            className="group flex min-h-72 flex-col justify-between gap-12 bg-background p-6 transition-colors duration-500 hover:bg-card sm:last:odd:col-span-2 md:p-8"
+            className="group flex min-h-72 flex-col justify-between gap-12 rounded-lg bg-card p-6 transition-[background-color] duration-200 hover:bg-muted sm:last:odd:col-span-2 md:p-8"
           >
-            <div className="flex items-start justify-between">
-              <span className="rounded-md flex size-11 items-center justify-center border border-border bg-card text-highlight transition-colors duration-500 group-hover:border-highlight/40">
-                <HugeiconsIcon
-                  icon={item.icon}
-                  className="size-[1.125rem]"
-                  strokeWidth={1.75}
-                  aria-hidden="true"
-                />
-              </span>
-              <span className="eyebrow tabular-nums">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </div>
+            <span className="flex size-11 items-center justify-center rounded-md bg-muted text-highlight transition-[background-color] duration-200 group-hover:bg-accent">
+              <HugeiconsIcon
+                icon={item.icon}
+                className="size-[1.125rem]"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+            </span>
             <div>
               <h3 className="heading text-title">{item.title}</h3>
               <p className="mt-3 max-w-sm text-sm text-muted-foreground">

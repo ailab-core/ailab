@@ -14,6 +14,7 @@ import { Route as AtlasIndexRouteImport } from './routes/atlas/index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 import { Route as BlogsSlugRouteImport } from './routes/blogs/$slug'
 import { Route as FinaceIndexRouteImport } from './routes/finace/index'
+import { Route as FundIndexRouteImport } from './routes/fund/index'
 import { Route as PrimebeeIndexRouteImport } from './routes/primebee/index'
 import { Route as ShmsIndexRouteImport } from './routes/shms/index'
 
@@ -42,6 +43,11 @@ const FinaceIndexRoute = FinaceIndexRouteImport.update({
   path: '/finace/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FundIndexRoute = FundIndexRouteImport.update({
+  id: '/fund/',
+  path: '/fund/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrimebeeIndexRoute = PrimebeeIndexRouteImport.update({
   id: '/primebee/',
   path: '/primebee/',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/atlas/': typeof AtlasIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/finace/': typeof FinaceIndexRoute
+  '/fund/': typeof FundIndexRoute
   '/primebee/': typeof PrimebeeIndexRoute
   '/shms/': typeof ShmsIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/atlas': typeof AtlasIndexRoute
   '/blogs': typeof BlogsIndexRoute
   '/finace': typeof FinaceIndexRoute
+  '/fund': typeof FundIndexRoute
   '/primebee': typeof PrimebeeIndexRoute
   '/shms': typeof ShmsIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/atlas/': typeof AtlasIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/finace/': typeof FinaceIndexRoute
+  '/fund/': typeof FundIndexRoute
   '/primebee/': typeof PrimebeeIndexRoute
   '/shms/': typeof ShmsIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/atlas/'
     | '/blogs/'
     | '/finace/'
+    | '/fund/'
     | '/primebee/'
     | '/shms/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/blogs'
     | '/finace'
+    | '/fund'
     | '/primebee'
     | '/shms'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/atlas/'
     | '/blogs/'
     | '/finace/'
+    | '/fund/'
     | '/primebee/'
     | '/shms/'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   AtlasIndexRoute: typeof AtlasIndexRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
   FinaceIndexRoute: typeof FinaceIndexRoute
+  FundIndexRoute: typeof FundIndexRoute
   PrimebeeIndexRoute: typeof PrimebeeIndexRoute
   ShmsIndexRoute: typeof ShmsIndexRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinaceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fund/': {
+      id: '/fund/'
+      path: '/fund'
+      fullPath: '/fund/'
+      preLoaderRoute: typeof FundIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/primebee/': {
       id: '/primebee/'
       path: '/primebee'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   AtlasIndexRoute: AtlasIndexRoute,
   BlogsIndexRoute: BlogsIndexRoute,
   FinaceIndexRoute: FinaceIndexRoute,
+  FundIndexRoute: FundIndexRoute,
   PrimebeeIndexRoute: PrimebeeIndexRoute,
   ShmsIndexRoute: ShmsIndexRoute,
 }

@@ -54,17 +54,14 @@ export function TradingTerminal() {
     >
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {TICKERS.map((ticker) => (
-          <li
-            key={ticker.symbol}
-            className="rounded-md border border-border bg-background px-3 py-2.5"
-          >
+          <li key={ticker.symbol} className="rounded-md bg-muted px-3 py-2.5">
             <p className="flex items-center justify-between font-mono text-xs">
               {ticker.symbol}
               <span
                 className={
                   ticker.change.startsWith('+')
                     ? 'text-highlight'
-                    : 'text-highlight-secondary'
+                    : 'text-highlight'
                 }
               >
                 {ticker.change}
@@ -75,7 +72,7 @@ export function TradingTerminal() {
         ))}
       </ul>
       <div className="mt-3 grid gap-3 md:grid-cols-3">
-        <div className="rounded-md border border-border bg-background p-4 md:col-span-2">
+        <div className="rounded-md bg-muted p-4 md:col-span-2">
           <div className="flex items-end justify-between">
             <div>
               <p className="eyebrow">{m.atlas_terminal_portfolio_value()}</p>
@@ -99,23 +96,19 @@ export function TradingTerminal() {
               y2={100 - LAST.close}
               strokeDasharray="4 4"
               vectorEffect="non-scaling-stroke"
-              className="stroke-secondary/60"
+              className="stroke-highlight/60"
             />
             {CANDLES.map((candle, index) => {
               const x = index * 10 + 5
               return (
                 <g
                   key={index}
-                  className={
+                  className={cn(
                     candle.close >= candle.open
                       ? 'fill-foreground/80 stroke-foreground/80'
-                      : 'fill-secondary stroke-secondary'
-                  }
-                  style={
-                    index === CANDLES.length - 1
-                      ? { animation: 'blink 1.6s ease-in-out infinite' }
-                      : undefined
-                  }
+                      : 'fill-highlight stroke-highlight',
+                    index === CANDLES.length - 1 && 'animate-pulse',
+                  )}
                 >
                   <line
                     x1={x}
@@ -136,17 +129,17 @@ export function TradingTerminal() {
             })}
           </svg>
         </div>
-        <div className="rounded-md hidden flex-col border border-border bg-background md:flex">
-          <p className="eyebrow border-b border-border px-4 py-3 text-foreground">
+        <div className="rounded-md hidden flex-col bg-muted p-2 md:flex">
+          <p className="eyebrow px-2 pt-2 pb-3 text-foreground">
             {m.atlas_terminal_orders()}
           </p>
-          <ul className="flex flex-col text-sm">
+          <ul className="flex flex-col gap-1 text-sm">
             {ORDERS.map((order, index) => (
               <li
                 key={index}
-                className="flex items-center gap-3 border-b border-border px-4 py-3 last:border-b-0"
+                className="rounded-sm flex items-center gap-3 bg-card px-3 py-2.5"
                 style={{
-                  animation: `appear 7s ${index * 0.7}s ease-out infinite both`,
+                  animation: `appear 7s ${index * 0.7}s var(--ease-out-strong) infinite both`,
                 }}
               >
                 <span
@@ -154,7 +147,7 @@ export function TradingTerminal() {
                     'rounded-sm px-1.5 py-0.5 text-2xs font-medium tracking-wide uppercase',
                     order.buy
                       ? 'bg-primary/15 text-highlight'
-                      : 'bg-secondary/15 text-highlight-secondary',
+                      : 'bg-primary/15 text-highlight',
                   )}
                 >
                   {order.buy ? m.atlas_terminal_buy() : m.atlas_terminal_sell()}

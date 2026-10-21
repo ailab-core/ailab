@@ -10,24 +10,21 @@ export function SetupMock() {
   return (
     <div>
       <p className="eyebrow">{m.shms_mock_agenda()}</p>
-      <ol className="mt-4 flex flex-col">
+      <ol className="mt-4 flex flex-col gap-1.5">
         {AGENDA.map((label, index) => (
           <li
             key={index}
-            className="flex items-baseline gap-4 border-t border-border py-3"
+            className="rounded-sm flex items-baseline gap-4 bg-card px-3 py-2.5"
             style={{
-              animation: `appear 7s ${index * 0.6}s ease-out infinite both`,
+              animation: `appear 7s ${index * 0.6}s var(--ease-out-strong) infinite both`,
             }}
           >
-            <span className="text-xs text-highlight tabular-nums">
-              {String(index + 1).padStart(2, '0')}
-            </span>
             <span className="heading text-lg">{label()}</span>
           </li>
         ))}
       </ol>
-      <p className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
-        <span className="size-1.5 bg-secondary" />
+      <p className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
+        <span className="rounded-full size-2 bg-primary" />
         {m.shms_mock_imported({ count: '12,480' })}
       </p>
     </div>

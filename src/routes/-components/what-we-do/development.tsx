@@ -2,9 +2,11 @@ import { CodeXmlIcon } from '@hugeicons/core-free-icons'
 import { Card } from './card'
 import { m } from '#/paraglide/messages'
 
+// Types are bold: light mode's blue-800 is too close to the navy foreground to
+// carry hierarchy on hue alone.
 const TONE = {
   k: 'text-highlight',
-  t: 'text-foreground',
+  t: 'font-semibold text-foreground',
   p: 'text-muted-foreground',
 }
 
@@ -17,24 +19,27 @@ const CODE: Array<Array<[keyof typeof TONE, string]>> = [
   ],
   [],
   [
-    ['p', ''],
-    ['k', '@PostMapping'],
-    ['p', '("/loans")'],
+    ['k', '  @PostMapping'],
+    ['p', '('],
+    ['k', '"/loans"'],
+    ['p', ')'],
   ],
   [
-    ['p', ''],
+    ['k', '  public '],
     ['t', 'Loan'],
     ['p', ' apply('],
     ['t', 'Application'],
     ['p', ' a) {'],
   ],
-  [['p', ' var score = scoring.assess(a);']],
   [
-    ['p', ''],
-    ['k', 'return'],
+    ['k', '    var'],
+    ['p', ' score = scoring.assess(a);'],
+  ],
+  [
+    ['k', '    return'],
     ['p', ' loans.originate(a, score);'],
   ],
-  [['p', ' }']],
+  [['p', '  }']],
   [['p', '}']],
 ]
 
@@ -60,38 +65,58 @@ export function Development() {
       rest={m.home_wwd_dev_rest()}
       tags={POINTS}
     >
-      <div className="absolute inset-0">
-        <div className="rounded-md absolute top-2 right-[-2rem] left-5 overflow-hidden border border-border bg-background font-mono text-xs leading-relaxed md:left-8">
-          <div className="flex gap-1.5 border-b border-border px-3 py-2.5">
-            <span className="size-2 bg-secondary" />
-            <span className="size-2 bg-border" />
-            <span className="size-2 bg-border" />
+      {/* One 10s loop: code types in line by line, then the deploy log pops up and ticks through. */}
+      <div data-loop className="absolute inset-0">
+        <div className="rounded-md absolute inset-x-5 top-2 overflow-hidden bg-muted font-mono text-xs leading-relaxed md:inset-x-8">
+          <div className="flex items-center gap-1.5 px-4 pt-3.5">
+            <span className="rounded-full size-2.5 bg-primary" />
+            <span className="size-2.5 rounded-full bg-muted-foreground/25" />
+            <span className="size-2.5 rounded-full bg-muted-foreground/25" />
+            <span className="ml-3 text-muted-foreground/70">
+              LoanController.java
+            </span>
           </div>
-          <pre className="p-4">
+          <pre className="p-4 pt-3 whitespace-pre">
             {CODE.map((line, row) => (
               <div key={row} className="flex">
                 <span className="w-6 shrink-0 text-muted-foreground/40 select-none">
                   {row + 1}
                 </span>
-                {line.map(([tone, text], index) => (
-                  <span key={index} className={TONE[tone]}>
-                    {text}
-                  </span>
-                ))}
-                {row === 5 && (
-                  <span className="ml-px inline-block h-4 w-[2px] animate-[blink_1.1s_steps(1)_infinite] bg-primary" />
-                )}
+                <span
+                  className="min-w-0 overflow-hidden"
+                  style={{
+                    animation: `type 10s ${row * 0.22}s linear infinite both`,
+                  }}
+                >
+                  {line.map(([tone, text], index) => (
+                    <span key={index} className={TONE[tone]}>
+                      {text}
+                    </span>
+                  ))}
+                  {row === CODE.length - 1 && (
+                    <span className="ml-px inline-block h-4 w-[2px] animate-[blink_1.1s_steps(1)_infinite] bg-primary" />
+                  )}
+                </span>
               </div>
             ))}
           </pre>
         </div>
-        <div className="rounded-md absolute right-5 bottom-10 w-60 md:right-8 border border-border bg-card/95 p-4 font-mono text-xs leading-relaxed shadow-2xl shadow-background/40 backdrop-blur">
+        <div
+          className="rounded-md absolute right-8 bottom-3 w-52 md:right-12 md:bottom-10 md:w-60 bg-card p-4 font-mono text-xs leading-relaxed shadow-[0_16px_40px_-12px_rgb(0_0_0/0.18)] dark:shadow-[0_16px_40px_-12px_rgb(0_0_0/0.6)]"
+          style={{ animation: 'pop 10s var(--ease-out-strong) infinite both' }}
+        >
           {LOG.map((line, index) => (
             <p
               key={index}
-              className={index === 0 ? 'text-foreground' : 'text-highlight/90'}
+              className={
+                index === 0
+                  ? 'text-foreground'
+                  : index === LOG.length - 1
+                    ? 'text-highlight'
+                    : 'text-highlight/90'
+              }
               style={{
-                animation: `appear 6s ${index * 0.7}s ease-out infinite both`,
+                animation: `log 10s ${index * 0.5}s var(--ease-out-strong) infinite both`,
               }}
             >
               {line()}

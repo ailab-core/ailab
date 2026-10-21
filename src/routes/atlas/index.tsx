@@ -54,9 +54,7 @@ function AtlasPage() {
           title={
             <>
               {m.atlas_values_title_a()}
-              <span className="text-muted-foreground">
-                {m.atlas_values_title_b()}
-              </span>
+              {m.atlas_values_title_b()}
             </>
           }
           intro={m.atlas_values_intro()}

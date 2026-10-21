@@ -48,7 +48,6 @@ export function Globe() {
     const styles = getComputedStyle(canvas)
     const ground = styles.getPropertyValue('--foreground').trim()
     const light = styles.getPropertyValue('--highlight').trim()
-    const accent = styles.getPropertyValue('--secondary').trim()
     const label = styles.getPropertyValue('--muted-foreground').trim()
     const outline = styles.getPropertyValue('--background').trim()
     const city = m.home_hero_globe_city()
@@ -161,11 +160,9 @@ export function Globe() {
           (px - size / 2) ** 2 + (py - size / 2) ** 2 > radius * radius
         if (pz > 0 || outside) {
           ctx.globalAlpha = 1
-          ctx.fillStyle = accent
           ctx.beginPath()
           ctx.arc(px, py, dot * 1.6, 0, TAU)
           ctx.fill()
-          ctx.fillStyle = light
         }
       })
 
@@ -173,9 +170,8 @@ export function Globe() {
         project(x, y, z)
         if (pz <= 0.05) return
         const home = index === 0
-        const tone = home ? accent : light
-        ctx.strokeStyle = tone
-        ctx.fillStyle = tone
+        ctx.strokeStyle = light
+        ctx.fillStyle = light
         const pulse = (now / 2600 + index * 0.29) % 1
         ctx.globalAlpha = (1 - pulse) * 0.5 * pz
         ctx.beginPath()

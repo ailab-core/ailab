@@ -22,9 +22,9 @@ export function Automation() {
       lead={m.home_wwd_auto_lead()}
       rest={m.home_wwd_auto_rest()}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(var(--border)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:linear-gradient(to_bottom,transparent,black_30%)]" />
-      <div className="relative mx-5 mt-2 overflow-hidden rounded-md border border-border bg-background text-sm md:mx-8">
-        <div className="flex items-center justify-between gap-4 border-b border-border px-4 py-3 text-xs">
+      <div className="absolute inset-0 bg-[radial-gradient(var(--accent)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:linear-gradient(to_bottom,transparent,black_30%)]" />
+      <div className="relative mx-5 mt-2 overflow-hidden rounded-md bg-muted text-sm md:mx-8">
+        <div className="flex items-center justify-between gap-4 px-4 py-3 text-xs">
           <span className="flex items-center gap-2 whitespace-nowrap text-foreground">
             <HugeiconsIcon
               icon={File01Icon}
@@ -36,10 +36,10 @@ export function Automation() {
           <span className="relative whitespace-nowrap text-muted-foreground">
             {m.home_wwd_auto_running()}
             <span
-              className="absolute inset-y-0 right-0 flex min-w-full items-center justify-end gap-1.5 bg-background text-highlight-secondary"
+              className="absolute inset-y-0 right-0 flex min-w-full items-center justify-end gap-1.5 bg-muted text-highlight"
               style={{ animation: 'swap 8s -0.3s linear infinite both' }}
             >
-              <span className="size-1.5 bg-secondary" />
+              <span className="rounded-full size-2 bg-primary" />
               {m.home_wwd_auto_done()}
             </span>
           </span>
@@ -50,7 +50,7 @@ export function Automation() {
           {[false, true].map((done) => (
             <div
               key={String(done)}
-              className={done ? 'absolute inset-0 bg-background' : undefined}
+              className={done ? 'absolute inset-0 bg-muted' : undefined}
               style={
                 done
                   ? { animation: 'reveal 8s linear infinite both' }
@@ -58,7 +58,7 @@ export function Automation() {
               }
             >
               <span
-                className={`absolute top-6 bottom-6 left-[1.625rem] md:top-7 md:bottom-7 w-px ${done ? 'bg-primary' : 'bg-border'}`}
+                className={`absolute top-6 bottom-6 left-[1.625rem] md:top-7 md:bottom-7 w-px ${done ? 'bg-primary' : 'bg-muted-foreground/25'}`}
               />
               {STEPS.map((step, index) => (
                 <div
@@ -68,10 +68,10 @@ export function Automation() {
                   {done ? (
                     <HugeiconsIcon
                       icon={CheckmarkCircle02Icon}
-                      className="size-5 shrink-0 bg-background text-highlight"
+                      className="size-5 shrink-0 bg-muted text-highlight"
                     />
                   ) : (
-                    <span className="flex size-5 shrink-0 items-center justify-center bg-background">
+                    <span className="flex size-5 shrink-0 items-center justify-center bg-muted">
                       <span className="size-3 rounded-full border border-dashed border-muted-foreground/50" />
                     </span>
                   )}

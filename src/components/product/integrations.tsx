@@ -31,9 +31,7 @@ export function ProductIntegrations({
           title={
             <>
               {m.product_integrations_title_a()}
-              <span className="text-muted-foreground">
-                {m.product_integrations_title_b()}
-              </span>
+              {m.product_integrations_title_b()}
             </>
           }
           intro={intro}
@@ -63,14 +61,14 @@ export function ProductIntegrations({
                 aria-hidden={
                   (rowIndex === 0 && index >= row.length) || undefined
                 }
-                className="rounded-lg group/item flex h-32 w-56 shrink-0 flex-col items-center justify-center gap-4 border border-border bg-card transition-colors duration-300 hover:border-foreground/20"
+                className="group/item flex h-32 w-56 shrink-0 flex-col items-center justify-center gap-4 rounded-lg bg-card"
               >
                 <img
                   src={item.src}
                   alt=""
                   loading="lazy"
                   className={cn(
-                    'h-9 w-auto max-w-[7.5rem] object-contain opacity-60 grayscale transition-[opacity,filter] duration-300 group-hover/item:opacity-100 group-hover/item:grayscale-0',
+                    'h-9 w-auto max-w-[7.5rem] object-contain opacity-60 grayscale transition-[opacity,filter] duration-200 group-hover/item:opacity-100 group-hover/item:grayscale-0',
                     // Hue rotation undoes the color shift from inverting, so hover keeps brand colors.
                     item.ink === 'dark' && 'dark:invert dark:hue-rotate-180',
                     item.ink === 'light' &&

@@ -52,9 +52,7 @@ function ShmsPage() {
           title={
             <>
               {m.shms_values_title_a()}
-              <span className="text-muted-foreground">
-                {m.shms_values_title_b()}
-              </span>
+              {m.shms_values_title_b()}
             </>
           }
           intro={m.shms_values_intro()}

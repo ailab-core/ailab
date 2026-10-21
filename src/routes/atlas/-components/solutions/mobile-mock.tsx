@@ -10,9 +10,9 @@ const HOLDINGS = [
 export function MobileMock() {
   return (
     <div className="relative h-full">
-      <div className="rounded-xl absolute top-0 left-1/2 h-[26rem] w-56 -translate-x-1/2 border border-border bg-card p-1.5 shadow-2xl shadow-black/50">
+      <div className="rounded-xl absolute top-0 left-1/2 h-[26rem] w-56 -translate-x-1/2 bg-muted p-1.5 shadow-2xl shadow-black/50">
         <div className="rounded-lg h-full bg-background p-5">
-          <div className="-mx-5 -mt-5 flex h-7 items-center justify-between border-b border-border px-4 font-mono text-3xs text-muted-foreground">
+          <div className="-mx-5 -mt-5 flex h-7 items-center justify-between px-4 font-mono text-3xs text-muted-foreground">
             {'9:41'}
             <span className="flex items-end gap-0.5" aria-hidden="true">
               <span className="h-1 w-0.5 bg-current" />
@@ -35,8 +35,10 @@ export function MobileMock() {
               pathLength={1}
               strokeDasharray={1}
               vectorEffect="non-scaling-stroke"
-              className="fill-none stroke-secondary stroke-2"
-              style={{ animation: 'draw 6s ease-in-out infinite both' }}
+              className="fill-none stroke-highlight stroke-2"
+              style={{
+                animation: 'draw 6s var(--ease-in-out-strong) infinite both',
+              }}
             />
           </svg>
           <ul className="mt-4 flex flex-col gap-2.5 text-xs">
@@ -48,7 +50,7 @@ export function MobileMock() {
                     {`${holding.share}%`}
                   </span>
                 </div>
-                <div className="mt-1.5 h-1 bg-foreground/10">
+                <div className="rounded-full mt-1.5 h-1 overflow-hidden bg-foreground/10">
                   <div
                     className="h-full bg-foreground/70"
                     style={{ width: `${holding.share}%` }}

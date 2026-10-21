@@ -78,7 +78,7 @@ export function DataProcessing() {
                   {items.map((docIndex, index) => (
                     <span
                       key={index}
-                      className="rounded-md flex h-14 w-44 shrink-0 items-center gap-3 border border-border bg-background px-3.5 text-muted-foreground"
+                      className="rounded-md flex h-14 w-44 shrink-0 items-center gap-3 bg-muted px-3.5 text-muted-foreground"
                     >
                       <HugeiconsIcon
                         icon={DOCS[docIndex].icon}
@@ -96,7 +96,7 @@ export function DataProcessing() {
                   {items.map((docIndex, index) => (
                     <span
                       key={index}
-                      className="rounded-md flex h-14 w-44 shrink-0 flex-col justify-center gap-1 border border-highlight/30 bg-highlight/5 px-3.5"
+                      className="rounded-md flex h-14 w-44 shrink-0 flex-col justify-center gap-1 bg-primary/10 px-3.5 dark:bg-highlight/15"
                     >
                       <span className="eyebrow">{DOCS[docIndex].key()}</span>
                       <span className="text-sm tabular-nums">
@@ -111,8 +111,8 @@ export function DataProcessing() {
         })}
       </div>
 
-      <div className="absolute inset-y-6 left-1/2 w-px -translate-x-1/2 bg-secondary shadow-[0_0_14px_2px] shadow-secondary/50" />
-      <span className="rounded-sm eyebrow absolute top-0 left-1/2 -translate-x-1/2 border border-border bg-card px-2 py-1 text-foreground">
+      <div className="absolute inset-y-6 left-1/2 w-px -translate-x-1/2 bg-primary shadow-[0_0_14px_2px] shadow-primary/50" />
+      <span className="rounded-sm eyebrow absolute top-0 left-1/2 -translate-x-1/2 bg-muted px-2 py-1 text-foreground">
         {m.home_wwd_data_extract()}
       </span>
     </Card>

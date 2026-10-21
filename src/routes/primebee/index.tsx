@@ -65,9 +65,7 @@ function PrimeBeePage() {
           title={
             <>
               {m.primebee_why_title_a()}
-              <span className="text-muted-foreground">
-                {m.primebee_why_title_b()}
-              </span>
+              {m.primebee_why_title_b()}
             </>
           }
           intro={m.primebee_why_intro()}

@@ -79,7 +79,7 @@ function NotFound() {
       <p className="text-muted-foreground">{m.root_not_found_body()}</p>
       <Link
         to="/"
-        className="rounded-md inline-flex h-11 items-center bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+        className="rounded-full inline-flex h-11 items-center bg-primary px-6 text-sm font-medium text-primary-foreground transition-[background-color,scale] duration-150 ease-out-strong hover:bg-primary/90 active:scale-[0.97]"
       >
         {m.root_back_home()}
       </Link>
@@ -97,7 +97,7 @@ function ErrorPage() {
       <button
         type="button"
         onClick={() => router.invalidate()}
-        className="rounded-md inline-flex h-11 cursor-pointer items-center bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+        className="rounded-full inline-flex h-11 cursor-pointer items-center bg-primary px-6 text-sm font-medium text-primary-foreground transition-[background-color,scale] duration-150 ease-out-strong hover:bg-primary/90 active:scale-[0.97]"
       >
         {m.root_try_again()}
       </button>

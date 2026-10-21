@@ -35,25 +35,25 @@ export function MeetingConsole() {
       ]}
     >
       <dl className="grid grid-cols-3 gap-3">
-        <div className="rounded-md border border-border bg-background px-3 py-2.5">
+        <div className="rounded-md bg-muted px-3 py-2.5">
           <dt className="eyebrow">{m.shms_console_quorum()}</dt>
           <dd className="mt-1 text-lg text-highlight tabular-nums">
             {'67.4%'}
           </dd>
         </div>
-        <div className="rounded-md border border-border bg-background px-3 py-2.5">
+        <div className="rounded-md bg-muted px-3 py-2.5">
           <dt className="eyebrow">{m.shms_console_online()}</dt>
           <dd className="mt-1 text-lg tabular-nums">{'1,248'}</dd>
         </div>
-        <div className="rounded-md border border-border bg-background px-3 py-2.5">
+        <div className="rounded-md bg-muted px-3 py-2.5">
           <dt className="eyebrow">{m.shms_console_shares()}</dt>
           <dd className="mt-1 text-lg tabular-nums">{'12,450,000'}</dd>
         </div>
       </dl>
       <div className="mt-3 grid gap-3 md:grid-cols-3">
-        <div className="rounded-md border border-border bg-background p-4 md:order-last md:col-span-2">
+        <div className="rounded-md bg-muted p-4 md:order-last md:col-span-2">
           <p className="eyebrow flex items-center gap-2 text-foreground">
-            <span className="size-1.5 animate-pulse bg-secondary" />
+            <span className="rounded-full size-2 animate-pulse bg-primary" />
             {m.shms_console_now_voting()}
           </p>
           <p className="heading mt-3 text-title">{m.shms_mock_agenda_2()}</p>
@@ -69,15 +69,15 @@ export function MeetingConsole() {
                     {`${result.share}%`}
                   </span>
                 </div>
-                <div className="mt-2 h-1.5 bg-foreground/10">
+                <div className="rounded-full mt-2 h-1.5 overflow-hidden bg-foreground/10">
                   <div
                     className={cn(
-                      'h-full origin-left ',
-                      index ? 'bg-foreground/40' : 'bg-secondary',
+                      'h-full origin-left',
+                      index ? 'bg-foreground/40' : 'bg-primary',
                     )}
                     style={{
                       width: `${result.share}%`,
-                      animation: `fill 7s ${index * 0.3}s ease-in-out infinite both`,
+                      animation: `fill 7s ${index * 0.3}s var(--ease-in-out-strong) infinite both`,
                     }}
                   />
                 </div>
@@ -85,25 +85,25 @@ export function MeetingConsole() {
             ))}
           </ul>
         </div>
-        <div className="rounded-md hidden flex-col border border-border bg-background md:flex">
-          <p className="eyebrow border-b border-border px-4 py-3 text-foreground">
+        <div className="rounded-md hidden flex-col bg-muted p-2 md:flex">
+          <p className="eyebrow px-2 pt-2 pb-3 text-foreground">
             {m.shms_mock_agenda()}
           </p>
-          <ol className="flex flex-col text-sm">
+          <ol className="flex flex-col gap-1 text-sm">
             {AGENDA.map((item, index) => (
               <li
                 key={index}
-                className="flex items-center gap-3 border-b border-border px-4 py-3 last:border-b-0"
+                className="rounded-sm flex items-center gap-3 bg-card px-3 py-2.5"
               >
                 <span
                   className={cn(
-                    'rounded-sm flex size-5 shrink-0 items-center justify-center  text-2xs',
+                    'rounded-sm flex size-5 shrink-0 items-center justify-center text-2xs',
                     item.state === 'done' &&
                       'bg-primary text-primary-foreground',
                     item.state === 'live' &&
-                      'bg-secondary text-secondary-foreground',
+                      'bg-primary text-highlight-foreground',
                     item.state === 'next' &&
-                      'border border-border text-muted-foreground',
+                      'bg-foreground/10 text-muted-foreground',
                   )}
                 >
                   {item.state === 'done' ? (

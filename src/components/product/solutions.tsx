@@ -30,18 +30,18 @@ export function ProductSolutions({
     >
       <div className="flex flex-col gap-14 self-start lg:sticky lg:top-32 lg:col-span-4">
         <SectionHeading eyebrow={eyebrow} title={title} intro={intro} />
-        <ol className="hidden max-w-xs flex-col lg:flex">
+        <ol className="hidden max-w-xs flex-col gap-1 lg:flex">
           {items.map((item, index) => (
             <li key={item.solution.id}>
               <a
                 href={`#${item.solution.id}`}
                 data-index
                 data-active={index === 0 || undefined}
-                className="group eyebrow flex items-center gap-3 border-t border-border py-3 transition-colors hover:text-foreground data-active:text-foreground"
+                className="group eyebrow flex items-center gap-3 rounded-md px-3 py-3 transition-[color,background-color] duration-200 hover:bg-muted hover:text-foreground data-active:bg-card data-active:text-foreground"
               >
                 <span
                   aria-hidden="true"
-                  className="size-1.5 bg-border transition-colors group-data-active:bg-primary"
+                  className="size-1.5 rounded-full bg-secondary/35 transition-[background-color] duration-200 group-data-active:bg-secondary"
                 />
                 {item.eyebrow}
               </a>
@@ -59,11 +59,7 @@ export function ProductSolutions({
             className="md:sticky"
             style={{ top: `calc(6.5rem + ${index * 1.25}rem)` }}
           >
-            <SolutionCard
-              index={index}
-              eyebrow={item.eyebrow}
-              solution={item.solution}
-            >
+            <SolutionCard eyebrow={item.eyebrow} solution={item.solution}>
               {item.mock}
             </SolutionCard>
           </div>

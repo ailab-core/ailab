@@ -16,9 +16,7 @@ export default function Solutions({
       title={
         <>
           {m.finace_solutions_title_a()}
-          <span className="text-muted-foreground">
-            {m.finace_solutions_title_b()}
-          </span>
+          {m.finace_solutions_title_b()}
         </>
       }
       intro={m.finace_solutions_intro()}

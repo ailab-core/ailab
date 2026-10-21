@@ -32,13 +32,13 @@ export default function Statement() {
       className="relative isolate bg-primary text-primary-foreground"
     >
       <div className="shell flex min-h-[80svh] flex-col justify-center gap-10 py-24 md:py-32">
-        <span className="eyebrow flex items-center gap-2 text-primary-foreground/60">
-          <span className="size-1 bg-secondary" aria-hidden="true" />
+        <span className="eyebrow tracking-wider text-primary-foreground/70 uppercase">
           {m.home_statement_eyebrow()}
         </span>
-        <p className="heading max-w-6xl text-headline">
-          {m.home_statement_body()}
-        </p>
+        <div className="heading flex max-w-6xl flex-col gap-[1lh] text-headline font-semibold">
+          <p>{m.home_statement_body()}</p>
+          <p>{m.home_statement_body_2()}</p>
+        </div>
       </div>
     </section>
   )

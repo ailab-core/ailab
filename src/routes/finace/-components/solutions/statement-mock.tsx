@@ -16,11 +16,11 @@ export function StatementMock() {
         <span className="eyebrow">{m.finace_mock_income_expenses()}</span>
         <span className="flex gap-4 text-2xs font-medium tracking-wide text-muted-foreground uppercase">
           <span className="flex items-center gap-1.5">
-            <span className="size-2 bg-foreground/80" />
+            <span className="size-2.5 rounded-full bg-foreground/80" />
             {m.finace_mock_income()}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="size-2 bg-secondary" />
+            <span className="rounded-full size-2.5 bg-primary" />
             {m.finace_mock_expenses()}
           </span>
         </span>
@@ -31,14 +31,14 @@ export function StatementMock() {
             <div className="flex h-full items-end justify-center gap-1">
               {[
                 { value: item.income, tone: 'bg-foreground/80' },
-                { value: item.expense, tone: 'bg-secondary' },
+                { value: item.expense, tone: 'bg-primary' },
               ].map((bar, barIndex) => (
                 <span
                   key={barIndex}
                   className={`w-full max-w-4 origin-bottom ${bar.tone}`}
                   style={{
                     height: `${bar.value * 100}%`,
-                    animation: `grow 7s ${index * 0.12 + barIndex * 0.06}s ease-in-out infinite both`,
+                    animation: `grow 7s ${index * 0.12 + barIndex * 0.06}s var(--ease-in-out-strong) infinite both`,
                   }}
                 />
               ))}

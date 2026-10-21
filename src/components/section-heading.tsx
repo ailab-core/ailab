@@ -50,16 +50,18 @@ export function SectionHeading({
   )
 
   return (
-    <div ref={rootRef} className={cn('flex flex-col gap-6', className)}>
+    <div ref={rootRef} className={cn('flex flex-col gap-5', className)}>
       {eyebrow && (
-        <p data-fade className="eyebrow flex items-center gap-2">
-          <span className="size-1 bg-secondary" aria-hidden="true" />
+        <p
+          data-fade
+          className="eyebrow tracking-wider text-highlight uppercase"
+        >
           {eyebrow}
         </p>
       )}
       <h2 className="heading text-section">{title}</h2>
       {intro && (
-        <p data-fade className="max-w-sm text-muted-foreground">
+        <p data-fade className="mt-1 max-w-md text-lead text-muted-foreground">
           {intro}
         </p>
       )}

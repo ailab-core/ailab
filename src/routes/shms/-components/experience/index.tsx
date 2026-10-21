@@ -26,23 +26,18 @@ export default function Experience() {
           title={
             <>
               {m.shms_experience_title_a()}
-              <span className="text-muted-foreground">
-                {m.shms_experience_title_b()}
-              </span>
+              {m.shms_experience_title_b()}
             </>
           }
           intro={m.shms_experience_intro()}
         />
-        <ul className="flex max-w-md flex-col">
+        <ul className="flex max-w-md flex-col gap-1.5">
           {FEATURES.map((feature, index) => (
             <li
               key={index}
               data-reveal
-              className="flex items-baseline gap-4 border-t border-border py-3.5"
+              className="rounded-sm flex items-baseline gap-4 bg-card px-4 py-3.5"
             >
-              <span className="text-xs text-highlight tabular-nums">
-                {String(index + 1).padStart(2, '0')}
-              </span>
               {feature()}
             </li>
           ))}
@@ -52,7 +47,7 @@ export default function Experience() {
       <div
         data-reveal
         aria-hidden="true"
-        className="rounded-lg dark relative isolate overflow-hidden bg-background py-14 text-foreground lg:col-span-6 lg:col-start-7 dark:ring-1 dark:ring-border"
+        className="rounded-lg dark relative isolate overflow-hidden bg-background py-14 text-foreground lg:col-span-6 lg:col-start-7 dark:bg-card"
       >
         <div className="pointer-events-none absolute -right-1/4 -bottom-1/3 -z-10 size-[40rem] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--primary)_18%,transparent),transparent)]" />
         <Phone />

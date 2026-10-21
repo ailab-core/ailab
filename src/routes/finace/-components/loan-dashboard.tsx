@@ -62,7 +62,7 @@ const STATUS = {
   },
   review: {
     label: m.finace_dashboard_status_review,
-    tone: 'bg-secondary/15 text-highlight-secondary',
+    tone: 'bg-primary/15 text-highlight',
   },
   scoring: {
     label: m.finace_dashboard_status_scoring,
@@ -95,10 +95,7 @@ export function LoanDashboard() {
     >
       <div className="grid grid-cols-3 gap-3">
         {KPIS.map((kpi) => (
-          <div
-            key={kpi.value}
-            className="rounded-md border border-border bg-background p-3 md:p-4"
-          >
+          <div key={kpi.value} className="rounded-md bg-muted p-3 md:p-4">
             <p className="eyebrow">{kpi.label()}</p>
             <p className="heading mt-3 text-2xl tabular-nums md:text-figure">
               {kpi.value}
@@ -110,8 +107,8 @@ export function LoanDashboard() {
         ))}
       </div>
       <div className="mt-3 grid gap-3 md:grid-cols-5">
-        <div className="rounded-md overflow-hidden border border-border bg-background md:col-span-3">
-          <p className="eyebrow border-b border-border px-4 py-3 text-foreground">
+        <div className="rounded-md overflow-hidden bg-muted p-2 md:col-span-3">
+          <p className="eyebrow px-2 pt-2 pb-3 text-foreground">
             {m.finace_dashboard_applications()}
           </p>
           <table className="w-full text-left text-sm">
@@ -119,16 +116,16 @@ export function LoanDashboard() {
               {APPLICATIONS.map((application) => (
                 <tr
                   key={application.id}
-                  className="border-t border-border first:border-t-0"
+                  className="odd:bg-card/70 [&>td:first-child]:rounded-l-sm [&>td:last-child]:rounded-r-sm"
                 >
-                  <td className="px-4 py-2.5 font-mono text-xs text-muted-foreground">
+                  <td className="px-3 py-2.5 font-mono text-xs text-muted-foreground">
                     {application.id}
                   </td>
                   <td className="px-2 py-2.5">{application.product()}</td>
                   <td className="hidden px-2 py-2.5 tabular-nums lg:table-cell">
                     {application.amount}
                   </td>
-                  <td className="px-4 py-2.5 text-right">
+                  <td className="px-3 py-2.5 text-right">
                     <span
                       className={cn(
                         'rounded-sm px-2 py-1 text-2xs font-medium tracking-wide uppercase',
@@ -145,7 +142,7 @@ export function LoanDashboard() {
             </tbody>
           </table>
         </div>
-        <div className="rounded-md hidden flex-col border border-border bg-background p-4 md:col-span-2 md:flex">
+        <div className="rounded-md hidden flex-col bg-muted p-4 md:col-span-2 md:flex">
           <p className="eyebrow text-foreground">
             {m.finace_dashboard_credit_scores()}
           </p>
@@ -155,11 +152,11 @@ export function LoanDashboard() {
                 key={index}
                 className={cn(
                   'flex-1 origin-bottom',
-                  index === 4 ? 'bg-secondary' : 'bg-foreground/15',
+                  index === 4 ? 'bg-primary' : 'bg-foreground/15',
                 )}
                 style={{
                   height: `${score * 100}%`,
-                  animation: `grow 8s ${index * 0.08}s ease-in-out infinite both`,
+                  animation: `grow 8s ${index * 0.08}s var(--ease-in-out-strong) infinite both`,
                 }}
               />
             ))}

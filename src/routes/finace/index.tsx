@@ -54,9 +54,7 @@ function FinacePage() {
           title={
             <>
               {m.finace_values_title_a()}
-              <span className="text-muted-foreground">
-                {m.finace_values_title_b()}
-              </span>
+              {m.finace_values_title_b()}
             </>
           }
           intro={m.finace_values_intro()}

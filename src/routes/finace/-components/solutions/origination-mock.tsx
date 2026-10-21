@@ -17,7 +17,7 @@ export function OriginationMock() {
           {STAGES.map((stage, index) => (
             <li
               key={index}
-              className="w-fit px-2.5 py-1 text-2xs font-medium tracking-wide uppercase"
+              className="rounded-sm w-fit px-2.5 py-1 text-2xs font-medium tracking-wide uppercase"
               style={{
                 animation: `stage 6s ${index * 1.1}s ease-in-out infinite both`,
               }}
@@ -33,7 +33,7 @@ export function OriginationMock() {
             cx="50"
             cy="50"
             r="42"
-            className="fill-none stroke-border"
+            className="fill-none stroke-muted"
             strokeWidth="6"
           />
           <circle
@@ -42,10 +42,12 @@ export function OriginationMock() {
             r="42"
             pathLength={1.25}
             strokeDasharray="1 2"
-            className="fill-none stroke-secondary"
+            className="fill-none stroke-highlight"
             strokeWidth="6"
             strokeLinecap="round"
-            style={{ animation: 'draw 6s ease-in-out infinite both' }}
+            style={{
+              animation: 'draw 6s var(--ease-in-out-strong) infinite both',
+            }}
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">

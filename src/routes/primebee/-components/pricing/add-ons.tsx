@@ -10,11 +10,11 @@ export function AddOns() {
         <p className="max-w-xs text-muted-foreground">
           {m.primebee_addons_intro()}
         </p>
-        <dl className="mt-4 flex flex-col">
+        <dl className="mt-4 flex flex-col gap-1.5">
           {getFees().map((fee, index) => (
             <div
               key={index}
-              className="flex flex-col gap-1 border-t border-border py-3"
+              className="rounded-sm flex flex-col gap-1 bg-card px-4 py-3"
             >
               <dt className="eyebrow">{fee.item}</dt>
               <dd className="tabular-nums">{fee.price}</dd>
@@ -28,16 +28,20 @@ export function AddOns() {
           {m.primebee_addons_cta()}
         </ArrowButton>
       </div>
-      <div className="rounded-lg overflow-x-auto border border-border bg-card lg:col-span-8">
+      <div className="rounded-lg overflow-x-auto bg-card p-2 lg:col-span-8">
         <table className="w-full min-w-[40rem] text-left text-sm">
           <thead>
-            <tr className="eyebrow">
+            <tr className="eyebrow bg-muted">
               {[
                 m.primebee_addons_col_module(),
                 m.primebee_plan_basic(),
                 m.primebee_plan_premium(),
               ].map((column, index) => (
-                <th key={index} scope="col" className="px-5 py-4 font-medium">
+                <th
+                  key={index}
+                  scope="col"
+                  className="px-5 py-3.5 font-medium first:rounded-l-md last:rounded-r-md"
+                >
                   {column}
                 </th>
               ))}
@@ -45,7 +49,10 @@ export function AddOns() {
           </thead>
           <tbody>
             {getAddOns().map((addOn, index) => (
-              <tr key={index} className="border-t border-border align-top">
+              <tr
+                key={index}
+                className="align-top even:bg-muted/50 [&>*:first-child]:rounded-l-md [&>*:last-child]:rounded-r-md"
+              >
                 <th scope="row" className="heading px-5 py-5 text-lg">
                   {addOn.module}
                 </th>

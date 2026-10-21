@@ -13,7 +13,7 @@ export function MarketingMock() {
         <li
           key={segment.count}
           style={{
-            animation: `appear 7s ${index * 0.6}s ease-out infinite both`,
+            animation: `appear 7s ${index * 0.6}s var(--ease-out-strong) infinite both`,
           }}
         >
           <div className="flex items-baseline justify-between">
@@ -22,9 +22,9 @@ export function MarketingMock() {
               {segment.count}
             </span>
           </div>
-          <div className="mt-2 h-1.5 bg-foreground/10">
+          <div className="rounded-full mt-2 h-1.5 overflow-hidden bg-foreground/10">
             <div
-              className="h-full bg-secondary"
+              className="h-full bg-primary"
               style={{ width: `${segment.share * 100}%` }}
             />
           </div>

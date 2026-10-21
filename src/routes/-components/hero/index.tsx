@@ -22,10 +22,7 @@ export default function Hero() {
           <span className="hero-line block" style={{ animationDelay: '0.1s' }}>
             {m.home_hero_title_a()}
           </span>
-          <span
-            className="hero-line block text-muted-foreground"
-            style={{ animationDelay: '0.2s' }}
-          >
+          <span className="hero-line block" style={{ animationDelay: '0.2s' }}>
             {m.home_hero_title_b()}
           </span>
         </h1>

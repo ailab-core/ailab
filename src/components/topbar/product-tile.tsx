@@ -5,41 +5,30 @@ import type { PRODUCTS } from '#/lib/navigation'
 import { m } from '#/paraglide/messages'
 
 const tileClass =
-  'group/tile relative flex h-full flex-col gap-10 bg-background p-6 transition-colors hover:bg-muted/60 focus-visible:bg-muted/60'
+  'group/tile relative flex h-full flex-col gap-10 overflow-hidden rounded-lg bg-card p-6 transition-[background-color,scale] duration-200 ease-out-strong hover:bg-muted focus-visible:bg-muted active:scale-[0.99]'
 
 export function ProductTile({
   product,
-  index,
 }: {
   product: (typeof PRODUCTS)[number]
-  index: number
 }) {
   const available = Boolean(product.link || product.href)
   const content = (
     <>
-      <span
+      <HugeiconsIcon
+        icon={product.icon}
+        className="size-5 text-highlight"
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-highlight transition-transform duration-500 ease-[cubic-bezier(0.2,0.7,0.1,1)] group-hover/tile:scale-x-100"
       />
-      <span className="flex items-center justify-between">
-        <HugeiconsIcon
-          icon={product.icon}
-          className="size-5 text-highlight"
-          aria-hidden="true"
-        />
-        <span className="font-mono text-2xs text-muted-foreground tabular-nums">
-          {String(index + 1).padStart(2, '0')}
-        </span>
-      </span>
       <span className="flex flex-col gap-1.5">
         <span className="flex items-center justify-between gap-3">
-          <span className="text-lg font-medium transition-colors group-hover/tile:text-highlight">
+          <span className="font-semibold tracking-wider uppercase transition-colors group-hover/tile:text-highlight">
             {product.label}
           </span>
           {available ? (
             <HugeiconsIcon
               icon={ArrowRight02Icon}
-              className="size-4 -translate-x-1 text-highlight opacity-0 transition-[opacity,translate] duration-300 group-hover/tile:translate-x-0 group-hover/tile:opacity-100"
+              className="size-4 -translate-x-1 text-highlight opacity-0 transition-[opacity,translate] duration-200 ease-out-strong group-hover/tile:translate-x-0 group-hover/tile:opacity-100"
               aria-hidden="true"
             />
           ) : (
@@ -77,7 +66,7 @@ export function ProductTile({
   return (
     <div
       aria-disabled="true"
-      className="relative flex h-full flex-col gap-10 bg-background p-6 [&>*]:opacity-60"
+      className="relative flex h-full flex-col gap-10 overflow-hidden rounded-lg bg-card p-6 [&>*]:opacity-60"
     >
       {content}
     </div>

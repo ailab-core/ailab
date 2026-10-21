@@ -9,13 +9,13 @@ import { ThemeToggle } from './theme-toggle'
 import { m } from '#/paraglide/messages'
 
 const linkClass =
-  'heading group flex items-center justify-between py-4 text-title transition-colors hover:text-highlight data-[status=active]:text-highlight'
+  'heading group flex items-center justify-between rounded-lg bg-card px-5 py-4 text-title transition-[color,background-color,scale] duration-200 ease-out-strong hover:bg-muted hover:text-highlight active:scale-[0.99] data-[status=active]:text-highlight'
 
 export function MobileMenu({ onClose }: { onClose: () => void }) {
   const arrow = (
     <HugeiconsIcon
       icon={ArrowRight02Icon}
-      className="size-5 text-muted-foreground transition-[color,translate] duration-300 group-hover:translate-x-1 group-hover:text-highlight"
+      className="size-5 text-muted-foreground transition-[color,translate] duration-200 ease-out-strong group-hover:translate-x-1 group-hover:text-highlight"
       aria-hidden="true"
     />
   )
@@ -23,7 +23,7 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
   return (
     <div
       id="mobile-menu"
-      className="absolute inset-x-0 top-full h-[calc(100svh-4rem)] animate-in overflow-y-auto overscroll-contain border-t border-border bg-background fade-in-0 md:h-[calc(100svh-6.25rem)] lg:hidden"
+      className="absolute inset-x-0 top-full h-[calc(100svh-4rem)] overflow-y-auto overscroll-contain bg-background transition-[opacity,translate] duration-300 ease-drawer starting:-translate-y-2 starting:opacity-0 md:h-[calc(100svh-6.25rem)] lg:hidden"
       onClick={(event) => {
         if ((event.target as HTMLElement).closest('a')) onClose()
       }}
@@ -32,7 +32,7 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
         className="shell flex min-h-full flex-col gap-10 py-6"
         aria-label={m.topbar_mobile_nav_label()}
       >
-        <ul className="flex flex-col divide-y divide-border border-b border-border">
+        <ul className="flex flex-col gap-2">
           {NAV_LINKS.map(({ label, ...link }, index) => (
             <li key={index}>
               <Link
@@ -53,20 +53,17 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
           </li>
         </ul>
         <div>
-          <p className="eyebrow flex items-center gap-2 border-b border-border pb-3">
-            <span className="size-1 bg-secondary" aria-hidden="true" />
-            {m.common_solutions()}
-          </p>
-          <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10">
+          <p className="eyebrow pb-4">{m.common_solutions()}</p>
+          <ul className="grid grid-cols-1 gap-2 md:grid-cols-2">
             {PRODUCTS.map((product) => (
-              <li key={product.label} className="border-b border-border">
+              <li key={product.label}>
                 <ProductItem product={product} />
               </li>
             ))}
           </ul>
         </div>
         <div className="mt-auto flex flex-col gap-5">
-          <div className="flex h-11 items-center justify-between border-y border-border text-sm text-muted-foreground md:hidden">
+          <div className="flex h-11 items-center justify-between rounded-full bg-muted pl-4 text-sm text-muted-foreground md:hidden">
             <LanguageSwitcher className="h-full" />
             <ThemeToggle className="h-full w-11" />
           </div>

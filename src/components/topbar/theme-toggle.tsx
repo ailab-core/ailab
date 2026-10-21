@@ -25,7 +25,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         }
       }}
       className={cn(
-        'flex cursor-pointer items-center justify-center transition-colors hover:text-highlight',
+        'flex cursor-pointer items-center justify-center rounded-full transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.95]',
         className,
       )}
     >

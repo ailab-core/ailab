@@ -25,15 +25,12 @@ export function OrderBookMock() {
         {[
           {
             rows: ASKS,
-            tone: 'bg-secondary/20',
-            text: 'text-highlight-secondary',
+            tone: 'bg-primary/20',
+            text: 'text-highlight',
           },
           { rows: BIDS, tone: 'bg-foreground/10', text: 'text-foreground' },
         ].map((side, sideIndex) => (
-          <div
-            key={sideIndex}
-            className={sideIndex ? 'mt-1.5 border-t border-border pt-1.5' : ''}
-          >
+          <div key={sideIndex} className={sideIndex ? 'mt-3' : ''}>
             {side.rows.map((row, index) => (
               <div
                 key={row.price}
@@ -44,7 +41,7 @@ export function OrderBookMock() {
                   style={
                     {
                       '--to': row.depth,
-                      animation: `fill 6s ${(sideIndex * 3 + index) * 0.2}s ease-in-out infinite both`,
+                      animation: `fill 6s ${(sideIndex * 3 + index) * 0.2}s var(--ease-in-out-strong) infinite both`,
                     } as CSSProperties
                   }
                 />

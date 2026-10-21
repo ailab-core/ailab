@@ -77,11 +77,7 @@ export function ProductHero({
 
       <div className="shell flex flex-1 flex-col pt-32 pb-8 md:pb-10">
         <div className="relative z-10 my-auto py-10 lg:max-w-[52%]">
-          <p className="hero-line eyebrow flex items-center gap-2">
-            <span className="relative flex size-1.5" aria-hidden="true">
-              <span className="absolute inset-0 animate-ping bg-secondary opacity-60" />
-              <span className="size-1.5 bg-secondary" />
-            </span>
+          <p className="hero-line eyebrow tracking-wider text-highlight uppercase">
             {eyebrow}
           </p>
           <h1
@@ -124,13 +120,13 @@ export function ProductHero({
             </div>
           </div>
           <dl
-            className="rounded-lg hero-line border border-border bg-card/80 px-5 py-2 backdrop-blur-md lg:col-span-4 lg:col-start-9"
+            className="hero-line rounded-lg bg-card/80 px-5 py-3 backdrop-blur-md lg:col-span-4 lg:col-start-9"
             style={{ animationDelay: '0.4s' }}
           >
             {facts.map(([label, value]) => (
               <div
                 key={label}
-                className="flex items-baseline justify-between border-b border-border py-3 last:border-b-0"
+                className="flex items-baseline justify-between py-2.5"
               >
                 <dt className="eyebrow">{label}</dt>
                 <dd className="heading text-xl tabular-nums">{value}</dd>
@@ -140,7 +136,7 @@ export function ProductHero({
         </div>
 
         {clients && (
-          <ul className="relative z-10 mt-10 flex flex-wrap items-center gap-x-12 gap-y-6 border-t border-border pt-8">
+          <ul className="relative z-10 mt-14 flex flex-wrap items-center gap-x-12 gap-y-6">
             <li className="eyebrow">{m.product_hero_trusted_by()}</li>
             {clients.map((client) => (
               <li key={client.name}>

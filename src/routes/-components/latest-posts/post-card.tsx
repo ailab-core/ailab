@@ -1,42 +1,32 @@
 import { HugeiconsIcon } from '@hugeicons/react'
-import { ArrowRight02Icon } from '@hugeicons/core-free-icons'
+import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons'
 import { Link } from '@tanstack/react-router'
-import { format } from 'date-fns'
 import type { Post } from 'content-collections'
-import { DATE_LOCALES } from '#/lib/utils/locale'
-import { TOPIC_LABELS } from '#/lib/posts'
-import { getLocale } from '#/paraglide/runtime'
-
-const DATE_FORMAT = { en: 'dd MMM yyyy', mn: 'PP', zh: 'PPP' }
+import { PostMeta } from './meta'
 
 export function PostCard({ post }: { post: Post }) {
-  const locale = getLocale()
-
   return (
     <Link
       to="/blogs/$slug"
       params={{ slug: post.slug }}
-      className="group grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-2 py-6 md:grid-cols-[9rem_1fr_auto_auto]"
+      className="group flex h-full flex-col gap-4 rounded-lg bg-card p-6 transition-[scale] duration-150 ease-out-strong active:scale-[0.99] md:p-8"
     >
-      <span className="eyebrow col-span-2 md:col-span-1">
-        {TOPIC_LABELS[post.topic]?.() ?? post.topic}
-      </span>
-      <h3 className="heading text-xl transition-colors group-hover:text-highlight">
-        {post.title}
-      </h3>
-      <time
-        dateTime={post.published.toISOString()}
-        className="eyebrow hidden md:block"
-      >
-        {format(post.published, DATE_FORMAT[locale], {
-          locale: DATE_LOCALES[locale],
-        })}
-      </time>
-      <HugeiconsIcon
-        icon={ArrowRight02Icon}
-        className="size-4 text-muted-foreground transition-[color,translate] duration-300 group-hover:translate-x-1 group-hover:text-foreground"
-        aria-hidden="true"
-      />
+      <PostMeta post={post} />
+      <div className="mt-auto flex items-end justify-between gap-6 pt-4">
+        <div className="flex flex-col gap-2">
+          <h3 className="heading line-clamp-3 text-title text-balance">
+            {post.title}
+          </h3>
+          <p className="line-clamp-2 text-muted-foreground">{post.excerpt}</p>
+        </div>
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted transition-[background-color,color] duration-200 group-hover:bg-primary group-hover:text-primary-foreground">
+          <HugeiconsIcon
+            icon={ArrowUpRight01Icon}
+            className="size-4 transition-[translate] duration-200 ease-out-strong group-hover:translate-x-px group-hover:-translate-y-px"
+            aria-hidden="true"
+          />
+        </span>
+      </div>
     </Link>
   )
 }

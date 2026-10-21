@@ -28,7 +28,13 @@ const ROWS = [
 ]
 
 const CHIP =
-  'flex h-10 min-w-0 items-center gap-2 rounded-sm border border-border bg-background px-2.5 leading-tight md:h-14 md:px-3.5 md:text-sm'
+  'flex h-10 min-w-0 items-center gap-2 rounded-sm px-2.5 leading-tight md:h-14 md:px-3.5 md:text-sm'
+
+const LINE = 'relative h-px self-center bg-muted-foreground/25'
+
+// Packets enter the hub on the left half of each cycle and leave it on the right.
+const packet = (row: number, col: number) =>
+  `flow 2.4s ${row * -0.8 + (col === 4 ? -1.2 : 0)}s linear infinite`
 
 export function Architecture() {
   return (
@@ -38,83 +44,121 @@ export function Architecture() {
       lead={m.home_wwd_arch_lead()}
       rest={m.home_wwd_arch_rest()}
     >
-      <div className="grid grid-cols-[minmax(0,1fr)_0.75rem_auto_0.75rem_minmax(0,1fr)] gap-y-2.5 px-5 pt-2 text-xs md:grid-cols-[minmax(0,1fr)_3.5rem_auto_3.5rem_minmax(0,1fr)] md:gap-y-3.5 md:pt-4 md:px-8">
-        <div className="eyebrow col-span-5 mb-1 flex justify-between gap-4 whitespace-nowrap">
+      {/* One 8s loop: traffic runs through the hub, then a new product plugs into the empty
+          slot, its wire draws in and traffic starts reaching it, without the others pausing. */}
+      <div
+        data-loop
+        className="mx-5 mt-2 grid grid-cols-[minmax(0,1fr)_1.5rem_auto_1.5rem_minmax(0,1fr)] gap-y-2 rounded-md bg-muted p-3 text-xs md:mx-8 md:grid-cols-[minmax(0,1fr)_3.5rem_auto_3.5rem_minmax(0,1fr)] md:gap-y-3 md:p-4"
+      >
+        <div className="col-span-5 mb-1 flex justify-between gap-4 whitespace-nowrap text-muted-foreground">
           <span>{m.home_wwd_arch_yours()}</span>
           <span>{m.home_wwd_arch_new()}</span>
         </div>
 
-        <span className="col-start-3 row-span-3 row-start-2 flex w-14 flex-col items-center justify-center gap-2 rounded-md border border-highlight/50 bg-background shadow-[0_0_40px] shadow-highlight/25 md:w-24">
-          <img src="/assets/logos/ailab-icon.svg" alt="" className="size-7" />
-          <span className="text-muted-foreground">AILab</span>
+        <span className="col-start-3 row-span-3 row-start-2 flex w-14 flex-col items-center justify-center gap-2 rounded-sm bg-primary text-primary-foreground/80 md:w-20">
+          <span className="brand-mark w-6 bg-primary-foreground md:w-7" />
+          AILab
         </span>
 
-        {ROWS.map(({ from, to }, row) => (
-          <div key={row} className="contents">
-            <span
-              className={`col-start-1 ${CHIP}`}
-              style={{ gridRowStart: row + 2 }}
-            >
-              <HugeiconsIcon
-                icon={from.icon}
-                className="hidden size-3.5 shrink-0 text-muted-foreground sm:block"
-              />
-              <span className="min-w-0 break-words">{from.label()}</span>
-            </span>
-            {[2, 4].map((col) => (
+        {ROWS.map(({ from, to }, row) => {
+          const isNew = row === ROWS.length - 1
+
+          return (
+            <div key={row} className="contents">
               <span
-                key={col}
-                className="relative self-center border-t border-dashed border-border"
-                style={{ gridColumnStart: col, gridRowStart: row + 2 }}
-              >
-                <span
-                  className="absolute inset-x-0 -top-px"
-                  style={{
-                    animation: `flow 2.4s ${row * -0.8 + (col === 4 ? -1.2 : 0)}s linear infinite`,
-                  }}
-                >
-                  <span className="block size-1.5 -translate-x-1/2 -translate-y-1/2 bg-secondary shadow-[0_0_10px_2px] shadow-secondary/50" />
-                </span>
-              </span>
-            ))}
-            <span
-              className="relative col-start-5"
-              style={{ gridRowStart: row + 2 }}
-            >
-              {row === 2 && (
-                <span
-                  className={`${CHIP} absolute inset-0 border-dashed text-muted-foreground`}
-                >
-                  <HugeiconsIcon
-                    icon={PlusSignIcon}
-                    className="size-3.5 shrink-0"
-                  />
-                  <span className="min-w-0 break-words">{m.home_wwd_arch_add()}</span>
-                </span>
-              )}
-              {/* The newest product plugs in on a loop while everything else keeps running. */}
-              <span
-                className={`${CHIP} relative`}
-                style={
-                  row === 2
-                    ? { animation: 'appear 8s ease-out infinite both' }
-                    : undefined
-                }
+                className={`col-start-1 ${CHIP} bg-card`}
+                style={{ gridRowStart: row + 2 }}
               >
                 <HugeiconsIcon
-                  icon={to.icon}
-                  className="hidden size-3.5 shrink-0 text-highlight sm:block"
+                  icon={from.icon}
+                  className="hidden size-3.5 shrink-0 text-muted-foreground sm:block"
                 />
-                <span className="min-w-0 break-words">{to.label()}</span>
-                {row === 2 && (
-                  <span className="ml-auto hidden shrink-0 rounded-sm bg-secondary/15 px-1.5 py-0.5 text-[0.625rem] text-highlight-secondary sm:inline">
-                    {m.home_wwd_arch_new_badge()}
+                <span className="min-w-0 break-words">{from.label()}</span>
+              </span>
+
+              <span
+                className={`col-start-2 ${LINE}`}
+                style={{ gridRowStart: row + 2 }}
+              >
+                <span
+                  className="absolute inset-x-0 top-1/2"
+                  style={{ animation: packet(row, 2) }}
+                >
+                  <span className="block h-1.5 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-highlight" />
+                </span>
+              </span>
+
+              <span
+                className={`col-start-4 ${isNew ? 'relative h-px self-center bg-[repeating-linear-gradient(90deg,color-mix(in_oklab,var(--muted-foreground)_35%,transparent)_0_3px,transparent_3px_6px)]' : LINE}`}
+                style={{ gridRowStart: row + 2 }}
+              >
+                {/* Tall enough that clipping the wire never clips its packets. */}
+                <span
+                  className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2"
+                  style={
+                    isNew
+                      ? {
+                          animation:
+                            'wire 8s 0.3s var(--ease-out-strong) infinite both',
+                        }
+                      : undefined
+                  }
+                >
+                  {isNew && (
+                    <span className="absolute inset-x-0 top-1/2 h-px bg-muted-foreground/25" />
+                  )}
+                  <span
+                    className="absolute inset-x-0 top-1/2"
+                    style={{ animation: packet(row, 4) }}
+                  >
+                    <span className="block h-1.5 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-highlight" />
+                  </span>
+                </span>
+              </span>
+
+              <span
+                className="relative col-start-5"
+                style={{ gridRowStart: row + 2 }}
+              >
+                {isNew && (
+                  <span
+                    className={`${CHIP} absolute inset-0 border border-dashed border-muted-foreground/30 text-muted-foreground`}
+                  >
+                    <HugeiconsIcon
+                      icon={PlusSignIcon}
+                      className="size-3.5 shrink-0"
+                    />
+                    <span className="min-w-0 break-words">
+                      {m.home_wwd_arch_add()}
+                    </span>
                   </span>
                 )}
+                <span
+                  className={`${CHIP} relative bg-card`}
+                  style={
+                    isNew
+                      ? {
+                          animation:
+                            'plug 8s var(--ease-out-strong) infinite both',
+                        }
+                      : undefined
+                  }
+                >
+                  <HugeiconsIcon
+                    icon={to.icon}
+                    className="hidden size-3.5 shrink-0 text-highlight sm:block"
+                  />
+                  <span className="min-w-0 break-words">{to.label()}</span>
+                  {isNew && (
+                    <span className="ml-auto hidden shrink-0 rounded-sm bg-primary/15 px-1.5 py-0.5 text-[0.625rem] text-highlight sm:inline">
+                      {m.home_wwd_arch_new_badge()}
+                    </span>
+                  )}
+                </span>
               </span>
-            </span>
-          </div>
-        ))}
+            </div>
+          )
+        })}
       </div>
     </Card>
   )

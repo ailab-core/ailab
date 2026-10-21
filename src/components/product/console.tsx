@@ -31,14 +31,14 @@ type ConsoleProps = {
 export function Console({ title, notifications, children }: ConsoleProps) {
   return (
     <div className="dark relative text-foreground" aria-hidden="true">
-      <div className="rounded-lg flex overflow-hidden border border-border bg-card shadow-[0_60px_120px_-40px_rgb(0_0_0/0.8)]">
-        <div className="hidden w-14 shrink-0 flex-col items-center gap-2 border-r border-border bg-background/40 py-4 sm:flex">
+      <div className="flex overflow-hidden rounded-lg bg-card shadow-[0_60px_120px_-40px_rgb(0_0_0/0.8)]">
+        <div className="hidden w-14 shrink-0 flex-col items-center gap-2 bg-background/60 py-4 sm:flex">
           <span className="brand-mark mb-4 w-5 bg-foreground" />
           {RAIL.map((icon, index) => (
             <span
               key={index}
               className={cn(
-                'rounded-md flex size-9 items-center justify-center ',
+                'flex size-9 items-center justify-center rounded-md',
                 index
                   ? 'text-muted-foreground'
                   : 'bg-primary text-primary-foreground',
@@ -49,17 +49,17 @@ export function Console({ title, notifications, children }: ConsoleProps) {
           ))}
         </div>
         <div className="min-w-0 flex-1">
-          <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3">
+          <div className="flex items-center justify-between gap-4 px-5 pt-4 pb-1 md:px-6">
             <p className="eyebrow flex items-center gap-2 text-foreground">
-              <span className="size-1.5 animate-pulse bg-secondary" />
+              <span className="rounded-full size-2 animate-pulse bg-primary" />
               {title}
             </p>
             <div className="flex items-center gap-2">
-              <span className="rounded-md hidden h-8 w-52 items-center gap-2 border border-border px-3 text-xs text-muted-foreground md:flex">
+              <span className="hidden h-8 w-52 items-center gap-2 rounded-full bg-muted px-3 text-xs text-muted-foreground md:flex">
                 <HugeiconsIcon icon={Search01Icon} className="size-3.5" />
                 {m.product_console_search()}
               </span>
-              <span className="rounded-md flex size-8 items-center justify-center border border-border text-muted-foreground">
+              <span className="flex size-8 items-center justify-center rounded-full bg-muted text-muted-foreground">
                 <HugeiconsIcon icon={Notification01Icon} className="size-3.5" />
               </span>
             </div>
@@ -71,12 +71,12 @@ export function Console({ title, notifications, children }: ConsoleProps) {
         {notifications.map((notification, index) => (
           <li
             key={notification.text}
-            className="rounded-lg flex w-fit items-center gap-3 border border-border bg-card/90 py-2.5 pr-4 pl-2.5 text-sm shadow-2xl shadow-black/40 backdrop-blur-md"
+            className="flex w-fit items-center gap-3 rounded-full bg-accent py-2.5 pr-4 pl-2.5 text-sm shadow-2xl shadow-black/40"
             style={{
-              animation: `appear 8s ${index * 0.9}s ease-out infinite both`,
+              animation: `appear 8s ${index * 0.9}s var(--ease-out-strong) infinite both`,
             }}
           >
-            <span className="rounded-md flex size-7 items-center justify-center bg-primary text-primary-foreground">
+            <span className="flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground">
               <HugeiconsIcon icon={notification.icon} className="size-3.5" />
             </span>
             {notification.text}

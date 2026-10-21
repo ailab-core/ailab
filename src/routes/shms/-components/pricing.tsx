@@ -10,7 +10,7 @@ const INCLUDES = [
   m.shms_pricing_include_4,
 ]
 
-// The packages only differ by shareholder count, so one hairline row reads better than five repeated cards.
+// The packages only differ by shareholder count, so one compact row of tiles reads better than five repeated cards.
 export default function Pricing({ plans }: { plans: ShmsContent['plans'] }) {
   const gridRef = useReveal<HTMLUListElement>()
 
@@ -22,9 +22,7 @@ export default function Pricing({ plans }: { plans: ShmsContent['plans'] }) {
           title={
             <>
               {m.shms_pricing_title_a()}
-              <span className="text-muted-foreground">
-                {m.shms_pricing_title_b()}
-              </span>
+              {m.shms_pricing_title_b()}
             </>
           }
           intro={m.shms_pricing_intro()}
@@ -35,34 +33,26 @@ export default function Pricing({ plans }: { plans: ShmsContent['plans'] }) {
             {INCLUDES.map((label, index) => (
               <li
                 key={index}
-                className="rounded-md flex items-center gap-2 border border-border bg-card px-3 py-2 text-sm"
+                className="rounded-sm flex items-center gap-2 bg-card px-3 py-2 text-sm"
               >
-                <span className="size-1 bg-secondary" aria-hidden="true" />
+                <span
+                  className="rounded-full size-1.5 bg-secondary"
+                  aria-hidden="true"
+                />
                 {label()}
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <ul
-        ref={gridRef}
-        className="rounded-lg grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-5"
-      >
-        {plans.map((plan, index) => (
+      <ul ref={gridRef} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {plans.map((plan) => (
           <li
             key={plan.name}
             data-reveal
-            className="flex flex-col gap-10 bg-card p-6 sm:last:col-span-2 lg:last:col-span-1"
+            className="rounded-lg flex flex-col gap-10 bg-card p-6 sm:last:col-span-2 lg:last:col-span-1"
           >
-            <div className="flex items-center justify-between">
-              <p className="eyebrow flex items-center gap-2 text-foreground">
-                <span className="size-1 bg-secondary" aria-hidden="true" />
-                {plan.name}
-              </p>
-              <span className="eyebrow tabular-nums">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </div>
+            <p className="eyebrow text-foreground">{plan.name}</p>
             <div>
               <p className="heading flex items-start gap-1.5 text-figure tabular-nums">
                 {plan.price}
@@ -70,7 +60,7 @@ export default function Pricing({ plans }: { plans: ShmsContent['plans'] }) {
               </p>
               <p className="eyebrow mt-3">{m.shms_pricing_note()}</p>
             </div>
-            <p className="border-t border-border pt-4 text-sm text-muted-foreground">
+            <p className="rounded-sm bg-muted px-3 py-2 text-sm text-muted-foreground">
               {plan.shareholders}
             </p>
             <ArrowButton

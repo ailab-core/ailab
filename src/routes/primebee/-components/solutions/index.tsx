@@ -15,9 +15,7 @@ export default function Solutions() {
       title={
         <>
           {m.primebee_solutions_title_a()}
-          <span className="text-muted-foreground">
-            {m.primebee_solutions_title_b()}
-          </span>
+          {m.primebee_solutions_title_b()}
         </>
       }
       intro={m.primebee_solutions_intro()}

@@ -73,9 +73,7 @@ export default function Partners() {
         title={
           <>
             {m.home_partners_title_a()}
-            <span className="text-muted-foreground">
-              {m.home_partners_title_b()}
-            </span>
+            {m.home_partners_title_b()}
           </>
         }
         intro={m.home_partners_intro()}
@@ -83,20 +81,20 @@ export default function Partners() {
       />
       <ul
         ref={gridRef}
-        className="rounded-lg grid grid-cols-2 gap-px overflow-hidden border border-border bg-border sm:grid-cols-3 lg:grid-cols-6"
+        className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6"
       >
         {COMPANIES.map((company) => (
-          <li key={company.alt} data-reveal className="bg-background">
+          <li key={company.alt} data-reveal>
             <a
               href={company.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={company.alt}
-              className="group relative flex aspect-[3/2] items-center justify-center p-6 transition-colors duration-500 hover:bg-card"
+              className="group rounded-lg relative flex aspect-[3/2] items-center justify-center bg-card p-6 transition-[background-color] duration-200 ease-out-strong hover:bg-muted"
             >
               <span
                 aria-hidden="true"
-                className="absolute top-3 left-3 size-1 bg-secondary opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="rounded-full absolute top-3 left-3 size-1.5 bg-secondary opacity-0 transition-opacity duration-200 group-hover:opacity-100"
               />
               <img
                 src={company.src}
@@ -104,7 +102,7 @@ export default function Partners() {
                 loading="lazy"
                 decoding="async"
                 className={cn(
-                  'max-h-11 w-auto max-w-[8rem] object-contain opacity-50 grayscale invert transition-[opacity,scale] duration-500 group-hover:scale-105 group-hover:opacity-100 dark:invert-0',
+                  'max-h-11 w-auto max-w-[8rem] object-contain opacity-50 grayscale invert transition-[opacity,scale] duration-200 ease-out-strong group-hover:scale-[1.03] group-hover:opacity-100 group-active:scale-[0.97] dark:invert-0',
                   company.className,
                 )}
               />
@@ -113,7 +111,7 @@ export default function Partners() {
         ))}
         <li
           aria-hidden="true"
-          className="bg-background bg-[repeating-linear-gradient(135deg,var(--border)_0_1px,transparent_1px_10px)]"
+          className="rounded-lg bg-card bg-[repeating-linear-gradient(135deg,var(--muted)_0_1px,transparent_1px_10px)]"
         />
       </ul>
     </section>

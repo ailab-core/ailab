@@ -34,8 +34,7 @@ function BlogsPage() {
     <main className="pb-32 md:pb-44">
       <header className="shell pt-36 md:pt-44">
         <div className="grid gap-x-10 gap-y-6 pb-12 md:grid-cols-12 md:pb-16">
-          <p className="hero-line eyebrow flex items-center gap-2 md:col-span-12">
-            <span className="size-1 bg-secondary" aria-hidden="true" />
+          <p className="hero-line eyebrow tracking-wider text-highlight uppercase md:col-span-12">
             {m.blog_eyebrow()}
           </p>
           <h1

@@ -7,10 +7,10 @@ import { m } from '#/paraglide/messages'
 export function ProductsMenu() {
   return (
     <div className="shell py-8">
-      <ul className="rounded-lg overflow-hidden grid grid-cols-3 gap-px border border-border bg-border">
-        {PRODUCTS.map((product, index) => (
+      <ul className="grid grid-cols-3 gap-2">
+        {PRODUCTS.map((product) => (
           <li key={product.label}>
-            <ProductTile product={product} index={index} />
+            <ProductTile product={product} />
           </li>
         ))}
       </ul>
@@ -28,7 +28,7 @@ export function ProductsMenu() {
           {m.topbar_menu_cta_button()}
           <HugeiconsIcon
             icon={ArrowRight02Icon}
-            className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+            className="size-4 transition-[translate] duration-200 ease-out-strong group-hover:translate-x-0.5"
             aria-hidden="true"
           />
         </a>

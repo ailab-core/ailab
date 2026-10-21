@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import { SectionHeading } from '#/components'
 import { useReveal } from '#/lib/use-reveal'
-import { gsap, useGSAP } from '#/lib/gsap'
-import { ProjectCard } from './project-card'
-import type { Project } from './project-card'
+import { WorkPreview } from './preview'
+import { WorkRow } from './row'
+import type { Project } from './row'
 import { m } from '#/paraglide/messages'
 
 const PROJECTS: Array<Project> = [
@@ -12,11 +13,11 @@ const PROJECTS: Array<Project> = [
     href: 'https://pocket.mn/',
     logo: '/assets/logos/pocket-vertical.png',
     body: m.home_work_pocket_body,
-    tile: 'bg-white',
+    tile: 'bg-[#eef1f6]',
     logoClassName: 'w-1/3',
   },
   {
-    name: 'Pocket KZ',
+    name: 'Pocket Central Asia',
     tags: [
       m.home_work_tag_lending,
       m.home_work_tag_payments,
@@ -49,31 +50,9 @@ const PROJECTS: Array<Project> = [
 ]
 
 export default function Work() {
-  const gridRef = useReveal<HTMLUListElement>()
-
-  // Logos drift against the scroll, so each tile reads as a window.
-  useGSAP(
-    () => {
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
-      gsap.utils.toArray<HTMLElement>('[data-logo]').forEach((logo) =>
-        gsap.fromTo(
-          logo,
-          { yPercent: 6 },
-          {
-            yPercent: -6,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: logo.parentElement,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true,
-            },
-          },
-        ),
-      )
-    },
-    { scope: gridRef },
-  )
+  const listRef = useReveal<HTMLDivElement>()
+  // Keyboard focus swaps the preview instantly; only the pointer gets the crossfade.
+  const [active, setActive] = useState({ index: 0, instant: false })
 
   return (
     <section
@@ -85,21 +64,33 @@ export default function Work() {
         title={
           <>
             {m.home_work_title_a()}
-            <span className="text-muted-foreground">
-              {m.home_work_title_b()}
-            </span>
+            {m.home_work_title_b()}
           </>
         }
         intro={m.home_work_intro()}
         className="lg:max-w-4xl"
       />
-      <ul ref={gridRef} className="grid gap-4 md:grid-cols-2">
-        {PROJECTS.map((project, index) => (
-          <li key={project.name} data-reveal>
-            <ProjectCard project={project} index={index} />
-          </li>
-        ))}
-      </ul>
+      <div
+        ref={listRef}
+        className="grid gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24"
+      >
+        <ul className="flex flex-col gap-2">
+          {PROJECTS.map((project, index) => (
+            <li key={project.name} data-reveal>
+              <WorkRow
+                project={project}
+                active={index === active.index}
+                onActivate={(instant) => setActive({ index, instant })}
+              />
+            </li>
+          ))}
+        </ul>
+        <WorkPreview
+          projects={PROJECTS}
+          index={active.index}
+          instant={active.instant}
+        />
+      </div>
     </section>
   )
 }

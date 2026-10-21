@@ -13,16 +13,16 @@ export function NomineeMock() {
     <div>
       <p className="eyebrow">{m.atlas_mock_nominee_balance()}</p>
       <p className="heading mt-2 text-figure tabular-nums">{'₮1.62B'}</p>
-      <ul className="mt-5 flex flex-col text-sm">
+      <ul className="mt-5 flex flex-col gap-1 text-sm">
         {ACCOUNTS.map((account, index) => (
           <li
             key={index}
-            className="flex items-center gap-3 border-t border-border py-2.5"
+            className="rounded-sm flex items-center gap-3 bg-card px-3 py-2.5"
           >
             <span
               className="rounded-sm flex size-5 items-center justify-center bg-primary text-primary-foreground"
               style={{
-                animation: `appear 6s ${index * 0.7}s ease-out infinite both`,
+                animation: `appear 6s ${index * 0.7}s var(--ease-out-strong) infinite both`,
               }}
             >
               <HugeiconsIcon icon={CheckIcon} className="size-3" />

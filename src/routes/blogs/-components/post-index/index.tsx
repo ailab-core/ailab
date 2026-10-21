@@ -10,18 +10,16 @@ export function PostIndex({
 }) {
   return (
     <section>
-      <h2 className="eyebrow flex items-center justify-between gap-4 border-b border-border pb-4">
-        <span className="flex items-center gap-2">
-          <span className="size-1 bg-secondary" aria-hidden="true" />
-          {title}
-        </span>
-        <span className="tabular-nums">
-          {String(posts.length).padStart(2, '0')}
-        </span>
+      <h2 className="eyebrow flex items-center gap-2 pb-4">
+        <span
+          className="rounded-full size-1.5 bg-secondary"
+          aria-hidden="true"
+        />
+        {title}
       </h2>
-      <ol className="divide-y divide-border border-b border-border">
-        {posts.map((post) => (
-          <PostIndexRow key={post.slug} post={post} />
+      <ol className="flex flex-col gap-2">
+        {posts.map((post, index) => (
+          <PostIndexRow key={post.slug} post={post} index={index} />
         ))}
       </ol>
     </section>

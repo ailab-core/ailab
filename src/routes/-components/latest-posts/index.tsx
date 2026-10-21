@@ -12,11 +12,9 @@ import { PostCard } from './post-card'
 export default function LatestPosts() {
   const gridRef = useReveal<HTMLDivElement>()
   const posts = POSTS[getLocale()]
-  // Interview thumbnails show people, so only other posts get image cards.
-  const featured = posts
-    .filter((post) => post.topic !== 'Interview')
-    .slice(0, 2)
-  const rest = posts.filter((post) => !featured.includes(post))
+  // Interview thumbnails show people, so the image lead is always another topic.
+  const featured = posts.find((post) => post.topic !== 'Interview') ?? posts[0]
+  const rest = posts.filter((post) => post !== featured).slice(0, 3)
 
   return (
     <section className="shell flex flex-col gap-14 md:gap-20">
@@ -27,27 +25,23 @@ export default function LatestPosts() {
       >
         <Link
           to="/blogs"
-          className="group eyebrow inline-flex items-center gap-2 text-foreground transition-colors hover:text-highlight"
+          className="group eyebrow inline-flex items-center gap-2 text-foreground transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.97]"
         >
           {m.home_posts_view_all()}
           <HugeiconsIcon
             icon={ArrowRight02Icon}
-            className="size-3.5 transition-transform group-hover:translate-x-1"
+            className="size-3.5 transition-[translate] duration-200 ease-out-strong group-hover:translate-x-1"
             aria-hidden="true"
           />
         </Link>
       </SectionHeading>
-      <div ref={gridRef} className="flex flex-col gap-14">
-        <ul className="grid gap-4 md:grid-cols-2">
-          {featured.map((post) => (
-            <li key={post.slug} data-reveal>
-              <FeaturedCard post={post} />
-            </li>
-          ))}
-        </ul>
-        <ul className="border-t border-border">
+      <div ref={gridRef} className="grid gap-4 lg:grid-cols-12">
+        <div data-reveal className="lg:col-span-7">
+          <FeaturedCard post={featured} />
+        </div>
+        <ul className="grid gap-4 md:grid-cols-3 lg:col-span-5 lg:grid-cols-1">
           {rest.map((post) => (
-            <li key={post.slug} data-reveal className="border-b border-border">
+            <li key={post.slug} data-reveal>
               <PostCard post={post} />
             </li>
           ))}

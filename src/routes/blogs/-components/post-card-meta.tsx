@@ -11,11 +11,14 @@ export function PostCardMeta({ post }: { post: Post }) {
       <span className="text-highlight">
         {TOPIC_LABELS[post.topic]?.() ?? post.topic}
       </span>
-      <span aria-hidden="true" className="size-1 bg-secondary" />
+      <span aria-hidden="true" className="rounded-full size-1.5 bg-secondary" />
       <time dateTime={post.published.toISOString()}>
         {format(post.published, 'PP', { locale: DATE_LOCALES[getLocale()] })}
       </time>
-      <span aria-hidden="true" className="size-1 bg-border" />
+      <span
+        aria-hidden="true"
+        className="size-1 rounded-full bg-muted-foreground/40"
+      />
       <span>{m.blog_reading_time({ minutes: post.readingTime })}</span>
     </p>
   )
