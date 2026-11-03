@@ -8,6 +8,7 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { Analytics } from '@vercel/analytics/react'
 
 import { m } from '#/paraglide/messages'
 import { getLocale } from '#/paraglide/runtime'
@@ -54,6 +55,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <Analytics />
         <Topbar />
         {children}
         <Footer />

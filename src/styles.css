@@ -688,6 +688,81 @@
   --tw-prose-td-borders: var(--border);
 }
 
+/* Code tokens from @tanstack/highlight (GitHub light/dark); the pre surface keeps prose's card background. */
+.prose {
+  --th-token: var(--tw-prose-pre-code);
+  --th-comment: #6e7781;
+  --th-deleted: #cf222e;
+  --th-function: #8250df;
+  --th-inserted: #1a7f37;
+  --th-keyword: #cf222e;
+  --th-literal: #0550ae;
+  --th-meta: #57606a;
+  --th-string: #0a7f64;
+  --th-tag: #116329;
+  --th-type: #953800;
+}
+
+.dark .prose {
+  --th-comment: #8b949e;
+  --th-deleted: #ff7b72;
+  --th-function: #d2a8ff;
+  --th-inserted: #7ee787;
+  --th-keyword: #ff7b72;
+  --th-literal: #79c0ff;
+  --th-meta: #8b949e;
+  --th-string: #a5d6ff;
+  --th-tag: #7ee787;
+  --th-type: #ffa657;
+}
+
+.th-token {
+  color: var(--th-token);
+}
+.th-attr,
+.th-heading,
+.th-number,
+.th-property,
+.th-literal {
+  color: var(--th-literal);
+}
+.th-command,
+.th-function,
+.th-operator {
+  color: var(--th-function);
+}
+.th-code-inline,
+.th-type,
+.th-variable {
+  color: var(--th-type);
+}
+.th-selector,
+.th-tag {
+  color: var(--th-tag);
+}
+.th-link {
+  color: var(--tw-prose-links);
+}
+.th-comment {
+  color: var(--th-comment);
+  font-style: italic;
+}
+.th-deleted {
+  color: var(--th-deleted);
+}
+.th-inserted {
+  color: var(--th-inserted);
+}
+.th-keyword {
+  color: var(--th-keyword);
+}
+.th-meta {
+  color: var(--th-meta);
+}
+.th-string {
+  color: var(--th-string);
+}
+
 /* Borderless prose: tone and spacing instead of rules. */
 .prose hr {
   height: 4px;
