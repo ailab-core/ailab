@@ -17,10 +17,10 @@ export function NomineeMock() {
         {ACCOUNTS.map((account, index) => (
           <li
             key={index}
-            className="rounded-sm flex items-center gap-3 bg-card px-3 py-2.5"
+            className="flex items-center gap-3 bg-card px-3 py-2.5"
           >
             <span
-              className="rounded-sm flex size-5 items-center justify-center bg-primary text-primary-foreground"
+              className="flex size-5 items-center justify-center bg-primary text-primary-foreground"
               style={{
                 animation: `appear 6s ${index * 0.7}s var(--ease-out-strong) infinite both`,
               }}

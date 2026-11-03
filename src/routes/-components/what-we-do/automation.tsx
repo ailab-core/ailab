@@ -23,7 +23,7 @@ export function Automation() {
       rest={m.home_wwd_auto_rest()}
     >
       <div className="absolute inset-0 bg-[radial-gradient(var(--accent)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:linear-gradient(to_bottom,transparent,black_30%)]" />
-      <div className="relative mx-5 mt-2 overflow-hidden rounded-md bg-muted text-sm md:mx-8">
+      <div className="relative mx-5 mt-2 overflow-hidden bg-muted text-sm md:mx-8">
         <div className="flex items-center justify-between gap-4 px-4 py-3 text-xs">
           <span className="flex items-center gap-2 whitespace-nowrap text-foreground">
             <HugeiconsIcon
@@ -39,7 +39,7 @@ export function Automation() {
               className="absolute inset-y-0 right-0 flex min-w-full items-center justify-end gap-1.5 bg-muted text-highlight"
               style={{ animation: 'swap 8s -0.3s linear infinite both' }}
             >
-              <span className="rounded-full size-2 bg-primary" />
+              <span className="size-2 bg-primary" />
               {m.home_wwd_auto_done()}
             </span>
           </span>
@@ -72,7 +72,7 @@ export function Automation() {
                     />
                   ) : (
                     <span className="flex size-5 shrink-0 items-center justify-center bg-muted">
-                      <span className="size-3 rounded-full border border-dashed border-muted-foreground/50" />
+                      <span className="size-3 border border-dashed border-muted-foreground/50" />
                     </span>
                   )}
                   <span

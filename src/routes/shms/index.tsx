@@ -6,6 +6,7 @@ import {
   ProductValues,
 } from '#/components/product'
 import { m } from '#/paraglide/messages'
+import { seo } from '#/lib/utils/seo'
 import { getContent } from './-content'
 import Experience from './-components/experience'
 import { MeetingConsole } from './-components/meeting-console'
@@ -16,12 +17,12 @@ const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request%3A%20ShMS'
 
 export const Route = createFileRoute('/shms/')({
   staticData: { darkHero: true },
-  head: () => ({
-    meta: [
-      { title: m.shms_meta_title() },
-      { name: 'description', content: m.shms_meta_description() },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: '/shms',
+      title: m.shms_meta_title(),
+      description: m.shms_meta_description(),
+    }),
   component: ShmsPage,
 })
 

@@ -16,10 +16,7 @@ export function Flow({ title, note, steps, checkpoint }: FlowProps) {
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
         <h3 className="heading text-title">{title}</h3>
         <p className="flex items-center gap-2 text-sm text-muted-foreground">
-          <span
-            className="size-1.5 rounded-full bg-secondary"
-            aria-hidden="true"
-          />
+          <span className="size-1.5 bg-secondary" aria-hidden="true" />
           {note}
         </p>
       </div>
@@ -31,19 +28,19 @@ export function Flow({ title, note, steps, checkpoint }: FlowProps) {
           className="absolute top-5 bottom-5 left-5 w-px bg-border lg:right-[10%] lg:bottom-auto lg:left-[10%] lg:h-px lg:w-auto"
         >
           <div className="absolute inset-0 hidden animate-[travel_3.2s_linear_infinite] lg:block">
-            <span className="absolute top-1/2 left-0 size-2 -translate-1/2 rounded-full bg-primary shadow-[0_0_0_4px_var(--card)]" />
+            <span className="absolute top-1/2 left-0 size-2 -translate-1/2 bg-primary shadow-[0_0_0_4px_var(--card)]" />
           </div>
         </div>
         <ol className="relative grid gap-8 lg:grid-cols-5 lg:gap-4">
           {steps.map(([stepTitle, body], index) => (
             <li
               key={stepTitle}
-              className="flex animate-[rise_0.5s_var(--ease-out-strong)_both] gap-5 lg:flex-col lg:items-center lg:text-center"
-              style={{ animationDelay: `${index * 50}ms` }}
+              className="flex animate-[rise_250ms_var(--ease-out-strong)_both] gap-5 lg:flex-col lg:items-center lg:text-center"
+              style={{ animationDelay: `${index * 30}ms` }}
             >
               <span
                 className={cn(
-                  'flex size-10 shrink-0 items-center justify-center rounded-full font-mono text-xs ring-4 ring-card',
+                  'flex size-10 shrink-0 items-center justify-center font-mono text-xs ring-4 ring-card',
                   index === checkpoint
                     ? 'bg-primary text-primary-foreground'
                     : 'border border-border bg-card text-muted-foreground',

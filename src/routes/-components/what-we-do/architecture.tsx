@@ -28,7 +28,7 @@ const ROWS = [
 ]
 
 const CHIP =
-  'flex h-10 min-w-0 items-center gap-2 rounded-sm px-2.5 leading-tight md:h-14 md:px-3.5 md:text-sm'
+  'flex h-10 min-w-0 items-center gap-2 px-2.5 leading-tight md:h-14 md:px-3.5 md:text-sm'
 
 const LINE = 'relative h-px self-center bg-muted-foreground/25'
 
@@ -48,14 +48,14 @@ export function Architecture() {
           slot, its wire draws in and traffic starts reaching it, without the others pausing. */}
       <div
         data-loop
-        className="mx-5 mt-2 grid grid-cols-[minmax(0,1fr)_1.5rem_auto_1.5rem_minmax(0,1fr)] gap-y-2 rounded-md bg-muted p-3 text-xs md:mx-8 md:grid-cols-[minmax(0,1fr)_3.5rem_auto_3.5rem_minmax(0,1fr)] md:gap-y-3 md:p-4"
+        className="mx-5 mt-2 grid grid-cols-[minmax(0,1fr)_1.5rem_auto_1.5rem_minmax(0,1fr)] gap-y-2 bg-muted p-3 text-xs md:mx-8 md:grid-cols-[minmax(0,1fr)_3.5rem_auto_3.5rem_minmax(0,1fr)] md:gap-y-3 md:p-4"
       >
         <div className="col-span-5 mb-1 flex justify-between gap-4 whitespace-nowrap text-muted-foreground">
           <span>{m.home_wwd_arch_yours()}</span>
           <span>{m.home_wwd_arch_new()}</span>
         </div>
 
-        <span className="col-start-3 row-span-3 row-start-2 flex w-14 flex-col items-center justify-center gap-2 rounded-sm bg-primary text-primary-foreground/80 md:w-20">
+        <span className="col-start-3 row-span-3 row-start-2 flex w-14 flex-col items-center justify-center gap-2 bg-primary text-primary-foreground/80 md:w-20">
           <span className="brand-mark w-6 bg-primary-foreground md:w-7" />
           AILab
         </span>
@@ -84,7 +84,7 @@ export function Architecture() {
                   className="absolute inset-x-0 top-1/2"
                   style={{ animation: packet(row, 2) }}
                 >
-                  <span className="block h-1.5 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-highlight" />
+                  <span className="block h-1.5 w-3 -translate-x-1/2 -translate-y-1/2 bg-highlight" />
                 </span>
               </span>
 
@@ -111,7 +111,7 @@ export function Architecture() {
                     className="absolute inset-x-0 top-1/2"
                     style={{ animation: packet(row, 4) }}
                   >
-                    <span className="block h-1.5 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-highlight" />
+                    <span className="block h-1.5 w-3 -translate-x-1/2 -translate-y-1/2 bg-highlight" />
                   </span>
                 </span>
               </span>
@@ -150,7 +150,7 @@ export function Architecture() {
                   />
                   <span className="min-w-0 break-words">{to.label()}</span>
                   {isNew && (
-                    <span className="ml-auto hidden shrink-0 rounded-sm bg-primary/15 px-1.5 py-0.5 text-[0.625rem] text-highlight sm:inline">
+                    <span className="ml-auto hidden shrink-0 bg-primary/15 px-1.5 py-0.5 text-[0.625rem] text-highlight sm:inline">
                       {m.home_wwd_arch_new_badge()}
                     </span>
                   )}

@@ -52,12 +52,12 @@ const NAV = [
 export function Sidebar() {
   return (
     <aside className="hidden w-44 shrink-0 flex-col gap-3 bg-zinc-100/80 px-3 py-4 text-2xs text-zinc-700 sm:flex">
-      <p className="flex items-center gap-1.5 px-1 text-xs font-semibold text-blue-700">
-        <span className="size-3 border-[3px] border-blue-600" />
+      <p className="flex items-center gap-1.5 px-1 text-xs font-semibold text-primary">
+        <span className="size-3 border-[3px] border-primary" />
         {'PrimeBee'}
       </p>
       <p className="rounded-full flex items-center gap-2 bg-white px-2 py-1.5 font-medium text-zinc-900 shadow-sm">
-        <span className="rounded-full flex size-4 items-center justify-center bg-blue-600 text-white">
+        <span className="rounded-full flex size-4 items-center justify-center bg-primary text-white">
           <HugeiconsIcon icon={DollarCircleIcon} className="size-2.5" />
         </span>
         {m.primebee_board_nav_sales()}
@@ -88,7 +88,7 @@ export function Sidebar() {
                   <li
                     key={childIndex}
                     className={cn(
-                      'rounded-sm px-2 py-1',
+                      'rounded-preview-sm px-2 py-1',
                       child === m.primebee_board_nav_lead &&
                         'bg-white font-medium text-zinc-900 shadow-sm',
                     )}

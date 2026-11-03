@@ -15,10 +15,11 @@ const TICKERS = [
   { symbol: 'MSE', price: '34,180', change: '+0.9%' },
 ]
 
+// Rounded so server and client engines print identical SVG attributes (no hydration mismatch).
 const CANDLES = Array.from({ length: 36 }, (_, index) => {
   const base = 18 + index * 1.7 + Math.sin(index * 1.3) * 10
-  const open = base + Math.sin(index * 2.1) * 7
-  const close = base + Math.cos(index * 1.7) * 8
+  const open = Math.round((base + Math.sin(index * 2.1) * 7) * 10) / 10
+  const close = Math.round((base + Math.cos(index * 1.7) * 8) * 10) / 10
   return {
     open,
     close,
@@ -54,14 +55,17 @@ export function TradingTerminal() {
     >
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {TICKERS.map((ticker) => (
-          <li key={ticker.symbol} className="rounded-md bg-muted px-3 py-2.5">
+          <li
+            key={ticker.symbol}
+            className="rounded-preview bg-muted px-3 py-2.5"
+          >
             <p className="flex items-center justify-between font-mono text-xs">
               {ticker.symbol}
               <span
                 className={
                   ticker.change.startsWith('+')
                     ? 'text-highlight'
-                    : 'text-highlight'
+                    : 'text-muted-foreground'
                 }
               >
                 {ticker.change}
@@ -72,7 +76,7 @@ export function TradingTerminal() {
         ))}
       </ul>
       <div className="mt-3 grid gap-3 md:grid-cols-3">
-        <div className="rounded-md bg-muted p-4 md:col-span-2">
+        <div className="rounded-preview bg-muted p-4 md:col-span-2">
           <div className="flex items-end justify-between">
             <div>
               <p className="eyebrow">{m.atlas_terminal_portfolio_value()}</p>
@@ -129,7 +133,7 @@ export function TradingTerminal() {
             })}
           </svg>
         </div>
-        <div className="rounded-md hidden flex-col bg-muted p-2 md:flex">
+        <div className="rounded-preview hidden flex-col bg-muted p-2 md:flex">
           <p className="eyebrow px-2 pt-2 pb-3 text-foreground">
             {m.atlas_terminal_orders()}
           </p>
@@ -137,17 +141,17 @@ export function TradingTerminal() {
             {ORDERS.map((order, index) => (
               <li
                 key={index}
-                className="rounded-sm flex items-center gap-3 bg-card px-3 py-2.5"
+                className="rounded-preview-sm flex items-center gap-3 bg-card px-3 py-2.5"
                 style={{
                   animation: `appear 7s ${index * 0.7}s var(--ease-out-strong) infinite both`,
                 }}
               >
                 <span
                   className={cn(
-                    'rounded-sm px-1.5 py-0.5 text-2xs font-medium tracking-wide uppercase',
+                    'rounded-preview-sm px-1.5 py-0.5 text-2xs font-medium tracking-wide uppercase',
                     order.buy
                       ? 'bg-primary/15 text-highlight'
-                      : 'bg-primary/15 text-highlight',
+                      : 'bg-foreground/10 text-foreground',
                   )}
                 >
                   {order.buy ? m.atlas_terminal_buy() : m.atlas_terminal_sell()}

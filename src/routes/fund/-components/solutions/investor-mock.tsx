@@ -22,22 +22,23 @@ export function InvestorMock() {
         preserveAspectRatio="none"
         className="mt-5 min-h-0 w-full flex-1 overflow-visible"
       >
-        <path
-          d="M0 88 C30 84 50 80 75 74 S120 70 150 56 S210 44 240 30 S285 14 300 8 L300 100 L0 100 Z"
-          className="fill-primary/10"
-        />
-        <path
-          d="M0 88 C30 84 50 80 75 74 S120 70 150 56 S210 44 240 30 S285 14 300 8"
-          pathLength={1}
-          strokeDasharray="1"
-          vectorEffect="non-scaling-stroke"
-          className="fill-none stroke-highlight"
-          strokeWidth="2.5"
-          strokeLinecap="round"
+        <g
           style={{
-            animation: 'draw 7s var(--ease-in-out-strong) infinite both',
+            animation: 'wipe 7s var(--ease-in-out-strong) infinite both',
           }}
-        />
+        >
+          <path
+            d="M0 88 C30 84 50 80 75 74 S120 70 150 56 S210 44 240 30 S285 14 300 8 L300 100 L0 100 Z"
+            className="fill-primary/10"
+          />
+          <path
+            d="M0 88 C30 84 50 80 75 74 S120 70 150 56 S210 44 240 30 S285 14 300 8"
+            vectorEffect="non-scaling-stroke"
+            className="fill-none stroke-highlight"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+        </g>
       </svg>
     </div>
   )

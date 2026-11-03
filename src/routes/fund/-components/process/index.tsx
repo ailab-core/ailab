@@ -37,7 +37,7 @@ export default function Process() {
       />
       <div
         data-reveal
-        className="flex flex-col gap-10 rounded-lg bg-card p-6 md:gap-14 md:p-10"
+        className="flex flex-col gap-10 bg-card p-6 md:gap-14 md:p-10"
       >
         <div className="relative grid w-full grid-cols-2 rounded-full bg-muted p-1 sm:w-80">
           <span
@@ -53,7 +53,7 @@ export default function Process() {
               type="button"
               aria-pressed={isOutflow === (index === 1)}
               onClick={() => setIsOutflow(index === 1)}
-              className="relative flex h-10 items-center justify-center gap-2 rounded-full text-sm font-semibold text-muted-foreground transition-[color,transform] duration-200 ease-out-strong active:scale-[0.97] aria-pressed:text-primary-foreground"
+              className="relative flex h-10 items-center justify-center gap-2 rounded-full text-sm font-semibold text-muted-foreground transition-[color,scale] duration-150 ease-out-strong active:scale-[0.97] aria-pressed:text-primary-foreground"
             >
               <HugeiconsIcon
                 icon={direction.icon}

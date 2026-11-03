@@ -10,15 +10,15 @@ export function FeaturedCard({ post }: { post: Post }) {
     <Link
       to="/blogs/$slug"
       params={{ slug: post.slug }}
-      className="group flex h-full flex-col overflow-hidden rounded-lg bg-card transition-[scale] duration-150 ease-out-strong active:scale-[0.99]"
+      className="group flex h-full flex-col overflow-hidden bg-card transition-[scale] duration-150 ease-out-strong active:scale-[0.98]"
     >
-      <div className="m-2 aspect-[16/9] overflow-hidden rounded-md bg-muted">
+      <div className="m-2 aspect-[16/9] overflow-hidden bg-muted">
         <img
           src={post.thumbnail}
           alt=""
           loading="lazy"
           decoding="async"
-          className="size-full object-cover transition-[scale] duration-300 ease-out-strong group-hover:scale-[1.03]"
+          className="size-full object-cover transition-[scale] duration-200 ease-out-strong group-hover:scale-[1.03]"
         />
       </div>
       <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">

@@ -9,15 +9,15 @@ export function PostCard({ post }: { post: Post }) {
     <Link
       to="/blogs/$slug"
       params={{ slug: post.slug }}
-      className="group flex h-full flex-col rounded-lg bg-card p-3 transition-[scale] duration-200 ease-out-strong active:scale-[0.99]"
+      className="group flex h-full flex-col bg-card p-3 transition-[scale] duration-150 ease-out-strong active:scale-[0.98]"
     >
-      <div className="rounded-md aspect-[16/10] overflow-hidden bg-muted">
+      <div className="aspect-[16/10] overflow-hidden bg-muted">
         <img
           src={post.thumbnail}
           alt=""
           loading="lazy"
           decoding="async"
-          className="size-full object-cover transition-[scale] duration-300 ease-out-strong group-hover:scale-[1.03]"
+          className="size-full object-cover transition-[scale] duration-200 ease-out-strong group-hover:scale-[1.03]"
         />
       </div>
       <div className="mt-5 px-2">

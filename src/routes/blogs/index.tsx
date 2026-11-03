@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import * as z from 'zod'
 import { POSTS, TOPIC_LABELS } from '#/lib/posts'
 import { m } from '#/paraglide/messages'
+import { seo } from '#/lib/utils/seo'
 import { getLocale } from '#/paraglide/runtime'
 import { FeaturedPost } from './-components/featured-post'
 import { PostIndex } from './-components/post-index'
@@ -9,12 +10,12 @@ import { TopicFilter } from './-components/topic-filter'
 
 export const Route = createFileRoute('/blogs/')({
   validateSearch: z.object({ topic: z.string().optional().catch(undefined) }),
-  head: () => ({
-    meta: [
-      { title: m.blog_meta_title() },
-      { name: 'description', content: m.blog_hero_intro() },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: '/blogs',
+      title: m.blog_meta_title(),
+      description: m.blog_hero_intro(),
+    }),
   component: BlogsPage,
 })
 

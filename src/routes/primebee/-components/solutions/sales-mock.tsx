@@ -32,7 +32,7 @@ export function SalesMock() {
           <li key={index} className="flex flex-col gap-2">
             <span
               className={cn(
-                'rounded-full h-1.5',
+                'h-1.5',
                 index < 3 ? 'bg-primary' : 'bg-foreground/15',
                 index === 2 && 'animate-pulse',
               )}

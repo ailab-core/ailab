@@ -22,7 +22,7 @@ export function MarketingMock() {
               {segment.count}
             </span>
           </div>
-          <div className="rounded-full mt-2 h-1.5 overflow-hidden bg-foreground/10">
+          <div className="mt-2 h-1.5 overflow-hidden bg-foreground/10">
             <div
               className="h-full bg-primary"
               style={{ width: `${segment.share * 100}%` }}

@@ -12,7 +12,7 @@ export function TopicFilter() {
   return (
     <nav
       aria-label={m.blog_topics_label()}
-      className="-m-1 flex gap-2 overflow-x-auto p-1 [scrollbar-width:none]"
+      className="-m-1 flex gap-2 overflow-x-auto overscroll-x-contain p-1 [scrollbar-width:none]"
     >
       <Link
         to="/blogs"

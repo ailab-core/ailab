@@ -1,12 +1,10 @@
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons'
 import { Link } from '@tanstack/react-router'
-import { format } from 'date-fns'
 import type { Post } from 'content-collections'
 import { TOPIC_LABELS } from '#/lib/posts'
-import { DATE_LOCALES } from '#/lib/utils/locale'
+import { formatPostDate } from '#/lib/utils/locale'
 import { m } from '#/paraglide/messages'
-import { getLocale } from '#/paraglide/runtime'
 
 export function PostIndexRow({ post, index }: { post: Post; index: number }) {
   return (
@@ -18,13 +16,11 @@ export function PostIndexRow({ post, index }: { post: Post; index: number }) {
       <Link
         to="/blogs/$slug"
         params={{ slug: post.slug }}
-        className="group grid gap-x-10 gap-y-3 rounded-lg bg-card px-5 py-6 transition-[scale] duration-150 ease-out-strong active:scale-[0.99] md:grid-cols-12 md:px-8 md:py-7"
+        className="group grid gap-x-10 gap-y-3 bg-card px-5 py-6 transition-[scale] duration-150 ease-out-strong active:scale-[0.98] md:grid-cols-12 md:px-8 md:py-7"
       >
         <span className="eyebrow flex gap-3 md:col-span-3 md:flex-col md:gap-2 md:pt-1.5">
           <time dateTime={post.published.toISOString()}>
-            {format(post.published, 'PP', {
-              locale: DATE_LOCALES[getLocale()],
-            })}
+            {formatPostDate(post.published)}
           </time>
           <span className="text-highlight">
             {TOPIC_LABELS[post.topic]?.() ?? post.topic}

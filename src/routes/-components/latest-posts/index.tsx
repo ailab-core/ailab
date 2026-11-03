@@ -25,7 +25,7 @@ export default function LatestPosts() {
       >
         <Link
           to="/blogs"
-          className="group eyebrow inline-flex items-center gap-2 text-foreground transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.97]"
+          className="group eyebrow inline-flex h-11 items-center gap-2 text-foreground transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.97]"
         >
           {m.home_posts_view_all()}
           <HugeiconsIcon

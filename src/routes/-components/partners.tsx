@@ -83,35 +83,42 @@ export default function Partners() {
         ref={gridRef}
         className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6"
       >
-        {COMPANIES.map((company) => (
-          <li key={company.alt} data-reveal>
-            <a
-              href={company.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={company.alt}
-              className="group rounded-lg relative flex aspect-[3/2] items-center justify-center bg-card p-6 transition-[background-color] duration-200 ease-out-strong hover:bg-muted"
-            >
-              <span
-                aria-hidden="true"
-                className="rounded-full absolute top-3 left-3 size-1.5 bg-secondary opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-              />
-              <img
-                src={company.src}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                className={cn(
-                  'max-h-11 w-auto max-w-[8rem] object-contain opacity-50 grayscale invert transition-[opacity,scale] duration-200 ease-out-strong group-hover:scale-[1.03] group-hover:opacity-100 group-active:scale-[0.97] dark:invert-0',
-                  company.className,
-                )}
-              />
-            </a>
-          </li>
-        ))}
+        {COMPANIES.map((company) => {
+          const Tile = company.href ? 'a' : 'div'
+          return (
+            <li key={company.alt} data-reveal>
+              {/* Partners without a site render as a plain tile: no focus stop, no hover promise. */}
+              <Tile
+                {...(company.href
+                  ? {
+                      href: company.href,
+                      target: '_blank',
+                      rel: 'noopener noreferrer',
+                    }
+                  : {})}
+                className="group relative flex aspect-[3/2] items-center justify-center bg-card p-6 transition-[background-color] duration-200 ease-out-strong [&[href]]:hover:bg-muted"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute top-3 left-3 size-1.5 bg-secondary opacity-0 transition-opacity duration-200 group-[[href]]:group-hover:opacity-100"
+                />
+                <img
+                  src={company.src}
+                  alt={company.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className={cn(
+                    'max-h-11 w-auto max-w-[8rem] object-contain opacity-50 grayscale invert transition-[opacity,scale] duration-200 ease-out-strong group-[[href]]:group-hover:scale-[1.03] group-[[href]]:group-hover:opacity-100 group-[[href]]:group-active:scale-[0.97] dark:invert-0',
+                    company.className,
+                  )}
+                />
+              </Tile>
+            </li>
+          )
+        })}
         <li
           aria-hidden="true"
-          className="rounded-lg bg-card bg-[repeating-linear-gradient(135deg,var(--muted)_0_1px,transparent_1px_10px)]"
+          className="bg-card bg-[repeating-linear-gradient(135deg,var(--muted)_0_1px,transparent_1px_10px)]"
         />
       </ul>
     </section>

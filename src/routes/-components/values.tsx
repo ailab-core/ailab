@@ -61,10 +61,10 @@ export default function Values() {
           <li
             key={index}
             data-reveal
-            className="group rounded-lg flex min-h-72 flex-col justify-between gap-12 bg-card p-6 md:p-8"
+            className="flex min-h-72 flex-col justify-between gap-12 bg-card p-6 md:p-8"
           >
             <div className="flex items-start justify-between">
-              <span className="rounded-md flex size-11 items-center justify-center bg-muted text-highlight transition-[background-color] duration-200 ease-out-strong group-hover:bg-accent">
+              <span className="flex size-11 items-center justify-center bg-muted text-highlight">
                 <HugeiconsIcon
                   icon={value.icon}
                   className="size-[1.125rem]"

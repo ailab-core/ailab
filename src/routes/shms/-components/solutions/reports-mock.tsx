@@ -14,7 +14,7 @@ export function ReportsMock() {
       {REPORTS.map((label, index) => (
         <li
           key={index}
-          className="rounded-sm flex items-center gap-3 bg-card py-2.5 pr-2.5 pl-3"
+          className="flex items-center gap-3 bg-card py-2.5 pr-2.5 pl-3"
           style={{
             animation: `appear 7s ${index * 0.6}s var(--ease-out-strong) infinite both`,
           }}

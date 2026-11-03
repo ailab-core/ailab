@@ -7,6 +7,7 @@ import {
   ProductValues,
 } from '#/components/product'
 import { m } from '#/paraglide/messages'
+import { seo } from '#/lib/utils/seo'
 import { CLIENTS, getContent } from './-content'
 import { LoanDashboard } from './-components/loan-dashboard'
 import Solutions from './-components/solutions'
@@ -15,15 +16,12 @@ const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request%3A%20Finace'
 
 export const Route = createFileRoute('/finace/')({
   staticData: { darkHero: true },
-  head: () => ({
-    meta: [
-      { title: m.finace_meta_title() },
-      {
-        name: 'description',
-        content: m.finace_meta_description(),
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: '/finace',
+      title: m.finace_meta_title(),
+      description: m.finace_meta_description(),
+    }),
   component: FinacePage,
 })
 

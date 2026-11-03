@@ -889,5 +889,7 @@
   "topbar_menu_cta_title": "Хаанаас эхлэхээ мэдэхгүй байна уу?",
   "topbar_mobile_nav_label": "Гар утасны цэс",
   "topbar_open_menu": "Цэс нээх",
-  "topbar_theme_toggle": "Харанхуй горим солих"
+  "topbar_theme_toggle": "Харанхуй горим солих",
+  "topbar_theme_to_dark": "Харанхуй горимд шилжих",
+  "topbar_theme_to_light": "Гэгээлэг горимд шилжих"
 }

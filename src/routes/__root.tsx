@@ -12,6 +12,7 @@ import { Analytics } from '@vercel/analytics/react'
 
 import { m } from '#/paraglide/messages'
 import { getLocale } from '#/paraglide/runtime'
+import { SITE_NAME, SITE_URL } from '#/lib/utils/seo'
 
 import appCss from '../styles.css?url'
 import { Footer, Topbar } from '#/components'
@@ -28,16 +29,48 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, viewport-fit=cover',
+      },
+      { name: 'color-scheme', content: 'dark light' },
+      { name: 'theme-color', content: '#000000' },
       { title: m.root_meta_title() },
       {
         name: 'description',
         content: m.root_meta_description(),
       },
+      { property: 'og:site_name', content: SITE_NAME },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', href: '/assets/logos/ailab-icon.svg' },
+      {
+        rel: 'icon',
+        href: '/assets/logos/ailab-icon.svg',
+        type: 'image/svg+xml',
+      },
+      { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      { rel: 'manifest', href: '/manifest.json' },
+    ],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: SITE_NAME,
+          legalName: 'AILab LLC',
+          url: SITE_URL,
+          logo: `${SITE_URL}/logo512.png`,
+          email: 'info@ailab.mn',
+          sameAs: [
+            'https://www.facebook.com/profile.php?id=61569157168011',
+            'https://www.linkedin.com/company/ailabllc',
+            'https://github.com/ailab-core',
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootDocument,
@@ -50,7 +83,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang={getLocale()} suppressHydrationWarning>
       <head>
         <ScriptOnce>
-          {`try{var t=localStorage.getItem('theme');if(t!=='light')document.documentElement.classList.add('dark')}catch(e){}`}
+          {`try{var t=localStorage.getItem('theme');if(t!=='light')document.documentElement.classList.add('dark');else document.addEventListener('DOMContentLoaded',function(){var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#f4f4f1'})}catch(e){}`}
         </ScriptOnce>
         <HeadContent />
       </head>

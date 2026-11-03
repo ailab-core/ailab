@@ -97,6 +97,7 @@ export function Globe() {
     let angle = START
     let last = performance.now()
     let frame = 0
+    let drawn = 0
 
     const sinT = Math.sin(TILT)
     const cosT = Math.cos(TILT)
@@ -186,7 +187,6 @@ export function Globe() {
         ctx.arc(px, py, dot * (home ? 3 : 1.8), 0, TAU)
         ctx.fill()
         if (home) {
-          ctx.font = '500 11px "IBM Plex Mono", monospace'
           ctx.lineWidth = 4
           ctx.strokeStyle = outline
           ctx.strokeText(city, px + dot * 6, py + 4)
@@ -198,8 +198,12 @@ export function Globe() {
       ctx.globalAlpha = 1
     }
 
+    // The spin moves well under a pixel per frame, so 30fps looks identical and halves the cost (a quarter on 120Hz).
     const tick = (now: number) => {
-      draw(now)
+      if (now - drawn >= 32) {
+        drawn = now
+        draw(now)
+      }
       frame = requestAnimationFrame(tick)
     }
 
@@ -210,6 +214,8 @@ export function Globe() {
       canvas.width = size * dpr
       canvas.height = size * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      // Resizing the canvas resets its state, so the label font is set here rather than every frame.
+      ctx.font = '500 11px "IBM Plex Mono", monospace'
       draw(last)
     }
     resize()

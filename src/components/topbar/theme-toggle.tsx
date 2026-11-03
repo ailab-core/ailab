@@ -7,10 +7,20 @@ export function ThemeToggle({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      aria-label={m.topbar_theme_toggle()}
       onClick={() => {
+        const root = document.documentElement
         const apply = () => {
-          const dark = document.documentElement.classList.toggle('dark')
+          // Suppresses per-element color tweens for the swap frame; cleared once the new theme has painted.
+          root.classList.add('theme-switching')
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() =>
+              root.classList.remove('theme-switching'),
+            ),
+          )
+          const dark = root.classList.toggle('dark')
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', dark ? '#000000' : '#f4f4f1')
           try {
             localStorage.setItem('theme', dark ? 'dark' : 'light')
           } catch {}
@@ -25,10 +35,15 @@ export function ThemeToggle({ className }: { className?: string }) {
         }
       }}
       className={cn(
-        'flex cursor-pointer items-center justify-center rounded-full transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.95]',
+        'flex cursor-pointer items-center justify-center rounded-full transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.97]',
         className,
       )}
     >
+      {/* CSS picks the label, so it is right before hydration and needs no state. */}
+      <span className="sr-only dark:hidden">{m.topbar_theme_to_dark()}</span>
+      <span className="sr-only not-dark:hidden">
+        {m.topbar_theme_to_light()}
+      </span>
       <HugeiconsIcon
         icon={MoonIcon}
         className="size-4 dark:hidden"

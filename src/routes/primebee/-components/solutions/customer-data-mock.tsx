@@ -17,8 +17,8 @@ const EVENTS = [
 export function CustomerDataMock() {
   return (
     <div className="grid grid-cols-[auto_1fr] gap-6">
-      <div className="rounded-md flex w-36 flex-col bg-card p-4">
-        <span className="rounded-full flex size-11 items-center justify-center bg-primary text-sm text-primary-foreground">
+      <div className="flex w-36 flex-col bg-card p-4">
+        <span className="flex size-11 items-center justify-center bg-primary text-sm text-primary-foreground">
           {'BE'}
         </span>
         <p className="heading mt-4 text-lg">{'Bat-Erdene'}</p>
@@ -29,7 +29,7 @@ export function CustomerDataMock() {
         {EVENTS.map((event, index) => (
           <li
             key={event.time}
-            className="rounded-sm flex items-center gap-3 bg-card/60 px-3 py-2"
+            className="flex items-center gap-3 bg-card/60 px-3 py-2"
             style={{
               animation: `appear 7s ${index * 0.6}s var(--ease-out-strong) infinite both`,
             }}

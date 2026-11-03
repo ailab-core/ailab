@@ -6,7 +6,7 @@ const segment =
 export function SettingsMock() {
   return (
     <div className="flex items-center gap-6">
-      <div className="rounded-md flex size-24 shrink-0 flex-col items-center justify-center gap-2 bg-card">
+      <div className="flex size-24 shrink-0 flex-col items-center justify-center gap-2 bg-card">
         <span className="brand-mark w-8 bg-primary" />
         <span className="text-2xs font-medium tracking-wide text-muted-foreground uppercase">
           {m.shms_mock_your_logo()}
@@ -30,9 +30,9 @@ export function SettingsMock() {
         <div className="flex flex-col gap-2 pt-2">
           <dt className="eyebrow">{m.shms_mock_instructions()}</dt>
           <dd className="flex flex-col gap-1.5" aria-hidden="true">
-            <span className="rounded-full h-1.5 w-full bg-foreground/15" />
-            <span className="rounded-full h-1.5 w-4/5 bg-foreground/15" />
-            <span className="rounded-full h-1.5 w-3/5 bg-foreground/15" />
+            <span className="h-1.5 w-full bg-foreground/15" />
+            <span className="h-1.5 w-4/5 bg-foreground/15" />
+            <span className="h-1.5 w-3/5 bg-foreground/15" />
           </dd>
         </div>
       </dl>

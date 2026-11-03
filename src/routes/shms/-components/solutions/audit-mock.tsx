@@ -18,7 +18,7 @@ export function AuditMock() {
             animation: `appear 7s ${index * 0.6}s var(--ease-out-strong) infinite both`,
           }}
         >
-          <span className="absolute top-1.5 -left-6 size-2 rounded-full bg-primary" />
+          <span className="absolute top-1.5 -left-6 size-2 bg-primary" />
           <span className="font-mono text-xs text-muted-foreground">
             {event.time}
           </span>

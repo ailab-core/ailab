@@ -11,6 +11,8 @@ export function getRouter() {
       output: ({ url }) => localizeUrl(url),
     },
     scrollRestoration: true,
+    // html has scroll-behavior: smooth for anchors; a new page should not glide up.
+    scrollRestorationBehavior: 'instant',
     defaultPreload: 'intent',
     defaultPreloadStaleTime: 0,
   })

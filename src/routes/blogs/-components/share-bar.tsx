@@ -33,7 +33,11 @@ export function ShareBar() {
         type="button"
         aria-label={copied ? m.blog_link_copied() : m.blog_copy_link()}
         onClick={async () => {
-          await navigator.clipboard.writeText(window.location.href)
+          try {
+            await navigator.clipboard.writeText(window.location.href)
+          } catch {
+            return
+          }
           setCopied(true)
           clearTimeout(timer.current)
           timer.current = setTimeout(() => setCopied(false), 2000)

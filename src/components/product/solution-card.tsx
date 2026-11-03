@@ -24,6 +24,7 @@ export function SolutionCard({
     () => {
       const card = cardRef.current!
       // Pauses the mock's CSS loops while the card is offscreen.
+      card.setAttribute('data-paused', '')
       ScrollTrigger.create({
         trigger: card,
         onToggle: (self) => card.toggleAttribute('data-paused', !self.isActive),
@@ -47,9 +48,9 @@ export function SolutionCard({
     <article
       ref={cardRef}
       id={solution.id}
-      className="rounded-lg relative isolate flex scroll-mt-28 flex-col overflow-hidden bg-card shadow-[0_-20px_40px_-24px_rgb(0_0_0/0.15)] dark:shadow-[0_-24px_48px_-24px_rgb(0_0_0/0.5)]"
+      className="relative isolate flex scroll-mt-28 flex-col overflow-hidden bg-card [clip-path:inset(-80px_0_0_0)] shadow-[0_-20px_40px_-24px_rgb(0_0_0/0.15)] dark:shadow-[0_-24px_48px_-24px_rgb(0_0_0/0.5)]"
     >
-      <div className="relative m-2 mb-0 h-72 overflow-hidden rounded-md bg-background md:h-80">
+      <div className="relative m-2 mb-0 h-72 overflow-hidden bg-background md:h-80">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-1/4 -bottom-1/2 size-[36rem] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--primary)_16%,transparent),transparent)]"
@@ -59,6 +60,7 @@ export function SolutionCard({
         </span>
         <div
           aria-hidden="true"
+          data-loop
           className="absolute inset-x-0 top-20 bottom-6 flex items-center justify-center px-6 md:px-10"
         >
           <div className="flex h-full w-full max-w-lg flex-col justify-center">
@@ -76,12 +78,9 @@ export function SolutionCard({
             <li
               key={feature}
               data-feature
-              className="flex items-center gap-2 rounded-sm bg-muted px-3 py-2"
+              className="flex items-center gap-2 bg-muted px-3 py-2"
             >
-              <span
-                className="size-1.5 rounded-full bg-secondary"
-                aria-hidden="true"
-              />
+              <span className="size-1.5 bg-secondary" aria-hidden="true" />
               {feature}
             </li>
           ))}

@@ -7,6 +7,7 @@ import {
   ProductValues,
 } from '#/components/product'
 import { m } from '#/paraglide/messages'
+import { seo } from '#/lib/utils/seo'
 import { getContent } from './-content'
 import Pricing from './-components/pricing'
 import Solutions from './-components/solutions'
@@ -16,12 +17,12 @@ const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request%3A%20Atlas'
 
 export const Route = createFileRoute('/atlas/')({
   staticData: { darkHero: true },
-  head: () => ({
-    meta: [
-      { title: m.atlas_meta_title() },
-      { name: 'description', content: m.atlas_meta_description() },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: '/atlas',
+      title: m.atlas_meta_title(),
+      description: m.atlas_meta_description(),
+    }),
   component: AtlasPage,
 })
 

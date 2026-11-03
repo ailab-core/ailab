@@ -42,7 +42,7 @@ export function CloudDevOps() {
           server, Site B scales up, and the status flips to live before resetting. */}
       <div
         data-loop
-        className="absolute inset-x-5 top-2 overflow-hidden rounded-md bg-muted text-xs md:inset-x-8"
+        className="absolute inset-x-5 top-2 overflow-hidden bg-muted text-xs md:inset-x-8"
       >
         <div className="flex items-center justify-between gap-4 px-3 py-2.5">
           <span className="grid overflow-hidden whitespace-nowrap">
@@ -65,8 +65,8 @@ export function CloudDevOps() {
           </span>
           <span className="flex shrink-0 items-center gap-2 text-highlight">
             <span className="relative flex size-2">
-              <span className="absolute inset-0 animate-ping rounded-full bg-primary/60" />
-              <span className="rounded-full relative size-2 bg-primary" />
+              <span className="absolute inset-0 animate-ping bg-primary/60" />
+              <span className="relative size-2 bg-primary" />
             </span>
             {m.home_wwd_cloud_uptime()}
           </span>
@@ -76,7 +76,7 @@ export function CloudDevOps() {
           {STAGES.map((stage, index) => (
             <li
               key={index}
-              className="rounded-sm relative min-w-0 overflow-hidden bg-card text-muted-foreground"
+              className="relative min-w-0 overflow-hidden bg-card text-muted-foreground"
             >
               {/* The done copy is clipped open over the idle one, so text and fill change color together. */}
               {[false, true].map((done) => (
@@ -118,7 +118,7 @@ export function CloudDevOps() {
               {[0, 1, 2].map((col) => (
                 <span
                   key={col}
-                  className="relative flex h-7 flex-1 items-center justify-center rounded-sm bg-card text-muted-foreground md:h-10"
+                  className="relative flex h-7 flex-1 items-center justify-center bg-card text-muted-foreground md:h-10"
                 >
                   <HugeiconsIcon
                     icon={ServerStack01Icon}
@@ -126,7 +126,7 @@ export function CloudDevOps() {
                   />
                   {/* Rolling update: one server at a time, column by column, so every site keeps serving. */}
                   <span
-                    className="absolute inset-0 flex items-center justify-center gap-1.5 rounded-sm bg-primary text-primary-foreground"
+                    className="absolute inset-0 flex items-center justify-center gap-1.5 bg-primary text-primary-foreground"
                     style={{
                       animation: `settle 10s ${4.4 + (col * 3 + row) * 0.2}s var(--ease-out-strong) infinite both`,
                     }}
@@ -142,13 +142,13 @@ export function CloudDevOps() {
                 </span>
               ))}
               {/* Site B adds capacity once the release lands; the others keep a spare slot. */}
-              <span className="relative flex h-7 flex-1 items-center justify-center rounded-sm border border-dashed border-muted-foreground/30 text-muted-foreground/70 md:h-10">
+              <span className="relative flex h-7 flex-1 items-center justify-center border border-dashed border-muted-foreground/30 text-muted-foreground/70 md:h-10">
                 <span className="hidden sm:inline">
                   {m.home_wwd_cloud_spare()}
                 </span>
                 {row === 1 && (
                   <span
-                    className="absolute -inset-px flex items-center justify-center gap-1 rounded-sm bg-[color-mix(in_oklab,var(--primary)_20%,var(--card))] text-highlight"
+                    className="absolute -inset-px flex items-center justify-center gap-1 bg-[color-mix(in_oklab,var(--primary)_20%,var(--card))] text-highlight"
                     style={{
                       animation:
                         'settle 10s 6.1s var(--ease-out-strong) infinite both',

@@ -15,13 +15,13 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger
-        aria-label={m.topbar_language_label()}
         className={cn(
-          'flex cursor-pointer items-center gap-1.5 rounded-full transition-colors hover:text-highlight data-[state=open]:text-highlight',
+          'flex cursor-pointer items-center gap-1.5 rounded-full transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.97] data-[state=open]:text-highlight',
           className,
         )}
       >
         <HugeiconsIcon icon={GlobeIcon} className="size-4" aria-hidden="true" />
+        <span className="sr-only">{m.topbar_language_label()}: </span>
         <span className="text-xs font-semibold tracking-wider">
           {LANGUAGES[current].short}
         </span>
@@ -30,7 +30,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         <DropdownMenu.Content
           align="end"
           sideOffset={8}
-          className="z-50 min-w-40 origin-(--radix-dropdown-menu-content-transform-origin) rounded-md bg-popover p-1 text-popover-foreground shadow-lg shadow-black/5 dark:shadow-black/40 duration-150 ease-out-strong data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
+          className="z-50 min-w-40 origin-(--radix-dropdown-menu-content-transform-origin) rounded-control bg-popover p-1 text-popover-foreground shadow-lg shadow-black/5 dark:shadow-black/40 duration-150 ease-out-strong data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
         >
           {locales.map((locale) => (
             <DropdownMenu.Item key={locale} asChild>
@@ -40,13 +40,13 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                 hrefLang={locale}
                 lang={locale}
                 aria-current={locale === current ? 'true' : undefined}
-                className="flex h-10 items-center justify-between gap-6 rounded-[calc(var(--radius-md)-0.25rem)] px-3 text-sm outline-none data-highlighted:bg-muted"
+                className="flex h-11 items-center justify-between gap-6 rounded-full px-3 text-sm outline-none data-highlighted:bg-muted"
               >
                 {LANGUAGES[locale].label}
                 {locale === current && (
                   <HugeiconsIcon
                     icon={Tick02Icon}
-                    className="size-4 text-primary dark:text-secondary"
+                    className="size-4 text-highlight"
                     aria-hidden="true"
                   />
                 )}

@@ -11,10 +11,7 @@ export function PostIndex({
   return (
     <section>
       <h2 className="eyebrow flex items-center gap-2 pb-4">
-        <span
-          className="rounded-full size-1.5 bg-secondary"
-          aria-hidden="true"
-        />
+        <span className="size-1.5 bg-secondary" aria-hidden="true" />
         {title}
       </h2>
       <ol className="flex flex-col gap-2">

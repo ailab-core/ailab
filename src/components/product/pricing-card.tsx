@@ -21,7 +21,7 @@ export function PricingCard({ plan, note, href }: PricingCardProps) {
     <article
       data-reveal
       className={cn(
-        '@container flex h-full flex-col rounded-lg p-6 md:p-8',
+        '@container flex h-full flex-col p-6 md:p-8',
         plan.popular
           ? 'dark relative isolate overflow-hidden bg-primary text-primary-foreground'
           : 'bg-card',
@@ -64,14 +64,17 @@ export function PricingCard({ plan, note, href }: PricingCardProps) {
       </p>
       <ul
         className={cn(
-          'mt-8 flex flex-1 flex-col gap-3 rounded-md p-5 text-sm',
+          'mt-8 flex flex-1 flex-col gap-3 p-5 text-sm',
           plan.popular ? 'bg-primary-foreground/10' : 'bg-muted',
         )}
       >
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-center gap-3">
             <span
-              className="rounded-full size-1.5 shrink-0 bg-secondary"
+              className={cn(
+                'size-1.5 shrink-0',
+                plan.popular ? 'bg-primary-foreground' : 'bg-secondary',
+              )}
               aria-hidden="true"
             />
             {feature}

@@ -36,7 +36,7 @@ export default function Experience() {
             <li
               key={index}
               data-reveal
-              className="rounded-sm flex items-baseline gap-4 bg-card px-4 py-3.5"
+              className="flex items-baseline gap-4 bg-card px-4 py-3.5"
             >
               {feature()}
             </li>
@@ -47,7 +47,7 @@ export default function Experience() {
       <div
         data-reveal
         aria-hidden="true"
-        className="rounded-lg dark relative isolate overflow-hidden bg-background py-14 text-foreground lg:col-span-6 lg:col-start-7 dark:bg-card"
+        className="dark relative isolate overflow-hidden bg-background py-14 text-foreground lg:col-span-6 lg:col-start-7 dark:bg-card"
       >
         <div className="pointer-events-none absolute -right-1/4 -bottom-1/3 -z-10 size-[40rem] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--primary)_18%,transparent),transparent)]" />
         <Phone />

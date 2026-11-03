@@ -17,9 +17,9 @@ export function OriginationMock() {
           {STAGES.map((stage, index) => (
             <li
               key={index}
-              className="rounded-sm w-fit px-2.5 py-1 text-2xs font-medium tracking-wide uppercase"
+              className="w-fit px-2.5 py-1 text-2xs font-medium tracking-wide uppercase"
               style={{
-                animation: `stage 6s ${index * 1.1}s ease-in-out infinite both`,
+                animation: `stage 6s ${index * 1.1}s var(--ease-in-out-strong) infinite both`,
               }}
             >
               {`0${index + 1} ${stage()}`}

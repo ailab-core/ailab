@@ -10,15 +10,15 @@ export function FeaturedPost({ post }: { post: Post }) {
     <Link
       to="/blogs/$slug"
       params={{ slug: post.slug }}
-      className="group grid gap-x-10 gap-y-6 rounded-lg bg-card p-3 transition-[opacity,scale] duration-200 ease-out-strong active:scale-[0.99] starting:opacity-0 md:grid-cols-12"
+      className="group grid gap-x-10 gap-y-6 bg-card p-3 transition-[opacity,scale] duration-150 ease-out-strong active:scale-[0.98] starting:opacity-0 md:grid-cols-12"
     >
-      <div className="rounded-md aspect-[16/10] overflow-hidden bg-muted md:col-span-7">
+      <div className="aspect-[16/10] overflow-hidden bg-muted md:col-span-7">
         <img
           src={post.thumbnail}
           alt=""
           decoding="async"
           fetchPriority="high"
-          className="size-full object-cover transition-[scale] duration-300 ease-out-strong group-hover:scale-[1.03]"
+          className="size-full object-cover transition-[scale] duration-200 ease-out-strong group-hover:scale-[1.03]"
         />
       </div>
       <div className="flex flex-col gap-5 px-3 pb-3 md:col-span-5 md:py-6 md:pr-6 md:pl-0">

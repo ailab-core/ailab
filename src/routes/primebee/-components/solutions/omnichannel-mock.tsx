@@ -40,7 +40,7 @@ export function OmnichannelMock() {
             </span>
             <span
               className={cn(
-                'rounded-lg px-3.5 py-2.5',
+                'px-3.5 py-2.5',
                 customer ? 'bg-card' : 'bg-primary text-primary-foreground',
               )}
             >

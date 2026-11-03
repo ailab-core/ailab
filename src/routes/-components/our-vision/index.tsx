@@ -22,7 +22,7 @@ export default function OurVision() {
       <dl ref={gridRef} className="grid gap-3 lg:grid-cols-12">
         <div
           data-reveal
-          className="relative isolate flex min-h-[26rem] flex-col justify-between gap-16 overflow-hidden rounded-lg bg-card p-6 md:min-h-[30rem] md:p-10 lg:col-span-7"
+          className="relative isolate flex min-h-[26rem] flex-col justify-between gap-16 overflow-hidden bg-card p-6 md:min-h-[30rem] md:p-10 lg:col-span-7"
         >
           <dt className="eyebrow uppercase tracking-[0.08em]">
             {m.home_vision_vision_label()}
@@ -36,7 +36,7 @@ export default function OurVision() {
 
         <div
           data-reveal
-          className="grain flex min-h-80 flex-col justify-between gap-16 overflow-hidden rounded-lg bg-primary p-6 text-primary-foreground [--grain-opacity:0.12] md:p-10 lg:col-span-5"
+          className="grain flex min-h-80 flex-col justify-between gap-16 overflow-hidden bg-primary p-6 text-primary-foreground [--grain-opacity:0.12] md:p-10 lg:col-span-5"
         >
           <dt className="eyebrow uppercase tracking-[0.08em] text-primary-foreground/60">
             {m.home_vision_motto_label()}
@@ -52,7 +52,7 @@ export default function OurVision() {
 
         <div
           data-reveal
-          className="flex flex-col gap-8 rounded-lg bg-card p-6 md:p-10 lg:col-span-12 lg:flex-row lg:gap-10"
+          className="flex flex-col gap-8 bg-card p-6 md:p-10 lg:col-span-12 lg:flex-row lg:gap-10"
         >
           <dt className="eyebrow shrink-0 uppercase tracking-[0.08em] lg:w-40">
             {m.home_vision_values_label()}

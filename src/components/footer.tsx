@@ -21,7 +21,8 @@ function Column({ title, children }: { title: string; children: ReactNode }) {
   )
 }
 
-const linkClass = 'w-fit transition-colors hover:text-highlight'
+// Padding grows the tap target without changing the column rhythm.
+const linkClass = 'w-fit -my-1.5 py-1.5 transition-colors hover:text-highlight'
 
 export function Footer() {
   return (
@@ -130,7 +131,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 rounded-md bg-muted px-5 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 bg-muted px-5 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>{m.footer_copyright({ year: new Date().getFullYear() })}</p>
           <p className="flex items-center gap-2">
             <span

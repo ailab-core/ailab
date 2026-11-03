@@ -889,5 +889,7 @@
   "topbar_menu_cta_title": "Not sure where to start?",
   "topbar_mobile_nav_label": "Mobile",
   "topbar_open_menu": "Open menu",
-  "topbar_theme_toggle": "Toggle dark mode"
+  "topbar_theme_toggle": "Toggle dark mode",
+  "topbar_theme_to_dark": "Switch to dark theme",
+  "topbar_theme_to_light": "Switch to light theme"
 }

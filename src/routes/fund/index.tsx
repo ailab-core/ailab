@@ -7,6 +7,7 @@ import {
   ProductValues,
 } from '#/components/product'
 import { m } from '#/paraglide/messages'
+import { seo } from '#/lib/utils/seo'
 import { getContent } from './-content'
 import { FundDashboard } from './-components/fund-dashboard'
 import Process from './-components/process'
@@ -17,12 +18,12 @@ const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request%3A%20Fund'
 
 export const Route = createFileRoute('/fund/')({
   staticData: { darkHero: true },
-  head: () => ({
-    meta: [
-      { title: m.fund_meta_title() },
-      { name: 'description', content: m.fund_meta_description() },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: '/fund',
+      title: m.fund_meta_title(),
+      description: m.fund_meta_description(),
+    }),
   component: FundPage,
 })
 

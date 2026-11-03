@@ -33,9 +33,9 @@ export default function Technology({
           <li
             key={item.title}
             data-reveal
-            className="group flex flex-col gap-8 rounded-lg bg-card p-5 transition-[background-color] duration-200 hover:bg-muted md:p-6"
+            className="flex flex-col gap-8 bg-card p-5 md:p-6"
           >
-            <span className="flex size-10 items-center justify-center rounded-md bg-muted text-highlight transition-[background-color] duration-200 group-hover:bg-accent">
+            <span className="flex size-10 items-center justify-center bg-muted text-highlight">
               <HugeiconsIcon
                 icon={item.icon}
                 className="size-4"

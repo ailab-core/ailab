@@ -23,6 +23,9 @@ export function Topbar() {
     select: (matches) => matches.some((match) => match.staticData.darkHero),
   })
   const solid = menu !== '' || mobileOpen || !atTop
+  // Goes dark only after a closing panel has faded out, so it never flips to black mid-exit.
+  const [clear, setClear] = useState(!solid)
+  const toggleRef = useRef<HTMLButtonElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
   const pillRef = useRef<HTMLLIElement>(null)
 
@@ -54,6 +57,15 @@ export function Topbar() {
   }, [menu])
 
   useEffect(() => {
+    if (solid) {
+      setClear(false)
+      return
+    }
+    const timer = setTimeout(() => setClear(true), 160)
+    return () => clearTimeout(timer)
+  }, [solid])
+
+  useEffect(() => {
     const onScroll = () => setAtTop(window.scrollY < 24)
 
     onScroll()
@@ -64,39 +76,51 @@ export function Topbar() {
   useEffect(() => {
     if (!mobileOpen) return
 
-    const onKey = (event: KeyboardEvent) =>
-      event.key === 'Escape' && setMobileOpen(false)
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setMobileOpen(false)
+      toggleRef.current?.focus()
+    }
+    // The menu is lg:hidden, so widening past lg must not leave the page locked behind it.
+    const wide = matchMedia('(min-width: 64rem)')
+    const onWide = () => wide.matches && setMobileOpen(false)
+    // Everything behind the overlay leaves the tab order, so focus stays in the menu.
+    const behind = Array.from(document.body.children).filter(
+      (el): el is HTMLElement =>
+        el instanceof HTMLElement && !el.contains(toggleRef.current),
+    )
+    behind.forEach((el) => (el.inert = true))
     document.documentElement.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
+    wide.addEventListener('change', onWide)
     return () => {
+      behind.forEach((el) => (el.inert = false))
       document.documentElement.style.overflow = ''
       window.removeEventListener('keydown', onKey)
+      wide.removeEventListener('change', onWide)
     }
   }, [mobileOpen])
 
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 text-foreground transition-[background-color] duration-200',
+        'fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] text-foreground transition-[background-color] duration-200',
         // An open menu goes fully opaque so it fuses with the panel below into one surface.
         menu !== ''
           ? 'bg-background'
           : solid && 'bg-background/80 backdrop-blur-md',
-        darkHero && !solid && 'dark',
+        darkHero && clear && 'dark',
       )}
     >
       <div className="hidden h-9 md:block">
         <div className="shell flex h-full items-center justify-between gap-6 text-xs text-muted-foreground">
           <p className="flex items-center gap-4">
             <span className="flex items-center gap-2">
-              <span
-                className="rounded-full size-1.5 bg-secondary"
-                aria-hidden="true"
-              />
+              <span className="size-1.5 bg-secondary" aria-hidden="true" />
               {m.topbar_location()}
             </span>
             <span
-              className="size-1 rounded-full bg-muted-foreground/40"
+              className="size-1 bg-muted-foreground/40"
               aria-hidden="true"
             />
             <a
@@ -107,12 +131,12 @@ export function Topbar() {
             </a>
           </p>
           <div className="flex h-full items-center gap-4">
-            <LanguageSwitcher className="h-full" />
+            <LanguageSwitcher className="-mx-2.5 h-full px-2.5" />
             <span
-              className="size-1 rounded-full bg-muted-foreground/40"
+              className="size-1 bg-muted-foreground/40"
               aria-hidden="true"
             />
-            <ThemeToggle className="h-full" />
+            <ThemeToggle className="-mx-3.5 h-full w-11" />
           </div>
         </div>
       </div>
@@ -206,6 +230,7 @@ export function Topbar() {
             />
           </a>
           <button
+            ref={toggleRef}
             type="button"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
@@ -213,14 +238,14 @@ export function Topbar() {
               mobileOpen ? m.topbar_close_menu() : m.topbar_open_menu()
             }
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="group -mr-2.5 flex size-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full transition-[scale] duration-150 ease-out-strong active:scale-[0.95] lg:hidden"
+            className="group -mr-2.5 flex size-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full transition-[scale] duration-150 ease-out-strong active:scale-[0.97] lg:hidden"
           >
             <span className="h-0.5 w-5 bg-current transition-[translate,rotate] duration-200 ease-out-strong group-aria-expanded:translate-y-1 group-aria-expanded:rotate-45" />
             <span className="h-0.5 w-5 bg-current transition-[translate,rotate] duration-200 ease-out-strong group-aria-expanded:-translate-y-1 group-aria-expanded:-rotate-45" />
           </button>
         </div>
       </div>
-      {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} />}
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
   )
 }

@@ -8,7 +8,7 @@ const CHOICES = [m.shms_vote_for, m.shms_vote_against, m.shms_vote_abstain]
 export function VotingMock() {
   return (
     <div className="flex flex-col gap-3">
-      <div className="rounded-md bg-card p-4">
+      <div className="bg-card p-4">
         <p className="text-xs text-muted-foreground">
           {m.shms_mock_agenda_item({ item: '2' })}
         </p>
@@ -38,13 +38,13 @@ export function VotingMock() {
           ))}
         </div>
       </div>
-      <div className="rounded-md flex items-center justify-between bg-card px-4 py-3 text-sm">
+      <div className="flex items-center justify-between bg-card px-4 py-3 text-sm">
         {m.shms_mock_elect_board()}
         <span className="flex -space-x-1.5" aria-hidden="true">
           {[0, 1, 2].map((index) => (
             <span
               key={index}
-              className="rounded-full size-6 bg-foreground/20 ring-2 ring-card"
+              className="size-6 bg-foreground/20 ring-2 ring-card"
             />
           ))}
         </span>

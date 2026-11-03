@@ -10,6 +10,8 @@ export function useReveal<T extends HTMLElement>() {
   useGSAP(
     () => {
       const root = ref.current!
+      // Starts paused: onToggle only fires on a change, so a root that mounts offscreen would loop until first seen.
+      root.setAttribute('data-paused', '')
       ScrollTrigger.create({
         trigger: root,
         onToggle: (self) => root.toggleAttribute('data-paused', !self.isActive),
@@ -30,9 +32,9 @@ export function useReveal<T extends HTMLElement>() {
           gsap.to(batch, {
             autoAlpha: 1,
             y: 0,
-            duration: 1,
+            duration: 0.6,
             ease: 'expo.out',
-            stagger: 0.08,
+            stagger: 0.06,
           }),
       })
     },

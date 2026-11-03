@@ -77,9 +77,12 @@ export function FundDashboard() {
     >
       <div className="grid grid-cols-3 gap-3">
         {KPIS.map((kpi) => (
-          <div key={kpi.value} className="rounded-md bg-muted p-3 md:p-4">
+          <div
+            key={kpi.value}
+            className="min-w-0 rounded-preview bg-muted p-3 md:p-4"
+          >
             <p className="eyebrow">{kpi.label()}</p>
-            <p className="heading mt-3 text-2xl tabular-nums md:text-figure">
+            <p className="heading mt-3 text-lg tabular-nums sm:text-2xl md:text-figure">
               {kpi.value}
             </p>
             <p className="mt-1 text-2xs font-medium tracking-wide text-highlight uppercase">
@@ -89,7 +92,7 @@ export function FundDashboard() {
         ))}
       </div>
       <div className="mt-3 grid gap-3 md:grid-cols-5">
-        <div className="rounded-md overflow-hidden bg-muted p-2 md:col-span-3">
+        <div className="rounded-preview overflow-hidden bg-muted p-2 md:col-span-3">
           <p className="eyebrow px-2 pt-2 pb-3 text-foreground">
             {m.fund_dashboard_transactions()}
           </p>
@@ -98,7 +101,7 @@ export function FundDashboard() {
               {TRANSACTIONS.map((transaction) => (
                 <tr
                   key={transaction.id}
-                  className="odd:bg-card/70 [&>td:first-child]:rounded-l-sm [&>td:last-child]:rounded-r-sm"
+                  className="odd:bg-card/70 [&>td:first-child]:rounded-l-preview-sm [&>td:last-child]:rounded-r-preview-sm"
                 >
                   <td className="px-3 py-2.5 font-mono text-xs text-muted-foreground">
                     {transaction.id}
@@ -110,10 +113,10 @@ export function FundDashboard() {
                   <td className="px-3 py-2.5 text-right">
                     <span
                       className={cn(
-                        'rounded-sm px-2 py-1 text-2xs font-medium tracking-wide uppercase',
+                        'rounded-preview-sm px-2 py-1 text-2xs font-medium tracking-wide uppercase',
                         transaction.settled
                           ? 'bg-primary/15 text-highlight'
-                          : 'bg-primary/15 text-highlight',
+                          : 'bg-foreground/10 text-muted-foreground',
                       )}
                     >
                       {transaction.settled
@@ -126,7 +129,7 @@ export function FundDashboard() {
             </tbody>
           </table>
         </div>
-        <div className="rounded-md hidden flex-col bg-muted p-4 md:col-span-2 md:flex">
+        <div className="rounded-preview hidden flex-col bg-muted p-4 md:col-span-2 md:flex">
           <p className="eyebrow text-foreground">{m.fund_dashboard_growth()}</p>
           <div className="mt-4 flex flex-1 items-end gap-1.5">
             {GROWTH.map((value, index) => (

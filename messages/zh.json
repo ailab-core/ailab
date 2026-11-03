@@ -889,5 +889,7 @@
   "topbar_menu_cta_title": "不知从何开始？",
   "topbar_mobile_nav_label": "移动端导航",
   "topbar_open_menu": "打开菜单",
-  "topbar_theme_toggle": "切换深色模式"
+  "topbar_theme_toggle": "切换深色模式",
+  "topbar_theme_to_dark": "切换到深色模式",
+  "topbar_theme_to_light": "切换到浅色模式"
 }

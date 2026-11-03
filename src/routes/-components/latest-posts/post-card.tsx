@@ -9,7 +9,7 @@ export function PostCard({ post }: { post: Post }) {
     <Link
       to="/blogs/$slug"
       params={{ slug: post.slug }}
-      className="group flex h-full flex-col gap-4 rounded-lg bg-card p-6 transition-[scale] duration-150 ease-out-strong active:scale-[0.99] md:p-8"
+      className="group flex h-full flex-col gap-4 bg-card p-6 transition-[scale] duration-150 ease-out-strong active:scale-[0.98] md:p-8"
     >
       <PostMeta post={post} />
       <div className="mt-auto flex items-end justify-between gap-6 pt-4">

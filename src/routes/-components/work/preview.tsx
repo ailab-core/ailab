@@ -16,20 +16,20 @@ export function WorkPreview({
     <div
       aria-hidden="true"
       data-instant={instant || undefined}
-      className="sticky top-28 hidden self-start overflow-hidden rounded-lg bg-card p-2 data-instant:**:transition-none lg:block"
+      className="sticky top-28 hidden self-start overflow-hidden bg-card p-2 data-instant:**:transition-none lg:block"
     >
       <div className="flex items-center gap-4 px-3 pt-1.5 pb-3.5">
         <span className="flex gap-1.5">
-          <span className="size-2.5 rounded-full bg-accent" />
-          <span className="size-2.5 rounded-full bg-accent" />
-          <span className="size-2.5 rounded-full bg-accent" />
+          <span className="size-2.5 bg-accent" />
+          <span className="size-2.5 bg-accent" />
+          <span className="size-2.5 bg-accent" />
         </span>
-        <span className="flex-1 truncate rounded-full bg-muted px-4 py-1 text-center font-mono text-xs text-muted-foreground">
+        <span className="flex-1 truncate bg-muted px-4 py-1 text-center font-mono text-xs text-muted-foreground">
           {projects[index].href.replace(/^https?:\/\/|\/$/g, '')}
         </span>
         <span className="w-[2.375rem]" />
       </div>
-      <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+      <div className="relative aspect-[4/3] overflow-hidden">
         {projects.map((project, projectIndex) => {
           const shown = projectIndex === index
           return (
@@ -47,7 +47,7 @@ export function WorkPreview({
                 loading="lazy"
                 decoding="async"
                 className={cn(
-                  'transition-[scale,filter] duration-300 ease-out-strong',
+                  'transition-[scale,filter] duration-200 ease-out-strong',
                   project.logoClassName,
                   shown ? 'blur-none' : 'scale-[0.96] blur-[2px]',
                 )}

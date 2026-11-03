@@ -5,7 +5,7 @@ import type { PRODUCTS } from '#/lib/navigation'
 import { m } from '#/paraglide/messages'
 
 const itemClass =
-  'group/item flex items-center gap-4 rounded-lg bg-card p-4 transition-[background-color,scale] duration-200 ease-out-strong hover:bg-muted active:scale-[0.99]'
+  'group/item flex items-center gap-4 bg-card p-4 transition-[background-color,scale] duration-150 ease-out-strong hover:bg-muted active:scale-[0.98]'
 
 export function ProductItem({
   product,
@@ -15,7 +15,7 @@ export function ProductItem({
   const available = Boolean(product.link || product.href)
   const content = (
     <>
-      <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-muted text-highlight transition-[background-color] duration-200 group-hover/item:bg-accent">
+      <span className="flex size-10 shrink-0 items-center justify-center bg-muted text-highlight transition-[background-color] duration-200 group-hover/item:bg-accent">
         <HugeiconsIcon
           icon={product.icon}
           className="size-[1.125rem]"

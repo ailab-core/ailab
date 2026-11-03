@@ -16,11 +16,11 @@ export function StatementMock() {
         <span className="eyebrow">{m.finace_mock_income_expenses()}</span>
         <span className="flex gap-4 text-2xs font-medium tracking-wide text-muted-foreground uppercase">
           <span className="flex items-center gap-1.5">
-            <span className="size-2.5 rounded-full bg-foreground/80" />
+            <span className="size-2.5 bg-foreground/80" />
             {m.finace_mock_income()}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="rounded-full size-2.5 bg-primary" />
+            <span className="size-2.5 bg-primary" />
             {m.finace_mock_expenses()}
           </span>
         </span>

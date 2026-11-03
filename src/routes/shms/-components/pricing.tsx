@@ -33,24 +33,24 @@ export default function Pricing({ plans }: { plans: ShmsContent['plans'] }) {
             {INCLUDES.map((label, index) => (
               <li
                 key={index}
-                className="rounded-sm flex items-center gap-2 bg-card px-3 py-2 text-sm"
+                className="flex items-center gap-2 bg-card px-3 py-2 text-sm"
               >
-                <span
-                  className="rounded-full size-1.5 bg-secondary"
-                  aria-hidden="true"
-                />
+                <span className="size-1.5 bg-secondary" aria-hidden="true" />
                 {label()}
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <ul ref={gridRef} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <ul
+        ref={gridRef}
+        className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5"
+      >
         {plans.map((plan) => (
           <li
             key={plan.name}
             data-reveal
-            className="rounded-lg flex flex-col gap-10 bg-card p-6 sm:last:col-span-2 lg:last:col-span-1"
+            className="flex flex-col gap-10 bg-card p-6 sm:last:col-span-2 2xl:last:col-span-1"
           >
             <p className="eyebrow text-foreground">{plan.name}</p>
             <div>
@@ -60,7 +60,7 @@ export default function Pricing({ plans }: { plans: ShmsContent['plans'] }) {
               </p>
               <p className="eyebrow mt-3">{m.shms_pricing_note()}</p>
             </div>
-            <p className="rounded-sm bg-muted px-3 py-2 text-sm text-muted-foreground">
+            <p className="bg-muted px-3 py-2 text-sm text-muted-foreground">
               {plan.shareholders}
             </p>
             <ArrowButton

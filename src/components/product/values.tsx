@@ -40,9 +40,9 @@ export function ProductValues({
           <li
             key={item.title}
             data-reveal
-            className="group flex min-h-72 flex-col justify-between gap-12 rounded-lg bg-card p-6 transition-[background-color] duration-200 hover:bg-muted sm:last:odd:col-span-2 md:p-8"
+            className="flex min-h-72 flex-col justify-between gap-12 bg-card p-6 sm:last:odd:col-span-2 md:p-8"
           >
-            <span className="flex size-11 items-center justify-center rounded-md bg-muted text-highlight transition-[background-color] duration-200 group-hover:bg-accent">
+            <span className="flex size-11 items-center justify-center bg-muted text-highlight">
               <HugeiconsIcon
                 icon={item.icon}
                 className="size-[1.125rem]"

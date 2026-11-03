@@ -7,6 +7,7 @@ import {
   ProductValues,
 } from '#/components/product'
 import { m } from '#/paraglide/messages'
+import { seo } from '#/lib/utils/seo'
 import {
   getCapabilities,
   getIntegrations,
@@ -22,19 +23,13 @@ const DEMO_HREF = 'mailto:info@ailab.mn?subject=Demo%20request%3A%20PrimeBee'
 
 export const Route = createFileRoute('/primebee/')({
   staticData: { darkHero: true },
-  head: () => ({
-    meta: [
-      { title: m.primebee_meta_title() },
-      {
-        name: 'description',
-        content: m.primebee_meta_description(),
-      },
-      {
-        property: 'og:title',
-        content: m.primebee_meta_og_title(),
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: '/primebee',
+      title: m.primebee_meta_title(),
+      ogTitle: m.primebee_meta_og_title(),
+      description: m.primebee_meta_description(),
+    }),
   component: PrimeBeePage,
 })
 

@@ -15,8 +15,8 @@ export function DashboardMock() {
       <div className="flex items-end justify-between">
         <div>
           <p className="eyebrow flex items-center gap-2">
-            <span className="rounded-full flex items-center gap-1.5 bg-primary px-2 py-0.5 text-2xs text-primary-foreground">
-              <span className="rounded-full size-1.5 animate-pulse bg-primary-foreground" />
+            <span className="flex items-center gap-1.5 bg-primary px-2 py-0.5 text-2xs text-primary-foreground">
+              <span className="size-1.5 animate-pulse bg-primary-foreground" />
               {m.fund_mock_live()}
             </span>
             {m.fund_dashboard_total_assets()}
@@ -50,7 +50,7 @@ export function DashboardMock() {
           ))}
           <g
             style={{
-              animation: 'reveal 7s var(--ease-in-out-strong) infinite both',
+              animation: 'wipe 7s var(--ease-in-out-strong) infinite both',
             }}
           >
             <path d={`${LINE} L300 100 L0 100 Z`} className="fill-primary/10" />
@@ -71,8 +71,8 @@ export function DashboardMock() {
               animation: 'land 7s var(--ease-out-strong) infinite both',
             }}
           >
-            <span className="rounded-full absolute inset-0 animate-ping bg-highlight/50" />
-            <span className="rounded-full relative size-full bg-highlight ring-2 ring-background" />
+            <span className="absolute inset-0 animate-ping bg-highlight/50" />
+            <span className="relative size-full bg-highlight ring-2 ring-background" />
           </span>
         </span>
       </div>
@@ -80,7 +80,7 @@ export function DashboardMock() {
         {SPLIT.map((part, index) => (
           <span
             key={index}
-            className={cn('rounded-full origin-left', part.className)}
+            className={cn('origin-left', part.className)}
             style={{
               flexGrow: part.share,
               animation: `fill 7s ${index * 0.15}s var(--ease-out-strong) infinite both`,

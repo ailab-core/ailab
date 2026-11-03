@@ -23,7 +23,7 @@ export function ProductsMenu() {
         </p>
         <a
           href={DEMO_HREF}
-          className="group flex shrink-0 items-center gap-2 font-medium text-highlight"
+          className="group flex h-11 shrink-0 items-center gap-2 font-medium text-highlight transition-[scale] duration-150 ease-out-strong active:scale-[0.97]"
         >
           {m.topbar_menu_cta_button()}
           <HugeiconsIcon

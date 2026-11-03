@@ -2,8 +2,7 @@ import { CodeXmlIcon } from '@hugeicons/core-free-icons'
 import { Card } from './card'
 import { m } from '#/paraglide/messages'
 
-// Types are bold: light mode's blue-800 is too close to the navy foreground to
-// carry hierarchy on hue alone.
+// Types are bold so hierarchy doesn't rest on hue alone.
 const TONE = {
   k: 'text-highlight',
   t: 'font-semibold text-foreground',
@@ -67,11 +66,11 @@ export function Development() {
     >
       {/* One 10s loop: code types in line by line, then the deploy log pops up and ticks through. */}
       <div data-loop className="absolute inset-0">
-        <div className="rounded-md absolute inset-x-5 top-2 overflow-hidden bg-muted font-mono text-xs leading-relaxed md:inset-x-8">
+        <div className="absolute inset-x-5 top-2 overflow-hidden bg-muted font-mono text-xs leading-relaxed md:inset-x-8">
           <div className="flex items-center gap-1.5 px-4 pt-3.5">
-            <span className="rounded-full size-2.5 bg-primary" />
-            <span className="size-2.5 rounded-full bg-muted-foreground/25" />
-            <span className="size-2.5 rounded-full bg-muted-foreground/25" />
+            <span className="size-2.5 bg-primary" />
+            <span className="size-2.5 bg-muted-foreground/25" />
+            <span className="size-2.5 bg-muted-foreground/25" />
             <span className="ml-3 text-muted-foreground/70">
               LoanController.java
             </span>
@@ -102,7 +101,7 @@ export function Development() {
           </pre>
         </div>
         <div
-          className="rounded-md absolute right-8 bottom-3 w-52 md:right-12 md:bottom-10 md:w-60 bg-card p-4 font-mono text-xs leading-relaxed shadow-[0_16px_40px_-12px_rgb(0_0_0/0.18)] dark:shadow-[0_16px_40px_-12px_rgb(0_0_0/0.6)]"
+          className="absolute right-8 bottom-3 w-52 md:right-12 md:bottom-10 md:w-60 bg-card p-4 font-mono text-xs leading-relaxed shadow-[0_16px_40px_-12px_rgb(0_0_0/0.18)] dark:shadow-[0_16px_40px_-12px_rgb(0_0_0/0.6)]"
           style={{ animation: 'pop 10s var(--ease-out-strong) infinite both' }}
         >
           {LOG.map((line, index) => (

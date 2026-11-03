@@ -69,21 +69,27 @@ export function Cta({ eyebrow, title, intro, href, label }: CtaProps) {
       const glow = section.querySelector<HTMLElement>('[data-glow]')!
       const toX = gsap.quickTo(glow, 'x', { duration: 0.8, ease: 'power3' })
       const toY = gsap.quickTo(glow, 'y', { duration: 0.8, ease: 'power3' })
+      // Measured on enter (and after scrolling), never per pointermove, so the glow never forces a reflow.
+      let box: DOMRect | null = null
+      const onScroll = () => (box = null)
       const onMove = contextSafe!((event: PointerEvent) => {
-        const box = section.getBoundingClientRect()
+        box ??= section.getBoundingClientRect()
         toX(event.clientX - box.left)
         toY(event.clientY - box.top)
       })
-      const onEnter = contextSafe!(() =>
-        gsap.to(glow, { autoAlpha: 1, duration: 0.6 }),
-      )
+      const onEnter = contextSafe!(() => {
+        box = section.getBoundingClientRect()
+        gsap.to(glow, { autoAlpha: 1, duration: 0.6 })
+      })
       const onLeave = contextSafe!(() =>
         gsap.to(glow, { autoAlpha: 0, duration: 0.6 }),
       )
       section.addEventListener('pointermove', onMove)
       section.addEventListener('pointerenter', onEnter)
       section.addEventListener('pointerleave', onLeave)
+      window.addEventListener('scroll', onScroll, { passive: true })
       return () => {
+        window.removeEventListener('scroll', onScroll)
         section.removeEventListener('pointermove', onMove)
         section.removeEventListener('pointerenter', onEnter)
         section.removeEventListener('pointerleave', onLeave)
@@ -126,7 +132,7 @@ export function Cta({ eyebrow, title, intro, href, label }: CtaProps) {
       <div className="shell flex flex-col items-center py-24 text-center md:py-32">
         <p
           data-fade-first
-          className="eyebrow rounded-full tracking-wider uppercase bg-primary-foreground/10 px-4 py-2 text-primary-foreground"
+          className="eyebrow tracking-wider uppercase bg-primary-foreground/10 px-4 py-2 text-primary-foreground"
         >
           {eyebrow}
         </p>
@@ -166,7 +172,7 @@ export function Cta({ eyebrow, title, intro, href, label }: CtaProps) {
           <p className="eyebrow flex items-center gap-2 text-primary-foreground/60">
             <span
               aria-hidden="true"
-              className="size-2 rounded-full bg-secondary"
+              className="size-2 bg-primary-foreground"
               style={{ animation: 'blink 2s ease-in-out infinite' }}
             />
             {m.cta_reply_time()}

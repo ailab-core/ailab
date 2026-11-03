@@ -8,55 +8,55 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Brand: blue-800 is the primary fill and orange-400 the secondary pop, identical in both themes so forced-dark sections match.
-   --highlight is blue for accent text, icons and hover states (blue-800 on light), lifted to blue-400 on dark so it stays legible.
-   --highlight-secondary is the legible orange text for the secondary data tone in mock-ups. */
+/* Brand from Deepbook: one accent blue (#1e6ef3) on black/cream neutrals, identical fills in both themes so forced-dark sections match.
+   --secondary points at the same blue: the brand has a single accent. --highlight is the legible blue for text and icons. */
 :root {
-  --background: #f4f7fc;
-  --foreground: #0a1430;
-  --card: #ffffff;
-  --card-foreground: #0a1430;
-  --popover: #ffffff;
-  --popover-foreground: #0a1430;
-  --primary: var(--color-blue-800);
+  --brand-blue: #1e6ef3;
+  --background: #f4f4f1;
+  --foreground: #0b0b0b;
+  --card: #f9f9f7;
+  --card-foreground: #0b0b0b;
+  --popover: #f9f9f7;
+  --popover-foreground: #0b0b0b;
+  --primary: var(--brand-blue);
   --primary-foreground: #ffffff;
-  --secondary: var(--color-orange-400);
-  --secondary-foreground: #0a1430;
-  --muted: #e6ecf7;
-  --muted-foreground: #4b5874;
-  --accent: #dbe3f3;
-  --accent-foreground: #0a1430;
+  --secondary: var(--brand-blue);
+  --secondary-foreground: #ffffff;
+  --muted: #eaeae6;
+  --muted-foreground: #5d6c7b;
+  --accent: #e0e0db;
+  --accent-foreground: #0b0b0b;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #d5ddee;
-  --input: #d5ddee;
-  --ring: var(--color-blue-800);
-  --highlight: var(--color-blue-800);
-  --highlight-secondary: var(--color-orange-600);
+  --border: #d6d6d0;
+  --input: #d6d6d0;
+  --ring: #1349ec;
+  --highlight: #1349ec;
+  --highlight-secondary: #1349ec;
   --grain: 0.2;
 }
 
 .dark {
   color-scheme: dark;
-  --background: #070a12;
-  --foreground: #f1f0eb;
-  --card: #0f1524;
-  --card-foreground: #f1f0eb;
-  --popover: #0f1524;
-  --popover-foreground: #f1f0eb;
-  --primary: var(--color-blue-800);
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0e1013;
+  --card-foreground: #ffffff;
+  --popover: #0e1013;
+  --popover-foreground: #ffffff;
+  --primary: var(--brand-blue);
   --primary-foreground: #ffffff;
-  --secondary: var(--color-orange-400);
-  --secondary-foreground: #070a12;
-  --muted: #172034;
-  --muted-foreground: #8d95a8;
-  --accent: #1d2742;
-  --accent-foreground: #f1f0eb;
+  --secondary: var(--brand-blue);
+  --secondary-foreground: #ffffff;
+  --muted: #16191c;
+  --muted-foreground: #8a949e;
+  --accent: #1f2327;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: #1c2438;
-  --input: #1c2438;
-  --ring: var(--color-blue-400);
-  --highlight: var(--color-blue-400);
-  --highlight-secondary: var(--secondary);
+  --border: #2a2f34;
+  --input: #2a2f34;
+  --ring: #5b94f6;
+  --highlight: #5b94f6;
+  --highlight-secondary: #5b94f6;
   --grain: 0.07;
 }
 
@@ -145,17 +145,22 @@
   --color-ring: var(--ring);
   --color-highlight: var(--highlight);
   --color-highlight-secondary: var(--highlight-secondary);
-  /* PayPal-like rounding: pills for buttons and inputs (rounded-full), 24px cards, 8px chips.
-     md is 16px so a panel inset 8px (p-2/m-2) inside a card stays concentric with it. */
+  /* Decorations (cards, panels, chips, mocks) are sharp: the whole scale is 0.
+     Only interactables (and the product hero dashboards) round: buttons, inputs, tabs and menu items use rounded-full, menu surfaces rounded-control. */
   --radius-*: initial;
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --radius-2xl: 40px;
-  --radius-3xl: 48px;
-  --radius-4xl: 48px;
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+  --radius-control: 24px;
+  /* Product hero dashboards keep their soft UI-mock corners. */
+  --radius-preview-sm: 8px;
+  --radius-preview: 16px;
+  --radius-preview-lg: 24px;
 }
 
 @layer base {
@@ -167,6 +172,30 @@
   html {
     scroll-behavior: smooth;
     overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Taps fire immediately and a long-press on a control never selects its label. */
+  a,
+  button,
+  [role='button'],
+  [role='tab'] {
+    touch-action: manipulation;
+  }
+
+  button,
+  [role='button'],
+  [role='tab'] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Theme flips land in one frame instead of each element tweening its own colors. */
+  .theme-switching,
+  .theme-switching * {
+    transition: none !important;
   }
 
   ::view-transition-old(root),
@@ -208,10 +237,13 @@
   width: 100%;
   max-width: 96rem;
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  /* Landscape phones: content clears the notch (viewport-fit=cover). */
+  padding-inline: max(1.5rem, env(safe-area-inset-left))
+    max(1.5rem, env(safe-area-inset-right));
 
   @media (width >= 48rem) {
-    padding-inline: 2.5rem;
+    padding-inline: max(2.5rem, env(safe-area-inset-left))
+      max(2.5rem, env(safe-area-inset-right));
   }
 }
 
@@ -263,7 +295,7 @@
 }
 
 .hero-line {
-  animation: rise 0.9s var(--ease-out-strong) both;
+  animation: rise 0.7s var(--ease-out-strong) both;
 }
 
 @keyframes stage {
@@ -308,7 +340,7 @@
 }
 
 /* Wipes a stretched chart in left to right; a pathLength dash falls short once non-scaling-stroke is on. */
-@keyframes reveal {
+@keyframes wipe {
   0%,
   8% {
     clip-path: inset(0 100% 0 0);
@@ -404,16 +436,13 @@
   0%,
   64% {
     opacity: 0;
-    filter: blur(2px);
   }
   68%,
   94% {
     opacity: 1;
-    filter: blur(0);
   }
   100% {
     opacity: 0;
-    filter: blur(2px);
   }
 }
 
@@ -637,8 +666,9 @@
   }
 }
 
-/* Offscreen bento animations are paused so they cost nothing. */
-[data-paused] * {
+/* Offscreen bento animations, and stacked cards buried under the sticky stack, are paused so they cost nothing. */
+[data-paused] *,
+[data-idle] * {
   animation-play-state: paused !important;
 }
 
@@ -662,13 +692,14 @@
   [data-loop] * {
     animation: none !important;
   }
+
+  /* Fill bars rest at their own value, not full width. */
+  [data-loop] [style*='--to'] {
+    transform: scaleX(var(--to));
+  }
 }
 
 /* Article typography follows the theme tokens instead of typography's grays. */
-.prose :where(img, pre, code, video, figure, kbd) {
-  border-radius: var(--radius-md);
-}
-
 .prose {
   --tw-prose-body: color-mix(in oklab, var(--foreground) 88%, transparent);
   --tw-prose-headings: var(--foreground);
@@ -769,7 +800,6 @@
   width: 3rem;
   margin-inline: auto;
   border: 0;
-  border-radius: 9999px;
   background: var(--muted);
 }
 

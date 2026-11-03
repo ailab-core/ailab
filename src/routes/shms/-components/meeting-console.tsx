@@ -35,23 +35,26 @@ export function MeetingConsole() {
       ]}
     >
       <dl className="grid grid-cols-3 gap-3">
-        <div className="rounded-md bg-muted px-3 py-2.5">
+        <div className="rounded-preview bg-muted px-3 py-2.5">
           <dt className="eyebrow">{m.shms_console_quorum()}</dt>
           <dd className="mt-1 text-lg text-highlight tabular-nums">
             {'67.4%'}
           </dd>
         </div>
-        <div className="rounded-md bg-muted px-3 py-2.5">
+        <div className="rounded-preview bg-muted px-3 py-2.5">
           <dt className="eyebrow">{m.shms_console_online()}</dt>
           <dd className="mt-1 text-lg tabular-nums">{'1,248'}</dd>
         </div>
-        <div className="rounded-md bg-muted px-3 py-2.5">
+        <div className="rounded-preview bg-muted px-3 py-2.5">
           <dt className="eyebrow">{m.shms_console_shares()}</dt>
-          <dd className="mt-1 text-lg tabular-nums">{'12,450,000'}</dd>
+          <dd className="mt-1 text-lg tabular-nums">
+            <span className="md:hidden">{'12.45M'}</span>
+            <span className="hidden md:inline">{'12,450,000'}</span>
+          </dd>
         </div>
       </dl>
       <div className="mt-3 grid gap-3 md:grid-cols-3">
-        <div className="rounded-md bg-muted p-4 md:order-last md:col-span-2">
+        <div className="rounded-preview bg-muted p-4 md:order-last md:col-span-2">
           <p className="eyebrow flex items-center gap-2 text-foreground">
             <span className="rounded-full size-2 animate-pulse bg-primary" />
             {m.shms_console_now_voting()}
@@ -85,7 +88,7 @@ export function MeetingConsole() {
             ))}
           </ul>
         </div>
-        <div className="rounded-md hidden flex-col bg-muted p-2 md:flex">
+        <div className="rounded-preview hidden flex-col bg-muted p-2 md:flex">
           <p className="eyebrow px-2 pt-2 pb-3 text-foreground">
             {m.shms_mock_agenda()}
           </p>
@@ -93,13 +96,12 @@ export function MeetingConsole() {
             {AGENDA.map((item, index) => (
               <li
                 key={index}
-                className="rounded-sm flex items-center gap-3 bg-card px-3 py-2.5"
+                className="rounded-preview-sm flex items-center gap-3 bg-card px-3 py-2.5"
               >
                 <span
                   className={cn(
-                    'rounded-sm flex size-5 shrink-0 items-center justify-center text-2xs',
-                    item.state === 'done' &&
-                      'bg-primary text-primary-foreground',
+                    'rounded-preview-sm flex size-5 shrink-0 items-center justify-center text-2xs',
+                    item.state === 'done' && 'bg-primary/15 text-highlight',
                     item.state === 'live' &&
                       'bg-primary text-primary-foreground',
                     item.state === 'next' &&

@@ -30,15 +30,15 @@ type ConsoleProps = {
 // App window shared by the product hero dashboards: rail, top bar, and live toasts.
 export function Console({ title, notifications, children }: ConsoleProps) {
   return (
-    <div className="dark relative text-foreground" aria-hidden="true">
-      <div className="flex overflow-hidden rounded-lg bg-card shadow-[0_60px_120px_-40px_rgb(0_0_0/0.8)]">
+    <div className="dark relative text-foreground" aria-hidden="true" data-loop>
+      <div className="flex overflow-hidden rounded-preview-lg bg-card shadow-[0_60px_120px_-40px_rgb(0_0_0/0.8)]">
         <div className="hidden w-14 shrink-0 flex-col items-center gap-2 bg-background/60 py-4 sm:flex">
           <span className="brand-mark mb-4 w-5 bg-foreground" />
           {RAIL.map((icon, index) => (
             <span
               key={index}
               className={cn(
-                'flex size-9 items-center justify-center rounded-md',
+                'flex size-9 items-center justify-center rounded-preview',
                 index
                   ? 'text-muted-foreground'
                   : 'bg-primary text-primary-foreground',

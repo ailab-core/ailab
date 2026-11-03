@@ -5,7 +5,7 @@ import type { PRODUCTS } from '#/lib/navigation'
 import { m } from '#/paraglide/messages'
 
 const tileClass =
-  'group/tile relative flex h-full flex-col gap-10 overflow-hidden rounded-lg bg-card p-6 transition-[background-color,scale] duration-200 ease-out-strong hover:bg-muted focus-visible:bg-muted active:scale-[0.99]'
+  'group/tile relative flex h-full flex-col gap-10 overflow-hidden bg-card p-6 transition-[background-color,scale] duration-150 ease-out-strong hover:bg-muted focus-visible:bg-muted active:scale-[0.98]'
 
 export function ProductTile({
   product,
@@ -66,7 +66,7 @@ export function ProductTile({
   return (
     <div
       aria-disabled="true"
-      className="relative flex h-full flex-col gap-10 overflow-hidden rounded-lg bg-card p-6 [&>*]:opacity-60"
+      className="relative flex h-full flex-col gap-10 overflow-hidden bg-card p-6 [&>*]:opacity-60"
     >
       {content}
     </div>

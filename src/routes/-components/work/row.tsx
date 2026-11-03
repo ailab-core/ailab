@@ -32,11 +32,11 @@ export function WorkRow({
         if (event.pointerType === 'mouse') onActivate(false)
       }}
       onFocus={() => onActivate(true)}
-      className="group flex flex-col gap-2 rounded-lg bg-card p-2 transition-[background-color,scale] duration-200 ease-out-strong active:scale-[0.99] lg:bg-transparent lg:data-active:bg-card"
+      className="group flex flex-col gap-2 bg-card p-2 transition-[background-color,scale] duration-150 ease-out-strong active:scale-[0.98] lg:bg-transparent lg:data-active:bg-card"
     >
       <div
         className={cn(
-          'flex aspect-[16/10] items-center justify-center overflow-hidden rounded-md lg:hidden',
+          'flex aspect-[16/10] items-center justify-center overflow-hidden lg:hidden',
           project.tile,
         )}
       >

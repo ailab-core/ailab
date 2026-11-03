@@ -12,10 +12,7 @@ export function AddOns() {
         </p>
         <dl className="mt-4 flex flex-col gap-1.5">
           {getFees().map((fee, index) => (
-            <div
-              key={index}
-              className="rounded-sm flex flex-col gap-1 bg-card px-4 py-3"
-            >
+            <div key={index} className="flex flex-col gap-1 bg-card px-4 py-3">
               <dt className="eyebrow">{fee.item}</dt>
               <dd className="tabular-nums">{fee.price}</dd>
             </div>
@@ -28,7 +25,7 @@ export function AddOns() {
           {m.primebee_addons_cta()}
         </ArrowButton>
       </div>
-      <div className="rounded-lg overflow-x-auto bg-card p-2 lg:col-span-8">
+      <div className="overflow-x-auto bg-card p-2 lg:col-span-8">
         <table className="w-full min-w-[40rem] text-left text-sm">
           <thead>
             <tr className="eyebrow bg-muted">
@@ -37,11 +34,7 @@ export function AddOns() {
                 m.primebee_plan_basic(),
                 m.primebee_plan_premium(),
               ].map((column, index) => (
-                <th
-                  key={index}
-                  scope="col"
-                  className="px-5 py-3.5 font-medium first:rounded-l-md last:rounded-r-md"
-                >
+                <th key={index} scope="col" className="px-5 py-3.5 font-medium">
                   {column}
                 </th>
               ))}
@@ -49,10 +42,7 @@ export function AddOns() {
           </thead>
           <tbody>
             {getAddOns().map((addOn, index) => (
-              <tr
-                key={index}
-                className="align-top even:bg-muted/50 [&>*:first-child]:rounded-l-md [&>*:last-child]:rounded-r-md"
-              >
+              <tr key={index} className="align-top even:bg-muted/50">
                 <th scope="row" className="heading px-5 py-5 text-lg">
                   {addOn.module}
                 </th>

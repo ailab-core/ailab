@@ -92,7 +92,10 @@ export function ProductHero({
           className="hero-line relative my-10 lg:absolute lg:top-[40%] lg:-right-[14%] lg:my-0 lg:w-[60rem] lg:-translate-y-1/2 lg:perspective-[2200px]"
           style={{ animationDelay: '0.3s' }}
         >
-          <div ref={consoleRef} className="origin-left will-change-transform">
+          <div
+            ref={consoleRef}
+            className="origin-left lg:will-change-transform"
+          >
             {children}
           </div>
         </div>
@@ -113,14 +116,14 @@ export function ProductHero({
               </ArrowButton>
               <a
                 href="#solutions"
-                className="eyebrow text-foreground transition-colors hover:text-highlight"
+                className="eyebrow inline-flex h-12 items-center text-foreground transition-[color,scale] duration-150 ease-out-strong hover:text-highlight active:scale-[0.97]"
               >
                 {m.product_hero_see_included()}
               </a>
             </div>
           </div>
           <dl
-            className="hero-line rounded-lg bg-card/80 px-5 py-3 backdrop-blur-md lg:col-span-4 lg:col-start-9"
+            className="hero-line bg-card/80 px-5 py-3 backdrop-blur-md lg:col-span-4 lg:col-start-9"
             style={{ animationDelay: '0.4s' }}
           >
             {facts.map(([label, value]) => (
@@ -143,8 +146,8 @@ export function ProductHero({
                 <img
                   src={client.src}
                   alt={client.name}
-                  loading="lazy"
-                  className="h-7 w-auto opacity-50 grayscale transition-opacity hover:opacity-100"
+                  decoding="async"
+                  className="h-7 w-auto opacity-50 grayscale"
                 />
               </li>
             ))}

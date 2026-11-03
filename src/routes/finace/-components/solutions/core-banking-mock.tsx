@@ -37,7 +37,7 @@ export function CoreBankingMock() {
             {'₮2,812,000'}
           </p>
         </div>
-        <span className="rounded-sm bg-primary px-2 py-1 text-2xs font-medium tracking-wide text-primary-foreground uppercase">
+        <span className="bg-primary px-2 py-1 text-2xs font-medium tracking-wide text-primary-foreground uppercase">
           {m.finace_mock_balanced()}
         </span>
       </div>
@@ -46,7 +46,7 @@ export function CoreBankingMock() {
           {ENTRIES.map((entry, index) => (
             <tr
               key={index}
-              className="odd:bg-card [&>td:first-child]:rounded-l-sm [&>td:last-child]:rounded-r-sm"
+              className="odd:bg-card"
               style={
                 index > 1
                   ? {

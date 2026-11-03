@@ -19,10 +19,8 @@ export default function Hero() {
 
       <div className="shell flex flex-1 flex-col pt-32 pb-6 md:pb-10">
         <h1 className="heading my-auto py-12 text-hero">
-          <span className="hero-line block" style={{ animationDelay: '0.1s' }}>
-            {m.home_hero_title_a()}
-          </span>
-          <span className="hero-line block" style={{ animationDelay: '0.2s' }}>
+          <span className="hero-line block">{m.home_hero_title_a()}</span>
+          <span className="hero-line block" style={{ animationDelay: '0.08s' }}>
             {m.home_hero_title_b()}
           </span>
         </h1>
@@ -30,7 +28,7 @@ export default function Hero() {
         <div className="grid items-end gap-8 lg:grid-cols-12">
           <div
             className="hero-line flex flex-col gap-6 lg:col-span-5"
-            style={{ animationDelay: '0.35s' }}
+            style={{ animationDelay: '0.16s' }}
           >
             <p className="max-w-md text-lead text-muted-foreground">
               {m.home_hero_intro()}

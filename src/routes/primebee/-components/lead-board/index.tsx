@@ -33,8 +33,8 @@ const COLUMNS: Array<{
 }> = [
   {
     stage: m.primebee_board_stage_new,
-    tint: 'bg-blue-100/80',
-    count: 'text-blue-600',
+    tint: 'bg-primary/8',
+    count: 'text-primary',
     hop: 0,
     leads: [
       {
@@ -54,8 +54,8 @@ const COLUMNS: Array<{
   },
   {
     stage: m.primebee_board_stage_attempted,
-    tint: 'bg-blue-200/70',
-    count: 'text-blue-800',
+    tint: 'bg-primary/15',
+    count: 'text-primary',
     leads: [],
   },
   {
@@ -96,7 +96,7 @@ const HOPPER: Lead = {
 
 function LeadCard({ lead, style }: { lead: Lead; style?: CSSProperties }) {
   return (
-    <div className="rounded-sm bg-white p-2.5 shadow-sm" style={style}>
+    <div className="rounded-preview-sm bg-white p-2.5 shadow-sm" style={style}>
       <p className="flex justify-between text-3xs text-zinc-400">
         {lead.source()}
         <span className="tabular-nums">{lead.date}</span>
@@ -120,11 +120,12 @@ export function LeadBoard() {
   return (
     <div
       aria-hidden="true"
-      className="rounded-lg overflow-hidden bg-white text-zinc-900 shadow-[0_60px_120px_-40px_rgb(0_0_0/0.8)]"
+      data-loop
+      className="rounded-preview-lg overflow-hidden bg-white text-zinc-900 shadow-[0_60px_120px_-40px_rgb(0_0_0/0.8)]"
     >
       <div className="flex items-center gap-3 bg-zinc-200/70 px-4 py-2.5">
         <span className="flex gap-1.5">
-          <span className="size-2.5 rounded-full bg-blue-800" />
+          <span className="size-2.5 rounded-full bg-primary" />
           <span className="size-2.5 rounded-full bg-zinc-300" />
           <span className="size-2.5 rounded-full bg-zinc-300" />
         </span>
@@ -179,7 +180,7 @@ export function LeadBoard() {
                 {m.primebee_board_export()}
               </span>
               <HugeiconsIcon icon={Clock01Icon} className="size-3.5" />
-              <span className="rounded-full flex items-center gap-1 bg-blue-600 px-2.5 py-1 font-medium text-white">
+              <span className="rounded-full flex items-center gap-1 bg-primary px-2.5 py-1 font-medium text-white">
                 <HugeiconsIcon icon={PlusSignIcon} className="size-3" />
                 {m.primebee_board_add_lead()}
               </span>
@@ -190,7 +191,7 @@ export function LeadBoard() {
                 <div
                   key={column.tint}
                   className={cn(
-                    'rounded-md flex h-72 w-40 shrink-0 flex-col gap-2 p-2 md:h-80',
+                    'rounded-preview flex h-72 w-40 shrink-0 flex-col gap-2 p-2 md:h-80',
                     column.tint,
                   )}
                 >

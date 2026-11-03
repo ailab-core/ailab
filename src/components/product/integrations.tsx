@@ -61,7 +61,7 @@ export function ProductIntegrations({
                 aria-hidden={
                   (rowIndex === 0 && index >= row.length) || undefined
                 }
-                className="group/item flex h-32 w-56 shrink-0 flex-col items-center justify-center gap-4 rounded-lg bg-card"
+                className="group/item flex h-32 w-56 shrink-0 flex-col items-center justify-center gap-4 bg-card"
               >
                 <img
                   src={item.src}
